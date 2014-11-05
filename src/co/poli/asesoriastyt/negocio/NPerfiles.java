@@ -28,5 +28,29 @@ public class NPerfiles {
 		int resultadoCrear = daoPerfiles.Crear(c, Perfiles);
 		return resultadoCrear;
 	}
+	
+    public int Modificar(Perfil Perfiles) {
+        daoPerfiles = new DAOPerfiles();
+        new Conexion();
+		c = Conexion.getConnection();
+        int resultadoModificar = daoPerfiles.Modificar(c, Perfiles);
+        return resultadoModificar;
+    }
+
+    public Perfil Buscar(int Perfiles) {
+        daoPerfiles = new DAOPerfiles();
+        new Conexion();
+		c = Conexion.getConnection();
+        Perfil resultadoBuscar = daoPerfiles.Buscar(c, Perfiles);
+        return resultadoBuscar;
+    }
+
+    public int Eliminar(Perfil Perfiles) {
+        daoPerfiles = new DAOPerfiles();
+        new Conexion();
+		c = Conexion.getConnection();
+        int resultadoEliminar = daoPerfiles.Eliminar(c, Perfiles);
+        return resultadoEliminar;
+    }
 
 }

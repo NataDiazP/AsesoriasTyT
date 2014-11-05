@@ -18,10 +18,5 @@ public class Perfil {
 	public void setNombrePerfil(String nombreperfil) {
 		this.nombreperfil = nombreperfil;
 	}
-	
-	@Override
-	public String toString() {
-		return "Perfil [idperfil=" + idperfil + ", nombreperfil=" + nombreperfil+ "]";
-	}
 
 }
