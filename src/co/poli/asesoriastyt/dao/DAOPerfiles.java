@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -107,5 +109,29 @@ public class DAOPerfiles {
 		}
 
 		return resultadoEliminar;
+	}
+
+	public List<Perfil> listarPerfiles(Connection c) {
+		List<Perfil> Perfiles = new ArrayList<Perfil>();
+		try {
+			String sql = "SELECT Id_Perfil, Nombre_Perfil FROM perfiles";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Perfil Perf = new Perfil();
+				Perf.setIdPerfil(rs.getInt(1));
+				Perf.setNombrePerfil(rs.getString(2));
+				Perfiles.add(Perf);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return Perfiles;
 	}
 }

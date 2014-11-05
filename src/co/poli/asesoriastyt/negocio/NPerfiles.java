@@ -4,6 +4,7 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOPerfiles;
 import co.poli.asesoriastyt.model.Perfil;
@@ -23,34 +24,36 @@ public class NPerfiles {
 
 	public int Crear(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
-		new Conexion();
-		c = Conexion.getConnection();
+		c = new Conexion().getConnection();
 		int resultadoCrear = daoPerfiles.Crear(c, Perfiles);
 		return resultadoCrear;
 	}
-	
-    public int Modificar(Perfil Perfiles) {
-        daoPerfiles = new DAOPerfiles();
-        new Conexion();
-		c = Conexion.getConnection();
-        int resultadoModificar = daoPerfiles.Modificar(c, Perfiles);
-        return resultadoModificar;
-    }
 
-    public Perfil Buscar(int Perfiles) {
-        daoPerfiles = new DAOPerfiles();
-        new Conexion();
-		c = Conexion.getConnection();
-        Perfil resultadoBuscar = daoPerfiles.Buscar(c, Perfiles);
-        return resultadoBuscar;
-    }
+	public int Modificar(Perfil Perfiles) {
+		daoPerfiles = new DAOPerfiles();
+		c = new Conexion().getConnection();
+		int resultadoModificar = daoPerfiles.Modificar(c, Perfiles);
+		return resultadoModificar;
+	}
 
-    public int Eliminar(Perfil Perfiles) {
-        daoPerfiles = new DAOPerfiles();
-        new Conexion();
-		c = Conexion.getConnection();
-        int resultadoEliminar = daoPerfiles.Eliminar(c, Perfiles);
-        return resultadoEliminar;
-    }
+	public Perfil Buscar(int Perfiles) {
+		daoPerfiles = new DAOPerfiles();
+		c = new Conexion().getConnection();
+		Perfil resultadoBuscar = daoPerfiles.Buscar(c, Perfiles);
+		return resultadoBuscar;
+	}
+
+	public int Eliminar(Perfil Perfiles) {
+		daoPerfiles = new DAOPerfiles();
+		c = new Conexion().getConnection();
+		int resultadoEliminar = daoPerfiles.Eliminar(c, Perfiles);
+		return resultadoEliminar;
+	}
+
+	public List<Perfil> ListadoPerfiles() {
+		daoPerfiles = new DAOPerfiles();
+		c = new Conexion().getConnection();
+		return daoPerfiles.listarPerfiles(c);
+	}
 
 }

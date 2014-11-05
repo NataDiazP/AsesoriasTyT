@@ -14,7 +14,7 @@ public class PerfilesSQL {
     }
 
     public static String Modificar() {
-        return "UPDATE perfiles SET Nombre_Perfil=?" + " WHERE Id_Perfil=?";
+        return "UPDATE perfiles SET Nombre_Perfil=? WHERE Id_Perfil=?";
     }
 
     public static String Consultar(int Id_Perfil) {

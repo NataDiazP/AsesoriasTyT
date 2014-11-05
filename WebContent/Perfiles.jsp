@@ -1,3 +1,8 @@
+<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
+<%@page
+	import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
+<%@page import="java.util.List"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
 <%@page import="co.poli.asesoriastyt.model.Perfil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -45,5 +50,33 @@
 			</tr>
 		</table>
 	</form>
+
+	<%
+		NPerfiles nPerf = new NPerfiles();
+		DAOPerfiles dao = new DAOPerfiles();
+		List<Perfil> listaPerfiles = nPerf.ListadoPerfiles();
+	%>
+
+	<table width="100%" align="center" id="rounded-corner" border="1"
+		style="font-family: 'Verdana';">
+		<thead>
+			<tr>
+				<th>Id Perfil</th>
+				<th>Nombre del perfil</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+				for (Perfil perf : listaPerfiles) {
+			%>
+			<tr align="center">
+				<td><%=perf.getIdPerfil()%></td>
+				<td><%=perf.getNombrePerfil()%></td>
+			</tr>
+			<%
+				}
+			%>
+		</tbody>
+	</table>
 </body>
 </html>

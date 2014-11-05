@@ -23,6 +23,7 @@ import co.poli.asesoriastyt.util.Conexion;
 @WebServlet(description = "Controlador de maestro perfiles", urlPatterns = { "/Perfiles" })
 public class Perfiles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Conexion Connection = new Conexion();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,9 +42,8 @@ public class Perfiles extends HttpServlet {
 		String nom = request.getParameter("NombrePerfil");
 
 		if ("Crear".equals(request.getParameter("action"))) {
-
 			try {
-				ResultSet r = Conexion.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
+				ResultSet r = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
 				while (r.next()) {
 					if (id.equals(r.getString(1))) {
 						JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación del perfil", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -84,9 +84,8 @@ public class Perfiles extends HttpServlet {
 				JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				request.getRequestDispatcher("./Perfiles.jsp").forward(request, response);
 			} else if (id != null) {
-				Conexion Connection = new Conexion();
 				try {
-					ResultSet r = Conexion.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
+					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
 					while (r.next()) {
 						if (id.equals(r.getString(1))) {
 							int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de este perfil?");
@@ -110,9 +109,8 @@ public class Perfiles extends HttpServlet {
 				}
 			}
 
-			Conexion Connection = new Conexion();
 			try {
-				ResultSet r1 = Conexion.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
+				ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
 				while (r1.next()) {
 					if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
 						request.getRequestDispatcher("./Perfiles.jsp").forward(request, response);
@@ -151,9 +149,8 @@ public class Perfiles extends HttpServlet {
 				request.getRequestDispatcher("./Perfiles.jsp").forward(request, response);
 			}
 
-			Conexion Connection = new Conexion();
 			try {
-				ResultSet r = Conexion.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
+				ResultSet r = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
 				while (r.next()) {
 					if (id.equals(r.getString(1))) {
 
@@ -178,11 +175,11 @@ public class Perfiles extends HttpServlet {
 			}
 
 			try {
-				ResultSet r1 = Conexion.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
+				ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles").executeQuery();
 				while (r1.next()) {
 					if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-						request.getRequestDispatcher("./Perfiles.jsp").forward(request, response);
 						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del perfil", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Perfiles.jsp").forward(request, response);
 					}
 				}
 			} catch (SQLException e) {
