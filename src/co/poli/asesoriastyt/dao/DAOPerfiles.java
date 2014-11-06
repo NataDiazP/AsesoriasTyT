@@ -48,8 +48,8 @@ public class DAOPerfiles {
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
 
-			st.setInt(1, Perfiles.getIdPerfil());
-			st.setString(2, Perfiles.getNombrePerfil());
+			st.setString(1, Perfiles.getNombrePerfil());
+			st.setInt(2, Perfiles.getIdPerfil());
 			resultadoModificar = st.executeUpdate();
 
 		} catch (SQLException ex) {
