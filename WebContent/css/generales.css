@@ -1,0 +1,844 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url("menu.css");
+
+
+a { 
+	cursor: inherit;
+}
+
+a:link {
+	cursor: pointer;
+}
+ 
+body {
+	margin: 0;
+	
+}
+
+
+#cont_gral {
+	height: 100%;
+	margin:10px 30px 0 30px;
+	width: auto;
+	padding: 0 0 10px 0;
+	
+}
+
+#footer {
+width: 960px;
+height: 150px;
+margin:100px auto 0;
+}
+
+#gl_info {
+	background-color: #F3F3F3;
+	border: 2px solid #D4D4D4;
+	border-radius: 25px;
+	height:auto;
+	margin:30px 0 30px 0;
+	padding: 0.7em;
+	width:auto;
+}
+
+#gl_info h1{
+	background-image: url(../images/ico_info_68.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	color: #333;
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	font-weight:lighter;
+	margin: 0;
+	padding: 0 0 0 85px;
+	height: 70px;
+}
+
+#logo  {
+	background-image: url(../images/logo_ps.png);
+	background-repeat: no-repeat;
+	background-position: 35px center;
+	float:left;
+	height:80px;
+	margin: 0;
+	width: 200px;
+}
+
+#logoapp  {
+	background-image: url(../images/logoapp.png);
+	background-repeat: no-repeat;
+	background-position: center 5px;
+	float: right;
+	height:80px;
+	margin: 0;
+	width: 300px;
+} 
+
+#pie {
+	color: #999;
+	font-family: "Trebuchet MS";
+	font-size: 13px;
+	height: 20px;
+	margin:10px 0 10px 0;
+	text-align:center;
+	width: 100%;
+}
+
+
+#rounded-corner{
+	border-collapse: collapse;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	margin: 0;
+	text-align: left;
+	width: 100%;
+}
+
+#rounded-corner th{
+	background: #D4D4D4;
+	color: #000;
+	font-weight: normal;
+	font-size: 13px;
+	padding: 6px;
+	text-align:center;
+	border-left: 1px solid #efefef;
+}
+
+#rounded-corner td{
+	background: #F3F3F3;
+	border-top: 1px solid #fff;
+	color: #669;
+	padding: 6px;
+	border-left: 1px solid #CCC;
+}
+
+#rounded-corner tbody tr:hover td{
+	background: #FFF;
+}
+
+#ruta{
+	border-bottom: 1px solid #678f05;
+	margin:0 30px 0 30px;
+	padding:30px 0 0 0;
+	width: auto;
+
+}
+
+#ruta h1{
+	color: #333;
+	font-family:"Trebuchet MS";
+	font-size:20px;
+	font-style: italic;
+	font-weight: normal;
+	margin:0;
+	padding:0;
+}
+
+#ruta h1 span{
+	color: #4E4E4E;
+	font-family:"Trebuchet MS";
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+ 
+#user {
+	background-color: #525252;
+	border-radius: 10px;
+	float: right;
+	height:auto;
+	margin:23px 0 0 0;
+	padding: 0.7em;
+	width:auto;
+
+}
+
+#user h1{
+	background-image: url(../images/ico_user.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	color: #CCC;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	margin: 0;
+	padding: 0 0 0 25px;
+}
+
+#user h1 span{
+	color: #CCC;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	text-transform: capitalize;
+}
+
+.backtableborder {
+	background-color: #f6f6f6;
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color:#666;
+	text-align:right;
+	padding:3px;
+}
+.backtableborderRojo {
+	background-color: #f6f6f6;
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color: #FF0000;
+	text-align:right;
+	padding:3px;
+	font-weight:bold;
+}
+.backtableborderN {
+	background-color: #CCC;
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color:#333;
+	text-align:right;
+	padding:3px;
+	font-weight:bold;
+}
+
+.backtableborderN2 {
+	background-color: #e4e9d9;
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color:#333;
+	text-align:right;
+	padding:3px;
+	font-weight:bold;
+}
+
+.boton {
+	background-color: #678f05;
+    border: thin solid #678f05;
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    box-shadow: 2px 2px 2px #BBBBBB;
+    color: #FFFFFF;
+	cursor:pointer;
+	font-family:"Trebuchet MS";
+    padding: 0.4em;
+    text-shadow: 1px 1px 1px #000000;
+    width: auto;
+	
+}
+
+.bt_anterior{
+	background-image: url(../images/ico_anterior.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #CCC;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 16px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 16px;
+}
+
+.bt_aprobado{
+	background-image: url(../images/ico_tick.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_buscar{
+	background-image: url(../images/ico_zoom.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_calendario{
+	background-image: url(../images/ico_date.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 1px solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_der{
+	background-image: url(../images/ico_der.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+.bt_der2{
+	background-image: url(../images/ico_der_2.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_detalle{
+	background-image: url(../images/ico_detalle.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_editar{
+	background-image: url(../images/ico_pencil.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 1px solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_eliminar{
+	background-image: url(../images/ico_delete.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 1px solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+.bt_eliminar{
+	background-image: url(../images/ico_delete.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+
+}
+
+.bt_filtro{
+	background-image: url(../images/ico_filtar.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_grafico{
+	background-image: url(../images/ico_chart.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_grafico2{
+	background-image: url(../images/ico_curve.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_grafico3{
+	background-image: url(../images/ico_line.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+
+.bt_imprimir{
+	background-image: url(../images/ico_printer.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+
+}
+
+.bt_izq{
+	background-image: url(../images/ico_izq.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+.bt_izq2{
+	background-image: url(../images/ico_izq_2.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #999;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 22px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 22px;
+}
+
+.bt_primero{
+	background-image: url(../images/ico_primero.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #CCC;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 16px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 16px;
+}
+
+.bt_siguiente{
+	background-image: url(../images/ico_siguiente.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #CCC;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 16px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 16px;
+}
+.bt_ultimo{
+	background-image: url(../images/ico_ultimo.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: thin solid #CCC;
+	border-radius: 0.2em 0.2em 0.2em 0.2em;
+	box-shadow: 2px 2px 2px #BBBBBB;
+	cursor:pointer;
+	height: 16px;	
+	text-shadow: 1px 1px 1px #000000;
+	width: 16px;
+}
+
+.caja_01_01{
+	background-image: url(../images/caja_01_01.png);
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 6px;
+}
+
+.caja_01_02{
+	background-image: url(../images/caja_01_02.png);
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 6px;
+}
+
+.caja_01_bottom{
+	background-color:#EAEAEA;
+}
+
+.caja_bottom_01{
+	background-image: url(../images/caja_bottom_01.png);
+	background-repeat: no-repeat;
+	height: 6px;
+	width: 6px;
+}
+
+.caja_bottom_02{
+	background-image: url(../images/caja_bottom_02.png);
+	background-repeat: no-repeat;
+	height: 6px;
+	width: 6px;
+}
+
+.caja_01_top{
+	background-color:#FFF;
+	color: #678f05;
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	padding: 0 0 0 10px;
+	text-transform: uppercase;	
+}
+
+
+.caja_02_01{
+	background-image: url(../images/caja_02_01.png);
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 6px;
+}
+
+.caja_02_02{
+	background-image: url(../images/caja_02_02.png);
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 6px;
+}
+
+.caja_02_top{
+	background-color: #678f05;
+	color: #FFF;
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	padding: 0 0 0 10px;
+	text-transform: uppercase;	
+}
+
+.caja_03_01{
+	background-image: url(../images/caja_02_01.png);
+	background-repeat: no-repeat;
+	height: 9px;
+	width: 6px;
+}
+
+.caja_03_02{
+	background-image: url(../images/caja_02_02.png);
+	background-repeat: no-repeat;
+	height: 9px;
+	width: 6px;
+}
+
+.caja_03_top{
+	background-color: #678f05;
+	padding: 0 0 0 10px;
+	text-transform: uppercase;	
+}
+
+
+
+.campo01 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family:"Trebuchet MS";
+	font-size: 12px;
+	height: 20px;
+	width: 120px;
+}
+
+.campo02 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family:"Trebuchet MS";
+	font-size: 12px;
+	height: 20px;
+	width: 180px;
+}
+
+.campo03 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family:"Trebuchet MS";
+	font-size: 12px;
+	height: 20px;
+	width: 220px;
+}
+.campo04 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family:"Trebuchet MS";
+	font-size: 12px;
+	height: 20px;
+	width: 260px;
+}
+.campo05 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family:"Trebuchet MS";
+	font-size: 12px;
+	height: 20px;
+	width: 280px;
+}
+.campo06 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family:"Trebuchet MS";
+	font-size: 12px;
+	height: 20px;
+	width: 320px;
+}
+
+
+
+
+.celda_01{
+	background-color:#CCCCCC;
+	color:#000;
+	font-family:"Trebuchet MS";  
+	font-size: 13px;
+}
+
+
+.label{
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color:#000;
+	text-align:right;
+}
+
+.label span{
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color: #FF0000;
+	text-align:right;
+}
+
+.link {
+	color:#0A3782;
+	text-decoration:none;
+	font-family: "Trebuchet MS";
+	font-size: 13px;
+}
+
+.link:hover {
+	text-decoration:underline;
+}
+
+
+.textarea01 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 50px;
+	width: 80px;
+}
+
+.textarea02 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 50px;
+	width: 120px;
+}
+.textarea03 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 50px;
+	width: 160px;
+}
+.textarea04 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 50px;
+	width: 200px;
+}
+.textarea05 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 50px;
+	width: 250px;
+}
+.textarea06 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 50px;
+	width: 300px;
+}
+
+.textarea07 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 100px;
+	width: 180px;
+}
+.textarea08 {
+	border:1px solid #C5C5C5;
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+	height: 140px;
+	width: 200px;
+}
+
+.tl01 {
+	color: #666;
+	font-family: "Trebuchet MS";
+	font-size: 28px;
+	font-weight:lighter;
+}
+
+.tl02{
+	color: #666;
+	font-family: "Trebuchet MS";
+	font-size: 22px;
+	font-weight:lighter;
+}
+
+
+.tl03{
+	color: #666;
+	font-family: "Trebuchet MS";
+	font-size: 20px;
+	font-weight:lighter;
+}
+
+.tl04{
+	color: #666;
+	font-family: "Trebuchet MS";
+	font-size: 16px;
+	font-weight:lighter;
+}
+
+.tl05{
+	color: #678f05;
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-weight:lighter;
+	border-bottom: 1px solid #678f05;
+}
+
+.tllink{
+	color: #678f05;
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-weight:lighter;
+	text-decoration:none;
+}
+
+.tllink:hover{
+	color: #006600;
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-weight:lighter;
+	text-decoration:none;
+}
+
+
+.tx01{
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+}
+
+.txGris{
+	color: #999;
+	font-family: "Trebuchet MS";
+	font-size: 13px;
+}
+
+.txNegrita{
+	color: #000;
+	font-family: "Trebuchet MS";
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.txPag {
+	color: ##333333;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	text-align:	right;
+}
+.txRojo{
+	color: #FF0000;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+}
+
+/*scrollbar*/
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+	box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    height: 50px;
+    -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-track-piece {
+	background: #efefef;
+    -webkit-border-radius: 0;
+}
+/* fin scrollbar*/
+
+
+
