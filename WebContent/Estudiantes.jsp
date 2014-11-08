@@ -46,7 +46,12 @@
             <td class="label">Documento de Estudiante(*):</td>
             <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Documento" value=""></td>
             <td class="label">Tipo de Documento(*):</td>
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Tipo Documento" ></td>
+            <td><select name="genero" class="campo02" id="genero">
+              <option>Seleccione...</option>
+              <option>Cédula de Ciudadanía</option>
+              <option>Cédula de Extranjería</option>
+              <option>Tarjeta de Identidad</option>
+              </select></td>
           	<td class="label">Nombres(*):</td>
             <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Nombres" value=""></td>
           </tr>
