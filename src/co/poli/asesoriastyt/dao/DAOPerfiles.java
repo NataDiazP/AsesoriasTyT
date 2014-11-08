@@ -19,8 +19,6 @@ import co.poli.asesoriastyt.model.Perfil;
  *
  */
 public class DAOPerfiles {
-
-
 	
 	public int Crear(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Crear();
