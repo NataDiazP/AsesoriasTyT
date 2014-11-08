@@ -2,25 +2,30 @@ package co.poli.asesoriastyt.model;
 
 public class EncargadoBloque {
 	
-	private String idencargado;
-	private String descripcionencargado;
-	
-	
-	public String getIdencargado() {
-		return idencargado;
+	private String IdEncargado;
+	private String DescripcionEncargado;
+	/**
+	 * @return the idEncargado
+	 */
+	public String getIdEncargado() {
+		return IdEncargado;
 	}
-	public void setIdencargado(String idencargado) {
-		this.idencargado = idencargado;
+	/**
+	 * @param idEncargado the idEncargado to set
+	 */
+	public void setIdEncargado(String idEncargado) {
+		IdEncargado = idEncargado;
 	}
-	public String getDescripcionencargado() {
-		return descripcionencargado;
+	/**
+	 * @return the descripcionEncargado
+	 */
+	public String getDescripcionEncargado() {
+		return DescripcionEncargado;
 	}
-	public void setDescripcionencargado(String descripcionencargado) {
-		this.descripcionencargado = descripcionencargado;
+	/**
+	 * @param descripcionEncargado the descripcionEncargado to set
+	 */
+	public void setDescripcionEncargado(String descripcionEncargado) {
+		DescripcionEncargado = descripcionEncargado;
 	}
-	
-	
-	
-	
-
 }
