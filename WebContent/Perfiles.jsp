@@ -26,9 +26,10 @@
 <title>Gesti&oacute;n de perfiles</title>
 </head>
 <body>
-	<jsp:include page="Header.jsp"></jsp:include>
-
-	<div id="ruta">
+<br>
+<br>
+<br>
+<div id="ruta">
 		<h1>Gesti&oacute;n de Perfiles</h1>
 		<br>
 		<form name="inicio" action="./Perfiles" method="post">
@@ -115,6 +116,6 @@
 						</table></td>
 				</tr>
 		</table>
-		<jsp:include page="footer.jsp"></jsp:include>
+ <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

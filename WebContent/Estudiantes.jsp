@@ -1,0 +1,157 @@
+<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
+<%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
+<%@page import="java.util.List"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
+<%@page import="co.poli.asesoriastyt.model.Perfil"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+ <link href="./css/generales.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%
+	/*String mensaje = (String) request.getAttribute("mensaje");
+	String IdPerfil = request.getParameter("IdPerfil");
+	String NombrePerfil = request.getParameter("NombrePerfil");
+
+	Perfil x = request.getAttribute("cli") != null ? (Perfil) request.getAttribute("cli") : null;
+	//nombre del atributo cuando lo subo  // operador ternario condicional
+	if (x != null) {
+		IdPerfil = Integer.toString(x.getIdPerfil());
+		NombrePerfil = x.getNombrePerfil();*/
+	//}
+%>
+<script type="text/javascript" src="./js/validacion.js"></script>
+<title>Gesti&oacute;n de Estudiantes</title>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div id="ruta"> <h1> Gesti&oacute;n de Estudiantes</h1>
+<br>
+	<form name="inicio" action="./Perfiles" method="post">
+	<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="caja_01_01">&nbsp;</td>
+      <td class="caja_01_top" align="center" >Filtros de búsqueda</td>
+      <td class="caja_01_02">&nbsp;</td>
+    </tr>
+     <tr>
+      <td class="caja_01_bottom">&nbsp;</td>
+      <td valign="top" class="caja_01_bottom">
+      <table width="100%" border="0" cellspacing="4" cellpadding="4">
+          <tr>
+            <td class="label">Documento de Estudiante(*):</td>
+            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Documento" value=""></td>
+            <td class="label">Tipo de Documento(*):</td>
+            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Tipo Documento" ></td>
+          	<td class="label">Nombres(*):</td>
+            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Nombres" value=""></td>
+          </tr>
+          <tr>
+            <td class="label">Primer Apellido(*):</td>
+            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Primer Apellido" value=""></td>
+            <td class="label">Segundo Apellido(*):</td>
+            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Segundo Apellido" ></td>
+          	<td class="label">Genero(*):</td>
+            <td><select name="genero" class="campo02" id="genero">
+              <option>Seleccione...</option>
+              <option>Femenino</option>
+              <option>Masculino</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td class="label">Fecha de Nacimiento(*):</td>
+            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Fecha Nacimiento" value=""></td>
+            <td class="label">Dirección(*):</td>	
+            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Dirección" ></td>
+          	<td class="label">Tel&eacute;no(*):</td>
+          	<td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Teléfono" ></td>
+          </tr>
+          <tr>
+            <td class="label">Celular(*):</td>
+            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Celular" value=""></td>
+            <td class="label">Correo(*):</td>	
+            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Correo" ></td>
+          	<td class="label">Plan de Estudios(*):</td>
+          	<td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Plan Estudios" ></td>
+          </tr>
+          <tr>
+            <td class="label">Semestre(*):</td>
+            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Semestre" value=""></td>
+            <td class="label">Estado (*):</td>	
+            <td><select name="genero" class="campo02" id="genero">
+              <option>Seleccione...</option>
+              <option>Activo</option>
+              <option>Inactivo</option>
+              </select></td>
+          </tr>
+      </table>
+      </td>
+      <td class="caja_01_bottom">&nbsp;</td>
+    </tr>
+    <tr>
+    <tr>
+      <td class="caja_bottom_01"></td>
+      <td class="caja_01_bottom"></td>
+      <td class="caja_bottom_02"></td>
+    </tr>			
+  </table>  
+<br>
+
+  <div style="margin: 0 auto; width:25%">
+    <button name="action" value="Crear" class="boton">Crear</button>
+	<button name="action" value="Consultar" class="boton">Consultar</button>
+	<button name="action" value="Modificar" class="boton">Modificar</button>
+	<button name="action" value="Eliminar" class="boton">Eliminar</button>
+ </div>
+		
+	</form>
+
+	<%
+		/*NPerfiles nPerf = new NPerfiles();
+		DAOPerfiles dao = new DAOPerfiles();
+		List<Perfil> listaPerfiles = nPerf.ListadoPerfiles();*/
+	%>
+<br>
+<br>
+ <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+ <thead>
+    <tr>
+      <td class="caja_02_01">&nbsp;</td>
+      <td class="caja_02_top">Lista de Asesorías</td>
+      <td class="caja_02_02">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="caja_01_bottom">&nbsp;</td>
+      <td valign="top" class="caja_01_bottom"><table width="100%" align="center" id="rounded-corner">
+          <thead>
+            <tr>
+              <th class="rounded" scope="col">Documento</th>
+              <th class="rounded" scope="col">Tipo Documento</th>
+              <th class="rounded" scope="col">Nombres</th>
+              <th class="rounded" scope="col">Primer Apellido</th>
+              <th class="rounded" scope="col">Segundo Apellido</th>
+              <th class="rounded" scope="col">G&eacute;nero</th>
+              <th class="rounded" scope="col">Fecha Nacimiento</th>
+              <th class="rounded" scope="col">Direcci&oacute;n</th>
+              <th class="rounded" scope="col">Tel&eacute;fono</th>
+              <th class="rounded" scope="col">Celular</th>
+              <th class="rounded" scope="col">Correo</th>
+              <th class="rounded" scope="col">Semestre</th>
+              <th class="rounded" scope="col">Estado</th>
+            </tr>
+    </thead>
+	<tbody>
+		
+			
+	</tbody>
+	</table>
+	</td>
+    </tr>
+    </table>
+    <jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
