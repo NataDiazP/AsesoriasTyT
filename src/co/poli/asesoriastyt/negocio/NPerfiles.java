@@ -55,5 +55,4 @@ public class NPerfiles {
 		c = new Conexion().getConnection();
 		return daoPerfiles.listarPerfiles(c);
 	}
-
 }

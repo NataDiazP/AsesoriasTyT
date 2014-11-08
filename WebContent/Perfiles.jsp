@@ -51,8 +51,7 @@
 									placeholder="código"
 									value="<%=IdPerfil != null ? IdPerfil : ""%>"></td>
 								<td class="label">Nombre Perfil(*):</td>
-								<td><input type="text" name="NombrePerfil" size="30"
-									onkeypress="return sololetras(event)" placeholder="nombre"
+								<td><input type="text" name="NombrePerfil" size="30" placeholder="nombre"
 									value="<%=NombrePerfil != null ? NombrePerfil : ""%>"></td>
 							</tr>
 						</table>

@@ -14,15 +14,14 @@ public class EncargadosBloquesSQL {
 	}
 
 	public static String Modificar() {
-		return "UPDATE perfiles SET Nombre_Perfil=? WHERE Id_Perfil=?";
+		return "UPDATE encargados_bloques SET Correo_Encargado_Bloque=? WHERE Id_Encargado_Bloque=?";
 	}
 
-	public static String Consultar(int Id_Perfil) {
-		return "SELECT * FROM perfiles WHERE Id_Perfil = " + Id_Perfil + "";
+	public static String Consultar(String Id_Encargado_Bloque) {
+		return "SELECT * FROM encargados_bloques WHERE Id_Encargado_Bloque = " + Id_Encargado_Bloque + "";
 	}
 
 	public static String Eliminar() {
-		return "DELETE FROM perfiles WHERE Id_Perfil=?";
+		return "DELETE FROM encargados_bloques WHERE Id_Encargado_Bloque=?";
 	}
-
 }
