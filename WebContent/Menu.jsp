@@ -1,28 +1,16 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%@ page import="co.poli.asesoriastyt.control.GYLoginServlet"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Expires" content="0" />
-<meta http-equiv="Pragma" content="no-cache" />
-<link href="./css/style1.css" rel="stylesheet" type="text/css" />
+<title>::Asesorías TyT ::</title>
+<link href="./css/generales.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<base target="cont" />
+<script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="./js/ddaccordion.js"></script>
 
- <%
-
- /*if (session.getAttribute("gyUser") != null && !session.getAttribute("gyUser").equals("")) 
-	{
-	} 	
-else 
-	{
-	 response.sendRedirect(request.getContextPath());
-	}
- 
- 
- */%>
- 
-	<script type="text/javascript">
+<script type="text/javascript">
     ddaccordion.init({ //top level headers initialization
         headerclass: "expandable", //Shared CSS class name of headers group that are expandable
         contentclass: "categoryitems", //Shared CSS class name of contents group
@@ -88,34 +76,38 @@ else
     </script>
  
 </head>
-<body onload="borrarHistorial()">
-<div id="header_wrapper">
-<br />
+<body>
 
-<IMG SRC="./images/logo.png" width='15%' height='70%' style="margin: 5px 0px 5px 30px;float: left; " >
-<IMG SRC="./images/api.jpg" width='15%' height='80%' align="right" style="margin: 5px 30px 5px 5px;float: right; ">   
-</div> 
-=======
-<%
-	/*if (session.getAttribute("gyUser") != null && !session.getAttribute("gyUser").equals("")) 
-	{
-	} 	
-	else 
-	{
-	 response.sendRedirect(request.getContextPath());
-	}
-	 */
-%>
 
-</head>
-<body onload="borrarHistorial()">
-	<div id="header_wrapper">
-		<br>
-		<img src="./images/logo.png" width='15%' height='70%' style="margin: 5px 0px 5px 30px; float: left;"> 
-		<img src="./images/api.jpg" width='15%' height='80%' align="right" style="margin: 5px 30px 5px 5px; float: right;">
-	</div>
->>>>>>> origin/master
+<div class="arrowlistmenu">
+<h3 class="menuheader Noexpandable"><a href="Bienvenida.jsp" target="datos">Inicio</a></h3>
+<!--Inicio opción desplegable-->
+<h3 class="menuheader expandable">Configuraciones</h3>
+<ul class="categoryitems">
+    <li><a href="Perfiles.jsp" target="datos">Administrar Perfiles</a></li>
+    <li><a href="TipoIdentificacion.jsp" target="datos">Administrar Tipo Identificacion</a></li>
+    <li><a href="EncargadoBloque.jsp" target="datos">Administrar Encargados de Bloques</a></li>
+    <li><a href="Bloques.jsp" target="datos">Administrar Bloques</a></li>
+    <li><a href="Aulas.jsp" target="datos">Administrar Aulas</a></li>
+    <li><a href="Asignaturas.jsp" target="datos">Administrar Asignaturas</a></li>
+</ul>
+<!--Fin opción desplegable-->
 
+<!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="Docentes.jsp"  target="datos">Docentes</a></h3>
+<!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="Estudiantes.jsp" target="datos">Estudiantes</a></h3>
+<!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="ProgramacionAcademica.jsp" target="datos">Programación Académica</h3>
+<!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="AsesoriasAcademicas.jsp" target="datos">Asesorías</a></h3>
+<!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="http://groups.google.com/forum/"  target="_blank">Foro</a></h3>
+<!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="index.jsp" target="datos">Salida Segura</a></h3>
+<!--Fin opción NO desplegable-->
+
+</div>
 
 </body>
 </html>

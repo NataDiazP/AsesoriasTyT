@@ -118,7 +118,8 @@ margin:100px auto 0;
 }
 
 #ruta{
-	border-bottom: 1px solid #678f05;
+
+	border-bottom: 1px solid #87BD8E;
 	margin:0 30px 0 30px;
 	padding:30px 0 0 0;
 	width: auto;
@@ -214,8 +215,8 @@ margin:100px auto 0;
 }
 
 .boton {
-	background-color: #678f05;
-    border: thin solid #678f05;
+	background-color: #87BD8E;
+    border: thin solid #87BD8E;
     border-radius: 0.5em 0.5em 0.5em 0.5em;
     box-shadow: 2px 2px 2px #BBBBBB;
     color: #FFFFFF;
@@ -520,7 +521,7 @@ margin:100px auto 0;
 
 .caja_01_top{
 	background-color:#FFF;
-	color: #678f05;
+	color: #87BD8E;
 	font-family:"Trebuchet MS";
 	font-size: 13px;
 	padding: 0 0 0 10px;
@@ -543,7 +544,7 @@ margin:100px auto 0;
 }
 
 .caja_02_top{
-	background-color: #678f05;
+	background-color: #87BD8E;
 	color: #FFF;
 	font-family:"Trebuchet MS";
 	font-size: 13px;
@@ -566,7 +567,7 @@ margin:100px auto 0;
 }
 
 .caja_03_top{
-	background-color: #678f05;
+	background-color: #87BD8E;
 	padding: 0 0 0 10px;
 	text-transform: uppercase;	
 }
@@ -758,7 +759,15 @@ margin:100px auto 0;
 }
 
 .tl05{
-	color: #678f05;
+	color: #87BD8E;
+	font-family: "Trebuchet MS";
+	font-size: 18px;
+	font-weight:lighter;
+	border-bottom: 1px solid #87BD8E;
+}
+
+.tllink{
+	color: #87BD8E;
 	font-family: "Trebuchet MS";
 	font-size: 18px;
 	font-weight:lighter;
@@ -766,7 +775,7 @@ margin:100px auto 0;
 }
 
 .tllink{
-	color: #678f05;
+	color: #87BD8E;
 	font-family: "Trebuchet MS";
 	font-size: 18px;
 	font-weight:lighter;

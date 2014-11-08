@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0;
+	overflow-y:hidden;
+	
+}
+
+#cabezote  {
+	background-color:#87BD8E;
+	border-top: 6px solid #87BD8E;
+	height:80px;
+	width: 100%;
+
+} 
+
+#contenedor {
+	height:100%;
+	width: 100%;
+	
+}
+
+#contenido {
+	background-image: url(../images/bg_gral.png);
+	background-repeat:  repeat-x;
+	background-position: top;
+	color: #999;
+	font-family: "Trebuchet MS";
+	font-size: 13px;
+	height: 100%;
+	text-align:center;
+	width: auto;
+	margin: 0 0 0 200px
+}
+
+#datos {
+	height: 100%;
+	margin: 0;
+	padding:0;
+	width:100%;
+	background-color:#FF0000;
+}
+
+
+#menu {
+	background-image: url(../images/bg_menu.png);
+	background-repeat:  repeat-y;
+	background-position: left;
+	height: 100%;
+	width: 200px;
+	float:left;
+	margin: 0;
+}
+
+
+
+
+
