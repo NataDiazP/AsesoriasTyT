@@ -7,9 +7,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOEncargadosBloques;
-import co.poli.asesoriastyt.dao.DAOPerfiles;
 import co.poli.asesoriastyt.model.EncargadoBloque;
-import co.poli.asesoriastyt.model.Perfil;
 import co.poli.asesoriastyt.util.Conexion;
 
 /**

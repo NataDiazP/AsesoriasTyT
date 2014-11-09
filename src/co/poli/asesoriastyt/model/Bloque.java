@@ -2,27 +2,30 @@ package co.poli.asesoriastyt.model;
 
 public class Bloque {
 
-
-	private String idbloque;
-	private String nombrebloque;
-	
-	
+	private String IdBloque;
+	private String EncargadoBloque;
+	/**
+	 * @return the idBloque
+	 */
 	public String getIdBloque() {
-		return idbloque;
+		return IdBloque;
 	}
-	public void setIdBloque(String idbloque) {
-		this.idbloque = idbloque;
+	/**
+	 * @param idBloque the idBloque to set
+	 */
+	public void setIdBloque(String idBloque) {
+		IdBloque = idBloque;
 	}
-	public String getNombreBloque() {
-		return nombrebloque;
+	/**
+	 * @return the encargadoBloque
+	 */
+	public String getEncargadoBloque() {
+		return EncargadoBloque;
 	}
-	public void setNombreBloque(String nombrebloque) {
-		this.nombrebloque = nombrebloque;
+	/**
+	 * @param encargadoBloque the encargadoBloque to set
+	 */
+	public void setEncargadoBloque(String encargadoBloque) {
+		EncargadoBloque = encargadoBloque;
 	}
-	
-	@Override
-	public String toString() {
-		return "Bloque [idbloque=" + idbloque + ", nombrebloque=" + nombrebloque+ "]";
-	}
-
 }

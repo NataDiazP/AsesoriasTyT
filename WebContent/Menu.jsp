@@ -85,7 +85,6 @@
 <h3 class="menuheader expandable">Configuraciones</h3>
 <ul class="categoryitems">
     <li><a href="Perfiles.jsp" target="datos">Administrar Perfiles</a></li>
-    <li><a href="TipoIdentificacion.jsp" target="datos">Administrar Tipo Identificacion</a></li>
     <li><a href="EncargadoBloque.jsp" target="datos">Administrar Encargados de Bloques</a></li>
     <li><a href="Bloques.jsp" target="datos">Administrar Bloques</a></li>
     <li><a href="Aulas.jsp" target="datos">Administrar Aulas</a></li>
@@ -98,9 +97,9 @@
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="Estudiantes.jsp" target="datos">Estudiantes</a></h3>
 <!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="ProgramacionAcademica.jsp" target="datos">Programación Académica</h3>
+<h3 class="menuheader Noexpandable"><a href="ProgramacionAcademica.jsp" target="datos">Programaci&oacute;n Acad&eacute;mica</a></h3>
 <!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="AsesoriasAcademicas.jsp" target="datos">Asesorías</a></h3>
+<h3 class="menuheader Noexpandable"><a href="AsesoriasAcademicas.jsp" target="datos">Asesor&iacute;as</a></h3>
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="http://groups.google.com/forum/"  target="_blank">Foro</a></h3>
 <!--Inicio opción desplegable-->

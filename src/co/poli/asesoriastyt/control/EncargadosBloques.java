@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import co.poli.asesoriastyt.model.EncargadoBloque;
-import co.poli.asesoriastyt.model.Perfil;
 import co.poli.asesoriastyt.negocio.NEncargadoBloque;
-import co.poli.asesoriastyt.negocio.NPerfiles;
 import co.poli.asesoriastyt.util.Conexion;
 
 /**
@@ -137,7 +135,7 @@ public class EncargadosBloques extends HttpServlet {
 				try {
 					EncargadoBloque cli = negocioC.Buscar(id);
 					request.setAttribute("cli", cli);
-					request.setAttribute("mensaje", "El encaargado fue encontrado con exito");
+					request.setAttribute("mensaje", "El encargado fue encontrado con exito");
 					request.getRequestDispatcher("./EncargadoBloque.jsp").forward(request, response);
 				} catch (Exception ex) {
 					Logger.getLogger(EncargadosBloques.class.getName()).log(Level.SEVERE, null, ex);
