@@ -38,6 +38,7 @@ public class Bloques extends HttpServlet {
 		Bloque Bloques = new Bloque();
 		String id = request.getParameter("IdBloque");
 		String enc = request.getParameter("EncargadoBloque");
+		
 
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);

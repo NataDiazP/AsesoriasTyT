@@ -53,9 +53,21 @@
 									maxlength="5" placeholder="Código"
 									value="<%=IdBloque != null ? IdBloque : ""%>"></td>
 								<td class="label">Encargado de Bloque(*):</td>
-								<td><input type="text" name="EncargadoBloque" size="30"
-									placeholder="Encargado Bloque"
-									value="<%=EncargadoBloque != null ? EncargadoBloque : ""%>"></td>
+								<%
+									NBloque nBloq = new NBloque();
+									DAOBloques dao = new DAOBloques();
+									List<String> listaEnc = nBloq.ListadoEncargados();
+								%>
+								<td><select type="text" name="EncargadoBloque">
+										<option></option>
+										<%
+											for (String enc : listaEnc) {
+										%>
+										<option <%if (enc.equals(EncargadoBloque)) {%> selected <%}%>><%=enc%></option>
+										<%
+											}
+										%>
+								</select></td>
 							</tr>
 						</table>
 					</td>
@@ -76,12 +88,9 @@
 				<button name="action" value="Modificar" class="boton">Modificar</button>
 				<button name="action" value="Eliminar" class="boton">Eliminar</button>
 			</div>
-
 		</form>
 
 		<%
-			NBloque nBloq = new NBloque();
-			DAOBloques dao = new DAOBloques();
 			List<Bloque> listaBloques = nBloq.ListadoBloques();
 		%>
 		<br> <br>

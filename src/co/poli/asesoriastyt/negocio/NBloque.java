@@ -52,4 +52,10 @@ public class NBloque {
 		c = new Conexion().getConnection();
 		return daoBloques.listarBloques(c);
 	}
+	
+	public List<String> ListadoEncargados() {
+		daoBloques = new DAOBloques();
+		c = new Conexion().getConnection();
+		return daoBloques.listarEnc(c);
+	}
 }
