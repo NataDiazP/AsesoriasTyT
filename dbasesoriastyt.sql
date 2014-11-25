@@ -101,6 +101,8 @@ CREATE TABLE Programaciones_Academicas (
     Id_ProgAcademica VARCHAR(4) NOT NULL,
     Docente_ProgAcademica VARCHAR(15) NOT NULL,
     Asignatura VARCHAR(10) NOT NULL,
+    Grupo_Asignatura VARCHAR(3) NOT NULL,
+    Nro_Estudiantes_Asignatura VARCHAR(3) NOT NULL,
     Dias_Asignatura VARCHAR(255) NOT NULL,
     HoraInicio_Asignatura VARCHAR(10),
     HoraFin_Asignatura VARCHAR(10) NOT NULL,
