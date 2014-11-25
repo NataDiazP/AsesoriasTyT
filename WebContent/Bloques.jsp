@@ -30,7 +30,6 @@
 	<br>
 	<br>
 	<br>
-Hola nata
 	<div id="ruta">
 		<h1>Gesti&oacute;n de Bloques</h1>
 		<br>
