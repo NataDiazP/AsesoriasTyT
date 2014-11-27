@@ -2,7 +2,7 @@ package co.poli.asesoriastyt.model;
 
 public class Asignatura {
 	
-	private int idasignatura;
+	private String idasignatura;
 	private String nombreasignatura;
 	private String planestudio;
 	
@@ -12,10 +12,10 @@ public class Asignatura {
 	public void setPlanestudio(String planestudio) {
 		this.planestudio = planestudio;
 	}
-	public int getIdAsignatura() {
+	public String getIdAsignatura() {
 		return idasignatura;
 	}
-	public void setIdAsignatura(int idasignatura) {
+	public void setIdAsignatura(String idasignatura) {
 		this.idasignatura = idasignatura;
 	}
 	public String getNombreAsignatura() {

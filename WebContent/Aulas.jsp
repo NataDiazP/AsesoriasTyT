@@ -1,9 +1,11 @@
-<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
-<%@page
-	import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
+<%@page import="co.poli.asesoriastyt.negocio.NAula"%>
+<%@page import="co.poli.asesoriastyt.negocio.NBloque"%>
+<%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
-<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
-<%@page import="co.poli.asesoriastyt.model.Perfil"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOAulas"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOBloques"%>
+<%@page import="co.poli.asesoriastyt.model.Aula"%>
+<%@page import="co.poli.asesoriastyt.model.Bloque"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,16 +14,21 @@
  <link href="./css/generales.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
-	/*String mensaje = (String) request.getAttribute("mensaje");
-	String IdPerfil = request.getParameter("IdPerfil");
-	String NombrePerfil = request.getParameter("NombrePerfil");
+	String mensaje = (String) request.getAttribute("mensaje");
+	String IdAula = request.getParameter("IdAula");
+	String IdBloque = request.getParameter("IdBloque");
 
-	Perfil x = request.getAttribute("cli") != null ? (Perfil) request.getAttribute("cli") : null;
+	Aula x = request.getAttribute("cli") != null ? (Aula) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
-		IdPerfil = Integer.toString(x.getIdPerfil());
-		NombrePerfil = x.getNombrePerfil();
-	}*/
+		IdAula = x.getIdAula();
+		IdBloque = x.getIdBloque();
+	}
+	
+	NBloque nbloque = new NBloque();
+	DAOBloques daobloque = new DAOBloques();
+	List<Bloque> listaBloque = nbloque.ListadoBloques();
+	
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Aulas</title>
@@ -33,7 +40,7 @@
 <br>
 <div id="ruta"> <h1> Gesti&oacute;n de Aulas</h1>
 <br>
-	<form name="inicio" action="./Perfiles" method="post">
+	<form name="inicio" action="./Aulas" method="post">
 	<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td class="caja_01_01">&nbsp;</td>
@@ -46,9 +53,15 @@
       <table width="100%" border="0" cellspacing="4" cellpadding="4">
           <tr>
             <td class="label">C&oacute;digo de Aula(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Código" ></td>
+            <td><input type="text" name="IdAula" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Código" value="<%=IdAula != null ? IdAula : ""%>" ></td>
             <td class="label">Bloque de Aula(*):</td>
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Bloque" ></td>
+             <td><select name="IdBloque" class="campo02" id="genero">
+              <option>Seleccione...</option>
+              <%
+				for (Bloque bloque : listaBloque) {%>
+              <option><%=bloque.getIdBloque()%></option>
+              <%}%>
+              </select></td>
           </tr>
       </table>
       </td>
@@ -73,9 +86,9 @@
 	</form>
 
 	<%
-		/*NPerfiles nPerf = new NPerfiles();
-		DAOPerfiles dao = new DAOPerfiles();
-		List<Perfil> listaPerfiles = nPerf.ListadoPerfiles();*/
+		NAula nAula = new NAula();
+		DAOAulas dao = new DAOAulas();
+		List<Aula> listaAula = nAula.ListadoAulas();
 	%>
 <br>
 <br>
@@ -94,10 +107,20 @@
               <th class="rounded" scope="col">Código Aula</th>
               <th class="rounded" scope="col">Bloque Aula</th>
             </tr>
-    </thead>
-	<tbody>
+    	</thead>
+		<tbody>
+	<%
+								for (Aula aula : listaAula) {
+								%>
+								<tr align="center">
+									<td><%=aula.getIdAula()%></td>
+									<td><%=aula.getIdBloque()%></td>
+								</tr>
+								<%
+									}
+								%>
 			
-	</tbody>
+		</tbody>
 	</table>
 	</td>
     </tr>

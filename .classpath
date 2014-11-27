@@ -8,9 +8,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/lib/jopenid-1.07.jar"/>
-	<classpathentry kind="lib" path="E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/lib/mysql-connector-java-3.1.12.jar"/>
+	<classpathentry kind="lib" path="D:/WorkSpacePao/AsesoriasTyT/WebContent/WEB-INF/lib/jopenid-1.07.jar"/>
+	<classpathentry kind="lib" path="D:/WorkSpacePao/AsesoriasTyT/WebContent/WEB-INF/lib/mysql-connector-java-3.1.12.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/lib/org.apache.commons.logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorkSpacePao/AsesoriasTyT/WebContent/WEB-INF/lib/org.apache.commons.logging-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
