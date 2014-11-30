@@ -26,7 +26,7 @@
 	String plan = request.getParameter("plan");
 	String semestre = request.getParameter("semestre");
 	String estado = request.getParameter("estado");
-	int  perfil = Integer.parseInt(request.getParameter("perfil"));
+	String  perfil =request.getParameter("perfil");
 
 	Persona x = request.getAttribute("cli") != null ? (Persona) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
@@ -45,7 +45,7 @@
 		plan=x.getPlanEstudios_Estudiante();
 		semestre=x.getSemestre_Estudiante();
 		estado=x.getEstado();
-		perfil=x.getPerfil();
+		perfil=Integer.toString(x.getPerfil());
 	}
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
@@ -57,7 +57,7 @@
 <br>
 <div id="ruta"> <h1> Gesti&oacute;n de Estudiantes</h1>
 <br>
-	<form name="inicio" action="./Perfiles" method="post">
+	<form name="inicio" action="./Estudiantes" method="post">
 	<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td class="caja_01_01">&nbsp;</td>
@@ -70,54 +70,56 @@
       <table width="100%" border="0" cellspacing="4" cellpadding="4">
           <tr>
             <td class="label">Documento de Estudiante(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Documento" value=""></td>
+            <td><input type="text" name="IdPersona" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Documento" value="<%=documento != null ? documento : ""%>"></td>
             <td class="label">Tipo de Documento(*):</td>
-            <td><select name="genero" class="campo02" id="genero">
-              <option>Seleccione...</option>
+            <td><select name="tipoDoc" class="campo02" id="genero">
+              <option><%=tipo != null ? tipo : "Seleccione"%></option>
               <option>Cédula de Ciudadanía</option>
               <option>Cédula de Extranjería</option>
               <option>Tarjeta de Identidad</option>
               </select></td>
           	<td class="label">Nombres(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Nombres" value=""></td>
+            <td><input type="text" name="NombrePersona" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
           </tr>
           <tr>
             <td class="label">Primer Apellido(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Primer Apellido" value=""></td>
+            <td><input type="text" name="apellido1" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Primer Apellido" value="<%=apellido1 != null ? apellido1 : ""%>"></td>
             <td class="label">Segundo Apellido(*):</td>
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Segundo Apellido" ></td>
+            <td><input type="text" name="apellido2"size="30" onkeypress="return sololetras(event)" placeholder="Segundo Apellido" value="<%=apellido2 != null ? apellido2 : ""%>" ></td>
           	<td class="label">Genero(*):</td>
             <td><select name="genero" class="campo02" id="genero">
-              <option>Seleccione...</option>
+              <option><%=genero != null ? genero : "Seleccione"%></option>
               <option>Femenino</option>
               <option>Masculino</option>
               </select></td>
           </tr>
           <tr>
             <td class="label">Fecha de Nacimiento(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Fecha Nacimiento" value=""></td>
+            <td><input type="text" name="fechaN" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Fecha Nacimiento" value="<%=fechaN != null ? fechaN : ""%>"></td>
             <td class="label">Dirección(*):</td>	
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Dirección" ></td>
+            <td><input type="text" name="direccion"size="30" onkeypress="return sololetras(event)" placeholder="Dirección" value="<%=direccion != null ? direccion : ""%>" ></td>
           	<td class="label">Tel&eacute;no(*):</td>
-          	<td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Teléfono" ></td>
+          	<td><input type="text" name="telefono"size="30" onkeypress="return sololetras(event)" placeholder="Teléfono" value="<%=telefono != null ? telefono : ""%>"></td>
           </tr>
           <tr>
             <td class="label">Celular(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Celular" value=""></td>
+            <td><input type="text" name="celular" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Celular" value="<%=celular != null ? celular : ""%>"></td>
             <td class="label">Correo(*):</td>	
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Correo" ></td>
+            <td><input type="text" name="correo"size="30" onkeypress="return sololetras(event)" placeholder="Correo" value="<%=correo != null ? correo : ""%>"></td>
           	<td class="label">Plan de Estudios(*):</td>
-          	<td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Plan Estudios" ></td>
+          	<td><input type="text" name="planEstudio"size="30" onkeypress="return sololetras(event)" placeholder="Plan Estudios" value="<%=plan != null ? plan : ""%>" ></td>
           </tr>
           <tr>
             <td class="label">Semestre(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Semestre" value=""></td>
+            <td><input type="text" name="semestre" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Semestre" value="<%=semestre != null ? semestre : ""%>"></td>
             <td class="label">Estado (*):</td>	
-            <td><select name="genero" class="campo02" id="genero">
-              <option>Seleccione...</option>
+            <td><select name="genero" class="estado" id="genero">
+              <option><%=estado != null ? estado : "Seleccione"%></option>
               <option>Activo</option>
               <option>Inactivo</option>
               </select></td>
+               <td class="label">Perfil(*):</td>
+            <td><input type="text" name="perfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Perfil" value="<%=perfil != null ? perfil : ""%>"></td>
           </tr>
       </table>
       </td>
@@ -144,7 +146,7 @@
 	<%
 		NPersona nper = new NPersona();
 		DAOPersonas dao = new DAOPersonas();
-		List<Persona> listaPersonas = nper.ListadoPersonas();
+		List<Persona> listaPersonas = nper.ListadoPersonasEstudiantes();
 	%>
 <br>
 <br>

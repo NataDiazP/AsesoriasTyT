@@ -156,7 +156,81 @@ public class DAOPersonas {
 	public List<Persona> listarPersonas(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
-			String sql = "SELECT Id_Persona, Nombre_Persona FROM perfiles";
+			String sql = "SELECT * FROM personas";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet r = ps.executeQuery();
+			while (r.next()) {
+				Persona Per = new Persona();
+				Per.setNumeroIdentificacion(r.getString(1));
+				Per.setTipoIdentificacion(r.getString(2));
+				Per.setNombreCompleto(r.getString(3));
+				Per.setPrimerApellido(r.getString(4));
+				Per.setSegundoApellido(r.getString(5));
+				Per.setGenero(r.getString(6));
+				Per.setFechaNacimiento(r.getString(7));
+				Per.setDireccion(r.getString(8));
+				Per.setTelefono(r.getString(9));
+				Per.setCelular(r.getString(10));
+				Per.setCorreoElectronico(r.getString(11));
+				Per.setPlanEstudios_Estudiante(r.getString(12));
+				Per.setSemestre_Estudiante(r.getString(13));
+				Per.setEstado(r.getString(14));
+				Per.setPerfil(r.getInt(15));
+				Personas.add(Per);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return Personas;
+	}
+	
+	public List<Persona> listarPersonasDocentes(Connection c) {
+		List<Persona> Personas = new ArrayList<Persona>();
+		try {
+			String sql = "SELECT * FROM personas  where Perfil ='2'";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet r = ps.executeQuery();
+			while (r.next()) {
+				Persona Per = new Persona();
+				Per.setNumeroIdentificacion(r.getString(1));
+				Per.setTipoIdentificacion(r.getString(2));
+				Per.setNombreCompleto(r.getString(3));
+				Per.setPrimerApellido(r.getString(4));
+				Per.setSegundoApellido(r.getString(5));
+				Per.setGenero(r.getString(6));
+				Per.setFechaNacimiento(r.getString(7));
+				Per.setDireccion(r.getString(8));
+				Per.setTelefono(r.getString(9));
+				Per.setCelular(r.getString(10));
+				Per.setCorreoElectronico(r.getString(11));
+				Per.setPlanEstudios_Estudiante(r.getString(12));
+				Per.setSemestre_Estudiante(r.getString(13));
+				Per.setEstado(r.getString(14));
+				Per.setPerfil(r.getInt(15));
+				Personas.add(Per);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return Personas;
+	}
+	
+	public List<Persona> listarPersonasEstudiantes(Connection c) {
+		List<Persona> Personas = new ArrayList<Persona>();
+		try {
+			String sql = "SELECT * FROM personas where Perfil ='3'";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {

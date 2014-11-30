@@ -31,7 +31,7 @@ public class NPersona {
 		return resultadoModificar;
 	}
 
-	public Persona Buscar(int Personas) {
+	public Persona Buscar(String Personas) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
 		Persona resultadoBuscar = daoPersonas.Buscar(c, Personas);
@@ -49,5 +49,17 @@ public class NPersona {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
 		return daoPersonas.listarPersonas(c);
+	}
+	
+	public List<Persona> ListadoPersonasEstudiantes() {
+		daoPersonas = new DAOPersonas();
+		c = new Conexion().getConnection();
+		return daoPersonas.listarPersonasEstudiantes(c);
+	}
+	
+	public List<Persona> ListadoPersonasDocentes() {
+		daoPersonas = new DAOPersonas();
+		c = new Conexion().getConnection();
+		return daoPersonas.listarPersonasDocentes(c);
 	}
 }
