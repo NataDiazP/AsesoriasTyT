@@ -1,8 +1,8 @@
-<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
+<%@page import="co.poli.asesoriastyt.negocio.NAsesoria"%>
 <%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
-<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
-<%@page import="co.poli.asesoriastyt.model.Perfil"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOAsesorias"%>
+<%@page import="co.poli.asesoriastyt.model.Asesoria"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,16 +11,36 @@
  <link href="./css/generales.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
-	/*String mensaje = (String) request.getAttribute("mensaje");
-	String IdPerfil = request.getParameter("IdPerfil");
-	String NombrePerfil = request.getParameter("NombrePerfil");
+	String mensaje = (String) request.getAttribute("mensaje");
+	String id = request.getParameter("IdAsesoria");
+	String docente = request.getParameter("docente");
+	String asignatura = request.getParameter("asignatura");
+	String fecha = request.getParameter("fecha");
+	String horaI = request.getParameter("horaI");
+	String horaF = request.getParameter("docente");
+	String lugar = request.getParameter("lugar");
+	String cupos = request.getParameter("cupos");
+	String cuposD = request.getParameter("cuposD");
+	String observacion = request.getParameter("observacion");
+	String estado = request.getParameter("estado");
 
-	Perfil x = request.getAttribute("cli") != null ? (Perfil) request.getAttribute("cli") : null;
+
+	Asesoria x = request.getAttribute("cli") != null ? (Asesoria) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
-		IdPerfil = Integer.toString(x.getIdPerfil());
-		NombrePerfil = x.getNombrePerfil();*/
-	//}
+		id = x.getIdAsesoria();
+		docente = x.getDocente();
+		asignatura = x.getAsignatura();
+		docente = x.getDocente();
+		fecha = x.getFecha();
+		horaI = x.getHoraI();
+		horaF = x.getHoraF();
+		lugar = x.getLugar();
+		cupos = x.getCupos();
+		cuposD = x.getCuposD();
+		observacion = x.getObservaciones();
+		estado = x.getEstado();
+	}
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asesor&iacute;as</title>
@@ -31,7 +51,7 @@
 <br>
 <div id="ruta"> <h1> Gesti&oacute;n de Asesor&iacute;as</h1>
 <br>
-	<form name="inicio" action="./Perfiles" method="post">
+	<form name="inicio" action="./Asesoriaes" method="post">
 	<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td class="caja_01_01">&nbsp;</td>
@@ -44,32 +64,32 @@
       <table width="100%" border="0" cellspacing="4" cellpadding="4">
           <tr>
             <td class="label">C&oacute;digo de Asesor&iacute;as(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="código" value=""></td>
+            <td><input type="text" name="id" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="código" value="<%=id != null ? id : ""%>"></td>
             <td class="label">Docente(*):</td>
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Docente" ></td>
+            <td><input type="text" name="docente"size="30" onkeypress="return sololetras(event)" placeholder="Docente" value="<%=docente != null ? docente : ""%>"></td>
           	<td class="label">Asignatura(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Asignaturas" value=""></td>
+            <td><input type="text" name="IdAsesoria" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Asignaturas" value="<%=asignatura != null ? asignatura : ""%>"></td>
           </tr>
           <tr>
             <td class="label">Fecha(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Fecha" value=""></td>
+            <td><input type="text" name="fecha" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Fecha" value="<%=docente != null ? docente : ""%>"></td>
             <td class="label">Hora Inicio(*):</td>
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="Hora Inicio" ></td>
+            <td><input type="text" name="horaI"size="30" onkeypress="return sololetras(event)" placeholder="Hora Inicio" ></td>
           	<td class="label">Hora Fin(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Hora Fin" value=""></td>
+            <td><input type="text" name="horaF" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Hora Fin" value="<%=asignatura != null ? asignatura : ""%>"></td>
           </tr>
           <tr>
             <td class="label">Lugar o Aula(*):</td>
-            <td><input type="text" name="IdPerfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="código" value=""></td>
+            <td><input type="text" name="lugar" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="código" value="<%=lugar != null ? lugar : ""%>"></td>
             <td class="label">Cupos(*):</td>	
-            <td><input type="text" name="NombrePerfil"size="30" onkeypress="return sololetras(event)" placeholder="nombre" ></td>
+            <td><input type="text" name="cupos"size="30" onkeypress="return sololetras(event)" placeholder="nombre" value="<%=cupos != null ? cupos : ""%>"></td>
           	<td class="label">Observaciones(*):</td>
-          	<td> <textarea name="T1"></textarea></td>
+          	<td> <textarea name="observacion"></textarea></td>
           </tr>
           <tr>
            	<td class="label">Estado(*):</td>
-            <td><select name="genero" class="campo02" id="genero">
-              <option>Seleccione...</option>
+            <td><select name="estado" class="campo02" id="genero">
+              <option><%=estado != null ? estado : "Seleccione"%></option>
               <option>Pendiente</option>
               <option>Confirmada</option>
               <option>Cancelada</option>
@@ -98,9 +118,9 @@
 	</form>
 
 	<%
-		/*NPerfiles nPerf = new NPerfiles();
-		DAOPerfiles dao = new DAOPerfiles();
-		List<Perfil> listaPerfiles = nPerf.ListadoPerfiles();*/
+		NAsesoria nAsesoria = new NAsesoria();
+		DAOAsesorias dao = new DAOAsesorias();
+		List<Asesoria> listaAsesoriaes = nAsesoria.ListadoAsesorias();
 	%>
 <br>
 <br>
