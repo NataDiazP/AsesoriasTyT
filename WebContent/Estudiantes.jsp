@@ -1,8 +1,8 @@
-<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
+<%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
 <%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
-<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
-<%@page import="co.poli.asesoriastyt.model.Perfil"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPersonas"%>
+<%@page import="co.poli.asesoriastyt.model.Persona"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,16 +11,42 @@
  <link href="./css/generales.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
-	/*String mensaje = (String) request.getAttribute("mensaje");
-	String IdPerfil = request.getParameter("IdPerfil");
-	String NombrePerfil = request.getParameter("NombrePerfil");
+	String mensaje = (String) request.getAttribute("mensaje");
+	String documento = request.getParameter("documento");
+	String tipo = request.getParameter("tipo");
+	String nombre = request.getParameter("nombre");
+	String apellido1 = request.getParameter("apellido1");
+	String apellido2 = request.getParameter("apellido2");
+	String genero = request.getParameter("genero");
+	String fechaN = request.getParameter("fechaN");
+	String direccion = request.getParameter("direccion");
+	String telefono = request.getParameter("telefono");
+	String celular = request.getParameter("celular");
+	String correo = request.getParameter("correo");
+	String plan = request.getParameter("plan");
+	String semestre = request.getParameter("semestre");
+	String estado = request.getParameter("estado");
+	int  perfil = Integer.parseInt(request.getParameter("perfil"));
 
-	Perfil x = request.getAttribute("cli") != null ? (Perfil) request.getAttribute("cli") : null;
+	Persona x = request.getAttribute("cli") != null ? (Persona) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
-		IdPerfil = Integer.toString(x.getIdPerfil());
-		NombrePerfil = x.getNombrePerfil();*/
-	//}
+		documento = x.getNumeroIdentificacion();
+		tipo = x.getTipoIdentificacion();
+		nombre=x.getNombreCompleto();
+		apellido1=x.getPrimerApellido();
+		apellido2=x.getSegundoApellido();
+		genero= x.getGenero();
+		fechaN=x.getFechaNacimiento();
+		direccion=x.getDireccion();
+		telefono=x.getTelefono();
+		celular=x.getCelular();
+		correo=x.getCorreoElectronico();
+		plan=x.getPlanEstudios_Estudiante();
+		semestre=x.getSemestre_Estudiante();
+		estado=x.getEstado();
+		perfil=x.getPerfil();
+	}
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Estudiantes</title>
@@ -116,9 +142,9 @@
 	</form>
 
 	<%
-		/*NPerfiles nPerf = new NPerfiles();
-		DAOPerfiles dao = new DAOPerfiles();
-		List<Perfil> listaPerfiles = nPerf.ListadoPerfiles();*/
+		NPersona nper = new NPersona();
+		DAOPersonas dao = new DAOPersonas();
+		List<Persona> listaPersonas = nper.ListadoPersonas();
 	%>
 <br>
 <br>
@@ -147,9 +173,32 @@
               <th class="rounded" scope="col">Correo</th>
               <th class="rounded" scope="col">Semestre</th>
               <th class="rounded" scope="col">Estado</th>
+              <th class="rounded" scope="col">Perfil</th>
             </tr>
     </thead>
 	<tbody>
+	<%
+		for (Persona per : listaPersonas) {
+		%>
+		<tr align="center">
+		<td><%=per.getNumeroIdentificacion()%></td>
+		<td><%=per.getTipoIdentificacion()%></td>
+		<td><%=per.getNombreCompleto()%></td>
+		<td><%=per.getPrimerApellido()%></td>
+		<td><%=per.getSegundoApellido()%></td>
+		<td><%=per.getGenero()%></td>
+		<td><%=per.getFechaNacimiento()%></td>
+		<td><%=per.getDireccion()%></td>
+		<td><%=per.getTelefono()%></td>
+		<td><%=per.getCelular()%></td>
+		<td><%=per.getCorreoElectronico()%></td>
+		<td><%=per.getSemestre_Estudiante()%></td>
+		<td><%=per.getEstado()%></td>
+		<td><%=per.getPerfil()%></td>
+		</tr>
+		<%
+		}
+		%>
 		
 			
 	</tbody>

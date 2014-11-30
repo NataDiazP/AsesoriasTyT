@@ -138,3 +138,32 @@ CREATE TABLE Estudiantes_Asesoria (
 ALTER TABLE Estudiantes_Asesoria ADD CONSTRAINT Estudiantes_Asesoria_PK PRIMARY KEY ( Id_EstudianteInsAsesoria ) ;
 ALTER TABLE Estudiantes_Asesoria ADD CONSTRAINT Id_Estudiante_FK FOREIGN KEY ( Id_Estudiante ) REFERENCES Estudiantes(NumDoc_Estudiante);
 ALTER TABLE Estudiantes_Asesoria ADD CONSTRAINT Id_Asesoria_FK FOREIGN KEY ( Id_Asesoria ) REFERENCES Asesorias(Id_Asesoria);
+
+
+CREATE TABLE IF NOT EXISTS `personas` (
+  `NumDoc` varchar(15) NOT NULL,
+  `Tipo_Identificacion` varchar(3) NOT NULL,
+  `Nombres_Estudiante` varchar(255) NOT NULL,
+  `PApellido` varchar(255) NOT NULL,
+  `SApellido` varchar(255) DEFAULT NULL,
+  `Genero` varchar(1) NOT NULL,
+  `FechaNac` varchar(15) NOT NULL,
+  `Direccion` varchar(255) NOT NULL,
+  `Telefono` varchar(15) NOT NULL,
+  `Celular` varchar(15) DEFAULT NULL,
+  `Correo` varchar(255) NOT NULL,
+  `PlanEstudios_Estudiante` varchar(255) NOT NULL,
+  `Semestre_Estudiante` varchar(1) NOT NULL,
+  `Estado` varchar(10) NOT NULL,
+  `Perfil` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `personas`
+--
+ALTER TABLE `personas`
+ ADD PRIMARY KEY (`NumDoc`), ADD KEY `Tipo_Identificacion_Est_FK` (`Tipo_Identificacion`), ADD KEY `Perfil_Estudiante_FK` (`Perfil`);
