@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Bloque;
+import co.poli.asesoriastyt.util.Conexion;
 
 /**
  * @author natad_000
@@ -20,13 +21,22 @@ import co.poli.asesoriastyt.model.Bloque;
  */
 public class DAOBloques {
 
+	Conexion Connection = new Conexion();
+
 	public int Crear(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Crear();
 		int resultadoCrear = 0;
+		String id_Enc = null;
+
 		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Id_Encargado_Bloque from encargados_bloques where Correo_Encargado_Bloque = '" + Bloques.getEncargadoBloque() + "'")
+					.executeQuery();
+			while (r.next()) {
+				id_Enc = r.getString(1);
+			}
 			PreparedStatement st = c.prepareStatement(sql);
 
-			st.setString(1, Bloques.getIdBloque());
+			st.setString(1, id_Enc);
 			st.setString(2, Bloques.getEncargadoBloque());
 			resultadoCrear = st.executeUpdate();
 

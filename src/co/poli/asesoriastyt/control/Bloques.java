@@ -38,21 +38,15 @@ public class Bloques extends HttpServlet {
 		Bloque Bloques = new Bloque();
 		String id = request.getParameter("IdBloque");
 		String enc = request.getParameter("EncargadoBloque");
-		String id_Enc = null;
 
-		try {
-			ResultSet r = Connection.getConnection().prepareStatement("Select Id_Encargado_Bloque from encargados_bloques where Correo_Encargado_Bloque = '" + enc + "'").executeQuery();
-			id_Enc = r.getString(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Bloques.jsp");
 		} else {
 			Bloques.setIdBloque(request.getParameter("IdBloque"));
-			Bloques.setEncargadoBloque(id_Enc);
+			Bloques.setEncargadoBloque(enc);
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;

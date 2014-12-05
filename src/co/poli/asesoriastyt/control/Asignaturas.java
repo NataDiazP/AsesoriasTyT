@@ -38,7 +38,6 @@ public class Asignaturas extends HttpServlet {
 		Asignatura Asignaturas = new Asignatura();
 		String id = request.getParameter("codigo");
 		String nom = request.getParameter("nombre");
-		String plan = request.getParameter("plan");
 		
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificaciÃ³n del perfil.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -46,7 +45,6 @@ public class Asignaturas extends HttpServlet {
 		} else {
 			Asignaturas.setIdAsignatura(request.getParameter("codigo"));
 			Asignaturas.setNombreAsignatura(request.getParameter("nombre"));
-			Asignaturas.setPlanestudio(request.getParameter("plan"));
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;
@@ -55,7 +53,7 @@ public class Asignaturas extends HttpServlet {
 					while (r.next()) {
 						if (id.equals(Integer.toString(r.getInt(1)))) {
 							registroExiste = true;
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación del perfil", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificaciï¿½n del perfil", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
 						}
 					}
@@ -71,7 +69,7 @@ public class Asignaturas extends HttpServlet {
 						int resultado = new NAsignatura().Crear(Asignaturas);
 						try {
 							response.sendRedirect("Asignaturas.jsp");
-							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Se guardï¿½ correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 							request.setAttribute("cli", resultado);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -152,7 +150,7 @@ public class Asignaturas extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					response.sendRedirect("Asignaturas.jsp");
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el código de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el cï¿½digo de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -173,11 +171,11 @@ public class Asignaturas extends HttpServlet {
 					e.printStackTrace();
 				}
 				if (registroExiste == true) {
-					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de esta asignatura?");
+					int confirma = JOptionPane.showConfirmDialog(null, "ï¿½Desea eliminar la informaciï¿½n de esta asignatura?");
 					if (confirma == JOptionPane.YES_OPTION) {
 						int resultadoEliminar = new NAsignatura().Eliminar(Asignaturas);
 						request.setAttribute("cli", resultadoEliminar);
-						JOptionPane.showMessageDialog(null, "Se eliminó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se eliminï¿½ correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 						response.sendRedirect("Asignaturas.jsp");
 					} else if (confirma == JOptionPane.NO_OPTION) {
 						request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
@@ -187,7 +185,7 @@ public class Asignaturas extends HttpServlet {
 						request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
 					}
 				} else if (!registroExiste) {
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el código de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el cï¿½digo de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 					request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
 				}
 			}

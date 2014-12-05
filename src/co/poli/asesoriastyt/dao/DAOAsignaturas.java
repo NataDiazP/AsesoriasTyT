@@ -25,7 +25,6 @@ public class DAOAsignaturas {
 
 			st.setString(1, Asignaturas.getIdAsignatura());
 			st.setString(2, Asignaturas.getNombreAsignatura());
-			st.setString(3, Asignaturas.getPlanestudio());
 			resultadoCrear = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -48,7 +47,6 @@ public class DAOAsignaturas {
 
 			st.setString(1, Asignaturas.getNombreAsignatura());
 			st.setString(2, Asignaturas.getIdAsignatura());
-			st.setString(3, Asignaturas.getPlanestudio());
 			resultadoModificar = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -71,7 +69,6 @@ public class DAOAsignaturas {
 			while (r.next()) {
 				c.setIdAsignatura(r.getString(1));
 				c.setNombreAsignatura(r.getString(2));
-				c.setPlanestudio(r.getString(3));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,7 +118,6 @@ public class DAOAsignaturas {
 				Asignatura Asig = new Asignatura();
 				Asig.setIdAsignatura(rs.getString(1));
 				Asig.setNombreAsignatura(rs.getString(2));
-				Asig.setPlanestudio(rs.getString(3));
 				Asignaturas.add(Asig);
 			}
 		} catch (SQLException e) {
@@ -134,29 +130,5 @@ public class DAOAsignaturas {
 			}
 		}
 		return Asignaturas;
-	}
-	
-	public List<PlanEstudio> listarPlanEstudio(Connection c) {
-		List<PlanEstudio> PlanEstudio = new ArrayList<PlanEstudio>();
-		try {
-			String sql = "SELECT Cod_PlanEstudio,Nombre_PlanEstudio FROM planes_estudio";
-			PreparedStatement ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				PlanEstudio PlanE = new PlanEstudio();
-				PlanE.setCodPlanEstudio(rs.getString(1));
-				PlanE.setNombrePlanEstudio(rs.getString(2));
-				PlanEstudio.add(PlanE);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-		return PlanEstudio;
 	}
 }
