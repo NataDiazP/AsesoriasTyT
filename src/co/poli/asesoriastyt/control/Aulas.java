@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-import com.mysql.jdbc.Connection;
-
 import co.poli.asesoriastyt.model.Aula;
 import co.poli.asesoriastyt.negocio.NAula;
 import co.poli.asesoriastyt.util.Conexion;
@@ -51,7 +49,7 @@ public class Aulas extends HttpServlet {
 		String enc = request.getParameter("IdBloque");
 
 		if (id.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del Aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificaciï¿½n del Aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Aulas.jsp");
 		} else {
 			Aulas.setIdAula(request.getParameter("IdAula"));
@@ -78,7 +76,7 @@ public class Aulas extends HttpServlet {
 					int resultado = new NAula().Crear(Aulas);
 					try {
 						response.sendRedirect("Aulas.jsp");
-						JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se guardï¿½ correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 						request.setAttribute("cli", resultado);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -95,7 +93,7 @@ public class Aulas extends HttpServlet {
 						ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
 						while (r.next()) {
 							if (id.equals(r.getString(1))) {
-								int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea actualizar la información de este bloque?");
+								int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea actualizar la informaciï¿½n de este bloque?");
 
 								if (confirma == JOptionPane.YES_OPTION) {
 									int resultadoModificar = new NAula().Modificar(Aulas);
@@ -121,7 +119,7 @@ public class Aulas extends HttpServlet {
 					while (r1.next()) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
 							request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaciï¿½n del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						}
 					}
 				} catch (SQLException e) {
@@ -161,12 +159,12 @@ public class Aulas extends HttpServlet {
 					while (r.next()) {
 						if (id.equals(r.getString(1))) {
 
-							int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la informaciÃ³n de este bloque?");
+							int confirma = JOptionPane.showConfirmDialog(null, "ï¿½Desea eliminar la informaciÃ³n de este bloque?");
 
 							if (confirma == JOptionPane.YES_OPTION) {
 								int resultadoEliminar = new NAula().Eliminar(Aulas);
 								request.setAttribute("cli", resultadoEliminar);
-								JOptionPane.showMessageDialog(null, "Se eliminó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Se eliminï¿½ correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 								response.sendRedirect("Aulas.jsp");
 							} else if (confirma == JOptionPane.NO_OPTION) {
 								request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
@@ -185,7 +183,7 @@ public class Aulas extends HttpServlet {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
 					while (r1.next()) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el código del Aula", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el cï¿½digo del Aula", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 						}
 					}

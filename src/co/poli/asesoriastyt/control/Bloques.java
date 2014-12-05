@@ -38,20 +38,29 @@ public class Bloques extends HttpServlet {
 		Bloque Bloques = new Bloque();
 		String id = request.getParameter("IdBloque");
 		String enc = request.getParameter("EncargadoBloque");
-		
+		String id_Enc = null;
 
+		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Id_Encargado_Bloque from encargados_bloques where Correo_Encargado_Bloque = '" + enc + "'").executeQuery();
+			id_Enc = r.getString(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Bloques.jsp");
 		} else {
 			Bloques.setIdBloque(request.getParameter("IdBloque"));
-			Bloques.setEncargadoBloque(request.getParameter("EncargadoBloque"));
+			Bloques.setEncargadoBloque(id_Enc);
 
 			if ("Crear".equals(request.getParameter("action"))) {
+				boolean registroExiste = false;
 				try {
 					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
 					while (r.next()) {
 						if (id.equals(r.getString(1))) {
+							registroExiste = true;
 							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT",
 									JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
@@ -61,126 +70,133 @@ public class Bloques extends HttpServlet {
 					e.printStackTrace();
 				}
 
-				if (enc.equals("")) {
-					JOptionPane.showMessageDialog(null, "Por favor, ingrese el encargado del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-					request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-				} else {
-					int resultado = new NBloque().Crear(Bloques);
-					try {
-						response.sendRedirect("Bloques.jsp");
-						JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-						request.setAttribute("cli", resultado);
-					} catch (Exception e) {
-						e.printStackTrace();
+				if (!registroExiste) {
+					if (enc.equals("")) {
+						JOptionPane.showMessageDialog(null, "Por favor, ingrese el encargado del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+					} else {
+						int resultado = new NBloque().Crear(Bloques);
+						try {
+							response.sendRedirect("Bloques.jsp");
+							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							request.setAttribute("cli", resultado);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
 
 			if ("Modificar".equals(request.getParameter("action"))) {
-				if (enc.equals("")) {
-					JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-					response.sendRedirect("Bloques.jsp");
-				} else if (id != null) {
-					try {
-						ResultSet r = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
-						while (r.next()) {
-							if (id.equals(r.getString(1))) {
-								int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de este bloque?");
-
-								if (confirma == JOptionPane.YES_OPTION) {
-									int resultadoModificar = new NBloque().Modificar(Bloques);
-									request.setAttribute("cli", resultadoModificar);
-									JOptionPane.showMessageDialog(null, "Se modificó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-									response.sendRedirect("Bloques.jsp");
-								} else if (confirma == JOptionPane.NO_OPTION) {
-									request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-								} else if (confirma == JOptionPane.CLOSED_OPTION) {
-									request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-								} else if (confirma == JOptionPane.CANCEL_OPTION) {
-									request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-								}
-							}
-						}
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-
+				boolean registroExiste = false;
+				int sw = 0;
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
-					while (r1.next()) {
+					while (r1.next() && sw == 0) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							registroExiste = false;
+						} else {
+							registroExiste = true;
+							sw = 1;
 						}
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
+				}
+				if (registroExiste) {
+					if (enc.equals("")) {
+						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						response.sendRedirect("Bloques.jsp");
+					} else {
+						int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de este bloque?");
+						if (confirma == JOptionPane.YES_OPTION) {
+							int resultadoModificar = new NBloque().Modificar(Bloques);
+							request.setAttribute("cli", resultadoModificar);
+							JOptionPane.showMessageDialog(null, "Se modificó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							response.sendRedirect("Bloques.jsp");
+						} else if (confirma == JOptionPane.NO_OPTION) {
+							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+						} else if (confirma == JOptionPane.CLOSED_OPTION) {
+							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+						} else if (confirma == JOptionPane.CANCEL_OPTION) {
+							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+						}
+					}
+
+				} else if (!registroExiste) {
+					request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
 			if ("Consultar".equals(request.getParameter("action"))) {
-
+				boolean registroExiste = false;
+				int sw = 0;
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
-					while (r1.next()) {
+					while (r1.next() && sw == 0) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							response.sendRedirect("Bloques.jsp");
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							registroExiste = false;
+						} else {
+							registroExiste = true;
+							sw = 1;
 						}
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 
-				NBloque negocioC = new NBloque();
-				try {
-					Bloque cli = negocioC.Buscar(id);
-					request.setAttribute("cli", cli);
-					request.setAttribute("mensaje", "El bloque fue encontrado con exito");
-					request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-				} catch (Exception ex) {
-					Logger.getLogger(Bloques.class.getName()).log(Level.SEVERE, null, ex);
-					request.setAttribute("mensaje", ex.getMessage());
+				if (registroExiste == true) {
+					NBloque negocioC = new NBloque();
+					try {
+						Bloque cli = negocioC.Buscar(id);
+						request.setAttribute("cli", cli);
+						request.setAttribute("mensaje", "El bloque fue encontrado con exito");
+						request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+					} catch (Exception ex) {
+						Logger.getLogger(Bloques.class.getName()).log(Level.SEVERE, null, ex);
+						request.setAttribute("mensaje", ex.getMessage());
+					}
+				} else if (!registroExiste) {
+					response.sendRedirect("Bloques.jsp");
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
 			if ("Eliminar".equals(request.getParameter("action"))) {
+				boolean registroExiste = false;
+				int sw = 0;
 				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
-					while (r.next()) {
-						if (id.equals(r.getString(1))) {
-
-							int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de este bloque?");
-
-							if (confirma == JOptionPane.YES_OPTION) {
-								int resultadoEliminar = new NBloque().Eliminar(Bloques);
-								request.setAttribute("cli", resultadoEliminar);
-								JOptionPane.showMessageDialog(null, "Se eliminó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-								response.sendRedirect("Bloques.jsp");
-							} else if (confirma == JOptionPane.NO_OPTION) {
-								request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-							} else if (confirma == JOptionPane.CLOSED_OPTION) {
-								request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-							} else if (confirma == JOptionPane.CANCEL_OPTION) {
-								request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-							}
+					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
+					while (r1.next() && sw == 0) {
+						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
+							registroExiste = false;
+						} else {
+							registroExiste = true;
+							sw = 1;
 						}
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 
-				try {
-					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Bloque from bloques").executeQuery();
-					while (r1.next()) {
-						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-						}
+				if (registroExiste == true) {
+					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de este bloque?");
+					if (confirma == JOptionPane.YES_OPTION) {
+						int resultadoEliminar = new NBloque().Eliminar(Bloques);
+						request.setAttribute("cli", resultadoEliminar);
+						JOptionPane.showMessageDialog(null, "Se eliminó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						response.sendRedirect("Bloques.jsp");
+					} else if (confirma == JOptionPane.NO_OPTION) {
+						request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+					} else if (confirma == JOptionPane.CLOSED_OPTION) {
+						request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+					} else if (confirma == JOptionPane.CANCEL_OPTION) {
+						request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
 					}
-				} catch (SQLException e) {
-					e.printStackTrace();
+				} else if (!registroExiste) {
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
 				}
 			}
 		}
