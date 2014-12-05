@@ -10,19 +10,19 @@ package co.poli.asesoriastyt.dao;
 public class PersonasSQL {
 
     public static String Crear() {
-        return "INSERT INTO personas (NumDoc, Tipo_Identificacion, Nombres_Estudiante, PApellido, SApellido, Genero, FechaNac, Direccion, Telefono, Celular, Correo, PlanEstudios_Estudiante, Semestre_Estudiante, Estado, Perfil) VALUES (?, ?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT INTO personas ( NumDoc_Persona, Tipo_Identificacion, Nombres_Persona, PApellido_Persona, SApellido_Persona, Genero_Persona, FechaNac_Persona, Direccion_Persona, Telefono_Persona, Celular_Persona, Correo_Persona, PlanEstudios_Persona, Semestre_Persona, Estado_Persona, Perfil_Persona) VALUES (?, ?,?,?,?,?,?,?,?,?,?,?,?)";
     }
 
     public static String Modificar() {
-        return "UPDATE personas SET  Tipo_Identificacion=?, Nombres_Estudiante=?, PApellido=?, SApellido=?, Genero=?, FechaNac=?, Direccion=?, Telefono=?, Celular=?, Correo=?, PlanEstudios_Estudiante=?, Semestre_Estudiante=?, Estado=? WHERE NumDoc=?";
+        return "UPDATE personas SET  Tipo_Identificacion=?, Nombres_Persona=?, PApellido_Persona=?, SApellido_Persona=?, Genero_Persona=?, FechaNac_Persona=?, Direccion_Persona=?, Telefono_Persona=?, Celular_Persona=?, Correo_Persona=?, PlanEstudios_Persona=?, Semestre_Persona=?, Estado_Persona=? WHERE NumDoc_Persona=?";
     }
 
     public static String Consultar(String NumDoc) {
-        return "SELECT * FROM personas WHERE NumDoc = " + NumDoc + "";
+        return "SELECT * FROM personas WHERE NumDoc_Persona = " + NumDoc + "";
     }
 
     public static String Eliminar() {
-        return "DELETE FROM personas WHERE NumDoc=?";
+        return "DELETE FROM personas WHERE NumDoc_Persona=?";
     }
 
 }
