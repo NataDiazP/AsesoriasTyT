@@ -1,3 +1,6 @@
+<%@page import="co.poli.asesoriastyt.model.Persona"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPersonas"%>
+<%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
 <%@page import="co.poli.asesoriastyt.model.Aula"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOAulas"%>
 <%@page import="co.poli.asesoriastyt.negocio.NAula"%>
@@ -53,6 +56,10 @@
 	NAula nAula = new NAula();
 	DAOAulas daoA = new DAOAulas();
 	List<Aula> listaAula = nAula.ListadoAulas();
+
+	NPersona nPers = new NPersona();
+	DAOPersonas daoPer = new DAOPersonas();
+	List<Persona> listaDocente = nPers.ListadoPersonasDocentes();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Programaci&oacute; Acad&eacute;mica</title>
@@ -82,9 +89,19 @@
 									maxlength="5" placeholder="Código Programación Académica"
 									value="<%=IdProgAcademica != null ? IdProgAcademica : ""%>"></td>
 								<td class="label">Docente(*):</td>
-								<td><input type="text" name="docenteProgAcademica"
-									size="30" placeholder="Docente"
-									value="<%=docenteProgAcademica != null ? docenteProgAcademica : ""%>"></td>
+								<td><select type="text" class="campo02"
+									name="docenteProgAcademica">
+										<option>Seleccione...</option>
+										<%
+											for (Persona pers : listaDocente) {
+										%>
+										<option
+											<%if ((pers.getNombreCompleto()).equals(docenteProgAcademica)) {%>
+											selected <%}%>><%=pers.getNombreCompleto()%></option>
+										<%
+											}
+										%>
+								</select></td>
 								<td class="label">Asignatura(*):</td>
 								<td><select type="text" class="campo02"
 									name="asignaturaProgAcademica">
@@ -129,8 +146,7 @@
 										<%
 											for (Aula aula : listaAula) {
 										%>
-										<option
-											<%if ((aula.getIdAula()).equals(aulaClaseProg)) {%>
+										<option <%if ((aula.getIdAula()).equals(aulaClaseProg)) {%>
 											selected <%}%>><%=aula.getIdAula()%></option>
 										<%
 											}

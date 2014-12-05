@@ -6,6 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOAsignaturas"%>
 <%@page import="co.poli.asesoriastyt.model.Asignatura"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -55,7 +56,7 @@
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
 								<td class="label">C&oacute;digo de Asignatura(*):</td>
-								<td><input type="text" name="codigo" size="20"
+								<td><input type="text" name="codigo" size="20" maxlength="10"
 									placeholder="código" value=""></td>
 								<td class="label">Nombre Asignatura(*):</td>
 								<td><input type="text" name="nombre" size="30"

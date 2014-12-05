@@ -230,7 +230,7 @@ public class DAOPersonas {
 	public List<Persona> listarPersonasEstudiantes(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
-			String sql = "SELECT * FROM personas where Perfil ='3'";
+			String sql = "SELECT * FROM personas where Perfil_Persona ='3'";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
