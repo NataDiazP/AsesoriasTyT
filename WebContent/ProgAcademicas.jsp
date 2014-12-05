@@ -10,12 +10,9 @@
 <%@page import="co.poli.asesoriastyt.dao.DAOProgAcademica"%>
 <%@page import="co.poli.asesoriastyt.negocio.NProgAcademica"%>
 <%@page import="co.poli.asesoriastyt.model.ProgAcademica"%>
-<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
 <%@page
 	import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
-<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
-<%@page import="co.poli.asesoriastyt.model.Perfil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -96,8 +93,8 @@
 											for (Persona pers : listaDocente) {
 										%>
 										<option
-											<%if ((pers.getNombreCompleto()).equals(docenteProgAcademica)) {%>
-											selected <%}%>><%=pers.getNombreCompleto()%></option>
+											<%if ((pers.getNombreCompleto() + " " + pers.getPrimerApellido() + " " + pers.getSegundoApellido()).equals(docenteProgAcademica)) {%>
+											selected <%}%>><%=pers.getNombreCompleto() + " " + pers.getPrimerApellido() + " " + pers.getSegundoApellido()%></option>
 										<%
 											}
 										%>
@@ -146,8 +143,9 @@
 										<%
 											for (Aula aula : listaAula) {
 										%>
-										<option <%if ((aula.getIdAula()).equals(aulaClaseProg)) {%>
-											selected <%}%>><%=aula.getIdAula()%></option>
+										<option
+											<%if ((aula.getIdBloque() + " - " + aula.getIdAula()).equals(aulaClaseProg)) {%>
+											selected <%}%>><%=aula.getIdBloque() +" - "+aula.getIdAula()%></option>
 										<%
 											}
 										%>
