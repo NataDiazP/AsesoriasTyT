@@ -40,13 +40,23 @@ public class Asignaturas extends HttpServlet {
 		String nom = request.getParameter("nombre");
 		String plan = request.getParameter("plan");
 		
+		String id_plan = null;
+
+		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Cod_PlanEstudio from planes_estudio where Nombre_PlanEstudio ='"+plan+"'").executeQuery();
+			id_plan= r.getString(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del perfil.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Asignaturas.jsp");
 		} else {
-			Asignaturas.setIdAsignatura(request.getParameter("codigo"));
-			Asignaturas.setNombreAsignatura(request.getParameter("nombre"));
-			Asignaturas.setPlanestudio(request.getParameter("plan"));
+			Asignaturas.setIdAsignatura(id);
+			Asignaturas.setNombreAsignatura(nom);
+			Asignaturas.setPlanestudio(id_plan);
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;

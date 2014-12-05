@@ -7,7 +7,7 @@ package co.poli.asesoriastyt.dao;
 public class AsignaturasSQL {
 
     public static String Crear() {
-        return "INSERT INTO asignaturas (Codigo_Asignatura,Nombre_Asignatura,PlanEstudios_Asignatura) VALUES (?, ?)";
+        return "INSERT INTO asignaturas (Codigo_Asignatura,Nombre_Asignatura,PlanEstudios_Asignatura) VALUES (?, ?, ?)";
     }
 
     public static String Modificar() {
