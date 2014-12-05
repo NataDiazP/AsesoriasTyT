@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2014 a las 20:24:00
+-- Tiempo de generación: 05-12-2014 a las 23:07:19
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -24,8 +24,6 @@ SET time_zone = "+00:00";
 
 --
 -- Estructura de tabla para la tabla `asesorias`
---
--- Creación: 04-12-2014 a las 19:09:31
 --
 
 CREATE TABLE IF NOT EXISTS `asesorias` (
@@ -58,29 +56,17 @@ CREATE TABLE IF NOT EXISTS `asesorias` (
 --
 -- Estructura de tabla para la tabla `asignaturas`
 --
--- Creación: 04-12-2014 a las 19:09:26
---
 
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `Codigo_Asignatura` varchar(10) NOT NULL,
   `Nombre_Asignatura` varchar(255) NOT NULL,
-  `PlanEstudios_Asignatura` varchar(15) NOT NULL,
-  PRIMARY KEY (`Codigo_Asignatura`),
-  KEY `PlanEstudios_Asignatura_FK` (`PlanEstudios_Asignatura`)
+  PRIMARY KEY (`Codigo_Asignatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELACIONES PARA LA TABLA `asignaturas`:
---   `PlanEstudios_Asignatura`
---       `planes_estudio` -> `Cod_PlanEstudio`
---
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `aulas`
---
--- Creación: 04-12-2014 a las 19:09:27
 --
 
 CREATE TABLE IF NOT EXISTS `aulas` (
@@ -101,8 +87,6 @@ CREATE TABLE IF NOT EXISTS `aulas` (
 --
 -- Estructura de tabla para la tabla `bloques`
 --
--- Creación: 04-12-2014 a las 19:09:27
---
 
 CREATE TABLE IF NOT EXISTS `bloques` (
   `Id_Bloque` varchar(4) NOT NULL,
@@ -122,8 +106,6 @@ CREATE TABLE IF NOT EXISTS `bloques` (
 --
 -- Estructura de tabla para la tabla `encargados_bloques`
 --
--- Creación: 04-12-2014 a las 19:09:25
---
 
 CREATE TABLE IF NOT EXISTS `encargados_bloques` (
   `Id_Encargado_Bloque` varchar(3) NOT NULL,
@@ -136,8 +118,6 @@ CREATE TABLE IF NOT EXISTS `encargados_bloques` (
 
 --
 -- Estructura de tabla para la tabla `estudiantes_asesoria`
---
--- Creación: 04-12-2014 a las 19:09:32
 --
 
 CREATE TABLE IF NOT EXISTS `estudiantes_asesoria` (
@@ -160,8 +140,6 @@ CREATE TABLE IF NOT EXISTS `estudiantes_asesoria` (
 --
 -- Estructura de tabla para la tabla `perfiles`
 --
--- Creación: 04-12-2014 a las 19:09:21
---
 
 CREATE TABLE IF NOT EXISTS `perfiles` (
   `Id_Perfil` int(11) NOT NULL,
@@ -174,8 +152,6 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
 
 --
 -- Estructura de tabla para la tabla `personas`
---
--- Creación: 04-12-2014 a las 19:09:28
 --
 
 CREATE TABLE IF NOT EXISTS `personas` (
@@ -211,31 +187,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `planes_estudio`
---
--- Creación: 04-12-2014 a las 19:09:26
---
-
-CREATE TABLE IF NOT EXISTS `planes_estudio` (
-  `Cod_PlanEstudio` varchar(15) NOT NULL,
-  `Nombre_PlanEstudio` varchar(255) NOT NULL,
-  PRIMARY KEY (`Cod_PlanEstudio`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `planes_estudio`
---
-
-INSERT INTO `planes_estudio` (`Cod_PlanEstudio`, `Nombre_PlanEstudio`) VALUES
-('2311', 'Técnico Prof. en Prog. de Sistemas de Información (Por Ciclos Propedéuticos)'),
-('2411', 'Tecnología en Sistematización de Datos (Por Ciclos Propedéuticos)');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `programaciones_academicas`
---
--- Creación: 04-12-2014 a las 19:09:29
 --
 
 CREATE TABLE IF NOT EXISTS `programaciones_academicas` (
@@ -269,8 +221,6 @@ CREATE TABLE IF NOT EXISTS `programaciones_academicas` (
 --
 -- Estructura de tabla para la tabla `tipos_identificacion`
 --
--- Creación: 04-12-2014 a las 19:09:17
---
 
 CREATE TABLE IF NOT EXISTS `tipos_identificacion` (
   `Id_Identificacion` varchar(3) NOT NULL,
@@ -298,12 +248,6 @@ INSERT INTO `tipos_identificacion` (`Id_Identificacion`, `Nombre_Identificacion`
 ALTER TABLE `asesorias`
   ADD CONSTRAINT `Asignatura_Asesoria_FK` FOREIGN KEY (`Asignatura_Asesoria`) REFERENCES `asignaturas` (`Codigo_Asignatura`),
   ADD CONSTRAINT `Asesorias_Personas_FK` FOREIGN KEY (`Docente_Asesoria`) REFERENCES `personas` (`NumDoc_Persona`);
-
---
--- Filtros para la tabla `asignaturas`
---
-ALTER TABLE `asignaturas`
-  ADD CONSTRAINT `PlanEstudios_Asignatura_FK` FOREIGN KEY (`PlanEstudios_Asignatura`) REFERENCES `planes_estudio` (`Cod_PlanEstudio`);
 
 --
 -- Filtros para la tabla `aulas`
