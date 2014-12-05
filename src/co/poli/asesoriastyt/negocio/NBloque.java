@@ -8,6 +8,7 @@ import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOBloques;
 import co.poli.asesoriastyt.model.Bloque;
+import co.poli.asesoriastyt.model.PlanEstudio;
 import co.poli.asesoriastyt.util.Conexion;
 
 /**
@@ -51,11 +52,5 @@ public class NBloque {
 		daoBloques = new DAOBloques();
 		c = new Conexion().getConnection();
 		return daoBloques.listarBloques(c);
-	}
-	
-	public List<String> ListadoEncargados() {
-		daoBloques = new DAOBloques();
-		c = new Conexion().getConnection();
-		return daoBloques.listarEnc(c);
 	}
 }

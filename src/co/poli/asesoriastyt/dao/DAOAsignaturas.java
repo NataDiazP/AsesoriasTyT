@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import co.poli.asesoriastyt.model.Asignatura;
+import co.poli.asesoriastyt.model.PlanEstudio;
 
 public class DAOAsignaturas {
 	
@@ -132,5 +134,29 @@ public class DAOAsignaturas {
 			}
 		}
 		return Asignaturas;
+	}
+	
+	public List<PlanEstudio> listarPlanEstudio(Connection c) {
+		List<PlanEstudio> PlanEstudio = new ArrayList<PlanEstudio>();
+		try {
+			String sql = "SELECT Cod_PlanEstudio,Nombre_PlanEstudio FROM planes_estudio";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				PlanEstudio PlanE = new PlanEstudio();
+				PlanE.setCodPlanEstudio(rs.getString(1));
+				PlanE.setNombrePlanEstudio(rs.getString(2));
+				PlanEstudio.add(PlanE);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return PlanEstudio;
 	}
 }

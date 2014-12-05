@@ -97,7 +97,7 @@
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="Estudiantes.jsp" target="datos">Estudiantes</a></h3>
 <!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="ProgramacionAcademica.jsp" target="datos">Programaci&oacute;n Acad&eacute;mica</a></h3>
+<h3 class="menuheader Noexpandable"><a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n Acad&eacute;mica</a></h3>
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a></h3>
 <!--Inicio opción desplegable-->

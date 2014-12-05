@@ -1,3 +1,6 @@
+<%@page import="co.poli.asesoriastyt.model.EncargadoBloque"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOEncargadosBloques"%>
+<%@page import="co.poli.asesoriastyt.negocio.NEncargadoBloque"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOBloques"%>
 <%@page import="co.poli.asesoriastyt.negocio.NBloque"%>
 <%@page import="co.poli.asesoriastyt.model.Bloque"%>
@@ -22,6 +25,10 @@
 		IdBloque = x.getIdBloque();
 		EncargadoBloque = x.getEncargadoBloque();
 	}
+
+	NEncargadoBloque nEncBloq = new NEncargadoBloque();
+	DAOEncargadosBloques dao = new DAOEncargadosBloques();
+	List<EncargadoBloque> listaEnc = nEncBloq.ListadoEncargadosBloques();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Bloques</title>
@@ -52,17 +59,14 @@
 									maxlength="5" placeholder="Código"
 									value="<%=IdBloque != null ? IdBloque : ""%>"></td>
 								<td class="label">Encargado de Bloque(*):</td>
-								<%
-									NBloque nBloq = new NBloque();
-									DAOBloques dao = new DAOBloques();
-									List<String> listaEnc = nBloq.ListadoEncargados();
-								%>
-								<td><select type="text" name="EncargadoBloque">
-										<option></option>
+								<td><select type="text" class="campo02" name="EncargadoBloque">
+										<option>Seleccione...</option>
 										<%
-											for (String enc : listaEnc) {
+											for (EncargadoBloque enc : listaEnc) {
 										%>
-										<option <%if (enc.equals(EncargadoBloque)) {%> selected <%}%>><%=enc%></option>
+										<option
+											<%if ((enc.getCorreoEncargado()).equals(EncargadoBloque)) {%>
+											selected <%}%>><%=enc.getCorreoEncargado()%></option>
 										<%
 											}
 										%>
@@ -90,6 +94,7 @@
 		</form>
 
 		<%
+			NBloque nBloq = new NBloque();
 			List<Bloque> listaBloques = nBloq.ListadoBloques();
 		%>
 		<br> <br>

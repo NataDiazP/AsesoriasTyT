@@ -110,29 +110,6 @@ public class DAOBloques {
 
 		return resultadoEliminar;
 	}
-	
-	public List<String> listarEnc(Connection c) {
-		List<String> encargados = new ArrayList<String>();
-		try {
-			String sql = "SELECT Correo_Encargado_Bloque FROM encargados_bloques";
-			PreparedStatement ps = c.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				String encBloque;
-				encBloque = rs.getString(1);
-				encargados.add(encBloque);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-		return encargados;
-	}
 
 	public List<Bloque> listarBloques(Connection c) {
 		List<Bloque> Bloques = new ArrayList<Bloque>();

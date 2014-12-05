@@ -8,9 +8,7 @@ import java.sql.Connection;
 
 import java.util.List;
 
-import co.poli.asesoriastyt.dao.DAOBloques;
 import co.poli.asesoriastyt.dao.DAOProgAcademica;
-import co.poli.asesoriastyt.model.Bloque;
 import co.poli.asesoriastyt.model.ProgAcademica;
 import co.poli.asesoriastyt.util.Conexion;
 
