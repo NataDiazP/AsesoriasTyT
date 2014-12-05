@@ -18,7 +18,7 @@ public class BloquesSQL {
 	}
 
 	public static String Consultar(String Id_Bloque) {
-		return "SELECT * FROM bloques WHERE Id_Bloque = " + Id_Bloque + "";
+		return "SELECT * FROM bloques WHERE Id_Bloque = '"+ Id_Bloque +"'";
 	}
 
 	public static String Eliminar() {

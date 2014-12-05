@@ -56,11 +56,14 @@
             <td><input type="text" name="IdAula" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Código" value="<%=IdAula != null ? IdAula : ""%>" ></td>
             <td class="label">Bloque de Aula(*):</td>
              <td><select name="IdBloque" class="campo02" id="genero">
-              <option>Seleccione...</option>
+              <option><%=IdBloque != null ? IdBloque : "Seleccione"%></option>
               <%
 				for (Bloque bloque : listaBloque) {%>
+				<%if (!bloque.getIdBloque().equals(IdBloque)) {%>
               <option><%=bloque.getIdBloque()%></option>
-              <%}%>
+              <%
+				}
+				}%>
               </select></td>
           </tr>
       </table>
@@ -117,6 +120,7 @@
 									<td><%=aula.getIdBloque()%></td>
 								</tr>
 								<%
+								
 									}
 								%>
 			

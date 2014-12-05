@@ -1,8 +1,11 @@
 <%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
+<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
 <%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOPersonas"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
 <%@page import="co.poli.asesoriastyt.model.Persona"%>
+<%@page import="co.poli.asesoriastyt.model.Perfil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,6 +28,9 @@
 	String correo = request.getParameter("correo");
 	String estado = request.getParameter("estado");
 	String  perfil =request.getParameter("perfil");
+	
+	NPerfiles nperfil = new NPerfiles();
+	DAOPerfiles daop = new DAOPerfiles();
 
 	Persona x = request.getAttribute("cli") != null ? (Persona) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
@@ -43,6 +49,7 @@
 		estado=x.getEstado();
 		perfil=Integer.toString(x.getPerfil());
 	}
+	List<Perfil> listaPerf = nperfil.ListadoPerfiles();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Docentes</title>
@@ -70,9 +77,9 @@
             <td class="label">Tipo de Documento(*):</td>
             <td><select name="genero" class="campo02" id="genero">
               <option><%=tipo != null ? tipo : "Seleccione"%></option>
-              <option>Cédula de Ciudadanía</option>
-              <option>Cédula de Extranjería</option>
-              <option>Tarjeta de Identidad</option>
+               <option>CC</option>
+              <option>CE</option>
+              <option>TI</option>
               </select></td>
           	<td class="label">Nombres(*):</td>
             <td><input type="text" name="NombrePersona" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
@@ -85,8 +92,8 @@
           	<td class="label">Genero(*):</td>
             <td><select name="genero" class="campo02" id="genero">
               <option><%=genero != null ? genero : "Seleccione"%></option>
-              <option>Femenino</option>
-              <option>Masculino</option>
+              <option>F</option>
+              <option>M</option>
               </select></td>
           </tr>
           <tr>
@@ -111,8 +118,19 @@
           </tr>
           <tr>
                <td class="label">Perfil(*):</td>
-            <td><input type="text" name="perfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Perfil" value="<%=perfil != null ? perfil : ""%>"></td>
-          </tr>
+               <td><select type="text" class="campo02" name="perfil">
+					<option><%=perfil != null ? perfil : "Seleccione"%></option>
+					<%
+					for (Perfil perf : listaPerf) {
+					%>
+					<%if (!(perf.getIdPerfil()+"-"+perf.getNombrePerfil()).equals(perfil)) {%>
+					<option><%=perf.getIdPerfil()+"-"+perf.getNombrePerfil()%></option>
+					<%
+					}
+					}
+					%>
+					</select></td>   
+            </tr>
       </table>
       </td>
       <td class="caja_01_bottom">&nbsp;</td>

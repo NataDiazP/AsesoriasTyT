@@ -1,8 +1,11 @@
 <%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
+<%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
 <%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOPersonas"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
 <%@page import="co.poli.asesoriastyt.model.Persona"%>
+<%@page import="co.poli.asesoriastyt.model.Perfil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,6 +30,9 @@
 	String semestre = request.getParameter("semestre");
 	String estado = request.getParameter("estado");
 	String  perfil =request.getParameter("perfil");
+	
+	NPerfiles nperfil = new NPerfiles();
+	DAOPerfiles daop = new DAOPerfiles();
 
 	Persona x = request.getAttribute("cli") != null ? (Persona) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
@@ -46,7 +52,10 @@
 		semestre=x.getSemestre_Estudiante();
 		estado=x.getEstado();
 		perfil=Integer.toString(x.getPerfil());
+		
 	}
+	
+	List<Perfil> listaPerf = nperfil.ListadoPerfiles();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Estudiantes</title>
@@ -74,41 +83,45 @@
             <td class="label">Tipo de Documento(*):</td>
             <td><select name="tipoDoc" class="campo02" id="genero">
               <option><%=tipo != null ? tipo : "Seleccione"%></option>
-              <option>Cédula de Ciudadanía</option>
-              <option>Cédula de Extranjería</option>
-              <option>Tarjeta de Identidad</option>
+              <option>CC</option>
+              <option>CE</option>
+              <option>TI</option>
               </select></td>
           	<td class="label">Nombres(*):</td>
-            <td><input type="text" name="NombrePersona" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
+            <td><input type="text" name="NombrePersona" size="20"maxlength="5" onkeypress="return sololetras(event)" placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
           </tr>
           <tr>
             <td class="label">Primer Apellido(*):</td>
-            <td><input type="text" name="apellido1" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Primer Apellido" value="<%=apellido1 != null ? apellido1 : ""%>"></td>
+            <td><input type="text" name="apellido1" size="20"maxlength="5" onkeypress="return sololetras(event)"  placeholder="Primer Apellido" value="<%=apellido1 != null ? apellido1 : ""%>"></td>
             <td class="label">Segundo Apellido(*):</td>
             <td><input type="text" name="apellido2"size="30" onkeypress="return sololetras(event)" placeholder="Segundo Apellido" value="<%=apellido2 != null ? apellido2 : ""%>" ></td>
           	<td class="label">Genero(*):</td>
             <td><select name="genero" class="campo02" id="genero">
               <option><%=genero != null ? genero : "Seleccione"%></option>
-              <option>Femenino</option>
-              <option>Masculino</option>
+              <option>F</option>
+              <option>M</option>
               </select></td>
           </tr>
           <tr>
             <td class="label">Fecha de Nacimiento(*):</td>
             <td><input type="text" name="fechaN" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Fecha Nacimiento" value="<%=fechaN != null ? fechaN : ""%>"></td>
             <td class="label">Dirección(*):</td>	
-            <td><input type="text" name="direccion"size="30" onkeypress="return sololetras(event)" placeholder="Dirección" value="<%=direccion != null ? direccion : ""%>" ></td>
+            <td><input type="text" name="direccion"size="30"  placeholder="Dirección" value="<%=direccion != null ? direccion : ""%>" ></td>
           	<td class="label">Tel&eacute;no(*):</td>
-          	<td><input type="text" name="telefono"size="30" onkeypress="return sololetras(event)" placeholder="Teléfono" value="<%=telefono != null ? telefono : ""%>"></td>
+          	<td><input type="text" name="telefono"size="30" onkeypress="return validar(event)" placeholder="Teléfono" value="<%=telefono != null ? telefono : ""%>"></td>
           </tr>
           <tr>
             <td class="label">Celular(*):</td>
             <td><input type="text" name="celular" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Celular" value="<%=celular != null ? celular : ""%>"></td>
             <td class="label">Correo(*):</td>	
-            <td><input type="text" name="correo"size="30" onkeypress="return sololetras(event)" placeholder="Correo" value="<%=correo != null ? correo : ""%>"></td>
+            <td><input type="text" name="correo"size="30" placeholder="Correo" value="<%=correo != null ? correo : ""%>"></td>
           	<td class="label">Plan de Estudios(*):</td>
-          	<td><input type="text" name="planEstudio"size="30" onkeypress="return sololetras(event)" placeholder="Plan Estudios" value="<%=plan != null ? plan : ""%>" ></td>
-          </tr>
+          	<td><select name="plan" class="plan" id="plan">
+              <option><%=plan != null ? plan : "Seleccione"%></option>
+              <option>Técnico Prof. en Prog. de Sistemas de Información</option>
+              <option>Tecnología en Sistematización de Datos</option>
+              </select></td>
+          	</tr>
           <tr>
             <td class="label">Semestre(*):</td>
             <td><input type="text" name="semestre" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Semestre" value="<%=semestre != null ? semestre : ""%>"></td>
@@ -119,7 +132,18 @@
               <option>Inactivo</option>
               </select></td>
                <td class="label">Perfil(*):</td>
-            <td><input type="text" name="perfil" size="20"maxlength="5" onkeypress="return validar(event)"  placeholder="Perfil" value="<%=perfil != null ? perfil : ""%>"></td>
+				<td><select type="text" class="campo02" name="perfil">
+					<option><%=perfil != null ? perfil : "Seleccione"%></option>
+					<%
+					for (Perfil perf : listaPerf) {
+					%>
+					<%if (!(perf.getIdPerfil()+"-"+perf.getNombrePerfil()).equals(perfil)) {%>
+					<option><%=perf.getIdPerfil()+"-"+perf.getNombrePerfil()%></option>
+					<%
+					}
+					}
+					%>
+					</select></td>            	
           </tr>
       </table>
       </td>

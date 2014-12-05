@@ -50,7 +50,9 @@ public class Estudiantes extends HttpServlet {
 		String planEstudio = request.getParameter("planEstudio");
 		String semestre = request.getParameter("semestre");
 		String estado = request.getParameter("estado");
-		String perfil = request.getParameter("perfil");
+		String perfil1 = request.getParameter("EncargadoBloque");
+		String[] split = perfil1.split("-");
+		String perfil = split[0];
 
 		if (documento.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificación de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -58,21 +60,24 @@ public class Estudiantes extends HttpServlet {
 		} else {
 			
 			Persona Per = new Persona();
-			Personas.setNumeroIdentificacion(request.getParameter("IdPersona"));
-			Personas.setTipoIdentificacion(request.getParameter("IdPersona"));
-			Personas.setNombreCompleto(request.getParameter("IdPersona"));
-			Personas.setPrimerApellido(request.getParameter("IdPersona"));
-			Personas.setSegundoApellido(request.getParameter("IdPersona"));
-			Personas.setGenero(request.getParameter("IdPersona"));
-			Personas.setFechaNacimiento(request.getParameter("IdPersona"));
-			Personas.setDireccion(request.getParameter("IdPersona"));
-			Personas.setTelefono(request.getParameter("IdPersona"));
-			Personas.setCelular(request.getParameter("IdPersona"));
-			Personas.setCorreoElectronico(request.getParameter("IdPersona"));
-			Personas.setPlanEstudios_Estudiante(request.getParameter("IdPersona"));
-			Personas.setSemestre_Estudiante(request.getParameter("IdPersona"));
-			Personas.setEstado(request.getParameter("IdPersona"));
-			Personas.setPerfil(Integer.parseInt(request.getParameter("IdPersona")));
+			Personas.setNumeroIdentificacion(documento);
+			Personas.setTipoIdentificacion(tipoDoc);
+			Personas.setNombreCompleto(nombre);
+			Personas.setPrimerApellido(apelldocumento1);
+			Personas.setSegundoApellido(apelldocumento2);
+			Personas.setGenero(genero);
+			Personas.setFechaNacimiento(fechaN);
+			Personas.setDireccion(direccion);
+			Personas.setTelefono(telefono);
+			Personas.setCelular(celular);
+			Personas.setCorreoElectronico(correo);
+			Personas.setPlanEstudios_Estudiante(planEstudio);
+			Personas.setSemestre_Estudiante(semestre);
+			Personas.setEstado(estado);
+			if(!perfil.equals("Seleccione"))
+			{
+				Personas.setPerfil(Integer.parseInt(perfil));
+			}
 			
 		
 
