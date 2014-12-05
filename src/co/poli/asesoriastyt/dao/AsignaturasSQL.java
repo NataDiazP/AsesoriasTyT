@@ -14,8 +14,8 @@ public class AsignaturasSQL {
         return "UPDATE asignaturas SET Nombre_Asignatura=? WHERE Codigo_Asignatura=?";
     }
 
-    public static String Consultar(int Codigo_Asignatura) {
-        return "SELECT * FROM asignaturas WHERE Codigo_Asignatura = " + Codigo_Asignatura + "";
+    public static String Consultar(String Codigo_Asignatura) {
+        return "SELECT * FROM asignaturas WHERE Codigo_Asignatura = '" + Codigo_Asignatura + "'";
     }
 
     public static String Eliminar() {

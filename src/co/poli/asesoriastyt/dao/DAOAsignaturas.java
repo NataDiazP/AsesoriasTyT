@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Asignatura;
-import co.poli.asesoriastyt.model.PlanEstudio;
 
 public class DAOAsignaturas {
 	
@@ -61,7 +60,7 @@ public class DAOAsignaturas {
 		return resultadoModificar;
 	}
 
-	public Asignatura Buscar(Connection con, int IdAsignatura) {
+	public Asignatura Buscar(Connection con, String IdAsignatura) {
 		Asignatura c = new Asignatura();
 		try {
 			PreparedStatement cl = con.prepareStatement(AsignaturasSQL.Consultar(IdAsignatura));
@@ -111,7 +110,7 @@ public class DAOAsignaturas {
 	public List<Asignatura> listarAsignaturas(Connection c) {
 		List<Asignatura> Asignaturas = new ArrayList<Asignatura>();
 		try {
-			String sql = "SELECT Codigo_Asignatura, Nombre_Asignatura, PlanEstudios_Asignatura FROM asignaturas";
+			String sql = "SELECT Codigo_Asignatura, Nombre_Asignatura FROM asignaturas";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
