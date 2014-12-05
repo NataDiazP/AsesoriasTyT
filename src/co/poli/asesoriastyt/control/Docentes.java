@@ -112,7 +112,7 @@ public class Docentes extends HttpServlet {
 				boolean registroExiste = false;
 				int sw = 0;
 				try {
-					ResultSet r1 = Connection.getConnection().prepareStatement("Select NumDoc from personas").executeQuery();
+					ResultSet r1 = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas").executeQuery();
 					while (r1.next() && sw == 0) {
 						if (!documento.equals(r1.getString(1)) && (!documento.equals(""))) {
 							registroExiste = false;
@@ -154,7 +154,7 @@ public class Docentes extends HttpServlet {
 				boolean registroExiste = false;
 				int sw = 0;
 				try {
-					ResultSet r1 = Connection.getConnection().prepareStatement("Select NumDoc from personas").executeQuery();
+					ResultSet r1 = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas").executeQuery();
 					while (r1.next() && sw == 0) {
 						if (!documento.equals(Integer.toString(r1.getInt(1))) && (!documento.equals(""))) {
 							registroExiste = false;
@@ -188,7 +188,7 @@ public class Docentes extends HttpServlet {
 				boolean registroExiste = false;
 				int sw = 0;
 				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Persona from perfiles").executeQuery();
+					ResultSet r = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas").executeQuery();
 					while (r.next() && sw == 0) {
 						if (!documento.equals(Integer.toString(r.getInt(1))) && (!documento.equals(""))) {
 							registroExiste = false;
