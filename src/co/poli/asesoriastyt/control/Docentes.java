@@ -51,7 +51,7 @@ public class Docentes extends HttpServlet {
 		String perfil = request.getParameter("perfil");
 
 		if (documento.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificaci�n de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificaciï¿½n de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Docentes.jsp");
 		} else {
 			Personas.setNumeroIdentificacion(request.getParameter("IdPersona"));
@@ -73,11 +73,11 @@ public class Docentes extends HttpServlet {
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;
 				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select NumDoc from personas").executeQuery();
+					ResultSet r = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas").executeQuery();
 					while (r.next()) {
 						if (documento.equals(r.getInt(1))) {
 							registroExiste = true;
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la documentoentificaci�n de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Docentes.jsp").forward(request, response);
 						}
 					}
@@ -124,11 +124,11 @@ public class Docentes extends HttpServlet {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Docentes.jsp");
 					} else {
-						int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta persona?");
+						int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea actualizar la informaciÃ³n de esta persona?");
 						if (confirma == JOptionPane.YES_OPTION) {
 							int resultadoModificar = new NPersona().Modificar(Personas);
 							request.setAttribute("cli", resultadoModificar);
-							JOptionPane.showMessageDialog(null, "Se modificó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Se modificÃ³ correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 							response.sendRedirect("Docentes.jsp");
 						} else if (confirma == JOptionPane.NO_OPTION) {
 							request.getRequestDispatcher("./Docentes.jsp").forward(request, response);
@@ -140,7 +140,7 @@ public class Docentes extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					request.getRequestDispatcher("./Docentes.jsp").forward(request, response);
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificación de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificaciÃ³n de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -174,7 +174,7 @@ public class Docentes extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					response.sendRedirect("Docentes.jsp");
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificación de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificaciÃ³n de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -195,11 +195,11 @@ public class Docentes extends HttpServlet {
 					e.printStackTrace();
 				}
 				if (registroExiste == true) {
-					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de este perfil?");
+					int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea eliminar la informaciÃ³n de este perfil?");
 					if (confirma == JOptionPane.YES_OPTION) {
 						int resultadoEliminar = new NPersona().Eliminar(Personas);
 						request.setAttribute("cli", resultadoEliminar);
-						JOptionPane.showMessageDialog(null, "Se eliminó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se eliminÃ³ correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 						response.sendRedirect("Docentes.jsp");
 					} else if (confirma == JOptionPane.NO_OPTION) {
 						request.getRequestDispatcher("./Docentes.jsp").forward(request, response);
@@ -209,7 +209,7 @@ public class Docentes extends HttpServlet {
 						request.getRequestDispatcher("./Docentes.jsp").forward(request, response);
 					}
 				} else if (!registroExiste) {
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificaci�n de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificaciï¿½n de la persona", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 					request.getRequestDispatcher("./Docentes.jsp").forward(request, response);
 				}
 			}
