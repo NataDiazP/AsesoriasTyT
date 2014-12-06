@@ -52,7 +52,7 @@
 		plan = x.getPlanEstudios_Estudiante();
 		semestre = x.getSemestre_Estudiante();
 		estado = x.getEstado();
-		perfil =x.getPerfil();
+		perfil = x.getPerfil();
 	}
 
 	List<Perfil> listaPerf = nperfil.ListadoPerfiles();
@@ -137,10 +137,15 @@
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Plan de Estudios(*):</td>
 								<td><select name="plan" class="plan" id="plan">
-										<option><%=plan != null ? plan : "Seleccione..."%></option>
-										<option>Técnico Prof. en Prog. de Sistemas de
+										<option>Seleccione...</option>
+										<option
+											<%if ("Técnico Prof. en Prog. de Sistemas de Información".equals(plan)) {%>
+											selected <%}%>>Técnico Prof. en Prog. de Sistemas de
 											Información</option>
-										<option>Tecnología en Sistematización de Datos</option>
+										<option
+											<%if ("Tecnología en Sistematización de Datos".equals(plan)) {%>
+											selected <%}%>>Tecnología en Sistematización de
+											Datos</option>
 								</select></td>
 							</tr>
 							<tr>

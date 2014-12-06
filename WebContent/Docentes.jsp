@@ -81,11 +81,14 @@
 									value="<%=documento != null ? documento : ""%>"></td>
 								<td class="label">Tipo de Documento(*):</td>
 								<td><select name="tipo" class="campo02" id="genero">
-										<option><%=tipo != null ? tipo : "Seleccione"%></option>
-										<option>CC</option>
-										<option>CE</option>
-										<option>TI</option>
+										<option>Seleccione...</option>
+										<option <%if ("CC".equals(tipo)) {%> selected <%}%>>CC</option>
+										<option <%if ("CE".equals(tipo)) {%> selected <%}%>>CE</option>
+										<option <%if ("TI".equals(tipo)) {%> selected <%}%>>TI</option>
 								</select></td>
+
+								</select>
+								</td>
 								<td class="label">Nombres(*):</td>
 								<td><input type="text" name="nombre" size="20"
 									placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
@@ -132,10 +135,13 @@
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Estado (*):</td>
 								<td><select name="genero" class="estado" id="genero">
-										<option><%=estado != null ? estado : "Seleccione"%></option>
-										<option>Activo</option>
-										<option>Inactivo</option>
+										<option>Seleccione...</option>
+										<option <%if ("Activo".equals(estado)) {%> selected <%}%>>Activo</option>
+										<option <%if ("Inactivo".equals(estado)) {%> selected <%}%>>Inactivo</option>
 								</select></td>
+
+								</select>
+								</td>
 							</tr>
 							<tr>
 								<td class="label">Perfil(*):</td>
@@ -144,8 +150,7 @@
 										<%
 											for (Perfil perf : listaPerf) {
 										%>
-										<option
-											<%if ((perf.getNombrePerfil()).equals(perfil)) {%>
+										<option <%if ((perf.getNombrePerfil()).equals(perfil)) {%>
 											selected <%}%>><%=perf.getNombrePerfil()%></option>
 										<%
 											}
@@ -157,7 +162,7 @@
 					<td class="caja_01_bottom">&nbsp;</td>
 				</tr>
 				<tr>
-					<tr>
+				<tr>
 					<td class="caja_bottom_01"></td>
 					<td class="caja_01_bottom"></td>
 					<td class="caja_bottom_02"></td>
@@ -179,9 +184,9 @@
 			DAOPersonas dao = new DAOPersonas();
 			List<Persona> listaPersonas = nper.ListadoPersonasDocentes();
 		%>
-					<br> <br>
+		<br> <br>
 		<table width="85%" border="0" align="center" cellpadding="0"
-						cellspacing="0">
+			cellspacing="0">
 			<thead>
 				<tr>
 					<td class="caja_02_01">&nbsp;</td>
@@ -191,7 +196,7 @@
 				<tr>
 					<td class="caja_01_bottom">&nbsp;</td>
 					<td valign="top" class="caja_01_bottom"><table width="100%"
-										align="center" id="rounded-corner">
+							align="center" id="rounded-corner">
 							<thead>
 								<tr>
 									<th class="rounded" scope="col">Documento</th>
@@ -238,9 +243,7 @@
 							</tbody>
 						</table></td>
 				</tr>
-		
-					</table>
+		</table>
 		<jsp:include page="footer.jsp"></jsp:include>
-
-				</body>
+</body>
 </html>
