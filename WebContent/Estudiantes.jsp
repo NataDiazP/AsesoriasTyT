@@ -52,8 +52,7 @@
 		plan = x.getPlanEstudios_Estudiante();
 		semestre = x.getSemestre_Estudiante();
 		estado = x.getEstado();
-		perfil = x.getPerfil();
-
+		perfil =x.getPerfil();
 	}
 
 	List<Perfil> listaPerf = nperfil.ListadoPerfiles();
