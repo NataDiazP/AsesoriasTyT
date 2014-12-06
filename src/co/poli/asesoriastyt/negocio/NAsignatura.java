@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOAsignaturas;
-import co.poli.asesoriastyt.dao.DAOBloques;
 import co.poli.asesoriastyt.model.Asignatura;
-import co.poli.asesoriastyt.model.PlanEstudio;
 import co.poli.asesoriastyt.util.Conexion;
 
 
@@ -32,7 +30,7 @@ public class NAsignatura {
 		return resultadoModificar;
 	}
 
-	public Asignatura Buscar(int Asignaturas) {
+	public Asignatura Buscar(String Asignaturas) {
 		daoAsignaturas = new DAOAsignaturas();
 		c = new Conexion().getConnection();
 		Asignatura resultadoBuscar = daoAsignaturas.Buscar(c, Asignaturas);
@@ -50,11 +48,5 @@ public class NAsignatura {
 		daoAsignaturas = new DAOAsignaturas();
 		c = new Conexion().getConnection();
 		return daoAsignaturas.listarAsignaturas(c);
-	}
-	
-	public List<PlanEstudio> ListadoPlanesEstudio() {
-		daoAsignaturas = new DAOAsignaturas();
-		c = new Conexion().getConnection();
-		return daoAsignaturas.listarPlanEstudio(c);
 	}
 }

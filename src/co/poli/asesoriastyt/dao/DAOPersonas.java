@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.util.Conexion;
 
 /**
  * @author pavargas
@@ -20,10 +21,19 @@ import co.poli.asesoriastyt.model.Persona;
  */
 public class DAOPersonas {
 	
+	Conexion Connection = new Conexion();
+
 	public int Crear(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Crear();
 		int resultadoCrear = 0;
+		int perfil = 0;
+
 		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles where Nombre_Perfil = '" + Personas.getPerfil() + "'")
+					.executeQuery();
+			while (r.next()) {
+				perfil = r.getInt(1);
+			}
 			PreparedStatement st = c.prepareStatement(sql);
 
 			st.setString(1, Personas.getNumeroIdentificacion());
@@ -40,8 +50,8 @@ public class DAOPersonas {
 			st.setString(12, Personas.getPlanEstudios_Estudiante());
 			st.setString(13, Personas.getSemestre_Estudiante());
 			st.setString(14, Personas.getEstado());
-			st.setInt(15, Personas.getPerfil());
-			
+			st.setInt(15, perfil);
+
 			resultadoCrear = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -59,7 +69,14 @@ public class DAOPersonas {
 	public int Modificar(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Modificar();
 		int resultadoModificar = 0;
+		int perfil = 0;
+
 		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Id_Perfil from perfiles where Nombre_Perfil = '" + Personas.getPerfil() + "'")
+					.executeQuery();
+			while (r.next()) {
+				perfil = r.getInt(1);
+			}
 			PreparedStatement st = c.prepareStatement(sql);
 
 			st.setString(15, Personas.getNumeroIdentificacion());
@@ -76,8 +93,8 @@ public class DAOPersonas {
 			st.setString(4, Personas.getPlanEstudios_Estudiante());
 			st.setString(3, Personas.getSemestre_Estudiante());
 			st.setString(2, Personas.getEstado());
-			st.setInt(1, Personas.getPerfil());
-			
+			st.setInt(1, perfil);
+
 			resultadoModificar = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -112,8 +129,8 @@ public class DAOPersonas {
 				c.setPlanEstudios_Estudiante(r.getString(12));
 				c.setSemestre_Estudiante(r.getString(13));
 				c.setEstado(r.getString(14));
-				c.setPerfil(r.getInt(15));
-				
+				c.setPerfil(r.getString(15));
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -175,7 +192,7 @@ public class DAOPersonas {
 				Per.setPlanEstudios_Estudiante(r.getString(12));
 				Per.setSemestre_Estudiante(r.getString(13));
 				Per.setEstado(r.getString(14));
-				Per.setPerfil(r.getInt(15));
+				Per.setPerfil(r.getString(15));
 				Personas.add(Per);
 			}
 		} catch (SQLException e) {
@@ -189,11 +206,11 @@ public class DAOPersonas {
 		}
 		return Personas;
 	}
-	
+
 	public List<Persona> listarPersonasDocentes(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
-			String sql = "SELECT * FROM personas  where Perfil ='2'";
+			String sql = "SELECT * FROM personas  where Perfil_Persona ='2'";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -212,7 +229,7 @@ public class DAOPersonas {
 				Per.setPlanEstudios_Estudiante(r.getString(12));
 				Per.setSemestre_Estudiante(r.getString(13));
 				Per.setEstado(r.getString(14));
-				Per.setPerfil(r.getInt(15));
+				Per.setPerfil(r.getString(15));
 				Personas.add(Per);
 			}
 		} catch (SQLException e) {
@@ -226,7 +243,7 @@ public class DAOPersonas {
 		}
 		return Personas;
 	}
-	
+
 	public List<Persona> listarPersonasEstudiantes(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
@@ -249,7 +266,7 @@ public class DAOPersonas {
 				Per.setPlanEstudios_Estudiante(r.getString(12));
 				Per.setSemestre_Estudiante(r.getString(13));
 				Per.setEstado(r.getString(14));
-				Per.setPerfil(r.getInt(15));
+				Per.setPerfil(r.getString(15));
 				Personas.add(Per);
 			}
 		} catch (SQLException e) {

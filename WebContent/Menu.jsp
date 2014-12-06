@@ -101,7 +101,7 @@
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a></h3>
 <!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="http://groups.google.com/forum/"  target="_blank">Foro</a></h3>
+<h3 class="menuheader Noexpandable"><a href="http://asesoriastyt.foro-colombia.net/"  target="_blank">Foro</a></h3>
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="#"  target="datos">Reportes</a></h3>
 <!--Inicio opción desplegable-->

@@ -38,16 +38,6 @@ public class Asignaturas extends HttpServlet {
 		Asignatura Asignaturas = new Asignatura();
 		String id = request.getParameter("codigo");
 		String nom = request.getParameter("nombre");
-		String plan = request.getParameter("plan");
-		
-		String id_plan = null;
-
-		try {
-			ResultSet r = Connection.getConnection().prepareStatement("Select Cod_PlanEstudio from planes_estudio where Nombre_PlanEstudio ='"+plan+"'").executeQuery();
-			id_plan= r.getString(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 		
 		if (id.equals("")) {
@@ -56,16 +46,15 @@ public class Asignaturas extends HttpServlet {
 		} else {
 			Asignaturas.setIdAsignatura(id);
 			Asignaturas.setNombreAsignatura(nom);
-			Asignaturas.setPlanestudio(id_plan);
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;
 				try {
 					ResultSet r = Connection.getConnection().prepareStatement("Select Codigo_Asignatura from asignaturas").executeQuery();
 					while (r.next()) {
-						if (id.equals(Integer.toString(r.getInt(1)))) {
+						if (id.equals(r.getString(1))) {
 							registroExiste = true;
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación del perfil", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificaciÃ³n del perfil", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
 						}
 					}
@@ -81,7 +70,7 @@ public class Asignaturas extends HttpServlet {
 						int resultado = new NAsignatura().Crear(Asignaturas);
 						try {
 							response.sendRedirect("Asignaturas.jsp");
-							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Se guardÃ³ correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 							request.setAttribute("cli", resultado);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -138,7 +127,7 @@ public class Asignaturas extends HttpServlet {
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Codigo_Asignatura from asignaturas").executeQuery();
 					while (r1.next() && sw == 0) {
-						if (!id.equals(Integer.toString(r1.getInt(1))) && (!id.equals(""))) {
+						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
 							registroExiste = false;
 						} else {
 							registroExiste = true;
@@ -152,7 +141,7 @@ public class Asignaturas extends HttpServlet {
 				if (registroExiste == true) {
 					NAsignatura negocioC = new NAsignatura();
 					try {
-						Asignatura cli = negocioC.Buscar(Integer.parseInt(id));
+						Asignatura cli = negocioC.Buscar(id);
 						request.setAttribute("cli", cli);
 						request.setAttribute("mensaje", "La asignatura fue encontrada con exito");
 						request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
@@ -162,7 +151,7 @@ public class Asignaturas extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					response.sendRedirect("Asignaturas.jsp");
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el código de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el cÃ³digo de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -183,11 +172,11 @@ public class Asignaturas extends HttpServlet {
 					e.printStackTrace();
 				}
 				if (registroExiste == true) {
-					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de esta asignatura?");
+					int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea eliminar la informaciÃ³n de esta asignatura?");
 					if (confirma == JOptionPane.YES_OPTION) {
 						int resultadoEliminar = new NAsignatura().Eliminar(Asignaturas);
 						request.setAttribute("cli", resultadoEliminar);
-						JOptionPane.showMessageDialog(null, "Se eliminó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se eliminÃ³ correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 						response.sendRedirect("Asignaturas.jsp");
 					} else if (confirma == JOptionPane.NO_OPTION) {
 						request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
@@ -197,7 +186,7 @@ public class Asignaturas extends HttpServlet {
 						request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
 					}
 				} else if (!registroExiste) {
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el código de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el cÃ³digo de la asignatura", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 					request.getRequestDispatcher("./Asignaturas.jsp").forward(request, response);
 				}
 			}

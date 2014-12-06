@@ -107,8 +107,8 @@
 											for (Asignatura asig : listaAsignatura) {
 										%>
 										<option
-											<%if ((asig.getNombreAsignatura()).equals(asignaturaProgAcademica)) {%>
-											selected <%}%>><%=asig.getNombreAsignatura()%></option>
+											<%if ((asig.getIdAsignatura()).equals(asignaturaProgAcademica)) {%>
+											selected <%}%>><%=asig.getIdAsignatura()%></option>
 										<%
 											}
 										%>

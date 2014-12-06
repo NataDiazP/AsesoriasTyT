@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2014 a las 23:07:19
+-- Tiempo de generación: 06-12-2014 a las 05:03:59
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -63,6 +63,13 @@ CREATE TABLE IF NOT EXISTS `asignaturas` (
   PRIMARY KEY (`Codigo_Asignatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `asignaturas`
+--
+
+INSERT INTO `asignaturas` (`Codigo_Asignatura`, `Nombre_Asignatura`) VALUES
+('ING00812', 'Matemáticas');
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +88,14 @@ CREATE TABLE IF NOT EXISTS `aulas` (
 --   `Id_Bloque_Aula`
 --       `bloques` -> `Id_Bloque`
 --
+
+--
+-- Volcado de datos para la tabla `aulas`
+--
+
+INSERT INTO `aulas` (`Id_Aula`, `Id_Bloque_Aula`) VALUES
+('305', 'P13'),
+('204', 'P38');
 
 -- --------------------------------------------------------
 
@@ -101,6 +116,16 @@ CREATE TABLE IF NOT EXISTS `bloques` (
 --       `encargados_bloques` -> `Id_Encargado_Bloque`
 --
 
+--
+-- Volcado de datos para la tabla `bloques`
+--
+
+INSERT INTO `bloques` (`Id_Bloque`, `Encargado_Bloque`) VALUES
+('P40', '1'),
+('P13', '2'),
+('P36', '2'),
+('P38', '2');
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +138,14 @@ CREATE TABLE IF NOT EXISTS `encargados_bloques` (
   PRIMARY KEY (`Id_Encargado_Bloque`),
   UNIQUE KEY `Encargados_Bloques_UN` (`Correo_Encargado_Bloque`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `encargados_bloques`
+--
+
+INSERT INTO `encargados_bloques` (`Id_Encargado_Bloque`, `Correo_Encargado_Bloque`) VALUES
+('1', 'natadiaz@elpoli.edu.co'),
+('2', 'natavelez@elpoli.edu.co');
 
 -- --------------------------------------------------------
 
@@ -147,6 +180,15 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
   PRIMARY KEY (`Id_Perfil`),
   UNIQUE KEY `Perfiles__UN` (`Nombre_Perfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`Id_Perfil`, `Nombre_Perfil`) VALUES
+(1, 'Administrador'),
+(2, 'Docente'),
+(3, 'Estudiante');
 
 -- --------------------------------------------------------
 

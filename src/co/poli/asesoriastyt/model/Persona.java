@@ -23,7 +23,7 @@ public class Persona
     private String PlanEstudios_Estudiante;
     private String Semestre_Estudiante;
     private String estado;
-    private int perfil;
+    private String perfil;
 	/**
 	 * @return the tipoIdentificacion
 	 */
@@ -196,13 +196,13 @@ public class Persona
 	/**
 	 * @return the perfil
 	 */
-	public int getPerfil() {
+	public String getPerfil() {
 		return perfil;
 	}
 	/**
 	 * @param perfil the perfil to set
 	 */
-	public void setPerfil(int perfil) {
+	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
 	

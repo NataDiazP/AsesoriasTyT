@@ -18,19 +18,16 @@
 	String mensaje = (String) request.getAttribute("mensaje");
 	String idAsignatura = request.getParameter("codigo");
 	String nombreAsignatura = request.getParameter("nombre");
-	String plan = request.getParameter("plan");
 
 	Asignatura x = request.getAttribute("cli") != null ? (Asignatura) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
 		idAsignatura = x.getIdAsignatura();
 		nombreAsignatura = x.getNombreAsignatura();
-		plan = x.getPlanestudio();
 	}
 
 	NAsignatura nAsig = new NAsignatura();
 	DAOAsignaturas dao = new DAOAsignaturas();
-	List<PlanEstudio> listaPlanesEst = nAsig.ListadoPlanesEstudio();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asignaturas</title>
@@ -57,23 +54,10 @@
 							<tr>
 								<td class="label">C&oacute;digo de Asignatura(*):</td>
 								<td><input type="text" name="codigo" size="20" maxlength="10"
-									placeholder="código" value=""></td>
+									placeholder="Código Asignatura" value="<%=idAsignatura != null ? idAsignatura : ""%>"></td>
 								<td class="label">Nombre Asignatura(*):</td>
-								<td><input type="text" name="nombre" size="30"
-									onkeypress="return sololetras(event)" placeholder="Asignatura"></td>
-								<td class="label">Plan de Estudios(*):</td>
-								<td><select name="plan" class="campo02" id="plan">
-										<option>Seleccione...</option>
-										<%
-											for (PlanEstudio planes : listaPlanesEst) {
-										%>
-										<option
-											<%if ((planes.getNombrePlanEstudio()).equals(plan)) {%>
-											selected <%}%>><%=planes.getNombrePlanEstudio()%></option>
-										<%
-											}
-										%>
-								</select></td>
+								<td><input type="text" name="nombre" size="30" placeholder="Asignatura"
+								value="<%=nombreAsignatura != null ? nombreAsignatura : ""%>"></td>
 							</tr>
 						</table>
 					</td>
@@ -117,7 +101,6 @@
 								<tr>
 									<th class="rounded" scope="col">Código</th>
 									<th class="rounded" scope="col">Nombre Asignatura</th>
-									<th class="rounded" scope="col">Plan de Estudios</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -128,12 +111,10 @@
 								<tr align="center">
 									<td><%=asig.getIdAsignatura()%></td>
 									<td><%=asig.getNombreAsignatura()%></td>
-									<td><%=asig.getPlanestudio()%></td>
 								</tr>
 								<%
 									}
 								%>
-
 							</tbody>
 						</table></td>
 				</tr>

@@ -20,17 +20,16 @@
 	String EncargadoBloque = request.getParameter("EncargadoBloque");
 	NEncargadoBloque nEncBloq = new NEncargadoBloque();
 	DAOEncargadosBloques dao = new DAOEncargadosBloques();
-	
+
 	Bloque x = request.getAttribute("cli") != null ? (Bloque) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
 		IdBloque = x.getIdBloque();
-		
-		EncargadoBloque en=nEncBloq.Buscar(x.getEncargadoBloque());
-		EncargadoBloque = en.getIdEncargado()+"-"+en.getCorreoEncargado();
+
+		EncargadoBloque en = nEncBloq.Buscar(x.getEncargadoBloque());
+		EncargadoBloque = en.getIdEncargado() + "-" + en.getCorreoEncargado();
 	}
 
-	
 	List<EncargadoBloque> listaEnc = nEncBloq.ListadoEncargadosBloques();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
@@ -62,16 +61,16 @@
 									maxlength="5" placeholder="Código"
 									value="<%=IdBloque != null ? IdBloque : ""%>"></td>
 								<td class="label">Encargado de Bloque(*):</td>
-								<td><select type="text" class="campo02" name="EncargadoBloque">
-										<option><%=EncargadoBloque != null ? EncargadoBloque : "Seleccione"%></option>
+								<td><select type="text" class="campo02"
+									name="EncargadoBloque">
+										<option>Seleccione...</option>
 										<%
 											for (EncargadoBloque enc : listaEnc) {
 										%>
-										<%if (!(enc.getIdEncargado()+"-"+enc.getCorreoEncargado()).equals(EncargadoBloque)) {%>
-										<option>
-											<%=enc.getIdEncargado()+"-"+enc.getCorreoEncargado()%></option>
+										<option
+											<%if ((enc.getCorreoEncargado()).equals(EncargadoBloque)) {%>
+											selected <%}%>><%=enc.getCorreoEncargado()%></option>
 										<%
-											}
 											}
 										%>
 								</select></td>
@@ -122,15 +121,11 @@
 							</thead>
 							<tbody>
 								<%
-									String Encargado;
-									EncargadoBloque en= new EncargadoBloque();
 									for (Bloque bloq : listaBloques) {
-										en=nEncBloq.Buscar(bloq.getEncargadoBloque());
-										Encargado = en.getIdEncargado()+"-"+en.getCorreoEncargado();
 								%>
 								<tr align="center">
 									<td><%=bloq.getIdBloque()%></td>
-									<td><%=Encargado%></td>
+									<td><%=bloq.getEncargadoBloque()%></td>
 								</tr>
 								<%
 									}

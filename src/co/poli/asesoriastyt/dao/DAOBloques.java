@@ -36,8 +36,8 @@ public class DAOBloques {
 			}
 			PreparedStatement st = c.prepareStatement(sql);
 
-			st.setString(1, id_Enc);
-			st.setString(2, Bloques.getEncargadoBloque());
+			st.setString(1, Bloques.getIdBloque());
+			st.setString(2, id_Enc);
 			resultadoCrear = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -55,10 +55,16 @@ public class DAOBloques {
 	public int Modificar(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Modificar();
 		int resultadoModificar = 0;
+		String id_Enc = null;
 		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Id_Encargado_Bloque from encargados_bloques where Correo_Encargado_Bloque = '" + Bloques.getEncargadoBloque() + "'")
+					.executeQuery();
+			while (r.next()) {
+				id_Enc = r.getString(1);
+			}
 			PreparedStatement st = c.prepareStatement(sql);
 
-			st.setString(1, Bloques.getEncargadoBloque());
+			st.setString(1, id_Enc);
 			st.setString(2, Bloques.getIdBloque());
 			resultadoModificar = st.executeUpdate();
 
@@ -124,7 +130,8 @@ public class DAOBloques {
 	public List<Bloque> listarBloques(Connection c) {
 		List<Bloque> Bloques = new ArrayList<Bloque>();
 		try {
-			String sql = "SELECT Id_Bloque, Encargado_Bloque FROM bloques";
+			String sql = "SELECT bloques.Id_Bloque, encargados_bloques.Correo_Encargado_Bloque " +
+					"FROM bloques, encargados_bloques WHERE bloques.Encargado_Bloque = encargados_bloques.Id_Encargado_Bloque;";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
