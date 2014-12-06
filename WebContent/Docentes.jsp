@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
 	String mensaje = (String) request.getAttribute("mensaje");
-	String documento = request.getParameter("documento");
+	String documento = request.getParameter("IdPersona");
 	String tipo = request.getParameter("tipo");
 	String nombre = request.getParameter("nombre");
 	String apellido1 = request.getParameter("apellido1");
@@ -77,18 +77,17 @@
 							<tr>
 								<td class="label">Documento de Docente(*):</td>
 								<td><input type="text" name="IdPersona" size="20"
-									onkeypress="return validar(event)"
-									placeholder="Documento"
+									onkeypress="return validar(event)" placeholder="Documento"
 									value="<%=documento != null ? documento : ""%>"></td>
 								<td class="label">Tipo de Documento(*):</td>
-								<td><select name="genero" class="campo02" id="genero">
+								<td><select name="tipo" class="campo02" id="genero">
 										<option><%=tipo != null ? tipo : "Seleccione"%></option>
 										<option>CC</option>
 										<option>CE</option>
 										<option>TI</option>
 								</select></td>
 								<td class="label">Nombres(*):</td>
-								<td><input type="text" name="NombrePersona" size="20"
+								<td><input type="text" name="nombre" size="20"
 									placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
 							</tr>
 							<tr>
@@ -97,7 +96,7 @@
 									placeholder="Primer Apellido"
 									value="<%=apellido1 != null ? apellido1 : ""%>"></td>
 								<td class="label">Segundo Apellido(*):</td>
-								<td><input type="text" name="apellido2" size="30"									
+								<td><input type="text" name="apellido2" size="30"
 									placeholder="Segundo Apellido"
 									value="<%=apellido2 != null ? apellido2 : ""%>"></td>
 								<td class="label">Genero(*):</td>
@@ -113,7 +112,8 @@
 									placeholder="Fecha Nacimiento"
 									value="<%=fechaN != null ? fechaN : ""%>"></td>
 								<td class="label">Dirección(*):</td>
-								<td><input type="text" name="direccion" size="30" placeholder="Dirección"
+								<td><input type="text" name="direccion" size="30"
+									placeholder="Dirección"
 									value="<%=direccion != null ? direccion : ""%>"></td>
 								<td class="label">Tel&eacute;fono(*):</td>
 								<td><input type="text" name="telefono" size="30"
@@ -127,7 +127,8 @@
 									placeholder="Celular"
 									value="<%=celular != null ? celular : ""%>"></td>
 								<td class="label">Correo(*):</td>
-								<td><input type="text" name="correo" size="30" placeholder="Correo electrónico"
+								<td><input type="text" name="correo" size="30"
+									placeholder="Correo electrónico"
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Estado (*):</td>
 								<td><select name="genero" class="estado" id="genero">
@@ -139,16 +140,14 @@
 							<tr>
 								<td class="label">Perfil(*):</td>
 								<td><select type="text" class="campo02" name="perfil">
-										<option><%=perfil != null ? perfil : "Seleccione"%></option>
+										<option>Seleccione...</option>
 										<%
 											for (Perfil perf : listaPerf) {
 										%>
+										<option
+											<%if ((perf.getNombrePerfil()).equals(perfil)) {%>
+											selected <%}%>><%=perf.getNombrePerfil()%></option>
 										<%
-											if (!(perf.getIdPerfil() + "-" + perf.getNombrePerfil()).equals(perfil)) {
-										%>
-										<option><%=perf.getIdPerfil() + "-" + perf.getNombrePerfil()%></option>
-										<%
-											}
 											}
 										%>
 								</select></td>
@@ -158,7 +157,7 @@
 					<td class="caja_01_bottom">&nbsp;</td>
 				</tr>
 				<tr>
-				<tr>
+					<tr>
 					<td class="caja_bottom_01"></td>
 					<td class="caja_01_bottom"></td>
 					<td class="caja_bottom_02"></td>
@@ -180,9 +179,9 @@
 			DAOPersonas dao = new DAOPersonas();
 			List<Persona> listaPersonas = nper.ListadoPersonasDocentes();
 		%>
-		<br> <br>
+					<br> <br>
 		<table width="85%" border="0" align="center" cellpadding="0"
-			cellspacing="0">
+						cellspacing="0">
 			<thead>
 				<tr>
 					<td class="caja_02_01">&nbsp;</td>
@@ -192,7 +191,7 @@
 				<tr>
 					<td class="caja_01_bottom">&nbsp;</td>
 					<td valign="top" class="caja_01_bottom"><table width="100%"
-							align="center" id="rounded-corner">
+										align="center" id="rounded-corner">
 							<thead>
 								<tr>
 									<th class="rounded" scope="col">Documento</th>
@@ -239,7 +238,9 @@
 							</tbody>
 						</table></td>
 				</tr>
-		</table>
+		
+					</table>
 		<jsp:include page="footer.jsp"></jsp:include>
-</body>
+
+				</body>
 </html>

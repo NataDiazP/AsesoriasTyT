@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
 	String mensaje = (String) request.getAttribute("mensaje");
-	String documento = request.getParameter("documento");
+	String documento = request.getParameter("IdPersona");
 	String tipo = request.getParameter("tipo");
 	String nombre = request.getParameter("nombre");
 	String apellido1 = request.getParameter("apellido1");
@@ -83,18 +83,18 @@
 							<tr>
 								<td class="label">Documento de Estudiante(*):</td>
 								<td><input type="text" name="IdPersona" size="20"
-								onkeypress="return validar(event)"
+									onkeypress="return validar(event)"
 									placeholder="Documento de Identidad"
 									value="<%=documento != null ? documento : ""%>"></td>
 								<td class="label">Tipo de Documento(*):</td>
-								<td><select name="tipoDoc" class="campo02" id="genero">
+								<td><select name="tipoDoc" class="campo02" id="tipo">
 										<option><%=tipo != null ? tipo : "Seleccione"%></option>
 										<option>CC</option>
 										<option>CE</option>
 										<option>TI</option>
 								</select></td>
 								<td class="label">Nombres(*):</td>
-								<td><input type="text" name="NombrePersona" size="20"
+								<td><input type="text" name="nombre" size="20"
 									placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
 							</tr>
 							<tr>
@@ -130,12 +130,12 @@
 							<tr>
 								<td class="label">Celular :</td>
 								<td><input type="text" name="celular" size="20"
-									onkeypress="return validar(event)"
-									placeholder="Celular"
+									onkeypress="return validar(event)" placeholder="Celular"
 									value="<%=celular != null ? celular : ""%>"></td>
 								<td class="label">Correo(*):</td>
 								<td><input type="text" name="correo" size="30"
-									placeholder="Correo electrónico" value="<%=correo != null ? correo : ""%>"></td>
+									placeholder="Correo electrónico"
+									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Plan de Estudios(*):</td>
 								<td><select name="plan" class="plan" id="plan">
 										<option><%=plan != null ? plan : "Seleccione..."%></option>
@@ -158,16 +158,13 @@
 								</select></td>
 								<td class="label">Perfil(*):</td>
 								<td><select type="text" class="campo02" name="perfil">
-										<option><%=perfil != null ? perfil : "Seleccione..."%></option>
+										<option>Seleccione...</option>
 										<%
 											for (Perfil perf : listaPerf) {
 										%>
+										<option <%if ((perf.getNombrePerfil()).equals(perfil)) {%>
+											selected <%}%>><%=perf.getNombrePerfil()%></option>
 										<%
-											if (!(perf.getIdPerfil() + "-" + perf.getNombrePerfil()).equals(perfil)) {
-										%>
-										<option><%=perf.getIdPerfil() + "-" + perf.getNombrePerfil()%></option>
-										<%
-											}
 											}
 										%>
 								</select></td>

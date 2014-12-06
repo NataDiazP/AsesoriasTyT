@@ -38,7 +38,7 @@ public class Docentes extends HttpServlet {
 		Persona Personas = new Persona();
 		String documento = request.getParameter("IdPersona");
 		String tipoDoc = request.getParameter("tipo");
-		String nombre = request.getParameter("NombrePersona");
+		String nombre = request.getParameter("nombre");
 		String apelldocumento1 = request.getParameter("apellido1");
 		String apelldocumento2 = request.getParameter("apellido2");
 		String genero = request.getParameter("genero");
@@ -47,8 +47,6 @@ public class Docentes extends HttpServlet {
 		String telefono = request.getParameter("telefono");
 		String celular = request.getParameter("celular");
 		String correo = request.getParameter("correo");
-		String planEstudio = request.getParameter("planEstudio");
-		String semestre = request.getParameter("semestre");
 		String estado = request.getParameter("estado");
 		String perfil = request.getParameter("perfil");
 
@@ -56,23 +54,19 @@ public class Docentes extends HttpServlet {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificaci�n de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Docentes.jsp");
 		} else {
-			
-			Persona Per = new Persona();
 			Personas.setNumeroIdentificacion(request.getParameter("IdPersona"));
-			Personas.setTipoIdentificacion(request.getParameter("IdPersona"));
-			Personas.setNombreCompleto(request.getParameter("IdPersona"));
-			Personas.setPrimerApellido(request.getParameter("IdPersona"));
-			Personas.setSegundoApellido(request.getParameter("IdPersona"));
-			Personas.setGenero(request.getParameter("IdPersona"));
-			Personas.setFechaNacimiento(request.getParameter("IdPersona"));
-			Personas.setDireccion(request.getParameter("IdPersona"));
-			Personas.setTelefono(request.getParameter("IdPersona"));
-			Personas.setCelular(request.getParameter("IdPersona"));
-			Personas.setCorreoElectronico(request.getParameter("IdPersona"));
-			Personas.setPlanEstudios_Estudiante(request.getParameter("IdPersona"));
-			Personas.setSemestre_Estudiante(request.getParameter("IdPersona"));
-			Personas.setEstado(request.getParameter("IdPersona"));
-			Personas.setPerfil(request.getParameter("IdPersona"));
+			Personas.setTipoIdentificacion(request.getParameter("tipo"));
+			Personas.setNombreCompleto(request.getParameter("nombre"));
+			Personas.setPrimerApellido(request.getParameter("apellido1"));
+			Personas.setSegundoApellido(request.getParameter("apellido2"));
+			Personas.setGenero(request.getParameter("genero"));
+			Personas.setFechaNacimiento(request.getParameter("fechaN"));
+			Personas.setDireccion(request.getParameter("direccion"));
+			Personas.setTelefono(request.getParameter("telefono"));
+			Personas.setCelular(request.getParameter("celular"));
+			Personas.setCorreoElectronico(request.getParameter("correo"));
+			Personas.setEstado(request.getParameter("estado"));
+			Personas.setPerfil(request.getParameter("perfil"));
 			
 		
 
@@ -130,7 +124,7 @@ public class Docentes extends HttpServlet {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Docentes.jsp");
 					} else {
-						int confirma = JOptionPane.showConfirmDialog(null, "�Desea actualizar la informaci�n de esta persona?");
+						int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta persona?");
 						if (confirma == JOptionPane.YES_OPTION) {
 							int resultadoModificar = new NPersona().Modificar(Personas);
 							request.setAttribute("cli", resultadoModificar);
