@@ -1,6 +1,7 @@
 package co.poli.asesoriastyt.control;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -18,6 +19,7 @@ import org.expressme.openid.OpenIdManager;
 
 import co.poli.asesoriastyt.dao.DAOPerfiles;
 import co.poli.asesoriastyt.model.GYUser;
+import co.poli.asesoriastyt.util.Conexion;
 
 
 
@@ -31,7 +33,8 @@ public class GYLoginServlet extends HttpServlet {
     static final String ATTR_ALIAS = "openid_alias";
     private OpenIdManager manager;
     private DAOPerfiles dao;
-
+    Connection c;
+    
     @Override
     public void init() throws ServletException {
         super.init();
@@ -57,24 +60,31 @@ public class GYLoginServlet extends HttpServlet {
 				String alias = (String) request.getSession().getAttribute(ATTR_ALIAS);
 				Authentication authentication = manager.getAuthentication(request, mac_key, alias);
 				storeAuthenticationData(authentication, request.getSession(false));
-				//dao=new PerfilesDAO();
+				dao=new DAOPerfiles();
+				c = new Conexion().getConnection();
 
 				 String email= (String) request.getSession().getAttribute("email");
 				 String correo = "elpoli.edu.co"; 
-				 boolean existe=false;
+				 int existe=0;
 				 
-				 /*existe=dao.consultarUsuario(email);
+				 existe=dao.consultarUsuario(c,email);
+				 
 				 
 
-				 if (existe)
+				 if (existe>0)
 				 {
+					 if(existe==1)
 					 response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage"));
+					 if(existe==2)
+						 response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage2"));
+					 	if(existe==3)
+					 		 response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage2"));
 				 }
 				 else 
 				 {
 					 request.getSession().invalidate();
 					 response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginErrorPage"));
-				 }*/
+				 }
 				 
 				 
 				

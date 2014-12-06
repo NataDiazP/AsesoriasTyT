@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>AsesoriasTyT</display-name>
+  <context-param>
+    <param-name>loginSuccessPage</param-name>
+    <param-value>/index.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>loginSuccessPage2</param-name>
+    <param-value>/index2.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>loginSuccessPage3</param-name>
+    <param-value>/index3.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>loginErrorPage</param-name>
+    <param-value>/error.jsp</param-value>
+  </context-param>
+  <context-param>
+    <param-name>webDomainName</param-name>
+    <param-value>http://localhost:8080/</param-value>
+  </context-param>
+  <context-param>
+    <param-name>warFileName</param-name>
+    <param-value>AsesoriasTyT</param-value>
+  </context-param>
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>co.poli.asesoriastyt.control.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>gylogin</servlet-name>
+    <servlet-class>co.poli.asesoriastyt.control.GYLoginServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gylogin</servlet-name>
+    <url-pattern>/gylogin</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

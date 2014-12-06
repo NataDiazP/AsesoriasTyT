@@ -13,6 +13,7 @@
 <html>
 <head>
 <link href="./css/generales.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/Javascript.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
 	String mensaje = (String) request.getAttribute("mensaje");
@@ -35,7 +36,7 @@
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Bloques</title>
 </head>
-<body>
+<body onload="borrarHistorial()">
 	<br>
 	<br>
 	<br>

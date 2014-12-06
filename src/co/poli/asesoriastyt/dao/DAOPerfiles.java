@@ -20,6 +20,27 @@ import co.poli.asesoriastyt.model.Perfil;
  */
 public class DAOPerfiles {
 	
+	public int consultarUsuario(Connection c,String correo)
+	{
+		int bandera=0;
+	try {
+			
+		PreparedStatement preparedStatement = c.prepareStatement("select * from personas where Correo_Persona=?");
+		preparedStatement.setString(1, correo);
+		ResultSet rs = preparedStatement.executeQuery();
+		
+		if (rs.next()) {
+			bandera=rs.getInt(15);
+		
+		}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bandera;
+		
+	}
+	
 	public int Crear(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Crear();
 		int resultadoCrear = 0;
