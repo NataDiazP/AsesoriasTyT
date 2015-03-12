@@ -30,7 +30,7 @@ if (history.forward(1)) {
 
  <%
 
- if (session.getAttribute("gyUser") != null && !session.getAttribute("gyUser").equals("")) 
+ if (session.getAttribute("googlePlusUser") != null && !session.getAttribute("googlePlusUser").equals("")) 
 	{
 	} 	
 else 
