@@ -88,6 +88,8 @@
 <!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="http://groups.google.com/forum/"  target="_blank">Foro</a></h3>
 <!--Inicio opción desplegable-->
+<h3 class="menuheader Noexpandable"><a href="AcercaDe.jsp"  target="datos">Acerca de</a></h3>
+<!--Inicio opción desplegable-->
 <h3 class="menuheader Noexpandable"><a href="Login.jsp" target="datos">Salida Segura</a></h3>
 <!--Fin opción NO desplegable-->
 

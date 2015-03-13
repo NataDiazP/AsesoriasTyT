@@ -49,7 +49,7 @@ public class Asesorias extends HttpServlet {
 		String estado = request.getParameter("estado");
 
 		if (id.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificaciÃ³n de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificaciÃ³n de la asesorï¿½a.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Asesorias.jsp");
 		} else {
 			Asesorias.setIdAsesoria(id);
@@ -71,7 +71,8 @@ public class Asesorias extends HttpServlet {
 					while (r.next()) {
 						if (id.equals(Integer.toString(r.getInt(1)))) {
 							registroExiste = true;
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificaciÃ³n de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificaciÃ³n de la asesorï¿½a", "Advertencia - AsesoriasTyT",
+									JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 						}
 					}
@@ -81,13 +82,20 @@ public class Asesorias extends HttpServlet {
 
 				if (!registroExiste) {
 					if (docente.equals("")) {
-						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesorï¿½a.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 					} else {
 						int resultado = new NAsesoria().Crear(Asesorias);
 						try {
 							response.sendRedirect("Asesorias.jsp");
-							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Se guardï¿½ correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							if (SMTPConfig.sendMail("Asunto del Mensaje", " Cuerpo del Mensaje.", "destino@gmail.com")) {
+
+								System.out.println("envÃ­o Correcto");
+
+							} else {
+								System.out.println("envÃ­o Fallido");
+							}
 							request.setAttribute("cli", resultado);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -118,7 +126,7 @@ public class Asesorias extends HttpServlet {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Asesorias.jsp");
 					} else {
-						int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoria?");
+						int confirma = JOptionPane.showConfirmDialog(null, "ï¿½Desea actualizar la informaciï¿½n de esta asesoria?");
 						if (confirma == JOptionPane.YES_OPTION) {
 							int resultadoModificar = new NAsesoria().Modificar(Asesorias);
 							request.setAttribute("cli", resultadoModificar);
@@ -134,7 +142,7 @@ public class Asesorias extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaciÃ³n de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaciÃ³n de la asesorï¿½a", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -168,7 +176,7 @@ public class Asesorias extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					response.sendRedirect("Asesorias.jsp");
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaciÃ³n de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaciÃ³n de la asesorï¿½a", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -189,11 +197,11 @@ public class Asesorias extends HttpServlet {
 					e.printStackTrace();
 				}
 				if (registroExiste == true) {
-					int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea eliminar la información de esta asesoría?");
+					int confirma = JOptionPane.showConfirmDialog(null, "Â¿Desea eliminar la informaciï¿½n de esta asesorï¿½a?");
 					if (confirma == JOptionPane.YES_OPTION) {
 						int resultadoEliminar = new NAsesoria().Eliminar(Asesorias);
 						request.setAttribute("cli", resultadoEliminar);
-						JOptionPane.showMessageDialog(null, "Se eliminó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se eliminï¿½ correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 						response.sendRedirect("Asesorias.jsp");
 					} else if (confirma == JOptionPane.NO_OPTION) {
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
@@ -203,7 +211,7 @@ public class Asesorias extends HttpServlet {
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 					}
 				} else if (!registroExiste) {
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaciï¿½n de la asesorï¿½a", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 				}
 			}

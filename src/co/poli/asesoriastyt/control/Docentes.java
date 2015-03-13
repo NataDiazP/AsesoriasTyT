@@ -51,7 +51,7 @@ public class Docentes extends HttpServlet {
 		String perfil = request.getParameter("perfil");
 
 		if (documento.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificaciï¿½n de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Docentes.jsp");
 		} else {
 			Personas.setNumeroIdentificacion(request.getParameter("IdPersona"));

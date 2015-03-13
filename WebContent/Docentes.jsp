@@ -86,9 +86,6 @@
 										<option <%if ("CE".equals(tipo)) {%> selected <%}%>>CE</option>
 										<option <%if ("TI".equals(tipo)) {%> selected <%}%>>TI</option>
 								</select></td>
-
-								</select>
-								</td>
 								<td class="label">Nombres(*):</td>
 								<td><input type="text" name="nombre" size="20"
 									placeholder="Nombres" value="<%=nombre != null ? nombre : ""%>"></td>
@@ -119,7 +116,7 @@
 									placeholder="Dirección"
 									value="<%=direccion != null ? direccion : ""%>"></td>
 								<td class="label">Tel&eacute;fono(*):</td>
-								<td><input type="text" name="telefono" size="30"
+								<td><input type="text" name="telefono" size="20"
 									onkeypress="return validar(event)" placeholder="Teléfono"
 									value="<%=telefono != null ? telefono : ""%>"></td>
 							</tr>
@@ -134,7 +131,7 @@
 									placeholder="Correo electrónico"
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Estado (*):</td>
-								<td><select name="genero" class="estado" id="genero">
+								<td><select name="estado" class="campo02">
 										<option>Seleccione...</option>
 										<option <%if ("Activo".equals(estado)) {%> selected <%}%>>Activo</option>
 										<option <%if ("Inactivo".equals(estado)) {%> selected <%}%>>Inactivo</option>

@@ -4,7 +4,7 @@
 body {
 	margin: 0;
 	overflow-y:hidden;
-	
+
 }
 
 #cabezote  {
@@ -13,12 +13,12 @@ body {
 	height:80px;
 	width: 100%;
 
-} 
+}
 
 #contenedor {
 	height:100%;
 	width: 100%;
-	
+
 }
 
 #contenido {
@@ -36,10 +36,8 @@ body {
 
 #datos {
 	height: 100%;
-	margin: 0;
 	padding:0;
 	width:100%;
-	background-color:#FF0000;
 }
 
 
@@ -52,8 +50,4 @@ body {
 	float:left;
 	margin: 0;
 }
-
-
-
-
 
