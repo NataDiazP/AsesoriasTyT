@@ -82,7 +82,7 @@ public class Asesorias extends HttpServlet {
 
 				if (!registroExiste) {
 					if (docente.equals("")) {
-						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesor�a.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 					} else {
 						int resultado = new NAsesoria().Crear(Asesorias);
