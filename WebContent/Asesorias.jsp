@@ -149,6 +149,25 @@
             </tr>
     </thead>
 	<tbody>
+		<%
+									for (Asesoria as : listaAsesoriaes) {
+								%>
+								<tr align="center">
+									<td><%=as.getIdAsesoria()%></td>
+									<td><%=as.getDocente()%></td>
+									<td><%=as.getAsignatura()%></td>
+									<td><%=as.getFecha()%></td>
+									<td><%=as.getHoraI()%></td>
+									<td><%=as.getHoraF()%></td>
+									<td><%=as.getLugar()%></td>
+									<td><%=as.getCupos()%></td>
+									<td><%=as.getObservaciones()%></td>
+									<td><%=as.getEstado()%></td>
+									
+								</tr>
+								<%
+									}
+								%>
 		
 			
 	</tbody>

@@ -42,8 +42,7 @@
  	<br>
 		<h1>Bienvenidos</h1>
 		<br>
-		<a href="gylogin?op=Google"><img src="./images/boton_correo.jpg" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<p><a href="http://code.google.com/p/jopenid/" target="_blank"></a></p>		
+		<a href="login"><img src="./images/boton_correo.jpg"  /></a>	
 	</div>
 </body>
 </html>

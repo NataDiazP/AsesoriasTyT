@@ -29,7 +29,7 @@
 <br/><br/>
 No tienes permisos para acceder a la aplicación
 <br/><br/><br/><br/>
-<a href="gylogin?op=logout">
+<a href="./logout">
 <div>
 Vuelta al login
 </div>

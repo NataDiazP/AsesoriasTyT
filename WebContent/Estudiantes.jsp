@@ -86,11 +86,11 @@
 									placeholder="Documento de Identidad"
 									value="<%=documento != null ? documento : ""%>"></td>
 								<td class="label">Tipo de Documento(*):</td>
-								<td><select name="tipoDoc" class="campo02" id="tipo">
-										<option><%=tipo != null ? tipo : "Seleccione"%></option>
-										<option>CC</option>
-										<option>CE</option>
-										<option>TI</option>
+								<td><select name="tipo" class="campo02" id="genero">
+										<option>Seleccione...</option>
+										<option <%if ("CC".equals(tipo)) {%> selected <%}%>>CC</option>
+										<option <%if ("CE".equals(tipo)) {%> selected <%}%>>CE</option>
+										<option <%if ("TI".equals(tipo)) {%> selected <%}%>>TI</option>
 								</select></td>
 								<td class="label">Nombres(*):</td>
 								<td><input type="text" name="nombre" size="20"
@@ -155,7 +155,7 @@
 									placeholder="Semestre actual"
 									value="<%=semestre != null ? semestre : ""%>"></td>
 								<td class="label">Estado (*):</td>
-								<td><select name="genero" class="estado" id="genero">
+								<td><select name="estado" class="campo02">
 										<option><%=estado != null ? estado : "Seleccione..."%></option>
 										<option>Activo</option>
 										<option>Inactivo</option>
