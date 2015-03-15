@@ -77,8 +77,6 @@
 
 </head>
 <body>
-
-
 	<div class="arrowlistmenu">
 		<h3 class="menuheader Noexpandable">
 			<a href="ListadoAsesorias.jsp" target="datos">Inicio</a>
@@ -102,8 +100,6 @@
 			<a href="Login.jsp" target="datos">Salida Segura</a>
 		</h3>
 		<!--Fin opción NO desplegable-->
-
 	</div>
-
 </body>
 </html>

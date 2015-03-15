@@ -27,9 +27,9 @@ body {
 }
 
 #footer {
-width: 960px;
-height: 150px;
-margin:100px auto 0;
+	width: 960px;
+	height: 150px;
+	margin:100px auto 0;
 }
 
 #gl_info {
@@ -488,14 +488,12 @@ margin:100px auto 0;
 }
 
 .caja_01_01{
-	background-image: url(../images/caja_01_01.png);
 	background-repeat: no-repeat;
 	height: 32px;
 	width: 6px;
 }
 
 .caja_01_02{
-	background-image: url(../images/caja_01_02.png);
 	background-repeat: no-repeat;
 	height: 32px;
 	width: 6px;
@@ -506,14 +504,12 @@ margin:100px auto 0;
 }
 
 .caja_bottom_01{
-	background-image: url(../images/caja_bottom_01.png);
 	background-repeat: no-repeat;
 	height: 6px;
 	width: 6px;
 }
 
 .caja_bottom_02{
-	background-image: url(../images/caja_bottom_02.png);
 	background-repeat: no-repeat;
 	height: 6px;
 	width: 6px;
@@ -530,14 +526,12 @@ margin:100px auto 0;
 
 
 .caja_02_01{
-	background-image: url(../images/caja_02_01.png);
 	background-repeat: no-repeat;
 	height: 32px;
 	width: 6px;
 }
 
 .caja_02_02{
-	background-image: url(../images/caja_02_02.png);
 	background-repeat: no-repeat;
 	height: 32px;
 	width: 6px;
@@ -553,14 +547,12 @@ margin:100px auto 0;
 }
 
 .caja_03_01{
-	background-image: url(../images/caja_02_01.png);
 	background-repeat: no-repeat;
 	height: 9px;
 	width: 6px;
 }
 
 .caja_03_02{
-	background-image: url(../images/caja_02_02.png);
 	background-repeat: no-repeat;
 	height: 9px;
 	width: 6px;
@@ -623,9 +615,6 @@ margin:100px auto 0;
 	width: 320px;
 }
 
-
-
-
 .celda_01{
 	background-color:#CCCCCC;
 	color:#000;
@@ -658,7 +647,6 @@ margin:100px auto 0;
 .link:hover {
 	text-decoration:underline;
 }
-
 
 .textarea01 {
 	border:1px solid #C5C5C5;
@@ -741,7 +729,6 @@ margin:100px auto 0;
 	font-weight:lighter;
 }
 
-
 .tl03{
 	color: #666;
 	font-family: "Trebuchet MS";
@@ -787,7 +774,6 @@ margin:100px auto 0;
 	font-weight:lighter;
 	text-decoration:none;
 }
-
 
 .tx01{
 	color: #000;
@@ -846,6 +832,3 @@ margin:100px auto 0;
     -webkit-border-radius: 0;
 }
 /* fin scrollbar*/
-
-
-

@@ -1,5 +1,6 @@
 <%@page import="co.poli.asesoriastyt.negocio.NPerfiles"%>
-<%@page import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
+<%@page
+	import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
 <%@page import="java.util.List"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOPerfiles"%>
 <%@page import="co.poli.asesoriastyt.model.Perfil"%>
@@ -26,10 +27,10 @@
 <title>Gesti&oacute;n de perfiles</title>
 </head>
 <body>
-<br>
-<br>
-<br>
-<div id="ruta">
+	<br>
+	<br>
+	<br>
+	<div id="ruta">
 		<h1>Gesti&oacute;n de Perfiles</h1>
 		<br>
 		<form name="inicio" action="./Perfiles" method="post">
@@ -48,10 +49,11 @@
 								<td class="label">C&oacute;digo Perfil(*):</td>
 								<td><input type="text" name="IdPerfil" size="20"
 									maxlength="5" onkeypress="return validar(event)"
-									placeholder="código"
+									placeholder="Código"
 									value="<%=IdPerfil != null ? IdPerfil : ""%>"></td>
 								<td class="label">Nombre Perfil(*):</td>
-								<td><input type="text" name="NombrePerfil" size="30" placeholder="nombre"
+								<td><input type="text" name="NombrePerfil" size="30"
+									placeholder="Nombre"
 									value="<%=NombrePerfil != null ? NombrePerfil : ""%>"></td>
 							</tr>
 						</table>
@@ -115,6 +117,6 @@
 						</table></td>
 				</tr>
 		</table>
- <jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

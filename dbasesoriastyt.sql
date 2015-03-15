@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2014 a las 05:03:59
+-- Tiempo de generación: 12-03-2015 a las 19:26:14
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `asesorias`
 --
 
+DROP TABLE IF EXISTS `asesorias`;
 CREATE TABLE IF NOT EXISTS `asesorias` (
   `Id_Asesoria` varchar(5) NOT NULL,
   `Docente_Asesoria` varchar(15) NOT NULL,
@@ -57,18 +58,12 @@ CREATE TABLE IF NOT EXISTS `asesorias` (
 -- Estructura de tabla para la tabla `asignaturas`
 --
 
+DROP TABLE IF EXISTS `asignaturas`;
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `Codigo_Asignatura` varchar(10) NOT NULL,
   `Nombre_Asignatura` varchar(255) NOT NULL,
   PRIMARY KEY (`Codigo_Asignatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `asignaturas`
---
-
-INSERT INTO `asignaturas` (`Codigo_Asignatura`, `Nombre_Asignatura`) VALUES
-('ING00812', 'Matemáticas');
 
 -- --------------------------------------------------------
 
@@ -76,6 +71,7 @@ INSERT INTO `asignaturas` (`Codigo_Asignatura`, `Nombre_Asignatura`) VALUES
 -- Estructura de tabla para la tabla `aulas`
 --
 
+DROP TABLE IF EXISTS `aulas`;
 CREATE TABLE IF NOT EXISTS `aulas` (
   `Id_Aula` varchar(10) NOT NULL,
   `Id_Bloque_Aula` varchar(4) NOT NULL,
@@ -89,20 +85,13 @@ CREATE TABLE IF NOT EXISTS `aulas` (
 --       `bloques` -> `Id_Bloque`
 --
 
---
--- Volcado de datos para la tabla `aulas`
---
-
-INSERT INTO `aulas` (`Id_Aula`, `Id_Bloque_Aula`) VALUES
-('305', 'P13'),
-('204', 'P38');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `bloques`
 --
 
+DROP TABLE IF EXISTS `bloques`;
 CREATE TABLE IF NOT EXISTS `bloques` (
   `Id_Bloque` varchar(4) NOT NULL,
   `Encargado_Bloque` varchar(3) NOT NULL,
@@ -116,22 +105,13 @@ CREATE TABLE IF NOT EXISTS `bloques` (
 --       `encargados_bloques` -> `Id_Encargado_Bloque`
 --
 
---
--- Volcado de datos para la tabla `bloques`
---
-
-INSERT INTO `bloques` (`Id_Bloque`, `Encargado_Bloque`) VALUES
-('P40', '1'),
-('P13', '2'),
-('P36', '2'),
-('P38', '2');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `encargados_bloques`
 --
 
+DROP TABLE IF EXISTS `encargados_bloques`;
 CREATE TABLE IF NOT EXISTS `encargados_bloques` (
   `Id_Encargado_Bloque` varchar(3) NOT NULL,
   `Correo_Encargado_Bloque` varchar(255) NOT NULL,
@@ -139,23 +119,17 @@ CREATE TABLE IF NOT EXISTS `encargados_bloques` (
   UNIQUE KEY `Encargados_Bloques_UN` (`Correo_Encargado_Bloque`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `encargados_bloques`
---
-
-INSERT INTO `encargados_bloques` (`Id_Encargado_Bloque`, `Correo_Encargado_Bloque`) VALUES
-('1', 'natadiaz@elpoli.edu.co'),
-('2', 'natavelez@elpoli.edu.co');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `estudiantes_asesoria`
 --
 
+DROP TABLE IF EXISTS `estudiantes_asesoria`;
 CREATE TABLE IF NOT EXISTS `estudiantes_asesoria` (
   `Id_Estudiante` varchar(15) NOT NULL,
   `Id_Asesoria` varchar(5) NOT NULL,
+  `Asistencia_Asesoria` varchar(2) NOT NULL,
   PRIMARY KEY (`Id_Estudiante`,`Id_Asesoria`),
   KEY `Estudiantes_Asesoria_Ase_FK` (`Id_Asesoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -174,6 +148,7 @@ CREATE TABLE IF NOT EXISTS `estudiantes_asesoria` (
 -- Estructura de tabla para la tabla `perfiles`
 --
 
+DROP TABLE IF EXISTS `perfiles`;
 CREATE TABLE IF NOT EXISTS `perfiles` (
   `Id_Perfil` int(11) NOT NULL,
   `Nombre_Perfil` varchar(20) NOT NULL,
@@ -181,21 +156,13 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
   UNIQUE KEY `Perfiles__UN` (`Nombre_Perfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `perfiles`
---
-
-INSERT INTO `perfiles` (`Id_Perfil`, `Nombre_Perfil`) VALUES
-(1, 'Administrador'),
-(2, 'Docente'),
-(3, 'Estudiante');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `personas`
 --
 
+DROP TABLE IF EXISTS `personas`;
 CREATE TABLE IF NOT EXISTS `personas` (
   `NumDoc_Persona` varchar(15) NOT NULL,
   `Tipo_Identificacion` varchar(3) NOT NULL,
@@ -232,6 +199,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 -- Estructura de tabla para la tabla `programaciones_academicas`
 --
 
+DROP TABLE IF EXISTS `programaciones_academicas`;
 CREATE TABLE IF NOT EXISTS `programaciones_academicas` (
   `Id_ProgAcademica` varchar(4) NOT NULL,
   `Docente_ProgAcademica` varchar(15) NOT NULL,
@@ -242,6 +210,8 @@ CREATE TABLE IF NOT EXISTS `programaciones_academicas` (
   `HoraInicio_Asignatura` varchar(10) NOT NULL,
   `HoraFin_Asignatura` varchar(10) NOT NULL,
   `Aula_Clase` varchar(10) NOT NULL,
+  `Semestre_ProgAcademica` varchar(2) NOT NULL,
+  `Ano_ProgAcademica` varchar(4) NOT NULL,
   PRIMARY KEY (`Id_ProgAcademica`),
   KEY `AsignaturaPA_FK` (`Asignatura`),
   KEY `Aula_Clase_FK` (`Aula_Clase`),
@@ -264,6 +234,7 @@ CREATE TABLE IF NOT EXISTS `programaciones_academicas` (
 -- Estructura de tabla para la tabla `tipos_identificacion`
 --
 
+DROP TABLE IF EXISTS `tipos_identificacion`;
 CREATE TABLE IF NOT EXISTS `tipos_identificacion` (
   `Id_Identificacion` varchar(3) NOT NULL,
   `Nombre_Identificacion` varchar(25) NOT NULL,

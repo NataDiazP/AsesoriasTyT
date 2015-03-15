@@ -24,7 +24,7 @@
 	}
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
-<title>Gesti&oacute;n de Encagados de Bloque</title>
+<title>Gesti&oacute;n de Encargados de Bloque</title>
 
 </head>
 <body>
@@ -32,7 +32,7 @@
 	<br>
 	<br>
 	<div id="ruta">
-		<h1>Gesti&oacute;n de Encagados de Bloque</h1>
+		<h1>Gesti&oacute;n de Encargados de Bloque</h1>
 		<br>
 		<form name="inicio" action="./EncargadosBloques" method="post">
 			<table width="85%" border="0" align="center" cellpadding="0"

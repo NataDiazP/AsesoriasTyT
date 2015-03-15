@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,106 +11,128 @@
 <script type="text/javascript" src="./js/ddaccordion.js"></script>
 
 <script type="text/javascript">
-    ddaccordion.init({ //top level headers initialization
-        headerclass: "expandable", //Shared CSS class name of headers group that are expandable
-        contentclass: "categoryitems", //Shared CSS class name of contents group
-        revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
-        mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-        collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
-        defaultexpanded: [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
-        onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
-        animatedefault: false, //Should contents open by default be animated into view?
-        persiststate: true, //persist state of opened contents within browser session?
-        toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
-        togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
-        animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-        oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
-            //do nothing
-        },
-        onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
-            //do nothing
-        }
-    })
-    
-    ddaccordion.init({ //2nd level headers initialization
-        headerclass: "subexpandable", //Shared CSS class name of sub headers group that are expandable
-        contentclass: "subcategoryitems", //Shared CSS class name of sub contents group
-        revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
-        mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-        collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
-        defaultexpanded: [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
-        onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
-        animatedefault: false, //Should contents open by default be animated into view?
-        persiststate: true, //persist state of opened contents within browser session?
-        toggleclass: ["opensubheader", "closedsubheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
-        togglehtml: ["none", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
-        animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-        oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
-            //do nothing
-        },
-        onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
-            //do nothing
-        }
-    })
-	
+	ddaccordion.init({ //top level headers initialization
+		headerclass : "expandable", //Shared CSS class name of headers group that are expandable
+		contentclass : "categoryitems", //Shared CSS class name of contents group
+		revealtype : "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
+		mouseoverdelay : 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+		collapseprev : true, //Collapse previous content (so only one open at any time)? true/false 
+		defaultexpanded : [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+		onemustopen : false, //Specify whether at least one header should be open always (so never all headers closed)
+		animatedefault : false, //Should contents open by default be animated into view?
+		persiststate : true, //persist state of opened contents within browser session?
+		toggleclass : [ "", "openheader" ], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+		togglehtml : [ "prefix", "", "" ], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+		animatespeed : "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+		oninit : function(headers, expandedindices) { //custom code to run when headers have initalized
+			//do nothing
+		},
+		onopenclose : function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
+			//do nothing
+		}
+	})
+
+	ddaccordion.init({ //2nd level headers initialization
+		headerclass : "subexpandable", //Shared CSS class name of sub headers group that are expandable
+		contentclass : "subcategoryitems", //Shared CSS class name of sub contents group
+		revealtype : "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
+		mouseoverdelay : 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+		collapseprev : true, //Collapse previous content (so only one open at any time)? true/false 
+		defaultexpanded : [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+		onemustopen : false, //Specify whether at least one header should be open always (so never all headers closed)
+		animatedefault : false, //Should contents open by default be animated into view?
+		persiststate : true, //persist state of opened contents within browser session?
+		toggleclass : [ "opensubheader", "closedsubheader" ], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+		togglehtml : [ "none", "", "" ], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+		animatespeed : "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+		oninit : function(headers, expandedindices) { //custom code to run when headers have initalized
+			//do nothing
+		},
+		onopenclose : function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
+			//do nothing
+		}
+	})
+
 	ddaccordion.init({ //3nd level headers initialization
-        headerclass: "sub2expandable", //Shared CSS class name of sub headers group that are expandable
-        contentclass: "sub2categoryitems", //Shared CSS class name of sub contents group
-        revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
-        mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-        collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
-        defaultexpanded: [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
-        onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
-        animatedefault: false, //Should contents open by default be animated into view?
-        persiststate: true, //persist state of opened contents within browser session?
-        toggleclass: ["open2subheader", "closed2subheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
-        togglehtml: ["none", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
-        animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-        oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
-            //do nothing
-        },
-        onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
-            //do nothing
-        }
-    })
-    </script>
- 
+		headerclass : "sub2expandable", //Shared CSS class name of sub headers group that are expandable
+		contentclass : "sub2categoryitems", //Shared CSS class name of sub contents group
+		revealtype : "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
+		mouseoverdelay : 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+		collapseprev : true, //Collapse previous content (so only one open at any time)? true/false 
+		defaultexpanded : [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+		onemustopen : false, //Specify whether at least one header should be open always (so never all headers closed)
+		animatedefault : false, //Should contents open by default be animated into view?
+		persiststate : true, //persist state of opened contents within browser session?
+		toggleclass : [ "open2subheader", "closed2subheader" ], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+		togglehtml : [ "none", "", "" ], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+		animatespeed : "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+		oninit : function(headers, expandedindices) { //custom code to run when headers have initalized
+			//do nothing
+		},
+		onopenclose : function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
+			//do nothing
+		}
+	})
+</script>
+
 </head>
 <body>
 
 
-<div class="arrowlistmenu">
-<h3 class="menuheader Noexpandable"><a href="Bienvenida.jsp" target="datos">Inicio</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader expandable">Configuraciones</h3>
-<ul class="categoryitems">
-    <li><a href="Perfiles.jsp" target="datos">Administrar Perfiles</a></li>
-    <li><a href="EncargadoBloque.jsp" target="datos">Administrar Encargados de Bloques</a></li>
-    <li><a href="Bloques.jsp" target="datos">Administrar Bloques</a></li>
-    <li><a href="Aulas.jsp" target="datos">Administrar Aulas</a></li>
-    <li><a href="Asignaturas.jsp" target="datos">Administrar Asignaturas</a></li>
-</ul>
-<!--Fin opción desplegable-->
+	<div class="arrowlistmenu">
+		<h3 class="menuheader Noexpandable">
+			<a href="Bienvenida.jsp" target="datos">Inicio</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader expandable">Configuraciones</h3>
+		<ul class="categoryitems">
+			<li><a href="Perfiles.jsp" target="datos">Administrar
+					Perfiles</a></li>
+			<li><a href="EncargadoBloque.jsp" target="datos">Administrar
+					Encargados de Bloques</a></li>
+			<li><a href="Bloques.jsp" target="datos">Administrar Bloques</a></li>
+			<li><a href="Aulas.jsp" target="datos">Administrar Aulas</a></li>
+			<li><a href="Asignaturas.jsp" target="datos">Administrar
+					Asignaturas</a></li>
+		</ul>
+		<!--Fin opción desplegable-->
 
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="Docentes.jsp"  target="datos">Docentes</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="Estudiantes.jsp" target="datos">Estudiantes</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n Acad&eacute;mica</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="http://asesoriastyt.foro-colombia.net/"  target="_blank">Foro</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="#"  target="datos">Reportes</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="Acerca.jsp"  target="datos">Acerca de</a></h3>
-<!--Inicio opción desplegable-->
-<h3 class="menuheader Noexpandable"><a href="Login.jsp" target="_blank">Salida Segura</a></h3>
-<!--Fin opción NO desplegable-->
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="Docentes.jsp" target="datos">Docentes</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="Estudiantes.jsp" target="datos">Estudiantes</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n
+				Acad&eacute;mica</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="http://asesoriastyt.foro-colombia.net/" target="_blank">Foro</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="#" target="datos">Reportes</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="Acerca.jsp" target="datos">Acerca de</a>
+		</h3>
+		<!--Inicio opción desplegable-->
+		<h3 class="menuheader Noexpandable">
+			<a href="Login.jsp" target="_blank">Salida Segura</a>
+		</h3>
+		<!--Fin opción NO desplegable-->
 
-</div>
+	</div>
 
 </body>
 </html>

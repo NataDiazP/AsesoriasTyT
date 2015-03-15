@@ -3,8 +3,7 @@
 
 body {
 	margin: 0;
-	overflow-y:hidden;
-
+	overflow-y: scroll;
 }
 
 #cabezote  {
@@ -12,17 +11,14 @@ body {
 	border-top: 6px solid #87BD8E;
 	height:80px;
 	width: 100%;
-
 }
 
 #contenedor {
 	height:100%;
 	width: 100%;
-
 }
 
 #contenido {
-	background-image: url(../images/bg_gral.png);
 	background-repeat:  repeat-x;
 	background-position: top;
 	color: #999;
@@ -40,9 +36,7 @@ body {
 	width:100%;
 }
 
-
 #menu {
-	background-image: url(../images/bg_menu.png);
 	background-repeat:  repeat-y;
 	background-position: left;
 	height: 100%;
@@ -50,4 +44,3 @@ body {
 	float:left;
 	margin: 0;
 }
-

@@ -80,13 +80,13 @@
 					<td valign="top" class="caja_01_bottom">
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
-								<td class="label">Documento de Estudiante(*):</td>
+								<td class="label">Documento de Identidad(*):</td>
 								<td><input type="text" name="IdPersona" size="20"
 									onkeypress="return validar(event)"
 									placeholder="Documento de Identidad"
 									value="<%=documento != null ? documento : ""%>"></td>
 								<td class="label">Tipo de Documento(*):</td>
-								<td><select name="tipo" class="campo02" id="genero">
+								<td><select name="tipo" class="campo02" id="tipo">
 										<option>Seleccione...</option>
 										<option <%if ("CC".equals(tipo)) {%> selected <%}%>>CC</option>
 										<option <%if ("CE".equals(tipo)) {%> selected <%}%>>CE</option>
@@ -101,7 +101,7 @@
 								<td><input type="text" name="apellido1" size="20"
 									placeholder="Primer Apellido"
 									value="<%=apellido1 != null ? apellido1 : ""%>"></td>
-								<td class="label">Segundo Apellido(*):</td>
+								<td class="label">Segundo Apellido :</td>
 								<td><input type="text" name="apellido2" size="30"
 									placeholder="Segundo Apellido"
 									value="<%=apellido2 != null ? apellido2 : ""%>"></td>
@@ -206,7 +206,7 @@
 			<thead>
 				<tr>
 					<td class="caja_02_01">&nbsp;</td>
-					<td class="caja_02_top">Lista de Asesorías</td>
+					<td class="caja_02_top">Lista de Estudiantes</td>
 					<td class="caja_02_02">&nbsp;</td>
 				</tr>
 				<tr>

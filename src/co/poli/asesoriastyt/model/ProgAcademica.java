@@ -18,6 +18,8 @@ public class ProgAcademica {
 	private String HoraIniAsigProgAcademica;
 	private String HoraFinAsigProgAcademica;
 	private String AulaClaseProgAcademica;
+	private String SemestreProgAcademica;
+	private String AnoProgAcademica;
 
 	/**
 	 * @return the idProgAcademica
@@ -152,5 +154,33 @@ public class ProgAcademica {
 	 */
 	public void setAulaClaseProgAcademica(String aulaClaseProgAcademica) {
 		AulaClaseProgAcademica = aulaClaseProgAcademica;
+	}
+
+	/**
+	 * @return the semestreProgAcademica
+	 */
+	public String getSemestreProgAcademica() {
+		return SemestreProgAcademica;
+	}
+
+	/**
+	 * @param semestreProgAcademica the semestreProgAcademica to set
+	 */
+	public void setSemestreProgAcademica(String semestreProgAcademica) {
+		SemestreProgAcademica = semestreProgAcademica;
+	}
+
+	/**
+	 * @return the anoProgAcademica
+	 */
+	public String getAnoProgAcademica() {
+		return AnoProgAcademica;
+	}
+
+	/**
+	 * @param anoProgAcademica the anoProgAcademica to set
+	 */
+	public void setAnoProgAcademica(String anoProgAcademica) {
+		AnoProgAcademica = anoProgAcademica;
 	}
 }

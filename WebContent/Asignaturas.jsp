@@ -53,11 +53,13 @@
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
 								<td class="label">C&oacute;digo de Asignatura(*):</td>
-								<td><input type="text" name="codigo" size="20" maxlength="10"
-									placeholder="Código Asignatura" value="<%=idAsignatura != null ? idAsignatura : ""%>"></td>
+								<td><input type="text" name="codigo" size="20"
+									maxlength="10" placeholder="Código"
+									value="<%=idAsignatura != null ? idAsignatura : ""%>"></td>
 								<td class="label">Nombre Asignatura(*):</td>
-								<td><input type="text" name="nombre" size="30" placeholder="Asignatura"
-								value="<%=nombreAsignatura != null ? nombreAsignatura : ""%>"></td>
+								<td><input type="text" name="nombre" size="30"
+									placeholder="Nombre"
+									value="<%=nombreAsignatura != null ? nombreAsignatura : ""%>"></td>
 							</tr>
 						</table>
 					</td>

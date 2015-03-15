@@ -1,3 +1,8 @@
+.asistir{
+	cursor: pointer;
+	height: 26px;	
+}
+
 #rounded-corner{
 	border-collapse: collapse;
 	font-family: "Trebuchet MS";

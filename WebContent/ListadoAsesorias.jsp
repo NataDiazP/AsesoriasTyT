@@ -51,7 +51,7 @@
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>
-								<td>+</td>
+								<td><img src="./images/plus.png" alt="Asistir a asesoría" class="asistir"/></td>
 							</tr>
 							<%
 								}

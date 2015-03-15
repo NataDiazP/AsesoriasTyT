@@ -75,12 +75,12 @@
 					<td valign="top" class="caja_01_bottom">
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
-								<td class="label">Documento de Docente(*):</td>
+								<td class="label">Documento de Identidad(*):</td>
 								<td><input type="text" name="IdPersona" size="20"
 									onkeypress="return validar(event)" placeholder="Documento"
 									value="<%=documento != null ? documento : ""%>"></td>
 								<td class="label">Tipo de Documento(*):</td>
-								<td><select name="tipo" class="campo02" id="genero">
+								<td><select name="tipo" class="campo02" id="tipo">
 										<option>Seleccione...</option>
 										<option <%if ("CC".equals(tipo)) {%> selected <%}%>>CC</option>
 										<option <%if ("CE".equals(tipo)) {%> selected <%}%>>CE</option>
@@ -95,7 +95,7 @@
 								<td><input type="text" name="apellido1" size="20"
 									placeholder="Primer Apellido"
 									value="<%=apellido1 != null ? apellido1 : ""%>"></td>
-								<td class="label">Segundo Apellido(*):</td>
+								<td class="label">Segundo Apellido :</td>
 								<td><input type="text" name="apellido2" size="30"
 									placeholder="Segundo Apellido"
 									value="<%=apellido2 != null ? apellido2 : ""%>"></td>
@@ -127,7 +127,7 @@
 									placeholder="Celular"
 									value="<%=celular != null ? celular : ""%>"></td>
 								<td class="label">Correo(*):</td>
-								<td><input type="text" name="correo" size="30"
+								<td><input type="email" name="correo" size="30"
 									placeholder="Correo electrónico"
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Estado (*):</td>
@@ -136,9 +136,6 @@
 										<option <%if ("Activo".equals(estado)) {%> selected <%}%>>Activo</option>
 										<option <%if ("Inactivo".equals(estado)) {%> selected <%}%>>Inactivo</option>
 								</select></td>
-
-								</select>
-								</td>
 							</tr>
 							<tr>
 								<td class="label">Perfil(*):</td>
@@ -187,7 +184,7 @@
 			<thead>
 				<tr>
 					<td class="caja_02_01">&nbsp;</td>
-					<td class="caja_02_top">Lista de Asesorías</td>
+					<td class="caja_02_top">Lista de Docentes</td>
 					<td class="caja_02_02">&nbsp;</td>
 				</tr>
 				<tr>
@@ -207,7 +204,6 @@
 									<th class="rounded" scope="col">Tel&eacute;fono</th>
 									<th class="rounded" scope="col">Celular</th>
 									<th class="rounded" scope="col">Correo</th>
-									<th class="rounded" scope="col">Semestre</th>
 									<th class="rounded" scope="col">Estado</th>
 									<th class="rounded" scope="col">Perfil</th>
 								</tr>
@@ -228,7 +224,6 @@
 									<td><%=per.getTelefono()%></td>
 									<td><%=per.getCelular()%></td>
 									<td><%=per.getCorreoElectronico()%></td>
-									<td><%=per.getSemestre_Estudiante()%></td>
 									<td><%=per.getEstado()%></td>
 									<td><%=per.getPerfil()%></td>
 								</tr>

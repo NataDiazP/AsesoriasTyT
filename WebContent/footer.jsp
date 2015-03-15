@@ -7,6 +7,9 @@
 </head>
 
 <body>
-        <div id="pie">Copyright © 2014 <a href="http://www.politecnicojic.edu.co/">Politécnico Jaime Isaza Cadavid</a> </div>
+	<div id="pie">
+		Copyright © 2014 <a href="http://www.politecnicojic.edu.co/">Politécnico
+			Jaime Isaza Cadavid</a>
+	</div>
 </body>
 </html>

@@ -1,39 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>Asesorías TyT</title>
+	
+	<link rel="shortcut icon" type="image/x-icon"
+		href="../images/favicon.ico" />
+	<link rel="icon" type="image/png" href="../images/favicon.png" />
+	<link href="./css/contenedor.css" rel="stylesheet" type="text/css" />
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>Asesorías TyT</title>
-
-<link rel="shortcut icon" type="image/x-icon"
-	href="../images/favicon.ico" />
-<link rel="icon" type="image/png" href="../images/favicon.png" />
-<link href="./css/contenedor.css" rel="stylesheet" type="text/css" />
-
-
-
-<script language="JavaScript">
-	//Ajusta el tamaño de un iframe al de su contenido interior para evitar scroll
-	function autofitIframe(id) {
-		if (!window.opera && document.all && document.getElementById) {
-			id.style.height = id.contentWindow.document.body.scrollHeight;
-		} else if (document.getElementById) {
-			id.style.height = id.contentDocument.body.scrollHeight + "px";
+	<script language="JavaScript">
+		//Ajusta el tamaño de un iframe al de su contenido interior para evitar scroll
+		function autofitIframe(id) {
+			if (!window.opera && document.all && document.getElementById) {
+				id.style.height = id.contentWindow.document.body.scrollHeight;
+			} else if (document.getElementById) {
+				id.style.height = id.contentDocument.body.scrollHeight + "px";
+			}
 		}
-	}
-</script>
-<%
-/*if (session.getAttribute("googlePlusUser") != null && !session.getAttribute("googlePlusUser").equals(""))
-	{
-	}
-	else
-	{
-		response.sendRedirect(request.getContextPath());
-	}*/
-%>
+	</script>
+	<%
+		/*	if (session.getAttribute("googlePlusUser") != null && !session.getAttribute("googlePlusUser").equals(""))
+		 {
+		 }
+		 else
+		 {
+		 response.sendRedirect(request.getContextPath());
+		 }*/
+	%>
 
 </head>
 
