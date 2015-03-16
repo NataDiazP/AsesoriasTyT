@@ -82,34 +82,27 @@
 			<a href="Bienvenida.jsp" target="datos">Inicio</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="DocentesConsulta.jsp" target="datos">Docentes</a>
+			<a href="DocentesConsulta.jsp" target="datos">Mi información</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n
 				Acad&eacute;mica</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="http://groups.google.com/forum/" target="_blank">Foro</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="#" target="datos">Reportes</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="AcercaDe.jsp" target="datos">Acerca de</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Login.jsp" target="datos">Salida Segura</a>
 		</h3>
-		<!--Fin opción NO desplegable-->
 	</div>
 </body>
 </html>

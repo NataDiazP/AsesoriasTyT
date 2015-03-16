@@ -95,40 +95,31 @@
 		</ul>
 		<!--Fin opción desplegable-->
 
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Docentes.jsp" target="datos">Docentes</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Estudiantes.jsp" target="datos">Estudiantes</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n
 				Acad&eacute;mica</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="http://asesoriastyt.foro-colombia.net/" target="_blank">Foro</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="#" target="datos">Reportes</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Acerca.jsp" target="datos">Acerca de</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
 			<a href="Login.jsp" target="datos">Salida Segura</a>
 		</h3>
-		<!--Fin opción NO desplegable-->
 
 	</div>
 
