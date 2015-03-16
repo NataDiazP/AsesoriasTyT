@@ -37,18 +37,18 @@ public class Docentes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Persona Personas = new Persona();
 		String documento = request.getParameter("IdPersona");
-		String tipoDoc = request.getParameter("tipo");
+//		String tipoDoc = request.getParameter("tipo");
 		String nombre = request.getParameter("nombre");
-		String apelldocumento1 = request.getParameter("apellido1");
-		String apelldocumento2 = request.getParameter("apellido2");
-		String genero = request.getParameter("genero");
-		String fechaN = request.getParameter("fechaN");
-		String direccion = request.getParameter("direccion");
-		String telefono = request.getParameter("telefono");
-		String celular = request.getParameter("celular");
-		String correo = request.getParameter("correo");
-		String estado = request.getParameter("estado");
-		String perfil = request.getParameter("perfil");
+//		String apelldocumento1 = request.getParameter("apellido1");
+//		String apelldocumento2 = request.getParameter("apellido2");
+//		String genero = request.getParameter("genero");
+//		String fechaN = request.getParameter("fechaN");
+//		String direccion = request.getParameter("direccion");
+//		String telefono = request.getParameter("telefono");
+//		String celular = request.getParameter("celular");
+//		String correo = request.getParameter("correo");
+//		String estado = request.getParameter("estado");
+//		String perfil = request.getParameter("perfil");
 
 		if (documento.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);

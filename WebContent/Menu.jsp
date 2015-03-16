@@ -126,7 +126,7 @@
 		</h3>
 		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
-			<a href="Login.jsp" target="_blank">Salida Segura</a>
+			<a href="Login.jsp" target="datos">Salida Segura</a>
 		</h3>
 		<!--Fin opción NO desplegable-->
 

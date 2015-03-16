@@ -34,7 +34,6 @@
 		response.sendRedirect(request.getContextPath());
 	}
 %>
-
 </head>
 
 <body>

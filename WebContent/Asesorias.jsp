@@ -111,6 +111,9 @@
 										<option>Confirmada</option>
 										<option>Cancelada</option>
 								</select></td>
+								<td colspan="4" align="right" class="label"><a class="estudiantesIns"
+									href="AsistenciaAsesorias.jsp" >Estudiantes
+										inscritos</a></td>
 							</tr>
 						</table>
 					</td>

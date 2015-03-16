@@ -81,11 +81,9 @@
 		<h3 class="menuheader Noexpandable">
 			<a href="ListadoAsesorias.jsp" target="datos">Inicio</a>
 		</h3>
-		<!--Inicio opción desplegable-->
-		<h3 class="menuheader expandable">Configuraciones</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
-			<a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a>
+			<a href="ProgAcademicaReporte.jsp" target="datos">Programaciones
+				Acad&eacute;micas</a>
 		</h3>
 		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">

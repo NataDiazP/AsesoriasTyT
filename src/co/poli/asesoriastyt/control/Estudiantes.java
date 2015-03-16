@@ -56,8 +56,6 @@ public class Estudiantes extends HttpServlet {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificaci�n de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Estudiantes.jsp");
 		} else {
-
-			Persona Per = new Persona();
 			Personas.setNumeroIdentificacion(documento);
 			Personas.setTipoIdentificacion(tipoDoc);
 			Personas.setNombreCompleto(nombre);

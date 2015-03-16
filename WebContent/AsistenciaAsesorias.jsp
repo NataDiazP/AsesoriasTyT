@@ -8,41 +8,47 @@
 <link href="./css/partials.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<table width="85%" border="0" align="center" cellpadding="0"
-		cellspacing="0">
-		<thead>
-			<tr>
-				<td class="caja_02_01">&nbsp;</td>
-				<td class="caja_02_top">Asistencia de estudiantes inscritos</td>
-				<td class="caja_02_02">&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="caja_01_bottom">&nbsp;</td>
-				<td valign="top" class="caja_01_bottom">
-					<table width="100%" align="center" id="rounded-corner">
-						<thead>
-							<tr>
-								<th class="rounded" scope="col">Estudiante</th>
-								<th class="rounded" scope="col">Si</th>
-								<th class="rounded" scope="col">No</th>
-							</tr>
-						</thead>
-						<tbody>
-							<%
-								//for (Asesoria as : listaAsesorias) {
-							%>
-							<tr align="center">
-								<td>Nombre estudiante</td>
-								<td><input name="asistencia" type="radio"></td>
-								<td><input name="asistencia" type="radio"></td>
-							</tr>
-							<%
-								//}
-							%>
-						</tbody>
-					</table>
-				</td>
-			</tr>
-	</table>
+	<form name="asistencia" action="./Asesorias" method="post">
+		<table width="85%" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<thead>
+				<tr>
+					<td class="caja_02_01">&nbsp;</td>
+					<td class="caja_02_top">Asistencia de estudiantes inscritos</td>
+					<td class="caja_02_02">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="caja_01_bottom">&nbsp;</td>
+					<td valign="top" class="caja_01_bottom">
+						<table width="100%" align="center" id="rounded-corner">
+							<thead>
+								<tr>
+									<th class="rounded" scope="col">Estudiante</th>
+									<th class="rounded" scope="col">Si</th>
+									<th class="rounded" scope="col">No</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									//for (Asesoria as : listaAsesorias) {
+								%>
+								<tr align="center">
+									<td>Nombre estudiante</td>
+									<td><input name="asistencia" type="radio"></td>
+									<td><input name="asistencia" type="radio"></td>
+								</tr>
+								<%
+									//}
+								%>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+		</table>
+		<div
+			style="margin-top: 8px; margin-right: 100px; width: auto; float: right;">
+			<button value="GuardarAsesoria" class="botonGuardar">Guardar</button>
+		</div>
+	</form>
 </body>
 </html>

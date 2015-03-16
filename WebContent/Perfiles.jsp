@@ -75,7 +75,6 @@
 				<button name="action" value="Modificar" class="boton">Modificar</button>
 				<button name="action" value="Eliminar" class="boton">Eliminar</button>
 			</div>
-
 		</form>
 
 		<%

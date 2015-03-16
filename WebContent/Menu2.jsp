@@ -81,9 +81,8 @@
 		<h3 class="menuheader Noexpandable">
 			<a href="Bienvenida.jsp" target="datos">Inicio</a>
 		</h3>
-		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
-			<a href="Estudiantes.jsp" target="datos">Estudiantes</a>
+			<a href="DocentesConsulta.jsp" target="datos">Docentes</a>
 		</h3>
 		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
