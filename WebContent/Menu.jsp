@@ -77,8 +77,6 @@
 
 </head>
 <body>
-
-
 	<div class="arrowlistmenu">
 		<h3 class="menuheader Noexpandable">
 			<a href="Bienvenida.jsp" target="datos">Inicio</a>

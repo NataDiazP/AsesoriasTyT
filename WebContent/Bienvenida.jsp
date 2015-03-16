@@ -10,12 +10,14 @@
 	<br>
 	<br>
 	<br>
-	<div style="width: 60%; margin-right: 20%; margin-left: 5%; text-align: justify;">
+	<div
+		style="width: 60%; margin-right: 20%; margin-left: 5%; text-align: justify;">
 		<h4>Ante las deficiencias detectadas y analizadas debidamente, se
 			proyectara como soluci&oacute;n este programa de f&aacute;cil y libre
 			acceso con el objetivo claro de acercar y ayudar m&aacute;s al alumno
 			en un proceso de apoyo hacia su aprendizaje por medio de las
 			asesor&iacute;as y con la finalidad de que su aprendizaje sea mejor,
 			mediante esta herramienta.</h4>
+	</div>
 </body>
 </html>

@@ -93,7 +93,7 @@
 		</h3>
 		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">
-			<a href="AcercaDe.jsp" target="datos">Acerca de</a>
+			<a href="Acerca.jsp" target="datos">Acerca de</a>
 		</h3>
 		<!--Inicio opción desplegable-->
 		<h3 class="menuheader Noexpandable">

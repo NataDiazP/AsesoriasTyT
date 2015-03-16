@@ -136,7 +136,7 @@
 									placeholder="Correo electrónico"
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Plan de Estudios(*):</td>
-								<td><select name="plan" class="plan" id="plan">
+								<td><select name="plan" class="campo02" id="plan">
 										<option>Seleccione...</option>
 										<option
 											<%if ("Técnico Prof. en Prog. de Sistemas de Información".equals(plan)) {%>
@@ -254,8 +254,6 @@
 								<%
 									}
 								%>
-
-
 							</tbody>
 						</table></td>
 				</tr>

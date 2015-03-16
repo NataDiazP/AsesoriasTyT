@@ -92,7 +92,7 @@
 			<thead>
 				<tr>
 					<td class="caja_02_01">&nbsp;</td>
-					<td class="caja_02_top">Lista de Asesorías</td>
+					<td class="caja_02_top">Lista de Asignaturas</td>
 					<td class="caja_02_02">&nbsp;</td>
 				</tr>
 				<tr>

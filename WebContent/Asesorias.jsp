@@ -65,29 +65,31 @@
 					<td valign="top" class="caja_01_bottom">
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
-								<td class="label">C&oacute;digo de Asesor&iacute;as(*):</td>
+								<td class="label">C&oacute;digo de Asesor&iacute;a (*):</td>
 								<td><input type="text" name="id" size="20" maxlength="5"
-									onkeypress="return validar(event)" placeholder="código"
+									onkeypress="return validar(event)" placeholder="Código"
 									value="<%=id != null ? id : ""%>"></td>
 								<td class="label">Docente(*):</td>
 								<td><input type="text" name="docente" size="30"
-									 placeholder="Docente"
+									placeholder="Docente"
 									value="<%=docente != null ? docente : ""%>"></td>
 								<td class="label">Asignatura(*):</td>
-								<td><input type="text" name="IdAsesoria" size="20"
-									maxlength="8"
-									placeholder="Asignaturas"
+								<td><input type="text" name="asignatura" size="20"
+									maxlength="8" placeholder="Asignatura"
 									value="<%=asignatura != null ? asignatura : ""%>"></td>
 							</tr>
 							<tr>
 								<td class="label">Fecha(*):</td>
-								<td><input type="date" name="fecha" size="20" placeholder="Fecha"
-									value="<%=fecha != null ? fecha : ""%>"></td>
+								<td><input type="date" name="fecha" size="20"
+									placeholder="Fecha" value="<%=fecha != null ? fecha : ""%>"></td>
 								<td class="label">Hora Inicio(*):</td>
-								<td><input type="text" name="horaI" size="30"  placeholder="Hora Inicio"></td>
-								<td class="label">Hora Fin(*):</td>
-								<td><input type="text" name="horaF" size="20" maxlength="5" placeholder="Hora Fin"
+								<td><input type="text" name="horaI" size="30"
+									placeholder="Hora Inicio"
 									value="<%=horaF != null ? horaF : ""%>"></td>
+								</td>
+								<td class="label">Hora Fin(*):</td>
+								<td><input type="text" name="horaF" size="20" maxlength="5"
+									placeholder="Hora Fin" value="<%=horaF != null ? horaF : ""%>"></td>
 							</tr>
 							<tr>
 								<td class="label">Lugar o Aula(*):</td>
@@ -95,7 +97,8 @@
 									onkeypress="return validar(event)" placeholder="Lugar"
 									value="<%=lugar != null ? lugar : ""%>"></td>
 								<td class="label">Cupos(*):</td>
-								<td><input type="text" name="cupos" size="30" placeholder="Cupos Disponibles"
+								<td><input type="text" name="cupos" size="30"
+									placeholder="Cupos Disponibles"
 									value="<%=cupos != null ? cupos : ""%>"></td>
 								<td class="label">Observaciones(*):</td>
 								<td><textarea name="observacion"></textarea></td>
@@ -186,6 +189,7 @@
 						</table></td>
 				</tr>
 		</table>
-		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

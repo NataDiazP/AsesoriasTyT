@@ -31,6 +31,8 @@
 	String horaInicialAsig = request.getParameter("horaInicialAsig");
 	String horaFinAsig = request.getParameter("horaFinAsig");
 	String aulaClaseProg = request.getParameter("aulaClaseProg");
+	String semestreProgAcademica = request.getParameter("semestreProgAcademica");
+	String anoProgAcademica = request.getParameter("anoProgAcademica");
 
 	ProgAcademica x = request.getAttribute("cli") != null ? (ProgAcademica) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
@@ -44,6 +46,8 @@
 		horaInicialAsig = x.getHoraIniAsigProgAcademica();
 		horaFinAsig = x.getHoraFinAsigProgAcademica();
 		aulaClaseProg = x.getAulaClaseProgAcademica();
+		semestreProgAcademica = x.getSemestreProgAcademica();
+		anoProgAcademica = x.getAnoProgAcademica();
 	}
 
 	NAsignatura nAsig = new NAsignatura();
@@ -83,7 +87,8 @@
 							<tr>
 								<td class="label">C&oacute;digo de Programaci&oacute;n (*):</td>
 								<td><input type="text" name="IdProgAcademica" size="20"
-									maxlength="5" placeholder="Código Programación Académica"
+									maxlength="5" placeholder="Código"
+									onkeypress="return validar(event)"
 									value="<%=IdProgAcademica != null ? IdProgAcademica : ""%>"></td>
 								<td class="label">Docente(*):</td>
 								<td><select type="text" class="campo02"
@@ -118,22 +123,24 @@
 								<td class="label">Grupo(*):</td>
 								<td><input type="text" name="grupoAsignatura" size="20"
 									maxlength="5" onkeypress="return validar(event)"
-									placeholder="Grupo" value=""></td>
+									placeholder="Grupo"
+									value="<%=grupoAsignatura != null ? grupoAsignatura : ""%>"></td>
 								<td class="label">Número de estudiantes (*):</td>
-								<td><input type="text" name="nroEstAsignatura" size="30"
-									placeholder="Número de estudiantes asignatura"
+								<td><input type="text" name="nroEstAsignatura" size="20"
+									placeholder="Estudiantes Asignatura"
 									value="<%=nroEstAsignatura != null ? nroEstAsignatura : ""%>"></td>
 								<td class="label">Dias (*):</td>
 								<td><input type="text" name="diasAsignatura" size="20"
-									maxlength="5" value=""></td>
+									maxlength="5" placeholder="Dias Asignatura"
+									value="<%=diasAsignatura != null ? diasAsignatura : ""%>"></td>
 							</tr>
 							<tr>
 								<td class="label">Hora Inicio(*):</td>
-								<td><input type="text" name="horaInicialAsig" size="30"
+								<td><input type="text" name="horaInicialAsig" size="20"
 									placeholder="Hora Inicio Asignatura"
 									value="<%=horaInicialAsig != null ? horaInicialAsig : ""%>"></td>
 								<td class="label">Hora Fin(*):</td>
-								<td><input type="text" name="horaFinAsig" size="20"
+								<td><input type="text" name="horaFinAsig" size=20"
 									maxlength="5" placeholder="Hora Fin Asignatura"
 									value="<%=horaFinAsig != null ? horaFinAsig : ""%>"></td>
 								<td class="label">Aula (*):</td>
@@ -145,11 +152,23 @@
 										%>
 										<option
 											<%if ((aula.getIdBloque() + " - " + aula.getIdAula()).equals(aulaClaseProg)) {%>
-											selected <%}%>><%=aula.getIdBloque() +" - "+aula.getIdAula()%></option>
+											selected <%}%>><%=aula.getIdBloque() + " - " + aula.getIdAula()%></option>
 										<%
 											}
 										%>
 								</select></td>
+							</tr>
+							<tr>
+								<td class="label">Semestre (*):</td>
+								<td><input type="text" name="semestreProgAcademica"
+									size="20" maxlength="2" onkeypress="return validar(event)"
+									placeholder="Semestre Programación Académica"
+									value="<%=semestreProgAcademica != null ? semestreProgAcademica : ""%>"></td>
+								<td class="label">Año (*):</td>
+								<td><input type="text" name="anoProgAcademica"
+									size="20" maxlength="4" onkeypress="return validar(event)"
+									placeholder="Año Programación Académica"
+									value="<%=anoProgAcademica != null ? anoProgAcademica : ""%>"></td>
 							</tr>
 						</table>
 					</td>
@@ -198,8 +217,7 @@
 									<th class="rounded" scope="col">Docente</th>
 									<th class="rounded" scope="col">Asignatura</th>
 									<th class="rounded" scope="col">Grupo</th>
-									<th class="rounded" scope="col">N&uacute;mero<br>Estudiantes
-									</th>
+									<th class="rounded" scope="col">N&uacute;mero<br>Estudiantes</th>
 									<th class="rounded" scope="col">Dias</th>
 									<th class="rounded" scope="col">Hora Inicio</th>
 									<th class="rounded" scope="col">Hora Fin</th>
@@ -228,6 +246,7 @@
 						</table></td>
 				</tr>
 		</table>
-		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

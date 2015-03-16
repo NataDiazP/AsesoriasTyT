@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.model.ProgAcademica;
 
 /**
@@ -26,7 +25,6 @@ public class DAOProgAcademica {
 		int resultadoCrear = 0;
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
-
 			st.setString(1, ProgAcademica.getIdProgAcademica());
 			st.setString(2, ProgAcademica.getDocenteProgAcademica());
 			st.setString(3, ProgAcademica.getAsignaturaProgAcademica());
@@ -36,8 +34,9 @@ public class DAOProgAcademica {
 			st.setString(7, ProgAcademica.getHoraIniAsigProgAcademica());
 			st.setString(8, ProgAcademica.getHoraFinAsigProgAcademica());
 			st.setString(9, ProgAcademica.getAulaClaseProgAcademica());
+			st.setString(10, ProgAcademica.getSemestreProgAcademica());
+			st.setString(11, ProgAcademica.getAnoProgAcademica());
 			resultadoCrear = st.executeUpdate();
-
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
@@ -55,7 +54,6 @@ public class DAOProgAcademica {
 		int resultadoModificar = 0;
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
-
 			st.setString(1, ProgAcademica.getDocenteProgAcademica());
 			st.setString(2, ProgAcademica.getAsignaturaProgAcademica());
 			st.setString(3, ProgAcademica.getGrupoAsigProgAcademica());
@@ -64,9 +62,10 @@ public class DAOProgAcademica {
 			st.setString(6, ProgAcademica.getHoraIniAsigProgAcademica());
 			st.setString(7, ProgAcademica.getHoraFinAsigProgAcademica());
 			st.setString(8, ProgAcademica.getAulaClaseProgAcademica());
-			st.setString(9, ProgAcademica.getIdProgAcademica());
+			st.setString(9, ProgAcademica.getSemestreProgAcademica());
+			st.setString(10, ProgAcademica.getAnoProgAcademica());
+			st.setString(11, ProgAcademica.getIdProgAcademica());
 			resultadoModificar = st.executeUpdate();
-
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
@@ -94,6 +93,8 @@ public class DAOProgAcademica {
 				c.setHoraIniAsigProgAcademica(r.getString(7));
 				c.setHoraFinAsigProgAcademica(r.getString(8));
 				c.setAulaClaseProgAcademica(r.getString(9));
+				c.setSemestreProgAcademica(r.getString(10));
+				c.setAnoProgAcademica(r.getString(11));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,14 +114,9 @@ public class DAOProgAcademica {
 		int resultadoEliminar = 0;
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
-
-			st.setString(1, ProgAcademica.getIdProgAcademica());
-
 			resultadoEliminar = st.executeUpdate();
-
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
-
 		} finally {
 			try {
 				c.close();
@@ -128,7 +124,6 @@ public class DAOProgAcademica {
 				Logger.getLogger(DAOProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
-
 		return resultadoEliminar;
 	}
 

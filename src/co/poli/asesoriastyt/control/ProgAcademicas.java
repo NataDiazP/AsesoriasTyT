@@ -46,6 +46,8 @@ public class ProgAcademicas extends HttpServlet {
 		String horaIni = request.getParameter("horaInicialAsig");
 		String horaFin = request.getParameter("horaFinAsig");
 		String aulaClase = request.getParameter("aulaClaseProg");
+		String semestreProgAcademica = request.getParameter("semestreProgAcademica");
+		String anoProgAcademica = request.getParameter("anoProgAcademica");
 
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la programación académica.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -60,6 +62,8 @@ public class ProgAcademicas extends HttpServlet {
 			ProgAcademica.setHoraIniAsigProgAcademica(horaIni);
 			ProgAcademica.setHoraFinAsigProgAcademica(horaFin);
 			ProgAcademica.setAulaClaseProgAcademica(aulaClase);
+			ProgAcademica.setSemestreProgAcademica(semestreProgAcademica);
+			ProgAcademica.setAnoProgAcademica(anoProgAcademica);
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;

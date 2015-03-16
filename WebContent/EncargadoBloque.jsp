@@ -25,7 +25,6 @@
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Encargados de Bloque</title>
-
 </head>
 <body>
 	<br>
@@ -118,6 +117,7 @@
 						</table></td>
 				</tr>
 		</table>
-		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
