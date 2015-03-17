@@ -222,7 +222,17 @@
 									<td><%=per.getFechaNacimiento()%></td>
 									<td><%=per.getDireccion()%></td>
 									<td><%=per.getTelefono()%></td>
-									<td><%=per.getCelular()%></td>
+									<%
+										if (per.getCelular() == null) {
+									%>
+									<td></td>
+									<%
+										} else {
+									%>
+									<td><%=per.getCelular() %></td>
+									<%
+										}
+									%>
 									<td><%=per.getCorreoElectronico()%></td>
 									<td><%=per.getEstado()%></td>
 									<td><%=per.getPerfil()%></td>
@@ -235,6 +245,6 @@
 				</tr>
 		</table>
 	</div>
-		<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

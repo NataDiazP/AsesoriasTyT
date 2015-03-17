@@ -98,12 +98,16 @@
 									value="<%=lugar != null ? lugar : ""%>"></td>
 								<td class="label">Cupos(*):</td>
 								<td><input type="text" name="cupos" size="30"
+									placeholder="Cupos" value="<%=cupos != null ? cupos : ""%>"></td>
+								<td class="label">Cupos Disponibles(*):</td>
+								<td><input type="text" name="cuposD" size=20"
 									placeholder="Cupos Disponibles"
-									value="<%=cupos != null ? cupos : ""%>"></td>
-								<td class="label">Observaciones(*):</td>
-								<td><textarea name="observacion"></textarea></td>
+									value="<%=cuposD != null ? cuposD : ""%>"></td>
 							</tr>
 							<tr>
+								<td class="label">Observaciones(*):</td>
+								<td><textarea name="observacion" placeholder="Observaciones Asesoría"
+									class="campo02" value="<%=observacion != null ? observacion : ""%>"></textarea></td>
 								<td class="label">Estado(*):</td>
 								<td><select name="estado" class="campo02" id="genero">
 										<option><%=estado != null ? estado : "Seleccione"%></option>
@@ -111,8 +115,8 @@
 										<option>Confirmada</option>
 										<option>Cancelada</option>
 								</select></td>
-								<td colspan="4" align="right" class="label"><a class="estudiantesIns"
-									href="AsistenciaAsesorias.jsp" >Estudiantes
+								<td colspan="4" align="right" class="label"><a
+									class="estudiantesIns" href="AsistenciaAsesorias.jsp">Estudiantes
 										inscritos</a></td>
 							</tr>
 						</table>

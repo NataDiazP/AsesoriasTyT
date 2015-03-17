@@ -1,5 +1,10 @@
+.asistirButton{
+	height: 28px;
+	background-color: rgba(255,255,255,0);
+	border: none;	
+}
+
 .asistir{
-	cursor: pointer;
 	height: 26px;	
 }
 

@@ -246,6 +246,17 @@
 									<td><%=per.getDireccion()%></td>
 									<td><%=per.getTelefono()%></td>
 									<td><%=per.getCelular()%></td>
+									<%
+										if (per.getCelular() == null) {
+									%>
+									<td></td>
+									<%
+										} else {
+									%>
+									<td><%=per.getCelular()%></td>
+									<%
+										}
+									%>
 									<td><%=per.getCorreoElectronico()%></td>
 									<td><%=per.getSemestre_Estudiante()%></td>
 									<td><%=per.getEstado()%></td>
@@ -258,5 +269,6 @@
 						</table></td>
 				</tr>
 		</table>
-		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
