@@ -99,13 +99,13 @@
 								<td class="label">Cupos(*):</td>
 								<td><input type="text" name="cupos" size="30"
 									placeholder="Cupos" value="<%=cupos != null ? cupos : ""%>"></td>
-								<td class="label">Cupos Disponibles(*):</td>
+								<td class="label">Cupos Disponibles :</td>
 								<td><input type="text" name="cuposD" size=20"
 									placeholder="Cupos Disponibles"
 									value="<%=cuposD != null ? cuposD : ""%>"></td>
 							</tr>
 							<tr>
-								<td class="label">Observaciones(*):</td>
+								<td class="label">Observaciones :</td>
 								<td><textarea name="observacion" placeholder="Observaciones Asesoría"
 									class="campo02" value="<%=observacion != null ? observacion : ""%>"></textarea></td>
 								<td class="label">Estado(*):</td>

@@ -28,6 +28,13 @@ public class NAsesoria {
 		int resultadoCrear = daoAsesorias.Crear(c, Asesorias);
 		return resultadoCrear;
 	}
+	
+	public int Asistir() {
+		daoAsesorias = new DAOAsesorias();
+		c = new Conexion().getConnection();
+		int resultadoCrear = daoAsesorias.Asistir(c);
+		return resultadoCrear;
+	}
 
 	public int Modificar(Asesoria Asesorias) {
 		daoAsesorias = new DAOAsesorias();
@@ -49,7 +56,7 @@ public class NAsesoria {
 		int resultadoEliminar = daoAsesorias.Eliminar(c, Asesorias);
 		return resultadoEliminar;
 	}
-
+	
 	public List<Asesoria> ListadoAsesorias() {
 		daoAsesorias = new DAOAsesorias();
 		c = new Conexion().getConnection();

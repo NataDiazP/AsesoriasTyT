@@ -13,13 +13,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Asesoria;
+import co.poli.asesoriastyt.model.EstudianteAsesoria;
 
 /**
  * @author pavargas
  *
  */
 public class DAOAsesorias {
-	
+
 	public int Crear(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Crear();
 		int resultadoCrear = 0;
@@ -37,6 +38,30 @@ public class DAOAsesorias {
 			st.setString(9, Asesorias.getCuposD());
 			st.setString(10, Asesorias.getObservaciones());
 			st.setString(11, Asesorias.getEstado());
+			resultadoCrear = st.executeUpdate();
+
+		} catch (SQLException ex) {
+			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return resultadoCrear;
+	}
+	
+	public int Asistir(Connection c) {
+		EstudianteAsesoria EstudianteAsesoria = new EstudianteAsesoria();
+		String sql = EstudiantesAsesoriasSQL.Crear();
+		int resultadoCrear = 0;
+		try {
+			PreparedStatement st = c.prepareStatement(sql);
+
+			st.setString(1, EstudianteAsesoria.getNumDocEstudiante());
+			st.setString(2, EstudianteAsesoria.getIdAsesoria());
+			st.setString(3, EstudianteAsesoria.getAsistenciaAsesoria());
 			resultadoCrear = st.executeUpdate();
 
 		} catch (SQLException ex) {

@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.HttpEntity;
@@ -19,6 +20,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import co.poli.asesoriastyt.dao.DAOPerfiles;
+import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.GooglePlusUser;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -37,7 +39,7 @@ public class CallbackServlet extends HttpServlet {
 	private DAOPerfiles dao;
 	Connection c;
 
-	private static JSONObject getWebContentFromURL_Post(String httpURL, List<NameValuePair> nvps) {
+	public static JSONObject getWebContentFromURL_Post(String httpURL, List<NameValuePair> nvps) {
 
 		HttpPost httpPost = null;
 		JSONObject json = new JSONObject();
@@ -162,12 +164,16 @@ public class CallbackServlet extends HttpServlet {
 
 				GooglePlusUser googlePlusUser = new GooglePlusUser(userJson.get("id").toString(), userJson.get("email").toString());
 				request.getSession().setAttribute("googlePlusUser", googlePlusUser);
+				request.getSession().setAttribute("emailUser", userJson.get("email"));
 				dao = new DAOPerfiles();
 				c = new Conexion().getConnection();
 				String email = userJson.get("email").toString();
 				String correo = "elpoli.edu.co";
 				int existe = 0;
-
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("emailUsuario", new String(email));
+				
 				existe = dao.consultarUsuario(c, email);
 				if (existe > 0)
 				{
