@@ -8,6 +8,7 @@ import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOAsesorias;
 import co.poli.asesoriastyt.model.Asesoria;
+import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.util.Conexion;
 
 /**
@@ -29,10 +30,10 @@ public class NAsesoria {
 		return resultadoCrear;
 	}
 	
-	public int Asistir() {
+	public int Asistir (String idUser, String idAsesoria) {
 		daoAsesorias = new DAOAsesorias();
 		c = new Conexion().getConnection();
-		int resultadoCrear = daoAsesorias.Asistir(c);
+		int resultadoCrear = daoAsesorias.Asistir(c, idUser, idAsesoria);
 		return resultadoCrear;
 	}
 
@@ -61,5 +62,11 @@ public class NAsesoria {
 		daoAsesorias = new DAOAsesorias();
 		c = new Conexion().getConnection();
 		return daoAsesorias.listarAsesorias(c);
+	}
+	
+	public List<EstudianteAsesoria> ListadoAsistentes(String idAsesoria) {
+		daoAsesorias = new DAOAsesorias();
+		c = new Conexion().getConnection();
+		return daoAsesorias.listarAsistentes(c, idAsesoria);
 	}
 }

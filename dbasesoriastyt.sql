@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `asesorias` (
   `HoraInicio_Asesoria` varchar(10) NOT NULL,
   `HoraFin_Asesoria` varchar(10) NOT NULL,
   `Lugar_Asesoria` varchar(50) NOT NULL,
-  `Cupos_Asesoria` varchar(3) NOT NULL,
+  `Cupos_Asesoria` varchar(3) DEFAULT NULL,
   `CuposDisp_Asesoria` varchar(3) DEFAULT NULL,
   `RecursosApoyo_Asesoria` varchar(255) DEFAULT NULL,
   `Observaciones_Asesoria` varchar(255) DEFAULT NULL,
@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS `asesorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `asesorias` (`Id_Asesoria`, `Docente_Asesoria`, `Asignatura_Asesoria`, `Fecha_Asesoria`, `HoraInicio_Asesoria`, `HoraFin_Asesoria`, `Lugar_Asesoria`, `Cupos_Asesoria`, `CuposDisp_Asesoria`, `RecursosApoyo_Asesoria`, `Observaciones_Asesoria`, `Estado_Asesoria`) VALUES
-('1', '123456', 'ING003', '12/04/2015', '2:00 pm', '4:00 pm', 'Almendros', '10', '9', NULL, 'ninguna', 'activa');
+('1', '123456', 'ING003', '12/04/2015', '2:00 pm', '4:00 pm', 'Almendros', '10', '9', NULL, 'ninguna', 'activa'),
+('2', '1234567', 'ING003', '12/04/2015', '2:00 pm', '3:00 pm', 'Almendros', '9', NULL, NULL, NULL, 'Activa');
 
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `Codigo_Asignatura` varchar(10) NOT NULL,
@@ -64,6 +65,10 @@ CREATE TABLE IF NOT EXISTS `estudiantes_asesoria` (
   PRIMARY KEY (`Id_Estudiante`,`Id_Asesoria`),
   KEY `Estudiantes_Asesoria_Ase_FK` (`Id_Asesoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `estudiantes_asesoria` (`Id_Estudiante`, `Id_Asesoria`, `Asistencia_Asesoria`) VALUES
+('97091800296', '1', NULL),
+('97091800296', '2', NULL);
 
 CREATE TABLE IF NOT EXISTS `perfiles` (
   `Id_Perfil` int(11) NOT NULL,
@@ -136,8 +141,8 @@ INSERT INTO `tipos_identificacion` (`Id_Identificacion`, `Nombre_Identificacion`
 
 
 ALTER TABLE `asesorias`
-  ADD CONSTRAINT `Asignatura_Asesoria_FK` FOREIGN KEY (`Asignatura_Asesoria`) REFERENCES `asignaturas` (`Codigo_Asignatura`),
-  ADD CONSTRAINT `Asesorias_Personas_FK` FOREIGN KEY (`Docente_Asesoria`) REFERENCES `personas` (`NumDoc_Persona`);
+  ADD CONSTRAINT `Asesorias_Personas_FK` FOREIGN KEY (`Docente_Asesoria`) REFERENCES `personas` (`NumDoc_Persona`),
+  ADD CONSTRAINT `Asignatura_Asesoria_FK` FOREIGN KEY (`Asignatura_Asesoria`) REFERENCES `asignaturas` (`Codigo_Asignatura`);
 
 ALTER TABLE `aulas`
   ADD CONSTRAINT `Aulas_Bloques_FK` FOREIGN KEY (`Id_Bloque_Aula`) REFERENCES `bloques` (`Id_Bloque`);
@@ -150,13 +155,13 @@ ALTER TABLE `estudiantes_asesoria`
   ADD CONSTRAINT `Estudiantes_Asesoria_Est_FK` FOREIGN KEY (`Id_Estudiante`) REFERENCES `personas` (`NumDoc_Persona`);
 
 ALTER TABLE `personas`
-  ADD CONSTRAINT `Personas_Tipos_Id_FK` FOREIGN KEY (`Tipo_Identificacion`) REFERENCES `tipos_identificacion` (`Id_Identificacion`),
-  ADD CONSTRAINT `Personas_Perfiles_FK` FOREIGN KEY (`Perfil_Persona`) REFERENCES `perfiles` (`Id_Perfil`);
+  ADD CONSTRAINT `Personas_Perfiles_FK` FOREIGN KEY (`Perfil_Persona`) REFERENCES `perfiles` (`Id_Perfil`),
+  ADD CONSTRAINT `Personas_Tipos_Id_FK` FOREIGN KEY (`Tipo_Identificacion`) REFERENCES `tipos_identificacion` (`Id_Identificacion`);
 
 ALTER TABLE `programaciones_academicas`
-  ADD CONSTRAINT `Programaciones_Aca_Pers_FK` FOREIGN KEY (`Docente_ProgAcademica`) REFERENCES `personas` (`NumDoc_Persona`),
   ADD CONSTRAINT `AsignaturaPA_FK` FOREIGN KEY (`Asignatura`) REFERENCES `asignaturas` (`Codigo_Asignatura`),
-  ADD CONSTRAINT `Aula_Clase_FK` FOREIGN KEY (`Aula_Clase`) REFERENCES `aulas` (`Id_Aula`);
+  ADD CONSTRAINT `Aula_Clase_FK` FOREIGN KEY (`Aula_Clase`) REFERENCES `aulas` (`Id_Aula`),
+  ADD CONSTRAINT `Programaciones_Aca_Pers_FK` FOREIGN KEY (`Docente_ProgAcademica`) REFERENCES `personas` (`NumDoc_Persona`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

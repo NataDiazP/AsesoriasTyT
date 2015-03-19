@@ -53,8 +53,7 @@
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>
 								<%
-									EstudianteAsesoria estAse = new EstudianteAsesoria();
-										estAse.setIdAsesoria(as.getIdAsesoria());
+									request.getSession().setAttribute("idAsesoria", as.getIdAsesoria());
 								%>
 								<td><form name="asistenciaAsesorias" action="./AsistenciaAsesorias" method="post">
 										<button class="asistirButton" name="action" value="Asistir">

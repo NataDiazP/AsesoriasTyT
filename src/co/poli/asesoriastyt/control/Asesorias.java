@@ -45,6 +45,7 @@ public class Asesorias extends HttpServlet {
 		String lugar = request.getParameter("lugar");
 		String cupos = request.getParameter("cupos");
 		String cuposD = request.getParameter("cuposD");
+		String recursosApoyo = request.getParameter("recursosApoyo");
 		String observacion = request.getParameter("observacion");
 		String estado = request.getParameter("estado");
 
@@ -61,6 +62,7 @@ public class Asesorias extends HttpServlet {
 			Asesorias.setLugar(lugar);
 			Asesorias.setCupos(cupos);
 			Asesorias.setCuposD(cuposD);
+			Asesorias.setRecursosApoyo(recursosApoyo);
 			Asesorias.setObservaciones(observacion);
 			Asesorias.setEstado(estado);
 
@@ -89,13 +91,6 @@ public class Asesorias extends HttpServlet {
 						try {
 							response.sendRedirect("Asesorias.jsp");
 							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							if (SMTPConfig.sendMail("Asunto del Mensaje", " Cuerpo del Mensaje.", "destino@gmail.com")) {
-
-								System.out.println("envío Correcto");
-
-							} else {
-								System.out.println("envío Fallido");
-							}
 							request.setAttribute("cli", resultado);
 						} catch (Exception e) {
 							e.printStackTrace();

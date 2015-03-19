@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -44,7 +43,6 @@ public class AsistenciaAsesorias extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if ("Asistir".equals(request.getParameter("action"))) {
-			EstudianteAsesoria estAse = new EstudianteAsesoria();
 			String email = (String) request.getSession().getAttribute("emailUser");
 			System.out.println(email);
 			try {
@@ -58,7 +56,7 @@ public class AsistenciaAsesorias extends HttpServlet {
 
 			int confirma = JOptionPane.showConfirmDialog(null, "¿Desea asistir a esta asesoría?");
 			if (confirma == JOptionPane.YES_OPTION) {
-				int resultadoAsistir = new NAsesoria().Asistir();
+				int resultadoAsistir = new NAsesoria().Asistir((String) request.getSession().getAttribute("idUser"),(String) request.getSession().getAttribute("idAsesoria"));
 				request.setAttribute("cli", resultadoAsistir);
 				JOptionPane.showMessageDialog(null, "Usted se ha inscrito exitosamente, se enviará un mensaje de confirmación a su correo electrónico.", "AsesoriasTyT",
 						JOptionPane.INFORMATION_MESSAGE);
