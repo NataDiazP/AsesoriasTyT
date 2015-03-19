@@ -14,6 +14,10 @@
     <param-value>/index3.jsp</param-value>
   </context-param>
   <context-param>
+    <param-name>login</param-name>
+    <param-value>/Login.jsp</param-value>
+  </context-param>
+  <context-param>
     <param-name>loginErrorPage</param-name>
     <param-value>/error.jsp</param-value>
   </context-param>
