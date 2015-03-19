@@ -20,7 +20,7 @@ import co.poli.asesoriastyt.util.Conexion;
  *
  */
 public class DAOPersonas {
-	
+
 	Conexion Connection = new Conexion();
 
 	public int Crear(Connection c, Persona Personas) {

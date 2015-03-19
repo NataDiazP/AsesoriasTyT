@@ -10,6 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="./css/partials.css" rel="stylesheet" type="text/css" />
 <title>Asesorias TyT - Inicio</title>
+<script language="JavaScript">
+	function Abrir_ventana(pagina) {
+		var opciones = "toolbar=no, location=no, maximize:no, minimize:no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=508, height=365, top=85, left=140";
+		window.open(pagina, "", opciones);
+	}
+</script>
 </head>
 <body>
 
@@ -51,7 +57,10 @@
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>
-								<td><img src="./images/plus.png" alt="Asistir a asesoría" class="asistir"/></td>
+								<td><button class="asistirButton"
+										onclick="Abrir_ventana('ConfirmarAsistencia.jsp')">
+										<img src="./images/plus.png" alt="Asistir a asesoría" class="asistir"/>
+									</button></td>
 							</tr>
 							<%
 								}
