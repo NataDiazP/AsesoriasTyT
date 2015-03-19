@@ -101,7 +101,7 @@
 			<a href="AcercaDe.jsp" target="datos">Acerca de</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="Login.jsp" target="datos">Salida Segura</a>
+			<a href="logout">Salida Segura</a>
 		</h3>
 	</div>
 </body>
