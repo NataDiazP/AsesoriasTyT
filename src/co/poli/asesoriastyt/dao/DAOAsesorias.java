@@ -13,13 +13,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Asesoria;
+import co.poli.asesoriastyt.model.EstudianteAsesoria;
 
 /**
  * @author pavargas
  *
  */
 public class DAOAsesorias {
-	
+
 	public int Crear(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Crear();
 		int resultadoCrear = 0;
@@ -35,10 +36,33 @@ public class DAOAsesorias {
 			st.setString(7, Asesorias.getLugar());
 			st.setString(8, Asesorias.getCupos());
 			st.setString(9, Asesorias.getCuposD());
-			st.setString(10, Asesorias.getObservaciones());
-			st.setString(11, Asesorias.getEstado());
+			st.setString(10, Asesorias.getRecursosApoyo());
+			st.setString(11, Asesorias.getObservaciones());
+			st.setString(12, Asesorias.getEstado());
 			resultadoCrear = st.executeUpdate();
 
+		} catch (SQLException ex) {
+			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return resultadoCrear;
+	}
+
+	public int Asistir(Connection c, String idUser, String idAsesoria) {
+		EstudianteAsesoria EstudianteAsesoria = new EstudianteAsesoria();
+		String sql = EstudiantesAsesoriasSQL.Crear();
+		int resultadoCrear = 0;
+		try {
+			PreparedStatement st = c.prepareStatement(sql);
+			st.setString(1, idUser);
+			st.setString(2, idAsesoria);
+			st.setString(3, EstudianteAsesoria.getAsistenciaAsesoria());
+			resultadoCrear = st.executeUpdate();
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
@@ -57,15 +81,16 @@ public class DAOAsesorias {
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
 
-			st.setString(11, Asesorias.getIdAsesoria());
-			st.setString(10, Asesorias.getDocente());
-			st.setString(9, Asesorias.getAsignatura());
-			st.setString(8, Asesorias.getFecha());
-			st.setString(7, Asesorias.getHoraI());
-			st.setString(6, Asesorias.getHoraF());
-			st.setString(5, Asesorias.getLugar());
-			st.setString(4, Asesorias.getCupos());
-			st.setString(3, Asesorias.getCuposD());
+			st.setString(12, Asesorias.getIdAsesoria());
+			st.setString(11, Asesorias.getDocente());
+			st.setString(10, Asesorias.getAsignatura());
+			st.setString(9, Asesorias.getFecha());
+			st.setString(8, Asesorias.getHoraI());
+			st.setString(7, Asesorias.getHoraF());
+			st.setString(6, Asesorias.getLugar());
+			st.setString(5, Asesorias.getCupos());
+			st.setString(4, Asesorias.getCuposD());
+			st.setString(3, Asesorias.getRecursosApoyo());
 			st.setString(2, Asesorias.getObservaciones());
 			st.setString(1, Asesorias.getEstado());
 			resultadoModificar = st.executeUpdate();
@@ -97,8 +122,9 @@ public class DAOAsesorias {
 				c.setLugar(r.getString(7));
 				c.setCupos(r.getString(8));
 				c.setCuposD(r.getString(9));
-				c.setObservaciones(r.getString(10));
-				c.setEstado(r.getString(11));
+				c.setRecursosApoyo(r.getString(10));
+				c.setObservaciones(r.getString(11));
+				c.setEstado(r.getString(12));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,14 +145,10 @@ public class DAOAsesorias {
 		int resultadoEliminar = 0;
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
-
 			st.setString(1, Asesorias.getIdAsesoria());
-
 			resultadoEliminar = st.executeUpdate();
-
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
-
 		} finally {
 			try {
 				c.close();
@@ -138,10 +160,35 @@ public class DAOAsesorias {
 		return resultadoEliminar;
 	}
 
+	public List<EstudianteAsesoria> listarAsistentes(Connection c, String idAsesoria) {
+		List<EstudianteAsesoria> EstudianteAsesorias = new ArrayList<EstudianteAsesoria>();
+		try {
+			String sql = "SELECT Id_Asesoria, Id_Estudiante, Asistencia_Asesoria FROM estudiantes_asesoria WHERE Id_Asesoria='"+idAsesoria+"'";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet r = ps.executeQuery();
+			while (r.next()) {
+				EstudianteAsesoria EstudianteAsesoria = new EstudianteAsesoria();
+				EstudianteAsesoria.setIdAsesoria(r.getString(1));
+				EstudianteAsesoria.setNumDocEstudiante(r.getString(2));
+				EstudianteAsesoria.setAsistenciaAsesoria(r.getString(3));
+				EstudianteAsesorias.add(EstudianteAsesoria);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return EstudianteAsesorias;
+	}
+
 	public List<Asesoria> listarAsesorias(Connection c) {
 		List<Asesoria> Asesorias = new ArrayList<Asesoria>();
 		try {
-			String sql = "SELECT Id_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, Observaciones_Asesoria, Estado_Asesoria FROM asesorias";
+			String sql = "SELECT Id_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, RecursosApoyo_Asesoria, Observaciones_Asesoria, Estado_Asesoria FROM asesorias";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -155,8 +202,9 @@ public class DAOAsesorias {
 				Asesoria.setLugar(r.getString(7));
 				Asesoria.setCupos(r.getString(8));
 				Asesoria.setCuposD(r.getString(9));
-				Asesoria.setObservaciones(r.getString(10));
-				Asesoria.setEstado(r.getString(11));
+				Asesoria.setRecursosApoyo(r.getString(10));
+				Asesoria.setObservaciones(r.getString(11));
+				Asesoria.setEstado(r.getString(12));
 				Asesorias.add(Asesoria);
 			}
 		} catch (SQLException e) {

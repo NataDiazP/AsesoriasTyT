@@ -1,3 +1,5 @@
+<%@page import="co.poli.asesoriastyt.control.CallbackServlet"%>
+<%@page import="co.poli.asesoriastyt.model.EstudianteAsesoria"%>
 <%@page import="co.poli.asesoriastyt.model.Asesoria"%>
 <%@page import="java.util.List"%>
 <%@page import="co.poli.asesoriastyt.dao.DAOAsesorias"%>
@@ -10,15 +12,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="./css/partials.css" rel="stylesheet" type="text/css" />
 <title>Asesorias TyT - Inicio</title>
-<script language="JavaScript">
-	function Abrir_ventana(pagina) {
-		var opciones = "toolbar=no, location=no, maximize:no, minimize:no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=508, height=365, top=85, left=140";
-		window.open(pagina, "", opciones);
-	}
-</script>
 </head>
 <body>
-
 	<%
 		NAsesoria nAsesoria = new NAsesoria();
 		DAOAsesorias dao = new DAOAsesorias();
@@ -57,10 +52,15 @@
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>
-								<td><button class="asistirButton"
-										onclick="Abrir_ventana('ConfirmarAsistencia.jsp')">
-										<img src="./images/plus.png" alt="Asistir a asesoría" class="asistir"/>
-									</button></td>
+								<%
+									request.getSession().setAttribute("idAsesoria", as.getIdAsesoria());
+								%>
+								<td><form name="asistenciaAsesorias" action="./AsistenciaAsesorias" method="post">
+										<button class="asistirButton" name="action" value="Asistir">
+											<img src="./images/plus.png" alt="Asistir a asesoría"
+												class="asistir" />
+										</button>
+									</form></td>
 							</tr>
 							<%
 								}

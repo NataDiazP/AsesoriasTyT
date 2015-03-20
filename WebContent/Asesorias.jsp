@@ -22,6 +22,7 @@
 	String lugar = request.getParameter("lugar");
 	String cupos = request.getParameter("cupos");
 	String cuposD = request.getParameter("cuposD");
+	String recursosApoyo = request.getParameter("recursosApoyo");
 	String observacion = request.getParameter("observacion");
 	String estado = request.getParameter("estado");
 
@@ -38,6 +39,7 @@
 		lugar = x.getLugar();
 		cupos = x.getCupos();
 		cuposD = x.getCuposD();
+		recursosApoyo = x.getRecursosApoyo();
 		observacion = x.getObservaciones();
 		estado = x.getEstado();
 	}
@@ -70,7 +72,7 @@
 									onkeypress="return validar(event)" placeholder="Código"
 									value="<%=id != null ? id : ""%>"></td>
 								<td class="label">Docente(*):</td>
-								<td><input type="text" name="docente" size="30"
+								<td><input type="text" name="docente" size="25"
 									placeholder="Docente"
 									value="<%=docente != null ? docente : ""%>"></td>
 								<td class="label">Asignatura(*):</td>
@@ -83,7 +85,7 @@
 								<td><input type="date" name="fecha" size="20"
 									placeholder="Fecha" value="<%=fecha != null ? fecha : ""%>"></td>
 								<td class="label">Hora Inicio(*):</td>
-								<td><input type="text" name="horaI" size="30"
+								<td><input type="text" name="horaI" size="25"
 									placeholder="Hora Inicio"
 									value="<%=horaF != null ? horaF : ""%>"></td>
 								</td>
@@ -97,17 +99,22 @@
 									onkeypress="return validar(event)" placeholder="Lugar"
 									value="<%=lugar != null ? lugar : ""%>"></td>
 								<td class="label">Cupos(*):</td>
-								<td><input type="text" name="cupos" size="30"
+								<td><input type="text" name="cupos" size="25"
 									placeholder="Cupos" value="<%=cupos != null ? cupos : ""%>"></td>
-								<td class="label">Cupos Disponibles(*):</td>
-								<td><input type="text" name="cuposD" size=20"
+								<td class="label">Cupos Disponibles :</td>
+								<td><input type="text" name="cuposD" size="20"
 									placeholder="Cupos Disponibles"
 									value="<%=cuposD != null ? cuposD : ""%>"></td>
 							</tr>
 							<tr>
-								<td class="label">Observaciones(*):</td>
-								<td><textarea name="observacion" placeholder="Observaciones Asesoría"
-									class="campo02" value="<%=observacion != null ? observacion : ""%>"></textarea></td>
+								<td class="label">Recursos de Apoyo :</td>
+								<td><textarea name="recursosApoyo" size="30"
+										class="campo02" placeholder="Recursos de apoyo"
+										value="<%=recursosApoyo != null ? recursosApoyo : ""%>"></textarea></td>
+								<td class="label">Observaciones :</td>
+								<td><textarea name="observacion" size="30"
+										placeholder="Observaciones Asesoría" class="campo02"
+										value="<%=observacion != null ? observacion : ""%>"></textarea></td>
 								<td class="label">Estado(*):</td>
 								<td><select name="estado" class="campo02" id="genero">
 										<option><%=estado != null ? estado : "Seleccione"%></option>
@@ -115,7 +122,9 @@
 										<option>Confirmada</option>
 										<option>Cancelada</option>
 								</select></td>
-								<td colspan="4" align="right" class="label"><a
+							</tr>
+							<tr>
+								<td colspan="6" align="right" class="label"><a
 									class="estudiantesIns" href="AsistenciaAsesorias.jsp">Estudiantes
 										inscritos</a></td>
 							</tr>
@@ -144,6 +153,7 @@
 		<%
 			NAsesoria nAsesoria = new NAsesoria();
 			DAOAsesorias dao = new DAOAsesorias();
+			request.setAttribute("idAsesoria", id);
 			List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
 		%>
 		<br> <br>

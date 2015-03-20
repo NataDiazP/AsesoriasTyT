@@ -32,7 +32,6 @@ public class SMTPConfig {
 		boolean envio = false;
 
 		try {
-
 			// carga del archivo smtp.properties
 			final ResourceBundle props = ResourceBundle.getBundle("resource.smtp");
 

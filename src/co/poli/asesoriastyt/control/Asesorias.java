@@ -45,11 +45,12 @@ public class Asesorias extends HttpServlet {
 		String lugar = request.getParameter("lugar");
 		String cupos = request.getParameter("cupos");
 		String cuposD = request.getParameter("cuposD");
+		String recursosApoyo = request.getParameter("recursosApoyo");
 		String observacion = request.getParameter("observacion");
 		String estado = request.getParameter("estado");
 
 		if (id.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la asesor�a.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Asesorias.jsp");
 		} else {
 			Asesorias.setIdAsesoria(id);
@@ -61,6 +62,7 @@ public class Asesorias extends HttpServlet {
 			Asesorias.setLugar(lugar);
 			Asesorias.setCupos(cupos);
 			Asesorias.setCuposD(cuposD);
+			Asesorias.setRecursosApoyo(recursosApoyo);
 			Asesorias.setObservaciones(observacion);
 			Asesorias.setEstado(estado);
 
@@ -88,14 +90,7 @@ public class Asesorias extends HttpServlet {
 						int resultado = new NAsesoria().Crear(Asesorias);
 						try {
 							response.sendRedirect("Asesorias.jsp");
-							JOptionPane.showMessageDialog(null, "Se guard� correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							if (SMTPConfig.sendMail("Asunto del Mensaje", " Cuerpo del Mensaje.", "destino@gmail.com")) {
-
-								System.out.println("envío Correcto");
-
-							} else {
-								System.out.println("envío Fallido");
-							}
+							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 							request.setAttribute("cli", resultado);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -126,7 +121,7 @@ public class Asesorias extends HttpServlet {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Asesorias.jsp");
 					} else {
-						int confirma = JOptionPane.showConfirmDialog(null, "�Desea actualizar la informaci�n de esta asesoria?");
+						int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoria?");
 						if (confirma == JOptionPane.YES_OPTION) {
 							int resultadoModificar = new NAsesoria().Modificar(Asesorias);
 							request.setAttribute("cli", resultadoModificar);

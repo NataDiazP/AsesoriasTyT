@@ -18,6 +18,7 @@ public class Asesoria
 	private String lugar;
 	private String cupos;
 	private String cuposD;
+	private String recursosApoyo;
 	private String Observaciones;
 	private String estado;
 	/**
@@ -151,6 +152,18 @@ public class Asesoria
 	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	/**
+	 * @return the recursosApoyo
+	 */
+	public String getRecursosApoyo() {
+		return recursosApoyo;
+	}
+	/**
+	 * @param recursosApoyo the recursosApoyo to set
+	 */
+	public void setRecursosApoyo(String recursosApoyo) {
+		this.recursosApoyo = recursosApoyo;
 	}
 	
 	
