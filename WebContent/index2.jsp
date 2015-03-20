@@ -31,7 +31,7 @@
 	}
 	else
 	{
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("login"));
 	}
 %>
 </head>
