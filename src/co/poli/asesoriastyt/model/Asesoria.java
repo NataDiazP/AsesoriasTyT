@@ -10,6 +10,7 @@ package co.poli.asesoriastyt.model;
 public class Asesoria 
 {
 	private String idAsesoria;
+	private String nombreAsesoria;
 	private String docente;
 	private String asignatura;
 	private String fecha;
@@ -164,6 +165,18 @@ public class Asesoria
 	 */
 	public void setRecursosApoyo(String recursosApoyo) {
 		this.recursosApoyo = recursosApoyo;
+	}
+	/**
+	 * @return the nombreAsesoria
+	 */
+	public String getNombreAsesoria() {
+		return nombreAsesoria;
+	}
+	/**
+	 * @param nombreAsesoria the nombreAsesoria to set
+	 */
+	public void setNombreAsesoria(String nombreAsesoria) {
+		this.nombreAsesoria = nombreAsesoria;
 	}
 	
 	
