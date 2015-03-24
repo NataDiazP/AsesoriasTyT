@@ -37,6 +37,7 @@ public class Asesorias extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Asesoria Asesorias = new Asesoria();
 		String id = request.getParameter("IdAsesoria");
+		String nombreAsesoria = request.getParameter("nombreAsesoria");
 		String docente = request.getParameter("docente");
 		String asignatura = request.getParameter("asignatura");
 		String fecha = request.getParameter("fecha");
@@ -54,6 +55,7 @@ public class Asesorias extends HttpServlet {
 			response.sendRedirect("Asesorias.jsp");
 		} else {
 			Asesorias.setIdAsesoria(id);
+			Asesorias.setNombreAsesoria(nombreAsesoria);
 			Asesorias.setDocente(docente);
 			Asesorias.setAsignatura(asignatura);
 			Asesorias.setFecha(fecha);

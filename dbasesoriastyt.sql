@@ -8,6 +8,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `asesorias` (
   `Id_Asesoria` varchar(5) NOT NULL,
+  `Nombre_Asesoria` varchar(255) NOT NULL,
   `Docente_Asesoria` varchar(15) NOT NULL,
   `Asignatura_Asesoria` varchar(10) NOT NULL,
   `Fecha_Asesoria` varchar(50) NOT NULL,
@@ -24,9 +25,9 @@ CREATE TABLE IF NOT EXISTS `asesorias` (
   KEY `Asignatura_Asesoria_FK` (`Asignatura_Asesoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `asesorias` (`Id_Asesoria`, `Docente_Asesoria`, `Asignatura_Asesoria`, `Fecha_Asesoria`, `HoraInicio_Asesoria`, `HoraFin_Asesoria`, `Lugar_Asesoria`, `Cupos_Asesoria`, `CuposDisp_Asesoria`, `RecursosApoyo_Asesoria`, `Observaciones_Asesoria`, `Estado_Asesoria`) VALUES
-('1', '123456', 'ING003', '12/04/2015', '2:00 pm', '4:00 pm', 'Almendros', '10', '9', NULL, 'ninguna', 'activa'),
-('2', '1234567', 'ING003', '12/04/2015', '2:00 pm', '3:00 pm', 'Almendros', '9', NULL, NULL, NULL, 'Activa');
+INSERT INTO `asesorias` (`Id_Asesoria`, `Nombre_Asesoria`, `Docente_Asesoria`, `Asignatura_Asesoria`, `Fecha_Asesoria`, `HoraInicio_Asesoria`, `HoraFin_Asesoria`, `Lugar_Asesoria`, `Cupos_Asesoria`, `CuposDisp_Asesoria`, `RecursosApoyo_Asesoria`, `Observaciones_Asesoria`, `Estado_Asesoria`) VALUES
+('1', 'MAtematicas', '123456', 'ING003', '12/04/2015', '2:00 pm', '4:00 pm', 'Almendros', '10', '9', NULL, 'ninguna', 'activa'),
+('2', 'Matematicas 2', '1234567', 'ING003', '12/04/2015', '2:00 pm', '3:00 pm', 'Almendros', '9', NULL, NULL, NULL, 'Activa');
 
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `Codigo_Asignatura` varchar(10) NOT NULL,
