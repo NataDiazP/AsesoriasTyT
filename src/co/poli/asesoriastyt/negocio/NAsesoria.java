@@ -67,6 +67,12 @@ public class NAsesoria {
 		return daoAsesorias.listarAsesorias(c);
 	}
 	
+	public List<Asesoria> ListadoAsesoriasProfesor(String profesor) {
+		daoAsesorias = new DAOAsesorias();
+		c = new Conexion().getConnection();
+		return daoAsesorias.listarAsesoriasProfesor(c, profesor);
+	}
+	
 	public List<EstudianteAsesoria> ListadoAsistentes(String idAsesoria) {
 		daoAsesorias = new DAOAsesorias();
 		c = new Conexion().getConnection();

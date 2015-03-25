@@ -85,7 +85,7 @@
 			<a href="DocentesConsulta.jsp" target="datos">Mi información</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n
+			<a href="ProgAcademicbas.jsp" target="datos">Programaci&oacute;n
 				Acad&eacute;mica</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
@@ -95,7 +95,7 @@
 			<a href="http://groups.google.com/forum/" target="_blank">Foro</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="#" target="datos">Reportes</a>
+			<a href="ReportesProfesor.jsp"  target="datos">Reportes</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="AcercaDe.jsp" target="datos">Acerca de</a>
