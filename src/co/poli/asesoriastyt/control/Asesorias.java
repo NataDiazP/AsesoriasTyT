@@ -3,6 +3,7 @@ package co.poli.asesoriastyt.control;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import co.poli.asesoriastyt.model.Asesoria;
+import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -36,7 +38,7 @@ public class Asesorias extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Asesoria Asesorias = new Asesoria();
-		String id = request.getParameter("IdAsesoria");
+		String id = request.getParameter("id");
 		String nombreAsesoria = request.getParameter("nombreAsesoria");
 		String docente = request.getParameter("docente");
 		String asignatura = request.getParameter("asignatura");
@@ -67,6 +69,18 @@ public class Asesorias extends HttpServlet {
 			Asesorias.setRecursosApoyo(recursosApoyo);
 			Asesorias.setObservaciones(observacion);
 			Asesorias.setEstado(estado);
+			
+			if ("EstInscritos".equals(request.getParameter("action"))) {
+				NAsesoria nAses = new NAsesoria();
+				try {
+					List<EstudianteAsesoria> ListaAsistencia= nAses.ListadoAsistentes(id);
+	                request.setAttribute("ListaAsistencia", ListaAsistencia);
+	                request.getRequestDispatcher("./AsistenciaAsesorias.jsp").forward(request, response);
+				} catch (Exception ex) {
+	                Logger.getLogger(Asesorias.class.getName()).log(Level.SEVERE, null, ex);
+	                request.setAttribute("mensaje", ex.getMessage());
+	            }
+			}
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;

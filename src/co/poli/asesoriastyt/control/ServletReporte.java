@@ -87,7 +87,7 @@ public class ServletReporte extends HttpServlet
 	        
 	        if(((fechaInicio=="")&&(fechaFin!="")))
 	        {
-	        	JOptionPane.showMessageDialog(null, "Debe seleccionar un rango de fechas válido", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+	        	JOptionPane.showMessageDialog(null, "Debe seleccionar un rango de fechas vï¿½lido", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 	        	respuesta=false;
 	        }
 	        
@@ -131,7 +131,7 @@ public class ServletReporte extends HttpServlet
 	        if(respuesta==true)
 	        {
 
-		        if(reporte.equals("Asistencia por Asesoría"))
+		        if(reporte.equals("Asistencia por AsesorÃ­a"));
 		        {
 		        	urlReporte="WEB-INF/Reportes/AsistenciaAsesoria.jasper";
 		        	List<ReporteAsistencia> listaDatos= null;
@@ -167,7 +167,7 @@ public class ServletReporte extends HttpServlet
 			            e.printStackTrace();
 			        }
 		        }
-		        if(reporte.equals("Materiales por Asesoría"))
+		        if(reporte.equals("Materiales por AsesorÃ­a"))
 		        {
 		        	List<ReporteMaterialAsesoria> listaDatos= null;
 		        	urlReporte="WEB-INF/Reportes/MaterialAsesoria.jasper";
@@ -206,7 +206,7 @@ public class ServletReporte extends HttpServlet
 			        }
 	
 		        }
-		        if(reporte.equals("Cantidad Estudiantes por Asesoría"))
+		        if(reporte.equals("Cantidad Estudiantes por AsesorÃ­a"))
 		        {
 		        	
 		        	urlReporte="WEB-INF/Reportes/CantidadAsistenciaAsesoria.jasper";

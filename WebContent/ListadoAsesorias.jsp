@@ -18,6 +18,7 @@
 		NAsesoria nAsesoria = new NAsesoria();
 		DAOAsesorias dao = new DAOAsesorias();
 		List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
+		String mensajeNotif;
 	%>
 
 	<table width="85%" border="0" align="center" cellpadding="0"
@@ -55,7 +56,8 @@
 								<%
 									request.getSession().setAttribute("idAsesoria", as.getIdAsesoria());
 								%>
-								<td><form name="asistenciaAsesorias" action="./AsistenciaAsesorias" method="post">
+								<td><form name="asistenciaAsesorias"
+										action="./AsistenciaAsesorias" method="post">
 										<button class="asistirButton" name="action" value="Asistir">
 											<img src="./images/plus.png" alt="Asistir a asesoría"
 												class="asistir" />
