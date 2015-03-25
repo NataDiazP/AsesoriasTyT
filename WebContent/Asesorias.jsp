@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
 	String mensaje = (String) request.getAttribute("mensaje");
-	String id = request.getParameter("IdAsesoria");
+	String id = request.getParameter("id");
 	String nombreAsesoria = request.getParameter("nombreAsesoria");
 	String docente = request.getParameter("docente");
 	String asignatura = request.getParameter("asignatura");
@@ -74,7 +74,7 @@
 									onkeypress="return validar(event)" placeholder="Código"
 									value="<%=id != null ? id : ""%>"></td>
 								<td class="label">Nombre (*):</td>
-								<td><input type="text" name="nombreAsesoria" size="20"
+								<td><input type="text" name="nombreAsesoria" size="20" maxlength="50"
 									placeholder="Nombre Asesoría"
 									value="<%=nombreAsesoria != null ? nombreAsesoria : ""%>"></td>
 								<td class="label">Docente(*):</td>
@@ -129,9 +129,10 @@
 										<option>Confirmada</option>
 										<option>Cancelada</option>
 								</select></td>
-								<td colspan="4" align="right" class="label"><a
-									class="estudiantesIns" href="AsistenciaAsesorias.jsp">Estudiantes
-										inscritos</a></td>
+								<td colspan="4" align="right" class="label">
+									<button name="action" value="EstInscritos" class="boton">Estudiantes
+										inscritos</button>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -158,7 +159,6 @@
 		<%
 			NAsesoria nAsesoria = new NAsesoria();
 			DAOAsesorias dao = new DAOAsesorias();
-			request.setAttribute("idAsesoria", id);
 			List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
 		%>
 		<br> <br>

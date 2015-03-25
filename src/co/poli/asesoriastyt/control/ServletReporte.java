@@ -130,7 +130,6 @@ public class ServletReporte extends HttpServlet
 	       
 	        if(respuesta==true)
 	        {
-
 		        if(reporte.equals("Asistencia por Asesoría"))
 		        {
 		        	urlReporte="WEB-INF/Reportes/AsistenciaAsesoria.jasper";

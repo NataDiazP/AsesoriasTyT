@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.SendEmail;
 
 /**
  * Servlet implementation class AsistenciaAsesorias
@@ -56,10 +58,31 @@ public class AsistenciaAsesorias extends HttpServlet {
 
 			int confirma = JOptionPane.showConfirmDialog(null, "¿Desea asistir a esta asesoría?");
 			if (confirma == JOptionPane.YES_OPTION) {
-				int resultadoAsistir = new NAsesoria().Asistir((String) request.getSession().getAttribute("idUser"),(String) request.getSession().getAttribute("idAsesoria"));
+				int resultadoAsistir = new NAsesoria().Asistir((String) request.getSession().getAttribute("idUser"), (String) request.getSession().getAttribute("idAsesoria"));
 				request.setAttribute("cli", resultadoAsistir);
 				JOptionPane.showMessageDialog(null, "Usted se ha inscrito exitosamente, se enviará un mensaje de confirmación a su correo electrónico.", "AsesoriasTyT",
 						JOptionPane.INFORMATION_MESSAGE);
+
+				NAsesoria negocioC = new NAsesoria();
+				Asesoria infoAsesoria = negocioC.Buscar((String) request.getSession().getAttribute("idAsesoria"));
+
+				StringBuilder stringBuilder = new StringBuilder();
+				stringBuilder.append("Hola \n Los datos de su asesoría son: \n Asignatura: ");
+				stringBuilder.append(infoAsesoria.getAsignatura());
+				stringBuilder.append("\n Docente: ");
+				stringBuilder.append(infoAsesoria.getDocente());
+				stringBuilder.append("\n Fecha: ");
+				stringBuilder.append(infoAsesoria.getFecha());
+				stringBuilder.append("\n Hora: ");
+				stringBuilder.append(infoAsesoria.getHoraI());
+				stringBuilder.append("\n Lugar: ");
+				stringBuilder.append(infoAsesoria.getLugar());
+				stringBuilder.append("\n Estudiante: ");
+				stringBuilder.append(email);
+				stringBuilder.append("\n En caso de alguna eventualidad se le informará oportunamente por este mismo medio. ");
+				String mensaje = stringBuilder.toString();
+
+				SendEmail.sendNotification(email, mensaje);
 				response.sendRedirect("ListadoAsesorias.jsp");
 			} else if (confirma == JOptionPane.NO_OPTION) {
 				request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
@@ -70,5 +93,4 @@ public class AsistenciaAsesorias extends HttpServlet {
 			}
 		}
 	}
-
 }

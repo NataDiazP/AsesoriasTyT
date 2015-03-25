@@ -120,8 +120,6 @@
 		<h3 class="menuheader Noexpandable">
 			<a href="logout">Salida Segura</a>
 		</h3>
-
 	</div>
-
 </body>
 </html>
