@@ -529,4 +529,47 @@ public List<ReporteMaterialAsesoria> MaterialAsesoriasAsesoria(Connection c, Str
 		return reportes;
 	
 	}
+
+	/**
+	 * @param c
+	 * @param profesor
+	 * @return
+	 */
+	public List<Asesoria> listarAsesoriasProfesor(Connection c, String profesor) {
+		
+		List<Asesoria> Asesorias = new ArrayList<Asesoria>();
+		try {
+			String sql = "SELECT a.Id_Asesoria, a.Docente_Asesoria, a.Asignatura_Asesoria, a.Fecha_Asesoria, a.HoraInicio_Asesoria, "
+					+ "a.HoraFin_Asesoria, a.Lugar_Asesoria, a.Cupos_Asesoria, a.CuposDisp_Asesoria, a.RecursosApoyo_Asesoria, a.Observaciones_Asesoria, "
+					+ "a.Estado_Asesoria FROM asesorias as a inner join personas as b on a.Docente_Asesoria = b.NumDoc_Persona where  b.Correo_Persona ='"+profesor+"'";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet r = ps.executeQuery();
+			while (r.next()) {
+				Asesoria Asesoria = new Asesoria();
+				Asesoria.setIdAsesoria(r.getString(1));
+				Asesoria.setNombreAsesoria(r.getString(2));
+				Asesoria.setDocente(r.getString(3));
+				Asesoria.setAsignatura(r.getString(4));
+				Asesoria.setFecha(r.getString(5));
+				Asesoria.setHoraI(r.getString(6));
+				Asesoria.setHoraF(r.getString(7));
+				Asesoria.setLugar(r.getString(8));
+				Asesoria.setCupos(r.getString(9));
+				Asesoria.setCuposD(r.getString(10));
+				Asesoria.setRecursosApoyo(r.getString(11));
+				Asesoria.setObservaciones(r.getString(12));
+				Asesoria.setEstado(r.getString(13));
+				Asesorias.add(Asesoria);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return Asesorias;
+	}
 }
