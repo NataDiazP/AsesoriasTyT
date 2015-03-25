@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="co.poli.asesoriastyt.model.EstudianteAsesoria"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOAsesorias"%>
+<%@page import="co.poli.asesoriastyt.negocio.NAsesoria"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,6 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Asesorias TyT - Control de asistencia</title>
 <link href="./css/partials.css" rel="stylesheet" type="text/css" />
+<%
+	List<EstudianteAsesoria> LU = request.getAttribute("ListaAsistencia") != null ? (List<EstudianteAsesoria>) request.getAttribute("ListaAsistencia") : null;
+%>
 </head>
 <body>
 	<form name="asistencia" action="./Asesorias" method="post">
@@ -23,31 +30,46 @@
 						<table width="100%" align="center" id="rounded-corner">
 							<thead>
 								<tr>
-									<th class="rounded" scope="col">Estudiante</th>
-									<th class="rounded" scope="col">Si</th>
-									<th class="rounded" scope="col">No</th>
+									<th class="rounded" scope="col">Documento Estudiante</th>
+									<th class="rounded" scope="col">Asistencia</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									//for (Asesoria as : listaAsesorias) {
+									if (LU == null) {
 								%>
-								<tr align="center">
-									<td>Nombre estudiante</td>
-									<td><input name="asistencia" type="radio"></td>
-									<td><input name="asistencia" type="radio"></td>
+								<tr>
+									<td colspan="3">No hay estudiantes inscritos a esta
+										ases&iacute;a</td>
 								</tr>
 								<%
-									//}
+									} else {
+										for (EstudianteAsesoria asis : LU) {
+								%>
+								<tr align="center">
+									<td><%=asis.getNumDocEstudiante()%></td>
+									<td><select name="asistencia" class="campo02"
+										id="asistencia">
+											<option <%if ("No".equals(asis.getAsistenciaAsesoria())) {%>
+												selected <%}%>>No</option>
+											<option <%if ("Si".equals(asis.getAsistenciaAsesoria())) {%>
+												selected <%}%>>Si</option>
+									</select></td>
+								</tr>
+								<%
+									}
 								%>
 							</tbody>
-						</table>
+						</table> <%
+ 	}
+ %>
 					</td>
 				</tr>
 		</table>
-		<div
-			style="margin-top: 8px; margin-right: 100px; width: auto; float: right;">
-			<button value="GuardarAsesoria" class="botonGuardar">Guardar</button>
+	</form>
+	<form name="confirmAsistencia" action="./AsistenciaAsesorias" method="post">
+		<div style="margin-top: 8px; margin-right: 100px; width: auto; float: right">
+			<button name="action" value="GuardarAsesoria" class="botonGuardar">Guardar</button>
 		</div>
 	</form>
 </body>

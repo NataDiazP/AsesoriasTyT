@@ -630,6 +630,13 @@ body {
 	text-align:right;
 }
 
+.label2{
+	font-family:"Trebuchet MS";
+	font-size: 13px;
+	color:#000;
+	text-align:left;
+}
+
 .label span{
 	font-family:"Trebuchet MS";
 	font-size: 13px;

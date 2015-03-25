@@ -13,7 +13,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
 	String mensaje = (String) request.getAttribute("mensaje");
-	String id = request.getParameter("IdAsesoria");
+	String id = request.getParameter("id");
+	String nombreAsesoria = request.getParameter("nombreAsesoria");
 	String docente = request.getParameter("docente");
 	String asignatura = request.getParameter("asignatura");
 	String fecha = request.getParameter("fecha");
@@ -22,6 +23,7 @@
 	String lugar = request.getParameter("lugar");
 	String cupos = request.getParameter("cupos");
 	String cuposD = request.getParameter("cuposD");
+	String recursosApoyo = request.getParameter("recursosApoyo");
 	String observacion = request.getParameter("observacion");
 	String estado = request.getParameter("estado");
 
@@ -29,6 +31,7 @@
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
 		id = x.getIdAsesoria();
+		nombreAsesoria = x.getNombreAsesoria();
 		docente = x.getDocente();
 		asignatura = x.getAsignatura();
 		docente = x.getDocente();
@@ -38,6 +41,7 @@
 		lugar = x.getLugar();
 		cupos = x.getCupos();
 		cuposD = x.getCuposD();
+		recursosApoyo = x.getRecursosApoyo();
 		observacion = x.getObservaciones();
 		estado = x.getEstado();
 	}
@@ -69,45 +73,55 @@
 								<td><input type="text" name="id" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Código"
 									value="<%=id != null ? id : ""%>"></td>
+								<td class="label">Nombre (*):</td>
+								<td><input type="text" name="nombreAsesoria" size="20" maxlength="50"
+									placeholder="Nombre Asesoría"
+									value="<%=nombreAsesoria != null ? nombreAsesoria : ""%>"></td>
 								<td class="label">Docente(*):</td>
-								<td><input type="text" name="docente" size="30"
+								<td><input type="text" name="docente" size="25"
 									placeholder="Docente"
 									value="<%=docente != null ? docente : ""%>"></td>
+							</tr>
+							<tr>
 								<td class="label">Asignatura(*):</td>
 								<td><input type="text" name="asignatura" size="20"
 									maxlength="8" placeholder="Asignatura"
 									value="<%=asignatura != null ? asignatura : ""%>"></td>
-							</tr>
-							<tr>
 								<td class="label">Fecha(*):</td>
 								<td><input type="date" name="fecha" size="20"
 									placeholder="Fecha" value="<%=fecha != null ? fecha : ""%>"></td>
 								<td class="label">Hora Inicio(*):</td>
-								<td><input type="text" name="horaI" size="30"
+								<td><input type="text" name="horaI" size="25"
 									placeholder="Hora Inicio"
 									value="<%=horaF != null ? horaF : ""%>"></td>
-								</td>
+							</tr>
+							<tr>
 								<td class="label">Hora Fin(*):</td>
 								<td><input type="text" name="horaF" size="20" maxlength="5"
 									placeholder="Hora Fin" value="<%=horaF != null ? horaF : ""%>"></td>
-							</tr>
-							<tr>
 								<td class="label">Lugar o Aula(*):</td>
 								<td><input type="text" name="lugar" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Lugar"
 									value="<%=lugar != null ? lugar : ""%>"></td>
 								<td class="label">Cupos(*):</td>
-								<td><input type="text" name="cupos" size="30"
+								<td><input type="text" name="cupos" size="25"
 									placeholder="Cupos" value="<%=cupos != null ? cupos : ""%>"></td>
-								<td class="label">Cupos Disponibles(*):</td>
-								<td><input type="text" name="cuposD" size=20"
-									placeholder="Cupos Disponibles"
-									value="<%=cuposD != null ? cuposD : ""%>"></td>
 							</tr>
 							<tr>
-								<td class="label">Observaciones(*):</td>
-								<td><textarea name="observacion" placeholder="Observaciones Asesoría"
-									class="campo02" value="<%=observacion != null ? observacion : ""%>"></textarea></td>
+								<td class="label">Cupos Disponibles :</td>
+								<td><input type="text" name="cuposD" size="20"
+									placeholder="Cupos Disponibles"
+									value="<%=cuposD != null ? cuposD : ""%>"></td>
+								<td class="label">Recursos de Apoyo :</td>
+								<td><textarea name="recursosApoyo" size="30"
+										class="campo02" placeholder="Recursos de apoyo"
+										value="<%=recursosApoyo != null ? recursosApoyo : ""%>"></textarea></td>
+								<td class="label">Observaciones :</td>
+								<td><textarea name="observacion" size="30"
+										placeholder="Observaciones Asesoría" class="campo02"
+										value="<%=observacion != null ? observacion : ""%>"></textarea></td>
+							</tr>
+							<tr>
 								<td class="label">Estado(*):</td>
 								<td><select name="estado" class="campo02" id="genero">
 										<option><%=estado != null ? estado : "Seleccione"%></option>
@@ -115,9 +129,10 @@
 										<option>Confirmada</option>
 										<option>Cancelada</option>
 								</select></td>
-								<td colspan="4" align="right" class="label"><a
-									class="estudiantesIns" href="AsistenciaAsesorias.jsp">Estudiantes
-										inscritos</a></td>
+								<td colspan="4" align="right" class="label">
+									<button name="action" value="EstInscritos" class="boton">Estudiantes
+										inscritos</button>
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -162,6 +177,7 @@
 							<thead>
 								<tr>
 									<th class="rounded" scope="col">Código</th>
+									<th class="rounded" scope="col">Nombre</th>
 									<th class="rounded" scope="col">Docente</th>
 									<th class="rounded" scope="col">Asignatura</th>
 									<th class="rounded" scope="col">Fecha</th>
@@ -179,6 +195,7 @@
 								%>
 								<tr align="center">
 									<td><%=as.getIdAsesoria()%></td>
+									<td><%=as.getNombreAsesoria()%></td>
 									<td><%=as.getDocente()%></td>
 									<td><%=as.getAsignatura()%></td>
 									<td><%=as.getFecha()%></td>

@@ -8,13 +8,12 @@
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <link href="./css/style1.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
 	<div id="header_wrapper">
 		<img src="./images/logo.png" width='15%' height='70%'
-			style="margin: 5px 0px 5px 30px; float: left;" /> 
-		<img src="./images/api.jpg" width='15%' height='80%' align="right"
+			style="margin: 5px 0px 5px 30px; float: left;" /> <img
+			src="./images/api.jpg" width='15%' height='80%' align="right"
 			style="margin: 5px 30px 5px 5px; float: right;" />
 	</div>
 </body>

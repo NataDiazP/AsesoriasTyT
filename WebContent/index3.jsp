@@ -28,7 +28,7 @@
 	}
 	else
 	{
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("login"));
 	}
 %>
 
@@ -41,7 +41,6 @@
 				width="100%" marginheight=0 marginwidth=0 noResize src="Header.jsp"
 				style="background: transparent" allowtransparency="true"> </iframe>
 		</div>
-
 		<div id="menu">
 			<iframe id="menu" frameborder="no" scrolling="auto" height="100%"
 				width="200" marginheight=0 marginwidth=0 noResize src="Menu3.jsp"
