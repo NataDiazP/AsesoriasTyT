@@ -89,7 +89,7 @@ public class Asesorias extends HttpServlet {
 					while (r.next()) {
 						if (id.equals(Integer.toString(r.getInt(1)))) {
 							registroExiste = true;
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación de la asesor�a", "Advertencia - AsesoriasTyT",
+							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT",
 									JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 						}

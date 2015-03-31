@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.util.Conexion;
-import co.poli.asesoriastyt.util.SendEmail;
 
 /**
  * Servlet implementation class AsistenciaAsesorias
@@ -45,8 +44,9 @@ public class AsistenciaAsesorias extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if ("Asistir".equals(request.getParameter("action"))) {
+			String idAsesoria = (String) request.getSession().getAttribute("idAsesoria");
 			String email = (String) request.getSession().getAttribute("emailUser");
-			System.out.println(email);
+			boolean registroExiste = false;
 			try {
 				ResultSet r = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas where Correo_Persona = '" + email + "'").executeQuery();
 				while (r.next()) {
@@ -55,41 +55,57 @@ public class AsistenciaAsesorias extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+			try {
+				ResultSet r = Connection.getConnection().prepareStatement("Select Id_Estudiante, Id_Asesoria from estudiantes_asesoria").executeQuery();
+				while (r.next()) {
+					if (((String) request.getSession().getAttribute("idUser")).equals(r.getString(1)) && idAsesoria.equals(Integer.toString(r.getInt(2)))) {
+						registroExiste = true;
+						JOptionPane.showMessageDialog(null, "Usted ya se ha inscrito a esta asesoría", "Advertencia - AsesoriasTyT",
+								JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			if (!registroExiste) {
+				int confirma = JOptionPane.showConfirmDialog(null, "¿Desea asistir a esta asesoría?");
+				if (confirma == JOptionPane.YES_OPTION) {
+					int resultadoAsistir = new NAsesoria().Asistir((String) request.getSession().getAttribute("idUser"), idAsesoria);
+					request.setAttribute("cli", resultadoAsistir);
+					JOptionPane.showMessageDialog(null, "Usted se ha inscrito exitosamente, se enviará un mensaje de confirmación a su correo electrónico.", "AsesoriasTyT",
+							JOptionPane.INFORMATION_MESSAGE);
 
-			int confirma = JOptionPane.showConfirmDialog(null, "¿Desea asistir a esta asesoría?");
-			if (confirma == JOptionPane.YES_OPTION) {
-				int resultadoAsistir = new NAsesoria().Asistir((String) request.getSession().getAttribute("idUser"), (String) request.getSession().getAttribute("idAsesoria"));
-				request.setAttribute("cli", resultadoAsistir);
-				JOptionPane.showMessageDialog(null, "Usted se ha inscrito exitosamente, se enviará un mensaje de confirmación a su correo electrónico.", "AsesoriasTyT",
-						JOptionPane.INFORMATION_MESSAGE);
+					NAsesoria negocioC = new NAsesoria();
+					Asesoria infoAsesoria = negocioC.Buscar(idAsesoria);
 
-				NAsesoria negocioC = new NAsesoria();
-				Asesoria infoAsesoria = negocioC.Buscar((String) request.getSession().getAttribute("idAsesoria"));
+					StringBuilder stringBuilder = new StringBuilder();
+					stringBuilder.append("Hola <br/> <br/> Los datos de su asesoría son: <br/> Asignatura: ");
+					stringBuilder.append(infoAsesoria.getAsignatura());
+					stringBuilder.append("<br/> Docente: ");
+					stringBuilder.append(infoAsesoria.getDocente());
+					stringBuilder.append("<br/> Fecha: ");
+					stringBuilder.append(infoAsesoria.getFecha());
+					stringBuilder.append("<br/> Hora: ");
+					stringBuilder.append(infoAsesoria.getHoraI());
+					stringBuilder.append("<br/> Lugar: ");
+					stringBuilder.append(infoAsesoria.getLugar());
+					stringBuilder.append("<br/> Estudiante: ");
+					stringBuilder.append(email);
+					stringBuilder.append("<br/> <br/> <i>En caso de alguna eventualidad se le informará oportunamente por este mismo medio. <i/>");
+					String mensaje = stringBuilder.toString();
 
-				StringBuilder stringBuilder = new StringBuilder();
-				stringBuilder.append("Hola \n Los datos de su asesoría son: \n Asignatura: ");
-				stringBuilder.append(infoAsesoria.getAsignatura());
-				stringBuilder.append("\n Docente: ");
-				stringBuilder.append(infoAsesoria.getDocente());
-				stringBuilder.append("\n Fecha: ");
-				stringBuilder.append(infoAsesoria.getFecha());
-				stringBuilder.append("\n Hora: ");
-				stringBuilder.append(infoAsesoria.getHoraI());
-				stringBuilder.append("\n Lugar: ");
-				stringBuilder.append(infoAsesoria.getLugar());
-				stringBuilder.append("\n Estudiante: ");
-				stringBuilder.append(email);
-				stringBuilder.append("\n En caso de alguna eventualidad se le informará oportunamente por este mismo medio. ");
-				String mensaje = stringBuilder.toString();
-
-				SendEmail.sendNotification(email, mensaje);
-				response.sendRedirect("ListadoAsesorias.jsp");
-			} else if (confirma == JOptionPane.NO_OPTION) {
-				request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
-			} else if (confirma == JOptionPane.CLOSED_OPTION) {
-				request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
-			} else if (confirma == JOptionPane.CANCEL_OPTION) {
-				request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
+					SMTPConfig.sendMail("Confirmación asesoría", mensaje, email);
+					response.sendRedirect("./ListadoAsesorias.jsp");
+				} else if (confirma == JOptionPane.NO_OPTION) {
+					request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
+				} else if (confirma == JOptionPane.CLOSED_OPTION) {
+					request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
+				} else if (confirma == JOptionPane.CANCEL_OPTION) {
+					request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
+				}
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 
 body {
 	margin: 0;
-	overflow-y: hidden;
+	overflow-y: scroll;
 }
 
 #cabezote  {

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
+<!-- 2015-03-25T22:31:52 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e2877672-44c4-495f-bc99-dd25fbe332aa">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -40,18 +42,18 @@
 				</textElement>
 				<text><![CDATA[Material por Asesoría]]></text>
 			</staticText>
-			<image>
-				<reportElement x="1" y="0" width="159" height="141" uuid="f9aafcc9-9d3c-4f20-b887-400fde5d2ec9"/>
-				<imageExpression><![CDATA["C:\\Users\\Paola\\Documents\\GitHub\\AsesoriasTyT\\WebContent\\WEB-INF\\Reportes\\coffee.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="671" y="0" width="218" height="109" uuid="78e9ac48-c72d-4b9b-a83f-08810bb64f02"/>
-				<imageExpression><![CDATA["C:\\Users\\Paola\\Documents\\GitHub\\AsesoriasTyT\\WebContent\\WEB-INF\\Reportes\\api2.jpg"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement style="Column header" x="134" y="0" width="112" height="15" forecolor="#736343" uuid="b143cf4b-ae98-4314-b7d1-f5be6fb72087"/>
+				<reportElement style="Column header" x="345" y="90" width="112" height="15" forecolor="#736343" uuid="b143cf4b-ae98-4314-b7d1-f5be6fb72087"/>
 				<text><![CDATA[Nombre Asesoría]]></text>
 			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="180" height="141" uuid="ead4e307-eac5-4f8c-bb7a-76e960999b5f"/>
+				<imageExpression><![CDATA["E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/Reportes/coffee.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="670" y="0" width="162" height="141" uuid="083fa4db-3fbd-492a-a693-d8cee1f85e2b"/>
+				<imageExpression><![CDATA["E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/Reportes/api2.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

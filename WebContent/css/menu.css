@@ -14,7 +14,7 @@ h3 { margin: 0; padding: 0; }
 	position: absolute;
 }
 
-.arrowlistmenu .menuheader{ /*Item padre)*/
+.arrowlistmenu .menuheader { /*Item padre)*/
 	font: 11px Trebuchet MS;
 	color: #000;
 	margin-bottom: 1px; /*bottom spacing between header and rest of content*/
@@ -28,6 +28,10 @@ h3 { margin: 0; padding: 0; }
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: #CCC;
+}
+
+.arrowlistmenu .menuheader:hover {
+	background-color: #ABE2B2;
 }
 
 .arrowlistmenu .openheader{ /*CSS class to apply to expandable header when it's expanded*/

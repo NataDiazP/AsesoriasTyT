@@ -228,6 +228,10 @@ body {
 	
 }
 
+.boton:hover {
+	background-color: #ABE2B2;
+}
+
 .bt_anterior{
 	background-image: url(../images/ico_anterior.png);
 	background-repeat: no-repeat;
