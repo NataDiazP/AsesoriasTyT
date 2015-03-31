@@ -37,6 +37,13 @@ public class NPersona {
 		Persona resultadoBuscar = daoPersonas.Buscar(c, Personas);
 		return resultadoBuscar;
 	}
+	
+	public String BuscarDocente(String Email) {
+		daoPersonas = new DAOPersonas();
+		c = new Conexion().getConnection();
+		String resultadoBuscarDoc = daoPersonas.BuscarDocente(c, Email);
+		return resultadoBuscarDoc;
+	}
 
 	public int Eliminar(Persona Personas) {
 		daoPersonas = new DAOPersonas();

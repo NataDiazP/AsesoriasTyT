@@ -18,7 +18,7 @@
 <%
 	String mensaje = (String) request.getAttribute("mensaje");
 	String IdBloque = request.getParameter("IdBloque");
-	String EncargadoBloque = request.getParameter("EncargadoBloque");
+	String EncBloque = request.getParameter("EncargadoBloque");
 	NEncargadoBloque nEncBloq = new NEncargadoBloque();
 	DAOEncargadosBloques dao = new DAOEncargadosBloques();
 
@@ -26,9 +26,8 @@
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
 		IdBloque = x.getIdBloque();
-
 		EncargadoBloque en = nEncBloq.Buscar(x.getEncargadoBloque());
-		EncargadoBloque = en.getIdEncargado() + "-" + en.getCorreoEncargado();
+		EncBloque = en.getCorreoEncargado();
 	}
 
 	List<EncargadoBloque> listaEnc = nEncBloq.ListadoEncargadosBloques();
@@ -62,14 +61,14 @@
 									maxlength="5" placeholder="Código"
 									value="<%=IdBloque != null ? IdBloque : ""%>"></td>
 								<td class="label">Encargado de Bloque(*):</td>
-								<td><select type="text" class="campo02"
+								<td><select class="campo02"
 									name="EncargadoBloque">
 										<option>Seleccione...</option>
 										<%
 											for (EncargadoBloque enc : listaEnc) {
 										%>
 										<option
-											<%if ((enc.getCorreoEncargado()).equals(EncargadoBloque)) {%>
+											<%if ((enc.getCorreoEncargado()).equals(EncBloque)) {%>
 											selected <%}%>><%=enc.getCorreoEncargado()%></option>
 										<%
 											}

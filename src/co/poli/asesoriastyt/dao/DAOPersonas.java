@@ -109,6 +109,27 @@ public class DAOPersonas {
 		return resultadoModificar;
 	}
 
+	public String BuscarDocente(Connection con, String Email) {
+		String idDocente = null;
+		try {
+			PreparedStatement cl = con.prepareStatement("Select NumDoc_Persona from personas where Correo_Persona ='" + Email + "'");
+			ResultSet r = cl.executeQuery();
+			while (r.next()) {
+				idDocente = r.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return idDocente;
+		} finally {
+			try {
+				con.close();
+			} catch (Exception ex) {
+			}
+
+		}
+		return idDocente;
+	}
+
 	public Persona Buscar(Connection con, String IdPersona) {
 		Persona c = new Persona();
 		try {
@@ -280,6 +301,4 @@ public class DAOPersonas {
 		}
 		return Personas;
 	}
-	
-	
 }
