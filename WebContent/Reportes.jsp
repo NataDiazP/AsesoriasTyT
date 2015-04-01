@@ -63,7 +63,13 @@
 							<td class="label">Asesoría</td>
 							<td><select type="text" class="campo02" name="asesoria">
 									<option>Seleccione...</option>
-									
+									<%
+										for (Asesoria as : listaAsesorias) {
+										%>
+										<option><%=as.getIdAsesoria()%></option>
+										<%
+											}
+										%>
 							</select></td>
 						</tr>
 
