@@ -4,11 +4,10 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
-
-
 import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOProgAcademica;
+import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.ProgAcademica;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -17,10 +16,10 @@ import co.poli.asesoriastyt.util.Conexion;
  *
  */
 public class NProgAcademica {
-	
+
 	DAOProgAcademica daoProgAcademica;
 	Connection c;
-	
+
 	public int Crear(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
 		c = new Conexion().getConnection();
@@ -47,6 +46,12 @@ public class NProgAcademica {
 		c = new Conexion().getConnection();
 		int resultadoEliminar = daoProgAcademica.Eliminar(c, ProgAcademica);
 		return resultadoEliminar;
+	}
+
+	public List<Asignatura> AsignaturasDocente(String idDocente) {
+		daoProgAcademica = new DAOProgAcademica();
+		c = new Conexion().getConnection();
+		return daoProgAcademica.asignaturasDocente(c, idDocente);
 	}
 
 	public List<ProgAcademica> ListadoProgAcademica() {

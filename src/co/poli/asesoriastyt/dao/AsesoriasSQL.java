@@ -20,9 +20,4 @@ public class AsesoriasSQL {
     public static String Consultar(String Id_Asesoria) {
         return "SELECT * FROM asesorias WHERE Id_Asesoria = " + Id_Asesoria + "";
     }
-
-    public static String Eliminar() {
-        return "DELETE FROM asesorias WHERE Id_Asesoria=?";
-    }
-
 }

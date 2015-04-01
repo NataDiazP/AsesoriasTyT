@@ -27,7 +27,6 @@
 	}
 
 	NAsignatura nAsig = new NAsignatura();
-	DAOAsignaturas dao = new DAOAsignaturas();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asignaturas</title>

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import co.poli.asesoriastyt.model.Asesoria;
+import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.negocio.NAsesoria;
+import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.Conexion;
 
 /**
@@ -43,8 +45,16 @@ public class AsistenciaAsesorias extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if ("Asistir".equals(request.getParameter("action"))) {
-			String idAsesoria = (String) request.getSession().getAttribute("idAsesoria");
+		String action = request.getParameter("action");
+		String[] actionArray = action.split("_");
+		action = actionArray[0];
+		String idAsesoria = "";
+		if (actionArray.length > 1)
+		{
+			idAsesoria = actionArray[1];
+		}
+
+		if ("Asistir".equals(action)) {
 			String email = (String) request.getSession().getAttribute("emailUser");
 			boolean registroExiste = false;
 			try {
@@ -55,7 +65,7 @@ public class AsistenciaAsesorias extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
+
 			try {
 				ResultSet r = Connection.getConnection().prepareStatement("Select Id_Estudiante, Id_Asesoria from estudiantes_asesoria").executeQuery();
 				while (r.next()) {
@@ -69,7 +79,7 @@ public class AsistenciaAsesorias extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
+
 			if (!registroExiste) {
 				int confirma = JOptionPane.showConfirmDialog(null, "¿Desea asistir a esta asesoría?");
 				if (confirma == JOptionPane.YES_OPTION) {
@@ -79,19 +89,23 @@ public class AsistenciaAsesorias extends HttpServlet {
 							JOptionPane.INFORMATION_MESSAGE);
 
 					NAsesoria negocioC = new NAsesoria();
+					NPersona negocioP = new NPersona();
 					Asesoria infoAsesoria = negocioC.Buscar(idAsesoria);
+					Persona nombreDocente = negocioP.Buscar(infoAsesoria.getDocente());
 
 					StringBuilder stringBuilder = new StringBuilder();
-					stringBuilder.append("Hola <br/> <br/> Los datos de su asesoría son: <br/> Asignatura: ");
+					stringBuilder.append("Hola <br/> <br/> Los datos de la asesoría a la que se ha inscrito son: <br/> Asignatura: ");
 					stringBuilder.append(infoAsesoria.getAsignatura());
 					stringBuilder.append("<br/> Docente: ");
-					stringBuilder.append(infoAsesoria.getDocente());
+					stringBuilder.append(nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido());
 					stringBuilder.append("<br/> Fecha: ");
 					stringBuilder.append(infoAsesoria.getFecha());
 					stringBuilder.append("<br/> Hora: ");
 					stringBuilder.append(infoAsesoria.getHoraI());
 					stringBuilder.append("<br/> Lugar: ");
 					stringBuilder.append(infoAsesoria.getLugar());
+					stringBuilder.append("<br/> Observaciones: ");
+					stringBuilder.append(infoAsesoria.getObservaciones());
 					stringBuilder.append("<br/> Estudiante: ");
 					stringBuilder.append(email);
 					stringBuilder.append("<br/> <br/> <i>En caso de alguna eventualidad se le informará oportunamente por este mismo medio. <i/>");

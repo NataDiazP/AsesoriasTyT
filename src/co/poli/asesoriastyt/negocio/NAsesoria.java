@@ -53,13 +53,6 @@ public class NAsesoria {
 		Asesoria resultadoBuscar = daoAsesorias.Buscar(c, Asesorias);
 		return resultadoBuscar;
 	}
-
-	public int Eliminar(Asesoria Asesorias) {
-		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
-		int resultadoEliminar = daoAsesorias.Eliminar(c, Asesorias);
-		return resultadoEliminar;
-	}
 	
 	public List<Asesoria> ListadoAsesorias() {
 		daoAsesorias = new DAOAsesorias();

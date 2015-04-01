@@ -53,12 +53,9 @@
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>
-								<%
-									request.getSession().setAttribute("idAsesoria", as.getIdAsesoria());
-								%>
 								<td><form name="asistenciaAsesorias"
 										action="./AsistenciaAsesorias" method="post">
-										<button class="asistirButton" name="action" value="Asistir">
+										<button class="asistirButton" name="action" value="Asistir_<%=as.getIdAsesoria()%>">
 											<img src="./images/plus.png" alt="Asistir a asesoría"
 												class="asistir" />
 										</button>

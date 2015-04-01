@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
 
 import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.model.EstudianteAsesoria;
+import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.negocio.NAsesoria;
+import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.Conexion;
 
 /**
@@ -44,7 +46,7 @@ public class Asesorias extends HttpServlet {
 		String asignatura = request.getParameter("asignatura");
 		String fecha = request.getParameter("fecha");
 		String horaI = request.getParameter("horaI");
-		String horaF = request.getParameter("docente");
+		String horaF = request.getParameter("horaF");
 		String lugar = request.getParameter("lugar");
 		String cupos = request.getParameter("cupos");
 		String cuposD = request.getParameter("cuposD");
@@ -69,17 +71,17 @@ public class Asesorias extends HttpServlet {
 			Asesorias.setRecursosApoyo(recursosApoyo);
 			Asesorias.setObservaciones(observacion);
 			Asesorias.setEstado(estado);
-			
+
 			if ("EstInscritos".equals(request.getParameter("action"))) {
 				NAsesoria nAses = new NAsesoria();
 				try {
-					List<EstudianteAsesoria> ListaAsistencia= nAses.ListadoAsistentes(id);
-	                request.setAttribute("ListaAsistencia", ListaAsistencia);
-	                request.getRequestDispatcher("./AsistenciaAsesorias.jsp").forward(request, response);
+					List<EstudianteAsesoria> ListaAsistencia = nAses.ListadoAsistentes(id);
+					request.setAttribute("ListaAsistencia", ListaAsistencia);
+					request.getRequestDispatcher("./AsistenciaAsesorias.jsp").forward(request, response);
 				} catch (Exception ex) {
-	                Logger.getLogger(Asesorias.class.getName()).log(Level.SEVERE, null, ex);
-	                request.setAttribute("mensaje", ex.getMessage());
-	            }
+					Logger.getLogger(Asesorias.class.getName()).log(Level.SEVERE, null, ex);
+					request.setAttribute("mensaje", ex.getMessage());
+				}
 			}
 
 			if ("Crear".equals(request.getParameter("action"))) {
@@ -137,11 +139,58 @@ public class Asesorias extends HttpServlet {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Asesorias.jsp");
 					} else {
-						int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría?");
+						int confirma = 0;
+						if (estado.equals("Confirmada")) {
+							confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría?");
+						} else if (estado.equals("Pendiente")) {
+							confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría y pasarla a estado Pendiente?");
+						} else if (estado.equals("Cancelada")) {
+							confirma = JOptionPane.showConfirmDialog(null, "¿Desea cancelar esta asesoría?");
+						}
 						if (confirma == JOptionPane.YES_OPTION) {
 							int resultadoModificar = new NAsesoria().Modificar(Asesorias);
 							request.setAttribute("cli", resultadoModificar);
-							JOptionPane.showMessageDialog(null, "Se modificó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Se modificó correctamente la asesoría.\n Se notificará a los estudiantes inscritos.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+
+							NPersona negocioP = new NPersona();
+							Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
+							List<EstudianteAsesoria> ListaAsistencia = new NAsesoria().ListadoAsistentes(id);
+							String destinatarios = "";
+							StringBuilder stringBuilder = new StringBuilder();
+							String mensaje = "", asunto = "";
+
+							if (ListaAsistencia.size() > 0) {
+								if (estado.equals("Confirmada") || estado.equals("Pendiente")) {
+									asunto = "Actualización en asesoría";
+									stringBuilder.append("Hola <br/> <br/>");
+									stringBuilder.append("Se han realizado actualizaciones en la asesoría a la que se encuentra"
+											+ " inscrito con el docente " + nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido() + ":");
+									stringBuilder.append("<br/> <br/> Asignatura: ");
+									stringBuilder.append(Asesorias.getAsignatura());
+									stringBuilder.append("<br/> Fecha: ");
+									stringBuilder.append(Asesorias.getFecha());
+									stringBuilder.append("<br/> Hora: ");
+									stringBuilder.append(Asesorias.getHoraI());
+									stringBuilder.append("<br/> Lugar: ");
+									stringBuilder.append(Asesorias.getLugar());
+									stringBuilder.append("<br/> Observaciones: ");
+									stringBuilder.append(Asesorias.getObservaciones());
+									stringBuilder.append("<br/> Estado: ");
+									stringBuilder.append(Asesorias.getEstado());
+									stringBuilder.append("<br/> <br/> <i>En caso de alguna eventualidad se le informará oportunamente por este mismo medio. <i/>");
+								} else if (estado.equals("Cancelada")) {
+									asunto = "Cancelación asesoría";
+									stringBuilder.append("Hola <br/> <br/> Se ha cancelado la asesoría con el docente " + nombreDocente.getNombreCompleto()
+											+ " " + nombreDocente.getPrimerApellido() + " a la que usted estaba inscrito.");
+								}
+
+								mensaje = stringBuilder.toString();
+								for (EstudianteAsesoria estudianteAsesoria : ListaAsistencia) {
+									destinatarios = destinatarios + estudianteAsesoria.getEmailEstudiante() + ",";
+								}
+
+								SMTPConfig.sendMail(asunto, mensaje, destinatarios);
+							}
 							response.sendRedirect("Asesorias.jsp");
 						} else if (confirma == JOptionPane.NO_OPTION) {
 							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
@@ -188,42 +237,6 @@ public class Asesorias extends HttpServlet {
 				} else if (!registroExiste) {
 					response.sendRedirect("Asesorias.jsp");
 					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-				}
-			}
-
-			if ("Eliminar".equals(request.getParameter("action"))) {
-				boolean registroExiste = false;
-				int sw = 0;
-				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Asesoria from asesorias").executeQuery();
-					while (r.next() && sw == 0) {
-						if (!id.equals(Integer.toString(r.getInt(1))) && (!id.equals(""))) {
-							registroExiste = false;
-						} else {
-							registroExiste = true;
-							sw = 1;
-						}
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				if (registroExiste == true) {
-					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de esta asesoría?");
-					if (confirma == JOptionPane.YES_OPTION) {
-						int resultadoEliminar = new NAsesoria().Eliminar(Asesorias);
-						request.setAttribute("cli", resultadoEliminar);
-						JOptionPane.showMessageDialog(null, "Se eliminó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-						response.sendRedirect("Asesorias.jsp");
-					} else if (confirma == JOptionPane.NO_OPTION) {
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (confirma == JOptionPane.CLOSED_OPTION) {
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (confirma == JOptionPane.CANCEL_OPTION) {
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					}
-				} else if (!registroExiste) {
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 				}
 			}
 		}
