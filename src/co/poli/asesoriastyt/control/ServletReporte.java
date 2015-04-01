@@ -37,21 +37,39 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 
+/**
+ * The Class ServletReporte.
+ */
 @WebServlet(description = "Controlador de Reportes", urlPatterns = { "/ServletReporte" })
 public class ServletReporte extends HttpServlet
 {
+    
+    /**
+     * Process request.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
        
        
     }
 
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         processRequest(request, response);
     }
 
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -147,23 +165,30 @@ public class ServletReporte extends HttpServlet
 			        	{
 			        		listaDatos = dao.AsistenciaAsesoria();
 			        	}
-			        
-			        try
+			        if(listaDatos.size()>0)
 			        {
-			        	
-			        	JRBeanCollectionDataSource datasource= new JRBeanCollectionDataSource(listaDatos);
-			            JasperReport ireporte = (JasperReport) JRLoader.loadObjectFromFile(getServletContext().getRealPath(urlReporte));
-			            JasperPrint jasperPrint = JasperFillManager.fillReport(ireporte, null,datasource);
-			            request.setAttribute(asesoria, "Seleccione...");
-			            response.reset();
-			            response.setContentType("WEB-INF/Reportes");
-			            response.addHeader("Content-disposition","inline; filename=AsistenciaAsesoria.pdf");
-			            ServletOutputStream servletOutputStream=(ServletOutputStream)response.getOutputStream();
-			            JasperExportManager.exportReportToPdfStream(jasperPrint,servletOutputStream);
+				        try
+				        {
+				        	
+				        	JRBeanCollectionDataSource datasource= new JRBeanCollectionDataSource(listaDatos);
+				            JasperReport ireporte = (JasperReport) JRLoader.loadObjectFromFile(getServletContext().getRealPath(urlReporte));
+				            JasperPrint jasperPrint = JasperFillManager.fillReport(ireporte, null,datasource);
+				            request.setAttribute(asesoria, "Seleccione...");
+				            response.reset();
+				            response.setContentType("WEB-INF/Reportes");
+				            response.addHeader("Content-disposition","inline; filename=AsistenciaAsesoria.pdf");
+				            ServletOutputStream servletOutputStream=(ServletOutputStream)response.getOutputStream();
+				            JasperExportManager.exportReportToPdfStream(jasperPrint,servletOutputStream);
+				        }
+				        catch (Exception e)
+				        {
+				            e.printStackTrace();
+				        }
 			        }
-			        catch (Exception e)
+			        else
 			        {
-			            e.printStackTrace();
+			        	JOptionPane.showMessageDialog(null, "No se encontró información según los filtros ingresados", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			        	request.getRequestDispatcher("./Reportes.jsp").forward(request, response);
 			        }
 		        }
 		        if(reporte.equals("Materiales por Asesoría"))
@@ -186,24 +211,32 @@ public class ServletReporte extends HttpServlet
 			        	  listaDatos = dao.MaterialAsesorias();
 			        }
 			        
-			        try
+			        if(listaDatos.size()>0)
 			        {
-			        	
-			        	JRBeanCollectionDataSource datasource= new JRBeanCollectionDataSource(listaDatos);
-			            JasperReport ireporte = (JasperReport) JRLoader.loadObjectFromFile(getServletContext().getRealPath(urlReporte));
-			            JasperPrint jasperPrint = JasperFillManager.fillReport(ireporte, null,datasource);
-			            request.setAttribute(asesoria, "Seleccione...");
-			            response.reset();
-			            response.setContentType("WEB-INF/Reportes");
-			            response.addHeader("Content-disposition","inline; filename=MaterialxAsesoria.pdf");
-			            ServletOutputStream servletOutputStream=(ServletOutputStream)response.getOutputStream();
-			            JasperExportManager.exportReportToPdfStream(jasperPrint,servletOutputStream);
+				        try
+				        {
+				        	
+				        	JRBeanCollectionDataSource datasource= new JRBeanCollectionDataSource(listaDatos);
+				            JasperReport ireporte = (JasperReport) JRLoader.loadObjectFromFile(getServletContext().getRealPath(urlReporte));
+				            JasperPrint jasperPrint = JasperFillManager.fillReport(ireporte, null,datasource);
+				            request.setAttribute(asesoria, "Seleccione...");
+				            response.reset();
+				            response.setContentType("WEB-INF/Reportes");
+				            response.addHeader("Content-disposition","inline; filename=MaterialxAsesoria.pdf");
+				            ServletOutputStream servletOutputStream=(ServletOutputStream)response.getOutputStream();
+				            JasperExportManager.exportReportToPdfStream(jasperPrint,servletOutputStream);
+				        }
+				        catch (Exception e)
+				        {
+				            e.printStackTrace();
+				        }
 			        }
-			        catch (Exception e)
+			        else
 			        {
-			            e.printStackTrace();
+			        	JOptionPane.showMessageDialog(null, "No se encontró información según los filtros ingresados", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			        	request.getRequestDispatcher("./Reportes.jsp").forward(request, response);
 			        }
-	
+		
 		        }
 		        if(reporte.equals("Cantidad Estudiantes por Asesoría"))
 		        {
@@ -225,22 +258,30 @@ public class ServletReporte extends HttpServlet
 	
 			        		 listaDatos = dao.CantidadAsitenciaAsesoria();
 			        	}
-			        
-			        try
+			        if(listaDatos.size()>0)
 			        {
-			        	
-			        	JRBeanCollectionDataSource datasource= new JRBeanCollectionDataSource(listaDatos);
-			            JasperReport ireporte = (JasperReport) JRLoader.loadObjectFromFile(getServletContext().getRealPath(urlReporte));
-			            JasperPrint jasperPrint = JasperFillManager.fillReport(ireporte, null,datasource);
-			            response.reset();
-			            response.setContentType("WEB-INF/Reportes");
-			            response.addHeader("Content-disposition","inline; filename=CantidadAsistenciaAsesoria.pdf");
-			            ServletOutputStream servletOutputStream=(ServletOutputStream)response.getOutputStream();
-			            JasperExportManager.exportReportToPdfStream(jasperPrint,servletOutputStream);
+
+				        try
+				        {
+				        	
+				        	JRBeanCollectionDataSource datasource= new JRBeanCollectionDataSource(listaDatos);
+				            JasperReport ireporte = (JasperReport) JRLoader.loadObjectFromFile(getServletContext().getRealPath(urlReporte));
+				            JasperPrint jasperPrint = JasperFillManager.fillReport(ireporte, null,datasource);
+				            response.reset();
+				            response.setContentType("WEB-INF/Reportes");
+				            response.addHeader("Content-disposition","inline; filename=CantidadAsistenciaAsesoria.pdf");
+				            ServletOutputStream servletOutputStream=(ServletOutputStream)response.getOutputStream();
+				            JasperExportManager.exportReportToPdfStream(jasperPrint,servletOutputStream);
+				        }
+				        catch (Exception e)
+				        {
+				            e.printStackTrace();
+				        }
 			        }
-			        catch (Exception e)
+			        else
 			        {
-			            e.printStackTrace();
+			        	JOptionPane.showMessageDialog(null, "No se encontró información según los filtros ingresados", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			        	request.getRequestDispatcher("./Reportes.jsp").forward(request, response);
 			        }
 		        }
 	        }
@@ -251,6 +292,9 @@ public class ServletReporte extends HttpServlet
         }
     }
 
+    /* 
+     * @see javax.servlet.GenericServlet#getServletInfo()
+     */
     @Override
     public String getServletInfo()
     {

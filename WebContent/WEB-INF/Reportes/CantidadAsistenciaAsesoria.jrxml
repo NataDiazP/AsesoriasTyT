@@ -39,12 +39,12 @@
 				<text><![CDATA[Cantidad de Asistencias]]></text>
 			</staticText>
 			<image>
-				<reportElement x="0" y="3" width="188" height="137" uuid="b86e1b7a-cfc8-45cc-a5a4-fe02b8807743"/>
-				<imageExpression><![CDATA["E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/Reportes/coffee.png"]]></imageExpression>
+				<reportElement x="1" y="0" width="159" height="141" uuid="f9aafcc9-9d3c-4f20-b887-400fde5d2ec9"/>
+				<imageExpression><![CDATA["\\WEB-INF\\Reportes\\coffee.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="660" y="3" width="142" height="137" uuid="b6b72eb1-51c1-4921-b967-155b13168665"/>
-				<imageExpression><![CDATA["E:/Estudio/WorkspacePPI/AsesoriasTyT/WebContent/WEB-INF/Reportes/api2.jpg"]]></imageExpression>
+				<reportElement x="671" y="0" width="218" height="109" uuid="78e9ac48-c72d-4b9b-a83f-08810bb64f02"/>
+				<imageExpression><![CDATA["\\WEB-INF\\Reportes\\api2.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
