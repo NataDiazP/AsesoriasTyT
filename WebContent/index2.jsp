@@ -1,3 +1,4 @@
+<%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,6 +34,10 @@
 	{
 		response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("login"));
 	}
+
+	NPersona nPers = new NPersona();
+	String Docente = nPers.BuscarDocente((String) request.getSession().getAttribute("emailUser"));
+	request.getSession().setAttribute("idDocente", Docente);
 %>
 </head>
 

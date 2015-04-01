@@ -67,8 +67,10 @@
 				</tr>
 		</table>
 	</form>
-	<form name="confirmAsistencia" action="./AsistenciaAsesorias" method="post">
-		<div style="margin-top: 8px; margin-right: 100px; width: auto; float: right">
+	<form name="confirmAsistencia" action="./AsistenciaAsesorias"
+		method="post">
+		<div
+			style="margin-top: 8px; margin-right: 100px; width: auto; float: right">
 			<button name="action" value="GuardarAsesoria" class="botonGuardar">Guardar</button>
 		</div>
 	</form>

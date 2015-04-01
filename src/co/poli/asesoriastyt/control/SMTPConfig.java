@@ -33,7 +33,7 @@ public class SMTPConfig {
 
 		try {
 			// carga del archivo smtp.properties
-			final ResourceBundle props = ResourceBundle.getBundle("resource.smtp");
+			final ResourceBundle props = ResourceBundle.getBundle("co.poli.asesoriastyt.resources.smtp");
 
 			Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 

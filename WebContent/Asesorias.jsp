@@ -1,3 +1,6 @@
+<%@page import="co.poli.asesoriastyt.model.Persona"%>
+<%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPersonas"%>
 <%@page import="co.poli.asesoriastyt.negocio.NAsesoria"%>
 <%@page
 	import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
@@ -45,6 +48,12 @@
 		observacion = x.getObservaciones();
 		estado = x.getEstado();
 	}
+
+	NAsesoria nAsesoria = new NAsesoria();
+	List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
+
+	NPersona nper = new NPersona();
+	List<Persona> listaPersonas = nper.ListadoPersonasDocentes();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asesor&iacute;as</title>
@@ -74,13 +83,34 @@
 									onkeypress="return validar(event)" placeholder="Código"
 									value="<%=id != null ? id : ""%>"></td>
 								<td class="label">Nombre (*):</td>
-								<td><input type="text" name="nombreAsesoria" size="20" maxlength="50"
-									placeholder="Nombre Asesoría"
+								<td><input type="text" name="nombreAsesoria" size="20"
+									maxlength="50" placeholder="Nombre Asesoría"
 									value="<%=nombreAsesoria != null ? nombreAsesoria : ""%>"></td>
 								<td class="label">Docente(*):</td>
+								<%
+									if (((String) request.getSession().getAttribute("Perfil")).equals("2")) {
+								%>
 								<td><input type="text" name="docente" size="25"
-									placeholder="Docente"
-									value="<%=docente != null ? docente : ""%>"></td>
+									value="<%=(String) request.getSession().getAttribute("idDocente")%>"></td>
+								<%
+									} else {
+								%>
+								<td><select class="campo02"
+									name="docente">
+										<option>Seleccione...</option>
+										<%
+											for (Persona doc : listaPersonas) {
+										%>
+										<option
+											<%if ((doc.getNumeroIdentificacion()).equals(docente)) {%>
+											selected <%}%>><%=doc.getNumeroIdentificacion()%></option>
+										<%
+											}
+										%>
+								</select></td>
+								<%
+									}
+								%>
 							</tr>
 							<tr>
 								<td class="label">Asignatura(*):</td>
@@ -156,11 +186,6 @@
 
 		</form>
 
-		<%
-			NAsesoria nAsesoria = new NAsesoria();
-			DAOAsesorias dao = new DAOAsesorias();
-			List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
-		%>
 		<br> <br>
 		<table width="85%" border="0" align="center" cellpadding="0"
 			cellspacing="0">

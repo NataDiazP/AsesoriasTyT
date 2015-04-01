@@ -67,15 +67,12 @@ public class CallbackServlet extends HttpServlet {
 			// System.out.println("width=" + json.get("width"));
 
 			EntityUtils.consume(response.getEntity());
-
 		} catch (Exception ex) {
 			System.out.print(ex.getMessage());
-
 		} finally {
 			// httpPost.releaseConnection();
 
 		}
-
 		return json;
 	}
 
@@ -108,11 +105,9 @@ public class CallbackServlet extends HttpServlet {
 
 		} catch (Exception ex) {
 			System.out.print(ex.getMessage());
-
 		} finally {
 			// httpGet.releaseConnection();
 		}
-
 		return json;
 	}
 
@@ -151,7 +146,6 @@ public class CallbackServlet extends HttpServlet {
 
 				webContent = getWebContentFromURL_Post(accessURL, nvps);
 				accessToken = (String) webContent.get("access_token");
-
 			} else {
 				response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginErrorPage"));
 				return;
@@ -168,28 +162,29 @@ public class CallbackServlet extends HttpServlet {
 				dao = new DAOPerfiles();
 				c = new Conexion().getConnection();
 				String email = userJson.get("email").toString();
-				String correo = "elpoli.edu.co";
 				int existe = 0;
-				
+
 				HttpSession session = request.getSession();
 				session.setAttribute("emailUsuario", new String(email));
-				
+
 				existe = dao.consultarUsuario(c, email);
-				if (existe > 0)
-				{
-					if (existe == 1)
+				if (existe > 0) {
+					if (existe == 1) {
 						response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage"));
-					if (existe == 2)
+						request.getSession().setAttribute("Perfil", "1");
+					}
+					if (existe == 2) {
 						response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage2"));
-					if (existe == 3)
+						request.getSession().setAttribute("Perfil", "2");
+					}
+					if (existe == 3) {
 						response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage3"));
-				}
-				else
-				{
+						request.getSession().setAttribute("Perfil", "3");
+					}
+				} else {
 					request.getSession().invalidate();
 					response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginErrorPage"));
 				}
-
 			}
 
 			if (null == accessToken)
@@ -199,6 +194,5 @@ public class CallbackServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginErrorPage"));
 			throw new ServletException(e);
 		}
-
 	}
 }
