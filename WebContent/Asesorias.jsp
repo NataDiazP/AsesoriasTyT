@@ -1,3 +1,5 @@
+<%@page import="co.poli.asesoriastyt.model.Aula"%>
+<%@page import="co.poli.asesoriastyt.negocio.NAula"%>
 <%@page import="co.poli.asesoriastyt.negocio.NProgAcademica"%>
 <%@page import="co.poli.asesoriastyt.model.Asignatura"%>
 <%@page import="co.poli.asesoriastyt.negocio.NAsignatura"%>
@@ -63,6 +65,9 @@
 
 	NAsignatura nAsig = new NAsignatura();
 	List<Asignatura> listaAsignaturas = nAsig.ListadoAsignaturas();
+
+	NAula nAula = new NAula();
+	List<Aula> listaAula = nAula.ListadoAulas();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asesor&iacute;as</title>
@@ -168,8 +173,19 @@
 								<td><input type="time" name="horaF" size="20"
 									placeholder="Hora Fin" value="<%=horaF != null ? horaF : ""%>"></td>
 								<td class="label">Lugar o Aula (*):</td>
-								<td><input type="text" name="lugar" size="20"
-									placeholder="Lugar" value="<%=lugar != null ? lugar : ""%>"></td>
+								<td><select class="campo02" name="lugar">
+										<option>Seleccione...</option>
+										<option <%if ("Otro".equals(lugar)) {%> selected <%}%>>Otro</option>
+										<%
+											for (Aula aul : listaAula) {
+										%>
+										<option
+											<%if ((aul.getIdBloque() + " - " + aul.getIdAula()).equals(lugar)) {%>
+											selected <%}%>><%=aul.getIdBloque() + " - " + aul.getIdAula()%></option>
+										<%
+											}
+										%>
+								</select></td>
 								<td class="label">Cupos:</td>
 								<td><input type="text" name="cupos" size="20"
 									onkeypress="return validar(event)" placeholder="Cupos"
@@ -193,10 +209,10 @@
 							<tr>
 								<td class="label">Estado (*):</td>
 								<td><select name="estado" class="campo02" id="genero">
-										<option><%=estado != null ? estado : "Seleccione"%></option>
-										<option>Pendiente</option>
-										<option>Confirmada</option>
-										<option>Cancelada</option>
+										<option>Seleccione...</option>
+										<option <%if ("Pendiente".equals(estado)) {%> selected <%}%>>Pendiente</option>
+										<option <%if ("Confirmada".equals(estado)) {%> selected <%}%>>Confirmada</option>
+										<option <%if ("Cancelada".equals(estado)) {%> selected <%}%>>Cancelada</option>
 								</select></td>
 								<td colspan="4" align="right" class="label">
 									<button name="action" value="EstInscritos" class="boton">Estudiantes
@@ -220,7 +236,6 @@
 				<button name="action" value="Crear" class="boton">Crear</button>
 				<button name="action" value="Consultar" class="boton">Consultar</button>
 				<button name="action" value="Modificar" class="boton">Modificar</button>
-				<button name="action" value="Eliminar" class="boton">Eliminar</button>
 			</div>
 
 		</form>

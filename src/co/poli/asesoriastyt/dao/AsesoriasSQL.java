@@ -20,4 +20,8 @@ public class AsesoriasSQL {
     public static String Consultar(String Id_Asesoria) {
         return "SELECT * FROM asesorias WHERE Id_Asesoria = " + Id_Asesoria + "";
     }
+    
+    public static String AsistirAsesoria () {
+    	return "UPDATE estudiantes_asesoria SET Asistencia_Asesoria = ? WHERE Id_Estudiante = ? AND Id_Asesoria = ?";
+    }
 }

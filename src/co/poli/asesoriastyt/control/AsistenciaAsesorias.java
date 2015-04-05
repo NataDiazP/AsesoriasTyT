@@ -3,7 +3,6 @@ package co.poli.asesoriastyt.control;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,9 +48,15 @@ public class AsistenciaAsesorias extends HttpServlet {
 		String[] actionArray = action.split("_");
 		action = actionArray[0];
 		String idAsesoria = "";
+		String idEstudiante = "";
+		String asistio = "";
 		if (actionArray.length > 1)
 		{
 			idAsesoria = actionArray[1];
+		} else if (actionArray.length == 4) {
+			asistio = actionArray[1];
+			idAsesoria = actionArray[2];
+			idEstudiante = actionArray[3];
 		}
 
 		if ("Asistir".equals(action)) {
@@ -121,6 +126,12 @@ public class AsistenciaAsesorias extends HttpServlet {
 					request.getRequestDispatcher("./ListadoAsesorias.jsp").forward(request, response);
 				}
 			}
+		}
+
+		if ("Asistencia".equals(action)) {
+			int resultadoModificar = new NAsesoria().GuardarAsistencia(idAsesoria, idEstudiante, asistio);
+			request.setAttribute("cli", resultadoModificar);
+			response.sendRedirect("AsistenciaAsesorias.jsp");
 		}
 	}
 }

@@ -15,7 +15,7 @@
 %>
 </head>
 <body>
-	<form name="asistencia" action="./Asesorias" method="post">
+	<form name="asistencia" action="./AsistenciaAsesorias" method="post">
 		<table width="85%" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<thead>
@@ -27,11 +27,16 @@
 				<tr>
 					<td class="caja_01_bottom">&nbsp;</td>
 					<td valign="top" class="caja_01_bottom">
-						<table width="100%" align="center" id="rounded-corner">
+						<table width="100%" align="center" id="asistencia">
 							<thead>
 								<tr>
-									<th class="rounded" scope="col">Documento Estudiante</th>
-									<th class="rounded" scope="col">Asistencia</th>
+									<th class="rounded" scope="col" rowspan=2>Documento
+										Estudiante</th>
+									<th class="rounded" scope="col" colspan=2>Asistencia</th>
+								</tr>
+								<tr>
+									<th class="rounded" scope="col">Si</th>
+									<th class="rounded" scope="col">No</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -40,39 +45,46 @@
 								%>
 								<tr>
 									<td colspan="3">No hay estudiantes inscritos a esta
-										ases&iacute;a</td>
+										asesor&iacute;a</td>
 								</tr>
 								<%
 									} else {
 										for (EstudianteAsesoria asis : LU) {
+											if ("No".equals(asis.getAsistenciaAsesoria())) {
 								%>
+								<tr align="center" style="background-color: #FFACBC">
+									<%
+										} else if ("Si".equals(asis.getAsistenciaAsesoria())) {
+									%>
+								<tr align="center" style="background-color: #BBFFBB">
+									<%
+										} else {
+									%>
 								<tr align="center">
+									<%
+										}
+									%>
 									<td><%=asis.getNumDocEstudiante()%></td>
-									<td><select name="asistencia" class="campo02"
-										id="asistencia">
-											<option <%if ("No".equals(asis.getAsistenciaAsesoria())) {%>
-												selected <%}%>>No</option>
-											<option <%if ("Si".equals(asis.getAsistenciaAsesoria())) {%>
-												selected <%}%>>Si</option>
-									</select></td>
+									<td><button class="asistirButton" name="action"
+											value="Asistencia_Si_<%=asis.getIdAsesoria()%>_<%=asis.getNumDocEstudiante()%>">
+											<img src="./images/check.png" alt="Asistir a asesoría"
+												class="asistir" />
+										</button></td>
+									<td><button class="asistirButton" name="action"
+											value="Asistencia_No_<%=asis.getIdAsesoria()%>_<%=asis.getNumDocEstudiante()%>">
+											<img src="./images/cancel.png" alt="Asistir a asesoría"
+												class="asistir" />
+										</button></td>
 								</tr>
 								<%
 									}
+									}
 								%>
 							</tbody>
-						</table> <%
- 	}
- %>
+						</table>
 					</td>
 				</tr>
 		</table>
-	</form>
-	<form name="confirmAsistencia" action="./AsistenciaAsesorias"
-		method="post">
-		<div
-			style="margin-top: 8px; margin-right: 100px; width: auto; float: right">
-			<button name="action" value="GuardarAsesoria" class="botonGuardar">Guardar</button>
-		</div>
 	</form>
 </body>
 </html>

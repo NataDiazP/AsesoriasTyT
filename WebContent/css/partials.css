@@ -5,7 +5,8 @@
 }
 
 .asistir{
-	height: 26px;	
+	height: 26px;
+	cursor: pointer;	
 }
 
 #rounded-corner{
@@ -37,6 +38,32 @@
 
 #rounded-corner tbody tr:hover td{
 	background: #FFF;
+}
+
+#asistencia {
+	border-collapse: collapse;
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	margin: 0;
+	text-align: left;
+	width: 100%;	
+}
+
+#asistencia th{
+	background: #D4D4D4;
+	color: #000;
+	font-weight: normal;
+	font-size: 13px;
+	padding: 6px;
+	text-align:center;
+	border-left: 1px solid #efefef;
+}
+
+#asistencia td{
+	border-top: 1px solid #fff;
+	color: #669;
+	padding: 6px;
+	border-left: 1px solid #CCC;
 }
 
 .caja_01_01{

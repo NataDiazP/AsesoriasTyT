@@ -20,7 +20,6 @@ h3 { margin: 0; padding: 0; }
 	margin-bottom: 1px; /*bottom spacing between header and rest of content*/
 	text-transform: uppercase;
 	padding: 9px 4px 8px 17px; /*header text is indented 10px*/
-	cursor: hand;
 	cursor: pointer;
 	background-color: #87BD8E;
 	background-repeat: no-repeat;
@@ -32,10 +31,6 @@ h3 { margin: 0; padding: 0; }
 
 .arrowlistmenu .menuheader:hover {
 	background-color: #ABE2B2;
-}
-
-.arrowlistmenu .openheader{ /*CSS class to apply to expandable header when it's expanded*/
-	background-image: url(../images/ico_arrow_bottom.png);
 }
 
 .arrowlistmenu ul{ /*CSS for UL of each sub menu*/
@@ -53,14 +48,14 @@ h3 { margin: 0; padding: 0; }
 /*2nd level*/
 /***********************************/
 .arrowlistmenu ul li .opensubheader{ /*Open state CSS for sub menu header*/
-	background: #EEE url(../images/bullet_01.png) no-repeat 2% 50% !important;
+	background: #EEE ;
 	color: #666 !important;
 	padding: 5px 3px 5px 15px;
 
 }
 
 .arrowlistmenu ul li .closedsubheader{ /*Closed state CSS for sub menu header*/
-	background: #FFF url(../images/bullet_02.png) no-repeat 2% 50% !important;
+	background: #FFF ;
 	color: #666 !important;
 	padding: 5px 3px 5px 15px;
 
@@ -106,7 +101,6 @@ ul.sub2categoryitems {
 	cursor: hand;
 	cursor: pointer;
 	background-color: #B3C4D9;
-	background-image: url(../Images/collapsed.gif);
 	background-repeat: no-repeat;
 	background-position: 4px center;
 	border-bottom-width: 1px;

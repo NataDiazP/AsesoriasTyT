@@ -53,6 +53,11 @@ public class Asesorias extends HttpServlet {
 		String recursosApoyo = request.getParameter("recursosApoyo");
 		String observacion = request.getParameter("observacion");
 		String estado = request.getParameter("estado");
+		String[] arrayLugar = lugar.split(" - ");
+		String bloque ="";
+		if (arrayLugar.length > 1) {
+			bloque = arrayLugar[0];
+		}
 
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -109,6 +114,41 @@ public class Asesorias extends HttpServlet {
 						try {
 							response.sendRedirect("Asesorias.jsp");
 							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							if (!("Otro").equals(Asesorias.getLugar()) && !("Seleccione...").equals(Asesorias.getLugar())) {
+								String emailEncargado = "";
+								try {
+									ResultSet r = Connection
+											.getConnection()
+											.prepareStatement(
+													"Select eb.Correo_Encargado_Bloque from encargados_bloques eb, bloques b WHERE b.Id_Bloque = '" + bloque
+															+ "' AND eb.Id_Encargado_Bloque = b.Encargado_Bloque").executeQuery();
+									while (r.next()) {
+										emailEncargado = r.getString(1);
+									}
+								} catch (SQLException e) {
+									e.printStackTrace();
+								}
+
+								NPersona negocioP = new NPersona();
+								Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
+								StringBuilder stringBuilder = new StringBuilder();
+								String mensaje = "";
+
+								stringBuilder.append("Cordial saludo, <br/> <br/>");
+								stringBuilder.append("El docente ");
+								stringBuilder.append(nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido() + " ");
+								stringBuilder.append("con documento de identidad número " + nombreDocente.getNumeroIdentificacion());
+								stringBuilder.append(" solicita el aula " + Asesorias.getLugar());
+								stringBuilder.append(" para el día " + Asesorias.getFecha() + " a las " + Asesorias.getHoraI());
+								stringBuilder.append(" con el fin de dictar una asesoría académica a sus estudiantes.");
+								stringBuilder.append(" Por favor confirmar la reserva al correo del docente: ");
+								stringBuilder.append(nombreDocente.getCorreoElectronico());
+								stringBuilder
+										.append("<br/> <br/> <i>Este correo fue enviado automáticamente desde un sistema programado. Para información en general comuníquese con el docente que solicita la reserva.<i/>");
+								mensaje = stringBuilder.toString();
+
+								SMTPConfig.sendMail("Solicitud reserva de aula", mensaje, emailEncargado);
+							}
 							request.setAttribute("cli", resultado);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -150,7 +190,7 @@ public class Asesorias extends HttpServlet {
 						if (confirma == JOptionPane.YES_OPTION) {
 							int resultadoModificar = new NAsesoria().Modificar(Asesorias);
 							request.setAttribute("cli", resultadoModificar);
-							JOptionPane.showMessageDialog(null, "Se modificó correctamente la asesoría.\n Se notificará a los estudiantes inscritos.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Se modificó correctamente la asesoría.\nSe notificará a los estudiantes inscritos.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 
 							NPersona negocioP = new NPersona();
 							Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
@@ -202,7 +242,7 @@ public class Asesorias extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 

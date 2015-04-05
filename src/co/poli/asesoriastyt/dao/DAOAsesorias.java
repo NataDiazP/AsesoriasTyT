@@ -79,6 +79,28 @@ public class DAOAsesorias {
 		return resultadoCrear;
 	}
 
+	public int GuardarAsistencia(Connection c, String idAsesoria, String idEstudiante, String asistio) {
+		String sql = AsesoriasSQL.AsistirAsesoria();
+		int resultadoModificar = 0;
+		try {
+			PreparedStatement st = c.prepareStatement(sql);
+			st.setString(1, asistio);
+			st.setString(2, idEstudiante);
+			st.setString(3, idAsesoria);
+			resultadoModificar = st.executeUpdate();
+
+		} catch (SQLException ex) {
+			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return resultadoModificar;
+	}
+	
 	public int Modificar(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Modificar();
 		int resultadoModificar = 0;
