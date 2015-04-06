@@ -10,7 +10,7 @@ package co.poli.asesoriastyt.dao;
 public class PerfilesSQL {
 
     public static String Crear() {
-        return "INSERT INTO perfiles (Id_Perfil,Nombre_Perfil) VALUES (?, ?)";
+        return "INSERT INTO perfiles (Nombre_Perfil) VALUES (?)";
     }
 
     public static String Modificar() {

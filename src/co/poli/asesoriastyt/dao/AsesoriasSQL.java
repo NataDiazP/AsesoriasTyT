@@ -10,7 +10,7 @@ package co.poli.asesoriastyt.dao;
 public class AsesoriasSQL {
 
     public static String Crear() {
-        return "INSERT INTO asesorias (Id_Asesoria, Nombre_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, RecursosApoyo_Asesoria, Observaciones_Asesoria, Estado_Asesoria) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT INTO asesorias (Nombre_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, RecursosApoyo_Asesoria, Observaciones_Asesoria, Estado_Asesoria) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     }
 
     public static String Modificar() {
