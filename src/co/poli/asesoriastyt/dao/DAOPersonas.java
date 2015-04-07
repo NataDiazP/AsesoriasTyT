@@ -65,6 +65,46 @@ public class DAOPersonas {
 		}
 		return resultadoCrear;
 	}
+	
+	public void CrearDocentes(Connection c, ArrayList<Persona> listaDocentes) {
+		String sql = PersonasSQL.Crear();
+
+		try {
+			for(int i=0; i<listaDocentes.size();i++)
+			{
+				Persona persona= listaDocentes.get(i);
+				
+				PreparedStatement st = c.prepareStatement(sql);
+	
+				st.setString(1, persona.getNumeroIdentificacion());
+				st.setString(2, persona.getTipoIdentificacion());
+				st.setString(3, persona.getNombreCompleto());
+				st.setString(4, persona.getPrimerApellido());
+				st.setString(5, persona.getSegundoApellido());
+				st.setString(6, persona.getGenero());
+				st.setString(7, persona.getFechaNacimiento());
+				st.setString(8, persona.getDireccion());
+				st.setString(9, persona.getTelefono());
+				st.setString(10, persona.getCelular());
+				st.setString(11, persona.getCorreoElectronico());
+				st.setString(12, persona.getPlanEstudios_Estudiante());
+				st.setString(13, persona.getSemestre_Estudiante());
+				st.setString(14, persona.getEstado());
+				st.setString(15, persona.getPerfil());
+				st.executeUpdate();
+			}
+				
+
+		} catch (SQLException ex) {
+			Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
 
 	public int Modificar(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Modificar();

@@ -2,6 +2,7 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import co.poli.asesoriastyt.dao.DAOPersonas;
@@ -17,6 +18,13 @@ public class NPersona {
 	DAOPersonas daoPersonas;
 	Connection c;
 
+	public void CrearDocentes(ArrayList<Persona> listaDocentes) {
+		daoPersonas = new DAOPersonas();
+		c = new Conexion().getConnection();
+		daoPersonas.CrearDocentes(c, listaDocentes);
+		
+	}
+	
 	public int Crear(Persona Personas) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
