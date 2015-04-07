@@ -26,36 +26,67 @@ public class EscribirErrores
 		 
 		
 		int rownum = 0;
+		Row row = sheet.createRow(rownum++);
+		int cellnum = 0;
+		Cell cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Documento");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Tipo Documento");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Nombre Completo");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Primer Apellido");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Segundo Apellido");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Genero");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Fecha de Nacimiento");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Dirección");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Teléfono");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Celular");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Correo");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Estado");
+	 
 		for (int i=0; i< listaErrores.size();i++ )
 		{
-		    Row row = sheet.createRow(rownum++);
+		    row = sheet.createRow(rownum++);
 		    Persona persona = listaErrores.get(i);
-		    int cellnum = 0;
+		    cellnum = 0;
+		   
+			    
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getNumeroIdentificacion());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getTipoIdentificacion());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getNombreCompleto());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getPrimerApellido());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getSegundoApellido());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getGenero());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getFechaNacimiento());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getDireccion());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getTelefono());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getCelular());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getCorreoElectronico());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getEstado());
+			   
+		   
 		    
-		    Cell cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getNumeroIdentificacion());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getTipoIdentificacion());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getNombreCompleto());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getPrimerApellido());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getSegundoApellido());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getGenero());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getFechaNacimiento());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getDireccion());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getTelefono());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getCelular());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getCorreoElectronico());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getEstado());
 		}
 		try 
 		{
@@ -96,30 +127,72 @@ public class EscribirErrores
 		    Persona persona = listaErrores.get(i);
 		    int cellnum = 0;
 		    
-		    Cell cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getNumeroIdentificacion());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getTipoIdentificacion());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getNombreCompleto());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getPrimerApellido());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getSegundoApellido());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getGenero());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getFechaNacimiento());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getDireccion());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getTelefono());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getCelular());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getCorreoElectronico());
-		    cell = row.createCell(cellnum++);
-		    cell.setCellValue((String)persona.getEstado());
+		    if(i>0)
+		    {
+		    	Cell cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getNumeroIdentificacion());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getTipoIdentificacion());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getNombreCompleto());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getPrimerApellido());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getSegundoApellido());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getGenero());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getFechaNacimiento());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getDireccion());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getTelefono());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getCelular());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getCorreoElectronico());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getPlanEstudios_Estudiante());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getSemestre_Estudiante());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)persona.getEstado());
+			    
+		    	
+		    }
+		    else
+		    {
+		    	Cell cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Documento");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Tipo Documento");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Nombre Completo");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Primer Apellido");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Segundo Apellido");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Genero");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Fecha de Nacimiento");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Dirección");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Teléfono");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Celular");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Correo");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Plan de Estudio");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Semestre");
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)"Estado");
+			    i=0;
+		    }
+		    
 		}
 		try 
 		{

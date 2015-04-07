@@ -112,10 +112,6 @@ public class ServletReporte extends HttpServlet
 	        if (((fechaFin=="")&&(fechaInicio!="")))
 	        {
 	        	Calendar c1 = Calendar.getInstance();
-	        	int mes= c1.get(Calendar.MONTH);
-	        	int mes2= mes+1;
-	   
-	        	fechaFin=c1.get(Calendar.YEAR)+"-"+mes2+"-"+c1.get(Calendar.DATE);
 	        	fechaFin= formato.format(c1.getTime());
 	        }
 	        

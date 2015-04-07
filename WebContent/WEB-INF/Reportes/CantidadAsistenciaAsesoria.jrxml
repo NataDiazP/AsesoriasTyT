@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.0.3.final using JasperReports Library version 6.0.3  -->
-<!-- 2015-03-25T22:29:36 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e2877672-44c4-495f-bc99-dd25fbe332aa">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -40,11 +38,11 @@
 			</staticText>
 			<image>
 				<reportElement x="1" y="0" width="159" height="141" uuid="f9aafcc9-9d3c-4f20-b887-400fde5d2ec9"/>
-				<imageExpression><![CDATA["\\WEB-INF\\Reportes\\coffee.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Paola\\Documents\\GitHub\\AsesoriasTyT\\WebContent\\WEB-INF\\Reportes\\coffee.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="671" y="0" width="218" height="109" uuid="78e9ac48-c72d-4b9b-a83f-08810bb64f02"/>
-				<imageExpression><![CDATA["\\WEB-INF\\Reportes\\api2.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Paola\\Documents\\GitHub\\AsesoriasTyT\\WebContent\\WEB-INF\\Reportes\\api2.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
