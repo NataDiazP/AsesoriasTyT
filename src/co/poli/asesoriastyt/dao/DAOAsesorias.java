@@ -79,25 +79,46 @@ public class DAOAsesorias {
 		return resultadoCrear;
 	}
 
+	public int GuardarAsistencia(Connection c, String idAsesoria, String idEstudiante, String asistio) {
+		String sql = AsesoriasSQL.AsistirAsesoria();
+		int resultadoModificar = 0;
+		try {
+			PreparedStatement st = c.prepareStatement(sql);
+			st.setString(1, asistio);
+			st.setString(2, idEstudiante);
+			st.setString(3, idAsesoria);
+			resultadoModificar = st.executeUpdate();
+
+		} catch (SQLException ex) {
+			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return resultadoModificar;
+	}
+	
 	public int Modificar(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Modificar();
 		int resultadoModificar = 0;
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
-
 			st.setString(13, Asesorias.getIdAsesoria());
-			st.setString(12, Asesorias.getNombreAsesoria());
-			st.setString(11, Asesorias.getDocente());
-			st.setString(10, Asesorias.getAsignatura());
-			st.setString(9, Asesorias.getFecha());
-			st.setString(8, Asesorias.getHoraI());
-			st.setString(7, Asesorias.getHoraF());
-			st.setString(6, Asesorias.getLugar());
-			st.setString(5, Asesorias.getCupos());
-			st.setString(4, Asesorias.getCuposD());
-			st.setString(3, Asesorias.getRecursosApoyo());
-			st.setString(2, Asesorias.getObservaciones());
-			st.setString(1, Asesorias.getEstado());
+			st.setString(1, Asesorias.getNombreAsesoria());
+			st.setString(2, Asesorias.getDocente());
+			st.setString(3, Asesorias.getAsignatura());
+			st.setString(4, Asesorias.getFecha());
+			st.setString(5, Asesorias.getHoraI());
+			st.setString(6, Asesorias.getHoraF());
+			st.setString(7, Asesorias.getLugar());
+			st.setString(8, Asesorias.getCupos());
+			st.setString(9, Asesorias.getCuposD());
+			st.setString(10, Asesorias.getRecursosApoyo());
+			st.setString(11, Asesorias.getObservaciones());
+			st.setString(12, Asesorias.getEstado());
 			resultadoModificar = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -146,30 +167,10 @@ public class DAOAsesorias {
 		return c;
 	}
 
-	public int Eliminar(Connection c, Asesoria Asesorias) {
-		String sql = AsesoriasSQL.Eliminar();
-		int resultadoEliminar = 0;
-		try {
-			PreparedStatement st = c.prepareStatement(sql);
-			st.setString(1, Asesorias.getIdAsesoria());
-			resultadoEliminar = st.executeUpdate();
-		} catch (SQLException ex) {
-			Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException ex) {
-				Logger.getLogger(DAOAsesorias.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
-
-		return resultadoEliminar;
-	}
-
 	public List<EstudianteAsesoria> listarAsistentes(Connection c, String idAsesoria) {
 		List<EstudianteAsesoria> EstudianteAsesorias = new ArrayList<EstudianteAsesoria>();
 		try {
-			String sql = "SELECT Id_Asesoria, Id_Estudiante, Asistencia_Asesoria FROM estudiantes_asesoria WHERE Id_Asesoria=" + idAsesoria + "";
+			String sql = "SELECT es.Id_Asesoria, es.Id_Estudiante, es.Asistencia_Asesoria, p.Correo_Persona FROM estudiantes_asesoria es, personas p WHERE Id_Asesoria=" + idAsesoria + " AND es.Id_Estudiante = p.NumDoc_Persona";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -177,6 +178,7 @@ public class DAOAsesorias {
 				EstudianteAsesoria.setIdAsesoria(r.getString(1));
 				EstudianteAsesoria.setNumDocEstudiante(r.getString(2));
 				EstudianteAsesoria.setAsistenciaAsesoria(r.getString(3));
+				EstudianteAsesoria.setEmailEstudiante(r.getString(4));
 				EstudianteAsesorias.add(EstudianteAsesoria);
 			}
 		} catch (SQLException e) {

@@ -91,21 +91,21 @@
 									onkeypress="return validar(event)"
 									value="<%=IdProgAcademica != null ? IdProgAcademica : ""%>"></td>
 								<td class="label">Docente(*):</td>
-								<td><select type="text" class="campo02"
+								<td><select class="campo02"
 									name="docenteProgAcademica">
 										<option>Seleccione...</option>
 										<%
 											for (Persona pers : listaDocente) {
 										%>
 										<option
-											<%if ((pers.getNombreCompleto() + " " + pers.getPrimerApellido() + " " + pers.getSegundoApellido()).equals(docenteProgAcademica)) {%>
-											selected <%}%>><%=pers.getNombreCompleto() + " " + pers.getPrimerApellido() + " " + pers.getSegundoApellido()%></option>
+											<%if ((pers.getNumeroIdentificacion()).equals(docenteProgAcademica)) {%>
+											selected <%}%>><%=pers.getNumeroIdentificacion()%></option>
 										<%
 											}
 										%>
 								</select></td>
 								<td class="label">Asignatura(*):</td>
-								<td><select type="text" class="campo02"
+								<td><select class="campo02"
 									name="asignaturaProgAcademica">
 										<option>Seleccione...</option>
 										<%
@@ -136,15 +136,15 @@
 							</tr>
 							<tr>
 								<td class="label">Hora Inicio(*):</td>
-								<td><input type="text" name="horaInicialAsig" size="20"
+								<td><input type="time" name="horaInicialAsig" size="20"
 									placeholder="Hora Inicio Asignatura"
 									value="<%=horaInicialAsig != null ? horaInicialAsig : ""%>"></td>
 								<td class="label">Hora Fin(*):</td>
-								<td><input type="text" name="horaFinAsig" size=20"
+								<td><input type="time" name="horaFinAsig" size=20"
 									maxlength="5" placeholder="Hora Fin Asignatura"
 									value="<%=horaFinAsig != null ? horaFinAsig : ""%>"></td>
 								<td class="label">Aula (*):</td>
-								<td><select type="text" class="campo02"
+								<td><select class="campo02"
 									name="aulaClaseProg">
 										<option>Seleccione...</option>
 										<%

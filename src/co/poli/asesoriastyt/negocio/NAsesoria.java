@@ -47,18 +47,18 @@ public class NAsesoria {
 		return resultadoModificar;
 	}
 
+	public int GuardarAsistencia(String idAsesoria, String idEstudiante, String asistio) {
+		daoAsesorias = new DAOAsesorias();
+		c = new Conexion().getConnection();
+		int resultadoModificar = daoAsesorias.GuardarAsistencia(c, idAsesoria, idEstudiante, asistio);
+		return resultadoModificar;
+	}
+	
 	public Asesoria Buscar(String Asesorias) {
 		daoAsesorias = new DAOAsesorias();
 		c = new Conexion().getConnection();
 		Asesoria resultadoBuscar = daoAsesorias.Buscar(c, Asesorias);
 		return resultadoBuscar;
-	}
-
-	public int Eliminar(Asesoria Asesorias) {
-		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
-		int resultadoEliminar = daoAsesorias.Eliminar(c, Asesorias);
-		return resultadoEliminar;
 	}
 	
 	public List<Asesoria> ListadoAsesorias() {

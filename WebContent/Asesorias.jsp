@@ -1,3 +1,11 @@
+<%@page import="co.poli.asesoriastyt.model.Aula"%>
+<%@page import="co.poli.asesoriastyt.negocio.NAula"%>
+<%@page import="co.poli.asesoriastyt.negocio.NProgAcademica"%>
+<%@page import="co.poli.asesoriastyt.model.Asignatura"%>
+<%@page import="co.poli.asesoriastyt.negocio.NAsignatura"%>
+<%@page import="co.poli.asesoriastyt.model.Persona"%>
+<%@page import="co.poli.asesoriastyt.negocio.NPersona"%>
+<%@page import="co.poli.asesoriastyt.dao.DAOPersonas"%>
 <%@page import="co.poli.asesoriastyt.negocio.NAsesoria"%>
 <%@page
 	import="com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission"%>
@@ -19,7 +27,7 @@
 	String asignatura = request.getParameter("asignatura");
 	String fecha = request.getParameter("fecha");
 	String horaI = request.getParameter("horaI");
-	String horaF = request.getParameter("docente");
+	String horaF = request.getParameter("horaF");
 	String lugar = request.getParameter("lugar");
 	String cupos = request.getParameter("cupos");
 	String cuposD = request.getParameter("cuposD");
@@ -45,6 +53,21 @@
 		observacion = x.getObservaciones();
 		estado = x.getEstado();
 	}
+
+	NAsesoria nAsesoria = new NAsesoria();
+	List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
+
+	NPersona nper = new NPersona();
+	List<Persona> listaPersonas = nper.ListadoPersonasDocentes();
+
+	NProgAcademica nProg = new NProgAcademica();
+	List<Asignatura> asigDocente = nProg.AsignaturasDocente((String) request.getSession().getAttribute("idDocente"));
+
+	NAsignatura nAsig = new NAsignatura();
+	List<Asignatura> listaAsignaturas = nAsig.ListadoAsignaturas();
+
+	NAula nAula = new NAula();
+	List<Aula> listaAula = nAula.ListadoAulas();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asesor&iacute;as</title>
@@ -69,65 +92,127 @@
 					<td valign="top" class="caja_01_bottom">
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
-								<td class="label">C&oacute;digo de Asesor&iacute;a (*):</td>
+								<td class="label">C&oacute;digo de <br>
+									Asesor&iacute;a (*):
+								</td>
 								<td><input type="text" name="id" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Código"
 									value="<%=id != null ? id : ""%>"></td>
 								<td class="label">Nombre (*):</td>
-								<td><input type="text" name="nombreAsesoria" size="20" maxlength="50"
-									placeholder="Nombre Asesoría"
+								<td><input type="text" name="nombreAsesoria" size="20"
+									maxlength="50" placeholder="Nombre Asesoría"
 									value="<%=nombreAsesoria != null ? nombreAsesoria : ""%>"></td>
-								<td class="label">Docente(*):</td>
+								<td class="label">Docente (*):</td>
+								<%
+									if (((String) request.getSession().getAttribute("Perfil")).equals("2")) {
+								%>
 								<td><input type="text" name="docente" size="25"
-									placeholder="Docente"
-									value="<%=docente != null ? docente : ""%>"></td>
+									value="<%=(String) request.getSession().getAttribute("idDocente")%>"></td>
+								<%
+									} else {
+								%>
+								<td><select class="campo02" name="docente">
+										<option>Seleccione...</option>
+										<%
+											for (Persona doc : listaPersonas) {
+										%>
+										<option
+											<%if ((doc.getNumeroIdentificacion()).equals(docente)) {%>
+											selected <%}%>><%=doc.getNumeroIdentificacion()%></option>
+										<%
+											}
+										%>
+								</select></td>
+								<%
+									}
+								%>
 							</tr>
 							<tr>
-								<td class="label">Asignatura(*):</td>
-								<td><input type="text" name="asignatura" size="20"
-									maxlength="8" placeholder="Asignatura"
-									value="<%=asignatura != null ? asignatura : ""%>"></td>
-								<td class="label">Fecha(*):</td>
+								<td class="label">Asignatura (*):</td>
+								<%
+									if (((String) request.getSession().getAttribute("Perfil")).equals("2")) {
+								%>
+								<td><select class="campo02" name="asignatura">
+										<option>Seleccione...</option>
+										<%
+											for (Asignatura asig : asigDocente) {
+										%>
+										<option <%if ((asig.getIdAsignatura()).equals(asignatura)) {%>
+											selected <%}%>><%=asig.getIdAsignatura()%></option>
+										<%
+											}
+										%>
+								</select></td>
+								<%
+									} else {
+								%>
+								<td><select class="campo02" name="asignatura">
+										<option>Seleccione...</option>
+										<%
+											for (Asignatura asig : listaAsignaturas) {
+										%>
+										<option <%if ((asig.getIdAsignatura()).equals(asignatura)) {%>
+											selected <%}%>><%=asig.getIdAsignatura()%></option>
+										<%
+											}
+										%>
+								</select></td>
+								<%
+									}
+								%>
+								<td class="label">Fecha (*):</td>
 								<td><input type="date" name="fecha" size="20"
 									placeholder="Fecha" value="<%=fecha != null ? fecha : ""%>"></td>
-								<td class="label">Hora Inicio(*):</td>
-								<td><input type="text" name="horaI" size="25"
+								<td class="label">Hora Inicio (*):</td>
+								<td><input type="time" name="horaI" size="20"
 									placeholder="Hora Inicio"
-									value="<%=horaF != null ? horaF : ""%>"></td>
+									value="<%=horaI != null ? horaI : ""%>"></td>
 							</tr>
 							<tr>
-								<td class="label">Hora Fin(*):</td>
-								<td><input type="text" name="horaF" size="20" maxlength="5"
+								<td class="label">Hora Fin (*):</td>
+								<td><input type="time" name="horaF" size="20"
 									placeholder="Hora Fin" value="<%=horaF != null ? horaF : ""%>"></td>
-								<td class="label">Lugar o Aula(*):</td>
-								<td><input type="text" name="lugar" size="20" maxlength="5"
-									onkeypress="return validar(event)" placeholder="Lugar"
-									value="<%=lugar != null ? lugar : ""%>"></td>
-								<td class="label">Cupos(*):</td>
-								<td><input type="text" name="cupos" size="25"
-									placeholder="Cupos" value="<%=cupos != null ? cupos : ""%>"></td>
+								<td class="label">Lugar o Aula (*):</td>
+								<td><select class="campo02" name="lugar">
+										<option>Seleccione...</option>
+										<option <%if ("Otro".equals(lugar)) {%> selected <%}%>>Otro</option>
+										<%
+											for (Aula aul : listaAula) {
+										%>
+										<option
+											<%if ((aul.getIdBloque() + " - " + aul.getIdAula()).equals(lugar)) {%>
+											selected <%}%>><%=aul.getIdBloque() + " - " + aul.getIdAula()%></option>
+										<%
+											}
+										%>
+								</select></td>
+								<td class="label">Cupos:</td>
+								<td><input type="text" name="cupos" size="20"
+									onkeypress="return validar(event)" placeholder="Cupos"
+									value="<%=cupos != null ? cupos : ""%>"></td>
 							</tr>
 							<tr>
-								<td class="label">Cupos Disponibles :</td>
+								<td class="label">Cupos Disponibles:</td>
 								<td><input type="text" name="cuposD" size="20"
 									placeholder="Cupos Disponibles"
+									onkeypress="return validar(event)"
 									value="<%=cuposD != null ? cuposD : ""%>"></td>
-								<td class="label">Recursos de Apoyo :</td>
+								<td class="label">Recursos de Apoyo:</td>
 								<td><textarea name="recursosApoyo" size="30"
 										class="campo02" placeholder="Recursos de apoyo"
 										value="<%=recursosApoyo != null ? recursosApoyo : ""%>"></textarea></td>
-								<td class="label">Observaciones :</td>
+								<td class="label">Observaciones:</td>
 								<td><textarea name="observacion" size="30"
 										placeholder="Observaciones Asesoría" class="campo02"
 										value="<%=observacion != null ? observacion : ""%>"></textarea></td>
 							</tr>
 							<tr>
-								<td class="label">Estado(*):</td>
+								<td class="label">Estado (*):</td>
 								<td><select name="estado" class="campo02" id="genero">
-										<option><%=estado != null ? estado : "Seleccione"%></option>
-										<option>Pendiente</option>
-										<option>Confirmada</option>
-										<option>Cancelada</option>
+										<option>Seleccione...</option>
+										<option <%if ("Pendiente".equals(estado)) {%> selected <%}%>>Pendiente</option>
+										<option <%if ("Confirmada".equals(estado)) {%> selected <%}%>>Confirmada</option>
+										<option <%if ("Cancelada".equals(estado)) {%> selected <%}%>>Cancelada</option>
 								</select></td>
 								<td colspan="4" align="right" class="label">
 									<button name="action" value="EstInscritos" class="boton">Estudiantes
@@ -151,16 +236,10 @@
 				<button name="action" value="Crear" class="boton">Crear</button>
 				<button name="action" value="Consultar" class="boton">Consultar</button>
 				<button name="action" value="Modificar" class="boton">Modificar</button>
-				<button name="action" value="Eliminar" class="boton">Eliminar</button>
 			</div>
 
 		</form>
 
-		<%
-			NAsesoria nAsesoria = new NAsesoria();
-			DAOAsesorias dao = new DAOAsesorias();
-			List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
-		%>
 		<br> <br>
 		<table width="85%" border="0" align="center" cellpadding="0"
 			cellspacing="0">

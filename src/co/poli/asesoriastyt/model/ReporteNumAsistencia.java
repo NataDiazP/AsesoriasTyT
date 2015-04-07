@@ -4,59 +4,92 @@
 package co.poli.asesoriastyt.model;
 
 /**
- * @author Paola
+ *  Class ReporteNumAsistencia.
  *
+ * @author Paola
  */
 public class ReporteNumAsistencia 
 {
+	
+	/**  id_ asesoria. */
 	private String id_Asesoria;
+	
+	/**  nombre_ asesoria. */
 	private String nombre_Asesoria;
+	
+	/**  fecha_ asesoria. */
 	private String fecha_Asesoria;
+	
+	/**  cantidad. */
 	private String cantidad;
+	
 	/**
-	 * @return the id_Asesoria
+	 * Gets  id_ asesoria.
+	 *
+	 * @return  id_Asesoria
 	 */
 	public String getId_Asesoria() {
 		return id_Asesoria;
 	}
+	
 	/**
-	 * @param id_Asesoria the id_Asesoria to set
+	 * Sets  id_ asesoria.
+	 *
+	 * @param id_Asesoria  id_Asesoria to set
 	 */
 	public void setId_Asesoria(String id_Asesoria) {
 		this.id_Asesoria = id_Asesoria;
 	}
+	
 	/**
-	 * @return the nombre_Asesoria
+	 * Gets  nombre_ asesoria.
+	 *
+	 * @return  nombre_Asesoria
 	 */
 	public String getNombre_Asesoria() {
 		return nombre_Asesoria;
 	}
+	
 	/**
-	 * @param nombre_Asesoria the nombre_Asesoria to set
+	 * Sets  nombre_ asesoria.
+	 *
+	 * @param nombre_Asesoria  nombre_Asesoria to set
 	 */
 	public void setNombre_Asesoria(String nombre_Asesoria) {
 		this.nombre_Asesoria = nombre_Asesoria;
 	}
+	
 	/**
-	 * @return the fecha_Asesoria
+	 * Gets  fecha_ asesoria.
+	 *
+	 * @return  fecha_Asesoria
 	 */
 	public String getFecha_Asesoria() {
 		return fecha_Asesoria;
 	}
+	
 	/**
-	 * @param fecha_Asesoria the fecha_Asesoria to set
+	 * Sets  fecha_ asesoria.
+	 *
+	 * @param fecha_Asesoria  fecha_Asesoria to set
 	 */
 	public void setFecha_Asesoria(String fecha_Asesoria) {
 		this.fecha_Asesoria = fecha_Asesoria;
 	}
+	
 	/**
-	 * @return the cantidad
+	 * Gets  cantidad.
+	 *
+	 * @return  cantidad
 	 */
 	public String getCantidad() {
 		return cantidad;
 	}
+	
 	/**
-	 * @param cantidad the cantidad to set
+	 * Sets  cantidad.
+	 *
+	 * @param cantidad  cantidad to set
 	 */
 	public void setCantidad(String cantidad) {
 		this.cantidad = cantidad;

@@ -12,6 +12,7 @@ public class EstudianteAsesoria {
 	 private String numDocEstudiante;
 	 private String idAsesoria;
 	 private String asistenciaAsesoria;
+	 private String emailEstudiante;
 	 
 	/**
 	 * @return the idAsesoria
@@ -48,5 +49,17 @@ public class EstudianteAsesoria {
 	 */
 	public void setAsistenciaAsesoria(String asistenciaAsesoria) {
 		this.asistenciaAsesoria = asistenciaAsesoria;
+	}
+	/**
+	 * @return the emailEstudiante
+	 */
+	public String getEmailEstudiante() {
+		return emailEstudiante;
+	}
+	/**
+	 * @param emailEstudiante the emailEstudiante to set
+	 */
+	public void setEmailEstudiante(String emailEstudiante) {
+		this.emailEstudiante = emailEstudiante;
 	}
 }

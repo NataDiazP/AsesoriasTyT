@@ -85,7 +85,7 @@
 			<a href="DocentesConsulta.jsp" target="datos">Mi información</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="ProgAcademicbas.jsp" target="datos">Programaci&oacute;n
+			<a href="ProgAcademicas.jsp" target="datos">Programaci&oacute;n
 				Acad&eacute;mica</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">

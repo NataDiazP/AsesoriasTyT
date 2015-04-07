@@ -115,6 +115,9 @@
 			<a href="Reportes.jsp" target="datos">Reportes</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
+			<a href="CargarExcel.jsp" target="datos">Cargar Excel</a>
+		</h3>
+		<h3 class="menuheader Noexpandable">
 			<a href="Acerca.jsp" target="datos">Acerca de</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">

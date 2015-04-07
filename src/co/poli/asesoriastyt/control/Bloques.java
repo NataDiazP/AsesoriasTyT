@@ -40,9 +40,7 @@ public class Bloques extends HttpServlet {
 		
 		String enc1 = request.getParameter("EncargadoBloque");
 		String[] split = enc1.split("-");
-		String enc = split[0];
-
-		
+		String enc = split[0];		
 		
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -122,7 +120,7 @@ public class Bloques extends HttpServlet {
 
 				} else if (!registroExiste) {
 					request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 

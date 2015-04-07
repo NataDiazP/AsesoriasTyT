@@ -7,19 +7,32 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 /**
- * @author natad_000
+ * The Class Conexion.
  *
+ * @author natad_000
  */
 public class Conexion {
 
+	/** The Con. */
 	public Connection Con;
 
+	/**
+	 * Gets the connection.
+	 *
+	 * @return the connection
+	 */
 	public Connection getConnection() {
 		ConexionDB();
 		return Con;
 	}
 
+	/**
+	 * Sets the con.
+	 *
+	 * @param Con the new con
+	 */
 	public void setCon(Connection Con) {
 		this.Con = Con;
 	}
@@ -38,6 +51,9 @@ public class Conexion {
 		}
 	}
 
+	/**
+	 * Conexion db.
+	 */
 	public void ConexionDB() {
 		try {
 			setCon(DriverManager.getConnection("jdbc:mysql://localhost:3306/dbasesoriastyt", "root", ""));
