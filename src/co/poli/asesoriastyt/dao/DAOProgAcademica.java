@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.ProgAcademica;
 
 /**
@@ -125,6 +126,28 @@ public class DAOProgAcademica {
 			}
 		}
 		return resultadoEliminar;
+	}
+
+	public List<Asignatura> asignaturasDocente(Connection c, String idDocente) {
+		List<Asignatura> asigDocente = new ArrayList<Asignatura>();
+		try {
+			PreparedStatement ps = c.prepareStatement("SELECT Asignatura FROM programaciones_academicas where Docente_ProgAcademica = '" + idDocente + "'");
+			ResultSet r = ps.executeQuery();
+			while (r.next()) {
+				Asignatura asignatura = new Asignatura();
+				asignatura.setIdAsignatura(r.getString(1));
+				asigDocente.add(asignatura);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return asigDocente;
 	}
 
 	public List<ProgAcademica> listarProgAcademica(Connection c) {

@@ -16,9 +16,7 @@
 <body>
 	<%
 		NAsesoria nAsesoria = new NAsesoria();
-		DAOAsesorias dao = new DAOAsesorias();
 		List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
-		String mensajeNotif;
 	%>
 
 	<table width="85%" border="0" align="center" cellpadding="0"
@@ -46,6 +44,7 @@
 						<tbody>
 							<%
 								for (Asesoria as : listaAsesorias) {
+									if (as.getEstado().equals("Confirmada")) {
 							%>
 							<tr align="center">
 								<td><%=as.getAsignatura()%></td>
@@ -53,18 +52,17 @@
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>
-								<%
-									request.getSession().setAttribute("idAsesoria", as.getIdAsesoria());
-								%>
 								<td><form name="asistenciaAsesorias"
 										action="./AsistenciaAsesorias" method="post">
-										<button class="asistirButton" name="action" value="Asistir">
+										<button class="asistirButton" name="action"
+											value="Asistir_<%=as.getIdAsesoria()%>">
 											<img src="./images/plus.png" alt="Asistir a asesoría"
 												class="asistir" />
 										</button>
 									</form></td>
 							</tr>
 							<%
+								}
 								}
 							%>
 						</tbody>
