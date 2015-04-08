@@ -1,3 +1,4 @@
+<%@page import="co.poli.asesoriastyt.util.Conexion"%>
 <%@page import="co.poli.asesoriastyt.model.Aula"%>
 <%@page import="co.poli.asesoriastyt.negocio.NAula"%>
 <%@page import="co.poli.asesoriastyt.negocio.NProgAcademica"%>
@@ -20,6 +21,7 @@
 <link href="./css/generales.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
+
 	String mensaje = (String) request.getAttribute("mensaje");
 	String id = request.getParameter("id");
 	String nombreAsesoria = request.getParameter("nombreAsesoria");
@@ -54,6 +56,9 @@
 		estado = x.getEstado();
 	}
 
+
+	
+	
 	NAsesoria nAsesoria = new NAsesoria();
 	List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
 
@@ -65,9 +70,14 @@
 
 	NAsignatura nAsig = new NAsignatura();
 	List<Asignatura> listaAsignaturas = nAsig.ListadoAsignaturas();
-
-	NAula nAula = new NAula();
-	List<Aula> listaAula = nAula.ListadoAulas();
+	
+	Conexion Connection = new Conexion();
+	
+	DAOAsesorias Ase = new DAOAsesorias();
+	Asesoria generarIdAsesoria = Ase.generarIdAsesoria();
+	
+	
+	
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asesor&iacute;as</title>
