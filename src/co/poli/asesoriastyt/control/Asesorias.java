@@ -3,6 +3,10 @@ package co.poli.asesoriastyt.control;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,7 +44,7 @@ public class Asesorias extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Asesoria Asesorias = new Asesoria();
-		String id = request.getParameter("id");
+		String id = request.getParameter("");
 		String nombreAsesoria = request.getParameter("nombreAsesoria");
 		String docente = request.getParameter("docente");
 		String asignatura = request.getParameter("asignatura");
@@ -53,8 +57,11 @@ public class Asesorias extends HttpServlet {
 		String recursosApoyo = request.getParameter("recursosApoyo");
 		String observacion = request.getParameter("observacion");
 		String estado = request.getParameter("estado");
+		Date fechaActual = null;
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
 		String[] arrayLugar = lugar.split(" - ");
-		String bloque ="";
+		String bloque = "";
 		if (arrayLugar.length > 1) {
 			bloque = arrayLugar[0];
 		}
@@ -106,7 +113,21 @@ public class Asesorias extends HttpServlet {
 				}
 
 				if (!registroExiste) {
-					if (docente.equals("")) {
+					Calendar c1 = Calendar.getInstance();
+					fechaActual = c1.getTime();
+
+					Date fechaAsesoria = null;
+					try {
+						fechaAsesoria = formato.parse(fecha);
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
+
+					if (fechaActual.after(fechaAsesoria))
+					{
+						JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (docente.equals("")) {
 						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 					} else {
@@ -279,6 +300,8 @@ public class Asesorias extends HttpServlet {
 					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
+		
 		}
 	}
 }
+

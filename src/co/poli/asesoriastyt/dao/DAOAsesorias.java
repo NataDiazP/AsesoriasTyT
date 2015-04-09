@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import co.poli.asesoriastyt.control.Asesorias;
 import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.ReporteAsistencia;
@@ -23,6 +24,8 @@ import co.poli.asesoriastyt.model.ReporteNumAsistencia;
  *
  */
 public class DAOAsesorias {
+
+	private String setIdAsesoria;
 
 	public int Crear(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Crear();
@@ -576,4 +579,40 @@ public class DAOAsesorias {
 		}
 		return Asesorias;
 	}
+
+	
+	public Asesoria generarIdAsesoria(Connection con) {
+		Asesoria x = new Asesoria();
+		try {
+			PreparedStatement cl = con.prepareStatement(AsesoriasSQL.ConsultarID());
+			ResultSet r = cl.executeQuery();
+			while (r.next()) {
+				x.setIdAsesoria(r.getString(1));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return x;
+
+		} finally {
+			try {
+				con.close();
+			} catch (Exception ex) {
+			}
+
+		}
+		return x;
+	}
+
+
+
+	
+
+	
 }
+	
+	
+	
+	
+	
+
