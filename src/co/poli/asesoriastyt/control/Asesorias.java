@@ -60,6 +60,13 @@ public class Asesorias extends HttpServlet {
 		Date fechaActual = null;
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
+		String[] horaIArray = horaI.split(":");
+		String[] horaFArray = horaF.split(":");
+		int horaIni = Integer.parseInt(horaIArray[0]);
+		int minutIni = Integer.parseInt(horaIArray[1]);
+		int horaFin = Integer.parseInt(horaFArray[0]);
+		int minutFin = Integer.parseInt(horaFArray[1]);
+
 		String[] arrayLugar = lugar.split(" - ");
 		String bloque = "";
 		if (arrayLugar.length > 1) {
@@ -126,6 +133,9 @@ public class Asesorias extends HttpServlet {
 					if (fechaActual.after(fechaAsesoria))
 					{
 						JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (horaFin < horaIni) {
+						JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 					} else if (docente.equals("")) {
 						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);

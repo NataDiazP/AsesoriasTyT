@@ -61,6 +61,8 @@ public class NAsesoria {
 		return resultadoBuscar;
 	}
 	
+//	public id
+	
 	public List<Asesoria> ListadoAsesorias() {
 		daoAsesorias = new DAOAsesorias();
 		c = new Conexion().getConnection();

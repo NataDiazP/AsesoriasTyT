@@ -70,11 +70,12 @@
 
 	NAsignatura nAsig = new NAsignatura();
 	List<Asignatura> listaAsignaturas = nAsig.ListadoAsignaturas();
-	
-	Conexion Connection = new Conexion();
-	
-	DAOAsesorias Ase = new DAOAsesorias();
-	Asesoria generarIdAsesoria = Ase.generarIdAsesoria();
+
+	NAula nAula = new NAula();
+	List<Aula> listaAula = nAula.ListadoAulas();
+
+// 	DAOAsesorias Ase = new DAOAsesorias();
+// 	Asesoria generarIdAsesoria = Ase.generarIdAsesoria();
 	
 	
 	
