@@ -31,6 +31,16 @@ public class NPersona {
 		int resultadoCrear = daoPersonas.Crear(c, Personas);
 		return resultadoCrear;
 	}
+	
+	public boolean validarExistenciaPersona(String documento)
+	{
+		daoPersonas = new DAOPersonas();
+		c = new Conexion().getConnection();
+		boolean existe= daoPersonas.validarExistenciaPersona(c,documento);
+		
+		return existe;
+		
+	}
 
 	public int Modificar(Persona Personas) {
 		daoPersonas = new DAOPersonas();

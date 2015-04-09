@@ -88,7 +88,7 @@ public class CargarExcel extends HttpServlet {
 			 {
 				 listaDocentes=excel.leerArchivoDocentes();
 				 listaErroresDocentes=excel.getListaErroresDocentes();
-				 
+				 int suma= listaDocentes.size() + listaErroresDocentes.size();
 				 if (listaErroresDocentes.size()>0)
 				 {
 					 
@@ -96,9 +96,16 @@ public class CargarExcel extends HttpServlet {
 					 
 					 if(errores==true)
 					 {
-						 JOptionPane.showMessageDialog(null, "La carga de Docentes se generó con excepciones, puede validar los errores en el archivo", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+						 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaDocentes.size()+ 
+		 							" \n Registros con errores: " + listaErroresDocentes.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						 			request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 					 }
+					 
+				 }
+				 else
+				 {
+					 JOptionPane.showMessageDialog(null, "La carga de Docentes se generó correctamente", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 				 }
 				 
 				/* if(listaDocentes.size()>0)
@@ -123,6 +130,7 @@ public class CargarExcel extends HttpServlet {
 			 {
 				 listaEstudiantes=excel.leerArchivoEstudiantes();
 				 listaErroresEstudiantes=excel.getListaErroresEstudiantes();
+				 int suma= listaEstudiantes.size() + listaErroresEstudiantes.size();
 				 
 				 if (listaErroresEstudiantes.size()>0)
 				 {
@@ -131,15 +139,21 @@ public class CargarExcel extends HttpServlet {
 					 
 					 if(errores==true)
 					 {
-						 JOptionPane.showMessageDialog(null, "La carga de Docentes se generó con excepciones, puede validar los errores en el archivo", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaEstudiantes.size()+ 
+								 							" \n Registros con errores: " + listaErroresEstudiantes.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 					 }
 				 }
+				 else
+				 {
+					 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó correctamente con "+listaEstudiantes.size()+" cargados", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+				 }
 				 
-	/*			 if(listaErroresEstudiantes.size()>0)
+				 if(listaErroresEstudiantes.size()>0)
 				 {
 					npersona.CrearDocentes(listaEstudiantes);
-				 }*/
+				 }
 			 }
 			  catch (Exception e) 
 			 {

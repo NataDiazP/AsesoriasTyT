@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -340,5 +342,24 @@ public class DAOPersonas {
 			}
 		}
 		return Personas;
+	}
+
+	/**
+	 * @param documento
+	 * @return
+	 */
+	public boolean validarExistenciaPersona(Connection c,String documento) {
+		
+		boolean validar= false;
+		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas where NumDoc_Persona='"+documento+"'").executeQuery();
+			while (r.next()) {
+				validar=true;
+				break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return validar;
 	}
 }
