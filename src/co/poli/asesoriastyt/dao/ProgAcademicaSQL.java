@@ -10,7 +10,7 @@ package co.poli.asesoriastyt.dao;
 public class ProgAcademicaSQL {
 
 	public static String Crear() {
-		return "INSERT INTO programaciones_academicas (Id_ProgAcademica, Docente_ProgAcademica, Asignatura, Grupo_Asignatura, Nro_Estudiantes_Asignatura, Dias_Asignatura, HoraInicio_Asignatura, HoraFin_Asignatura, Aula_Clase, Semestre_ProgAcademica, Ano_ProgAcademica) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		return "INSERT INTO programaciones_academicas (Docente_ProgAcademica, Asignatura, Grupo_Asignatura, Nro_Estudiantes_Asignatura, Dias_Asignatura, HoraInicio_Asignatura, HoraFin_Asignatura, Aula_Clase, Semestre_ProgAcademica, Ano_ProgAcademica) VALUES (?,?,?,?,?,?,?,?,?,?)";
 	}
 
 	public static String Modificar() {

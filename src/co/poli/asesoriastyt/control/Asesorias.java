@@ -44,7 +44,7 @@ public class Asesorias extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Asesoria Asesorias = new Asesoria();
-		String id = request.getParameter("id");
+		String id = request.getParameter("");
 		String nombreAsesoria = request.getParameter("nombreAsesoria");
 		String docente = request.getParameter("docente");
 		String asignatura = request.getParameter("asignatura");
@@ -310,6 +310,8 @@ public class Asesorias extends HttpServlet {
 					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
+		
 		}
 	}
 }
+
