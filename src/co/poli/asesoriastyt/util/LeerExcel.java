@@ -57,17 +57,17 @@ public class LeerExcel
 		this.listaErroresDocentes = listaErroresDocentes;
 	}
 
-	public ArrayList<Persona> leerArchivoDocentes()
+	public ArrayList<Persona> leerArchivoDocentes(InputStream filecontent)
 	{
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
 		ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
 		try
 		{
-			FileInputStream file = new FileInputStream(new File("C:\\docentes.xlsx"));
+			//FileInputStream file = new FileInputStream(new File());
 
 			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(file);
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
 
 			//Get first/desired sheet from the workbook
 			XSSFSheet sheet = workbook.getSheetAt(0);
@@ -82,6 +82,10 @@ public class LeerExcel
 				Row row = rowIterator.next();
 				//For each row, iterate through all the columns
 				Iterator<Cell> cellIterator = row.cellIterator();
+				if((contadorColumnas!=12)&&(contadorFilas==1))
+				{
+					return lista;
+				}
 				contadorColumnas =0;
 				error=false;
 				Persona persona = new Persona();
@@ -265,11 +269,19 @@ public class LeerExcel
 							case 10:
 								try
 								{
+									
 									boolean validar=validarCorreo(cell.getStringCellValue());
-									if (validar!=false)
+									boolean validar2=npersona.validarExistenciaCorreo(cell.getStringCellValue());
+									if ((validar!=false)&&(validar2==false))
 									{
 										persona.setCorreoElectronico(cell.getStringCellValue());
 										System.out.print(cell.getStringCellValue() + "\t");
+									}
+									else
+									{
+										error=true;
+										persona.setCorreoElectronico("Error");
+										
 									}
 								}
 								catch(Exception e) 
@@ -316,7 +328,7 @@ public class LeerExcel
 				System.out.println("");
 				contadorFilas=contadorFilas+1;
 			}
-			file.close();
+			
 		} 
 		catch (Exception e) 
 		{
@@ -342,17 +354,17 @@ public class LeerExcel
 	/**
 	 * @return
 	 */
-	public ArrayList<Persona> leerArchivoEstudiantes() {
+	public ArrayList<Persona> leerArchivoEstudiantes(InputStream filecontent) {
 		
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
 		ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
 		try
 		{
-			FileInputStream file = new FileInputStream(new File("C:\\estudiantes.xlsx"));
+			//FileInputStream file = new FileInputStream(new File("C:\\estudiantes.xlsx"));
 
 			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(file);
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
 
 			//Get first/desired sheet from the workbook
 			XSSFSheet sheet = workbook.getSheetAt(0);
@@ -367,6 +379,11 @@ public class LeerExcel
 				Row row = rowIterator.next();
 				//For each row, iterate through all the columns
 				Iterator<Cell> cellIterator = row.cellIterator();
+				if((contadorColumnas!=14)&&(contadorFilas==1))
+				{
+					return lista;
+				}
+					
 				contadorColumnas =0;
 				error=false;
 				Persona persona = new Persona();
@@ -552,10 +569,17 @@ public class LeerExcel
 								try
 								{
 									boolean validar=validarCorreo(cell.getStringCellValue());
-									if (validar!=false)
+									boolean validar2=npersona.validarExistenciaCorreo(cell.getStringCellValue());
+									if ((validar!=false)&&(validar2==false))
 									{
 										persona.setCorreoElectronico(cell.getStringCellValue());
 										System.out.print(cell.getStringCellValue() + "\t");
+									}
+									else
+									{
+										error=true;
+										persona.setCorreoElectronico("Error");
+										
 									}
 								}
 								catch(Exception e) 
@@ -623,7 +647,7 @@ public class LeerExcel
 				System.out.println("");
 				contadorFilas=contadorFilas+1;
 			}
-			file.close();
+			
 		} 
 		catch (Exception e) 
 		{
