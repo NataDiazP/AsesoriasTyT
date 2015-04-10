@@ -15,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import sun.util.calendar.BaseCalendar.Date;
 import co.poli.asesoriastyt.control.Docentes;
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.negocio.NPersona;
 
 public class LeerExcel 
 {
@@ -58,6 +59,7 @@ public class LeerExcel
 
 	public ArrayList<Persona> leerArchivoDocentes()
 	{
+		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
 		ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
 		try
@@ -96,8 +98,17 @@ public class LeerExcel
 								try
 								{
 									int doc= (int)cell.getNumericCellValue();
-									persona.setNumeroIdentificacion(Integer.toString(doc));
-									System.out.print(cell.getNumericCellValue() + "\t");
+									boolean validar= npersona.validarExistenciaPersona(""+doc);
+									if(validar)
+									{
+										error=true;
+										persona.setNumeroIdentificacion("ID "+doc+" existente");
+									}
+									else
+									{
+										persona.setNumeroIdentificacion(Integer.toString(doc));
+										System.out.print(cell.getNumericCellValue() + "\t");
+									}
 									
 								}
 								catch(Exception e) 
@@ -332,7 +343,8 @@ public class LeerExcel
 	 * @return
 	 */
 	public ArrayList<Persona> leerArchivoEstudiantes() {
-	
+		
+		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
 		ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
 		try
@@ -371,8 +383,18 @@ public class LeerExcel
 								try
 								{
 									int doc= (int)cell.getNumericCellValue();
-									persona.setNumeroIdentificacion(Integer.toString(doc));
-									System.out.print(cell.getNumericCellValue() + "\t");
+									boolean validar= npersona.validarExistenciaPersona(""+doc);
+									if(validar)
+									{
+										error=true;
+										persona.setNumeroIdentificacion("ID "+doc+" existente");
+									}
+									else
+									{
+										persona.setNumeroIdentificacion(Integer.toString(doc));
+										System.out.print(cell.getNumericCellValue() + "\t");
+									}
+									
 									
 								}
 								catch(Exception e) 

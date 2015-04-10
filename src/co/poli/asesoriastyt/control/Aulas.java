@@ -23,14 +23,15 @@ import co.poli.asesoriastyt.util.Conexion;
 @WebServlet("/Aulas")
 public class Aulas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Conexion Connection = new Conexion();   
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Aulas() {
-       
-        // TODO Auto-generated constructor stub
-    }
+	Conexion Connection = new Conexion();
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Aulas() {
+
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,7 +44,7 @@ public class Aulas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		Aula Aulas = new Aula();
 		String id = request.getParameter("IdAula");
 		String enc = request.getParameter("IdBloque");
@@ -128,10 +129,11 @@ public class Aulas extends HttpServlet {
 			}
 
 			if ("Consultar".equals(request.getParameter("action"))) {
-
+				boolean registroExiste = false;
+				int sw = 0;
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
-					while (r1.next()) {
+					while (r1.next() && sw == 0) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
 							response.sendRedirect("Aulas.jsp");
 							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);

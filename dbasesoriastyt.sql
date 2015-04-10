@@ -112,7 +112,7 @@ INSERT INTO `aulas` (`Id_Aula`, `Id_Bloque_Aula`) VALUES
 
 CREATE TABLE IF NOT EXISTS `bloques` (
   `Id_Bloque` varchar(4) NOT NULL,
-  `Encargado_Bloque` varchar(3) NOT NULL,
+  `Encargado_Bloque` varchar(15) NOT NULL,
   PRIMARY KEY (`Id_Bloque`),
   KEY `Encargados_Bloques_FK` (`Encargado_Bloque`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -134,7 +134,7 @@ INSERT INTO `bloques` (`Id_Bloque`, `Encargado_Bloque`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `encargados_bloques` (
-  `Id_Encargado_Bloque` varchar(3) NOT NULL,
+  `Id_Encargado_Bloque` varchar(15) NOT NULL,
   `Correo_Encargado_Bloque` varchar(255) NOT NULL,
   PRIMARY KEY (`Id_Encargado_Bloque`),
   UNIQUE KEY `Encargados_Bloques_UN` (`Correo_Encargado_Bloque`)
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `encargados_bloques` (
 --
 
 INSERT INTO `encargados_bloques` (`Id_Encargado_Bloque`, `Correo_Encargado_Bloque`) VALUES
-('111', 'natalia_diaz24131@elpoli.edu.co'),
+('970918002956', 'natalia.970918@gmail.com'),
 ('123', 'natavelez17@gmail.com'),
 ('789', 'nathalia_gaviria24111@elpoli.edu.co'),
 ('456', 'paola_vargas24111@elpoli.edu.com');
@@ -338,7 +338,7 @@ ALTER TABLE `programaciones_academicas`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-=======
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -452,8 +452,7 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
 INSERT INTO `perfiles` (`Id_Perfil`, `Nombre_Perfil`) VALUES
 (1, 'Administrador'),
 (2, 'Docente'),
-(3, 'Estudiante'),
-(4, 'Prueba');
+(3, 'Estudiante');
 
 CREATE TABLE IF NOT EXISTS `personas` (
   `NumDoc_Persona` varchar(15) NOT NULL,
@@ -545,4 +544,3 @@ ALTER TABLE `programaciones_academicas`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
->>>>>>> 26d8e3cd63b68b7008dfff554b26c79a5e1967f1

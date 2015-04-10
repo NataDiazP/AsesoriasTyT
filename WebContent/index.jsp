@@ -30,13 +30,13 @@
 	</script>
 	
 	<%
-		/*if (session.getAttribute("googlePlusUser") != null && !session.getAttribute("googlePlusUser").equals(""))
+		if (session.getAttribute("googlePlusUser") != null && !session.getAttribute("googlePlusUser").equals(""))
 		{
 		}
 		else
 		{
 			response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("login"));
-		}*/
+		}
 	%>
 </head>
 <body>
