@@ -191,7 +191,7 @@ public class EscribirErrores
 		{
 			//Write the workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Paola\\ErrorCargaEstudiantes.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Nati\\ErrorCargaEstudiantes.xlsx"));
 				 workbook.write(out);
 				 out.close();
 		

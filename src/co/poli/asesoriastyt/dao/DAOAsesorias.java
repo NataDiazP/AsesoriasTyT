@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import co.poli.asesoriastyt.control.Asesorias;
 import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.ReporteAsistencia;
@@ -25,27 +24,24 @@ import co.poli.asesoriastyt.model.ReporteNumAsistencia;
  */
 public class DAOAsesorias {
 
-	private String setIdAsesoria;
-
 	public int Crear(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Crear();
 		int resultadoCrear = 0;
 		try {
 			PreparedStatement st = c.prepareStatement(sql);
 
-			st.setString(1, Asesorias.getIdAsesoria());
-			st.setString(2, Asesorias.getNombreAsesoria());
-			st.setString(3, Asesorias.getDocente());
-			st.setString(4, Asesorias.getAsignatura());
-			st.setString(5, Asesorias.getFecha());
-			st.setString(6, Asesorias.getHoraI());
-			st.setString(7, Asesorias.getHoraF());
-			st.setString(8, Asesorias.getLugar());
-			st.setString(9, Asesorias.getCupos());
-			st.setString(10, Asesorias.getCuposD());
-			st.setString(11, Asesorias.getRecursosApoyo());
-			st.setString(12, Asesorias.getObservaciones());
-			st.setString(13, Asesorias.getEstado());
+			st.setString(1, Asesorias.getNombreAsesoria());
+			st.setString(2, Asesorias.getDocente());
+			st.setString(3, Asesorias.getAsignatura());
+			st.setString(4, Asesorias.getFecha());
+			st.setString(5, Asesorias.getHoraI());
+			st.setString(6, Asesorias.getHoraF());
+			st.setString(7, Asesorias.getLugar());
+			st.setString(8, Asesorias.getCupos());
+			st.setString(9, Asesorias.getCuposD());
+			st.setString(10, Asesorias.getRecursosApoyo());
+			st.setString(11, Asesorias.getObservaciones());
+			st.setString(12, Asesorias.getEstado());
 			resultadoCrear = st.executeUpdate();
 
 		} catch (SQLException ex) {
@@ -159,13 +155,11 @@ public class DAOAsesorias {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return c;
-
 		} finally {
 			try {
 				con.close();
 			} catch (Exception ex) {
 			}
-
 		}
 		return c;
 	}
@@ -580,9 +574,10 @@ public class DAOAsesorias {
 		return Asesorias;
 	}
 
-	
 	public Asesoria generarIdAsesoria(Connection con) {
 		Asesoria x = new Asesoria();
+	
+		
 		try {
 			PreparedStatement cl = con.prepareStatement(AsesoriasSQL.ConsultarID());
 			ResultSet r = cl.executeQuery();

@@ -84,8 +84,6 @@
 		<!--Inicio opción desplegable-->
 		<h3 class="menuheader expandable">Configuraciones</h3>
 		<ul class="categoryitems">
-			<li><a href="Perfiles.jsp" target="datos">Administrar
-					Perfiles</a></li>
 			<li><a href="EncargadoBloque.jsp" target="datos">Administrar
 					Encargados de Bloques</a></li>
 			<li><a href="Bloques.jsp" target="datos">Administrar Bloques</a></li>
@@ -95,6 +93,9 @@
 		</ul>
 		<!--Fin opción desplegable-->
 
+		<h3 class="menuheader Noexpandable">
+			<a href="CargarExcel.jsp" target="datos">Cargar Excel</a>
+		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="Docentes.jsp" target="datos">Docentes</a>
 		</h3>
@@ -113,9 +114,6 @@
 		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="Reportes.jsp" target="datos">Reportes</a>
-		</h3>
-		<h3 class="menuheader Noexpandable">
-			<a href="CargarExcel.jsp" target="datos">Cargar Excel</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="Acerca.jsp" target="datos">Acerca de</a>

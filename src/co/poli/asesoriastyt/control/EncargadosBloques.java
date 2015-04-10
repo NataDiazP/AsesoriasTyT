@@ -80,7 +80,7 @@ public class EncargadosBloques extends HttpServlet {
 						}
 
 						if (correoExiste) {
-							JOptionPane.showMessageDialog(null, "Este correo electrónico ya existe, por favor verifiquelo.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Ya se ha ingresado un encargado con este correo electrónico, por favor verifique la información.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./EncargadoBloque.jsp").forward(request, response);
 						} else if (correoExiste == false) {
 							int resultado = new NEncargadoBloque().Crear(EncBloques);
