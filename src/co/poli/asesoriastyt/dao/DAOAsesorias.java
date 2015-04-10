@@ -583,6 +583,8 @@ public class DAOAsesorias {
 	
 	public Asesoria generarIdAsesoria(Connection con) {
 		Asesoria x = new Asesoria();
+	
+		
 		try {
 			PreparedStatement cl = con.prepareStatement(AsesoriasSQL.ConsultarID());
 			ResultSet r = cl.executeQuery();
