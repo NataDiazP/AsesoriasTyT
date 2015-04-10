@@ -147,7 +147,8 @@ public class Asesorias extends HttpServlet {
 						try {
 							response.sendRedirect("Asesorias.jsp");
 							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							if (!("Otro").equals(Asesorias.getLugar()) && !("Seleccione...").equals(Asesorias.getLugar())) {
+							if (!("Biblioteca").equals(Asesorias.getLugar()) && !("Otro").equals(Asesorias.getLugar()) && !("Palmeras").equals(Asesorias.getLugar())  && 
+									!("Almendros").equals(Asesorias.getLugar()) && !("Seleccione...").equals(Asesorias.getLugar())) {
 								String emailEncargado = "";
 								try {
 									ResultSet r = Connection
@@ -213,7 +214,7 @@ public class Asesorias extends HttpServlet {
 						response.sendRedirect("Asesorias.jsp");
 					} else {
 						int confirma = 0;
-						if (estado.equals("Confirmada")) {
+						if (estado.equals("Confirmada") || estado.equals("Ejecutada")) {
 							confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría?");
 						} else if (estado.equals("Pendiente")) {
 							confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría y pasarla a estado Pendiente?");
@@ -232,7 +233,7 @@ public class Asesorias extends HttpServlet {
 							StringBuilder stringBuilder = new StringBuilder();
 							String mensaje = "", asunto = "";
 
-							if (ListaAsistencia.size() > 0) {
+							if (ListaAsistencia.size() > 0 && !estado.equals("Ejecutada")) {
 								if (estado.equals("Confirmada") || estado.equals("Pendiente")) {
 									asunto = "Actualización en asesoría";
 									stringBuilder.append("Hola <br/> <br/>");

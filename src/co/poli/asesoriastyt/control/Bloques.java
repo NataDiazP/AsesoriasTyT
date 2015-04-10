@@ -99,7 +99,7 @@ public class Bloques extends HttpServlet {
 					e.printStackTrace();
 				}
 				if (registroExiste) {
-					if (enc.equals("")) {
+					if (enc.equals("Seleccione...")) {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Bloques.jsp");
 					} else {
@@ -117,7 +117,6 @@ public class Bloques extends HttpServlet {
 							request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
 						}
 					}
-
 				} else if (!registroExiste) {
 					request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
 					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);

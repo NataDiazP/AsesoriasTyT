@@ -58,9 +58,9 @@ public class Aulas extends HttpServlet {
 
 			if ("Crear".equals(request.getParameter("action"))) {
 				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
+					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula, Id_Bloque_Aula from aulas").executeQuery();
 					while (r.next()) {
-						if (id.equals(r.getString(1))) {
+						if (id.equals(r.getString(1) && enc.equals(r.getString(2)))S {
 							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT",
 									JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
@@ -77,7 +77,7 @@ public class Aulas extends HttpServlet {
 					int resultado = new NAula().Crear(Aulas);
 					try {
 						response.sendRedirect("Aulas.jsp");
-						JOptionPane.showMessageDialog(null, "Se guard� correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 						request.setAttribute("cli", resultado);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -86,45 +86,54 @@ public class Aulas extends HttpServlet {
 			}
 
 			if ("Modificar".equals(request.getParameter("action"))) {
-				if (enc.equals("")) {
-					JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-					response.sendRedirect("Aulas.jsp");
-				} else if (id != null) {
-					try {
-						ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
-						while (r.next()) {
-							if (id.equals(r.getString(1))) {
-								int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la informaci�n de este bloque?");
-
-								if (confirma == JOptionPane.YES_OPTION) {
-									int resultadoModificar = new NAula().Modificar(Aulas);
-									request.setAttribute("cli", resultadoModificar);
-									JOptionPane.showMessageDialog(null, "Se modificó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-									response.sendRedirect("Aulas.jsp");
-								} else if (confirma == JOptionPane.NO_OPTION) {
-									request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-								} else if (confirma == JOptionPane.CLOSED_OPTION) {
-									request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-								} else if (confirma == JOptionPane.CANCEL_OPTION) {
-									request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-								}
-							}
-						}
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-
+				boolean registroExiste = false;
+				int sw = 0;
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
-					while (r1.next()) {
+					while (r1.next() && sw == 0) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificaci�n del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							registroExiste = false;
+						} else {
+							registroExiste = true;
+							sw = 1;
 						}
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
+				}
+
+				if (registroExiste) {
+					if (enc.equals("Seleccione")) {
+						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						response.sendRedirect("Aulas.jsp");
+					} else if (id != null) {
+						try {
+							ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
+							while (r.next()) {
+								if (id.equals(r.getString(1))) {
+									int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de este bloque?");
+
+									if (confirma == JOptionPane.YES_OPTION) {
+										int resultadoModificar = new NAula().Modificar(Aulas);
+										request.setAttribute("cli", resultadoModificar);
+										JOptionPane.showMessageDialog(null, "Se modificó correctamente", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+										response.sendRedirect("Aulas.jsp");
+									} else if (confirma == JOptionPane.NO_OPTION) {
+										request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+									} else if (confirma == JOptionPane.CLOSED_OPTION) {
+										request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+									} else if (confirma == JOptionPane.CANCEL_OPTION) {
+										request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+									}
+								}
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				} else if (!registroExiste) {
+					 request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+					 JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
@@ -135,62 +144,67 @@ public class Aulas extends HttpServlet {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
 					while (r1.next() && sw == 0) {
 						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							response.sendRedirect("Aulas.jsp");
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							registroExiste = false;
+						} else {
+							registroExiste = true;
+							sw = 1;
 						}
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 
-				NAula negocioC = new NAula();
-				try {
-					Aula cli = negocioC.Buscar(id);
-					request.setAttribute("cli", cli);
-					request.setAttribute("mensaje", "El bloque fue encontrado con exito");
-					request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-				} catch (Exception ex) {
-					Logger.getLogger(Aulas.class.getName()).log(Level.SEVERE, null, ex);
-					request.setAttribute("mensaje", ex.getMessage());
+				if (registroExiste == true) {
+					NAula negocioC = new NAula();
+					try {
+						Aula cli = negocioC.Buscar(id);
+						request.setAttribute("cli", cli);
+						request.setAttribute("mensaje", "El bloque fue encontrado con exito");
+						request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+					} catch (Exception ex) {
+						Logger.getLogger(Aulas.class.getName()).log(Level.SEVERE, null, ex);
+						request.setAttribute("mensaje", ex.getMessage());
+					}
+				} else if (!registroExiste) {
+					response.sendRedirect("Aulas.jsp");
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 
 			if ("Eliminar".equals(request.getParameter("action"))) {
+				boolean registroExiste = false;
+				int sw = 0;
 				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
-					while (r.next()) {
-						if (id.equals(r.getString(1))) {
-
-							int confirma = JOptionPane.showConfirmDialog(null, "�Desea eliminar la información de este bloque?");
-
-							if (confirma == JOptionPane.YES_OPTION) {
-								int resultadoEliminar = new NAula().Eliminar(Aulas);
-								request.setAttribute("cli", resultadoEliminar);
-								JOptionPane.showMessageDialog(null, "Se elimin� correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-								response.sendRedirect("Aulas.jsp");
-							} else if (confirma == JOptionPane.NO_OPTION) {
-								request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-							} else if (confirma == JOptionPane.CLOSED_OPTION) {
-								request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-							} else if (confirma == JOptionPane.CANCEL_OPTION) {
-								request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-							}
+					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
+					while (r1.next() && sw == 0) {
+						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
+							registroExiste = false;
+						} else {
+							registroExiste = true;
+							sw = 1;
 						}
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-
-				try {
-					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula from aulas").executeQuery();
-					while (r1.next()) {
-						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique el c�digo del Aula", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-							request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
-						}
+				
+				if (registroExiste) {
+					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de esta aula?");
+					if (confirma == JOptionPane.YES_OPTION) {
+						int resultadoEliminar = new NAula().Eliminar(Aulas);
+						request.setAttribute("cli", resultadoEliminar);
+						JOptionPane.showMessageDialog(null, "Se eliminó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						response.sendRedirect("Aulas.jsp");
+					} else if (confirma == JOptionPane.NO_OPTION) {
+						request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+					} else if (confirma == JOptionPane.CLOSED_OPTION) {
+						request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+					} else if (confirma == JOptionPane.CANCEL_OPTION) {
+						request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 					}
-				} catch (SQLException e) {
-					e.printStackTrace();
+				} else if (!registroExiste) {
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación del aula", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 				}
 			}
 		}

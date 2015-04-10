@@ -48,15 +48,9 @@ public class AsistenciaAsesorias extends HttpServlet {
 		String[] actionArray = action.split("_");
 		action = actionArray[0];
 		String idAsesoria = "";
-		String idEstudiante = "";
-		String asistio = "";
 		if (actionArray.length > 1)
 		{
 			idAsesoria = actionArray[1];
-		} else if (actionArray.length == 4) {
-			asistio = actionArray[1];
-			idAsesoria = actionArray[2];
-			idEstudiante = actionArray[3];
 		}
 
 		if ("Asistir".equals(action)) {
@@ -128,10 +122,12 @@ public class AsistenciaAsesorias extends HttpServlet {
 			}
 		}
 
-		if ("Asistencia".equals(action)) {
-			int resultadoModificar = new NAsesoria().GuardarAsistencia(idAsesoria, idEstudiante, asistio);
+		if ("GuardarAsesoria".equals(action)) {
+			int resultadoModificar = new NAsesoria().GuardarAsistencia("2", "97091800296", "Si");
+			JOptionPane.showMessageDialog(null, "Se ha guardado correctamente la lista de asistencia.", "AsesoriasTyT",
+					JOptionPane.INFORMATION_MESSAGE);
 			request.setAttribute("cli", resultadoModificar);
-			response.sendRedirect("AsistenciaAsesorias.jsp");
+			response.sendRedirect("Asesorias.jsp");
 		}
 	}
 }

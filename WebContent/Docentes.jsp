@@ -164,13 +164,12 @@
 			</table>
 			<br>
 
-			<div style="margin: 0 auto; width: 25%">
-				<button name="action" value="Crear" class="boton">Crear</button>
+			<div style="margin: 0 auto; width: 10%">
+				<!-- 				<button name="action" value="Crear" class="boton">Crear</button> -->
 				<button name="action" value="Consultar" class="boton">Consultar</button>
-				<button name="action" value="Modificar" class="boton">Modificar</button>
-				<button name="action" value="Eliminar" class="boton">Eliminar</button>
+				<!-- 				<button name="action" value="Modificar" class="boton">Modificar</button> -->
+				<!-- 				<button name="action" value="Eliminar" class="boton">Eliminar</button> -->
 			</div>
-
 		</form>
 
 		<%
@@ -229,7 +228,7 @@
 									<%
 										} else {
 									%>
-									<td><%=per.getCelular() %></td>
+									<td><%=per.getCelular()%></td>
 									<%
 										}
 									%>

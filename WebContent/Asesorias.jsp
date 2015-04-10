@@ -21,7 +21,6 @@
 <link href="./css/generales.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%
-
 	String mensaje = (String) request.getAttribute("mensaje");
 	String id = request.getParameter("id");
 	String nombreAsesoria = request.getParameter("nombreAsesoria");
@@ -55,7 +54,7 @@
 		observacion = x.getObservaciones();
 		estado = x.getEstado();
 	}
-	
+
 	NAsesoria nAsesoria = new NAsesoria();
 	List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
 
@@ -101,7 +100,7 @@
 								</td>
 								<td><input type="text" name="id" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Código"
-									value="<%=id != null ? id : generarIdAsesoria.getIdAsesoria() %>"></td>
+									value="<%=id != null ? id : generarIdAsesoria.getIdAsesoria()%>"></td>
 								<td class="label">Nombre (*):</td>
 								<td><input type="text" name="nombreAsesoria" size="20"
 									maxlength="50" placeholder="Nombre Asesoría"
@@ -179,6 +178,9 @@
 								<td class="label">Lugar o Aula (*):</td>
 								<td><select class="campo02" name="lugar">
 										<option>Seleccione...</option>
+										<option <%if ("Biblioteca".equals(lugar)) {%> selected <%}%>>Biblioteca</option>
+										<option <%if ("Almendros".equals(lugar)) {%> selected <%}%>>Almendros</option>
+										<option <%if ("Palmeras".equals(lugar)) {%> selected <%}%>>Palmeras</option>
 										<option <%if ("Otro".equals(lugar)) {%> selected <%}%>>Otro</option>
 										<%
 											for (Aula aul : listaAula) {
@@ -217,6 +219,7 @@
 										<option <%if ("Pendiente".equals(estado)) {%> selected <%}%>>Pendiente</option>
 										<option <%if ("Confirmada".equals(estado)) {%> selected <%}%>>Confirmada</option>
 										<option <%if ("Cancelada".equals(estado)) {%> selected <%}%>>Cancelada</option>
+										<option <%if ("Ejecutada".equals(estado)) {%> selected <%}%>>Ejecutada</option>
 								</select></td>
 								<td colspan="4" align="right" class="label">
 									<button name="action" value="EstInscritos" class="boton">Estudiantes
