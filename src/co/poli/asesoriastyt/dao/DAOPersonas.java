@@ -362,4 +362,23 @@ public class DAOPersonas {
 		}
 		return validar;
 	}
+
+	/**
+	 * @param c
+	 * @param correo
+	 * @return
+	 */
+	public boolean validarExistenciaCorreo(Connection c, String correo) {
+		boolean validar= false;
+		try {
+			ResultSet r = Connection.getConnection().prepareStatement("Select Correo_Persona from personas where Correo_Persona='"+correo+"'").executeQuery();
+			while (r.next()) {
+				validar=true;
+				break;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return validar;
+	}
 }

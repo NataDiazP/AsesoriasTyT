@@ -27,6 +27,7 @@
 		}
 	</script>
 <script type="text/javascript" src="./js/validacion.js"></script>
+
 <title>Cargar Archivo</title>
 </head>
 <body>
@@ -38,7 +39,7 @@
 		<br>
 </div>
 		
-	<form name="inicio" action="./CargarExcel" method="post">
+	<form name="inicio" action="./CargarExcel" method="post" enctype="multipart/form-data">
 		<table width="85%" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<tr>

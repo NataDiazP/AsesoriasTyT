@@ -41,6 +41,16 @@ public class NPersona {
 		return existe;
 		
 	}
+	
+	public boolean validarExistenciaCorreo(String correo)
+	{
+		daoPersonas = new DAOPersonas();
+		c = new Conexion().getConnection();
+		boolean existe= daoPersonas.validarExistenciaCorreo(c,correo);
+		
+		return existe;
+		
+	}
 
 	public int Modificar(Persona Personas) {
 		daoPersonas = new DAOPersonas();
