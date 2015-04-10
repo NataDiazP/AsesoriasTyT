@@ -56,11 +56,11 @@
 					<td valign="top" class="caja_01_bottom">
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
-								<td class="label">C&oacute;digo de Bloque(*):</td>
+								<td class="label">C&oacute;digo de Bloque (*):</td>
 								<td><input type="text" name="IdBloque" size="20"
 									maxlength="5" placeholder="Código"
 									value="<%=IdBloque != null ? IdBloque : ""%>"></td>
-								<td class="label">Encargado de Bloque(*):</td>
+								<td class="label">Encargado de Bloque (*):</td>
 								<td><select class="campo02"
 									name="EncargadoBloque">
 										<option>Seleccione...</option>

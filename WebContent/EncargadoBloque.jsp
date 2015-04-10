@@ -46,13 +46,13 @@
 					<td valign="top" class="caja_01_bottom">
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
-								<td class="label">C&oacute;digo Encargado(*):</td>
+								<td class="label">C&oacute;digo Encargado (*):</td>
 								<td><input type="text" name="IdEncargado" size="20"
-									maxlength="5" onkeypress="return validar(event)"
-									placeholder="Código"
+									maxlength="15" onkeypress="return validar(event)"
+									placeholder="Cédula Encargado"
 									value="<%=IdEncargado != null ? IdEncargado : ""%>"></td>
-								<td class="label">Correo Encargado(*):</td>
-								<td><input type="text" name="CorreoEncargado" size="30"
+								<td class="label">Correo Encargado (*):</td>
+								<td><input type="email" name="CorreoEncargado" size="30"
 									placeholder="Correo"
 									value="<%=CorreoEncargado != null ? CorreoEncargado : ""%>"></td>
 							</tr>
@@ -75,7 +75,6 @@
 				<button name="action" value="Modificar" class="boton">Modificar</button>
 				<button name="action" value="Eliminar" class="boton">Eliminar</button>
 			</div>
-
 		</form>
 
 		<%

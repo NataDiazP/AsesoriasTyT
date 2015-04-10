@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Bienvenido a AsesoriasTyT</title>
 </head>
 <body>
 	<br>
 	<br>
 	<br>
 	<div
-		style="width: 60%; margin-right: 20%; margin-left: 5%; text-align: justify;">
+		style="font-family:'Trebuchet MS';width: 60%; margin-right: 20%; margin-left: 5%; text-align: justify;">
 		<h4>Ante las deficiencias detectadas y analizadas debidamente, se
 			proyectara como soluci&oacute;n este programa de f&aacute;cil y libre
 			acceso con el objetivo claro de acercar y ayudar m&aacute;s al alumno

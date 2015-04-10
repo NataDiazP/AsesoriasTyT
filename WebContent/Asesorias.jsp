@@ -55,9 +55,6 @@
 		observacion = x.getObservaciones();
 		estado = x.getEstado();
 	}
-
-
-	
 	
 	NAsesoria nAsesoria = new NAsesoria();
 	List<Asesoria> listaAsesorias = nAsesoria.ListadoAsesorias();
@@ -74,11 +71,7 @@
 	NAula nAula = new NAula();
 	List<Aula> listaAula = nAula.ListadoAulas();
 
-// 	DAOAsesorias Ase = new DAOAsesorias();
-// 	Asesoria generarIdAsesoria = Ase.generarIdAsesoria();
-	
-	
-	
+	Asesoria generarIdAsesoria = nAsesoria.generarIdAsesoria();
 %>
 <script type="text/javascript" src="./js/validacion.js"></script>
 <title>Gesti&oacute;n de Asesor&iacute;as</title>
@@ -108,7 +101,7 @@
 								</td>
 								<td><input type="text" name="id" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Código"
-									value="<%=id != null ? id : ""%>"></td>
+									value="<%=id != null ? id : generarIdAsesoria.getIdAsesoria() %>"></td>
 								<td class="label">Nombre (*):</td>
 								<td><input type="text" name="nombreAsesoria" size="20"
 									maxlength="50" placeholder="Nombre Asesoría"
