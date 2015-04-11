@@ -64,7 +64,7 @@ public class LeerExcel
 		ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
 		try
 		{
-			//FileInputStream file = new FileInputStream(new File());
+		
 
 			//Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
@@ -320,7 +320,7 @@ public class LeerExcel
 					else
 					{
 						persona.setPlanEstudios_Estudiante("N/A");
-						persona.setSemestre_Estudiante("N/A");
+						persona.setSemestre_Estudiante("N");
 						persona.setPerfil("2");
 						lista.add(persona);
 					}
@@ -361,7 +361,7 @@ public class LeerExcel
 		ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
 		try
 		{
-			//FileInputStream file = new FileInputStream(new File("C:\\estudiantes.xlsx"));
+			
 
 			//Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);

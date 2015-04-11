@@ -360,6 +360,13 @@ public class DAOPersonas {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
 		return validar;
 	}
 
@@ -378,6 +385,13 @@ public class DAOPersonas {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
 		}
 		return validar;
 	}

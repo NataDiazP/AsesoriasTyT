@@ -154,14 +154,14 @@ public class CargarExcel extends HttpServlet {
 							 
 							 if(errores==true)
 							 {
-								 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaDocentes.size()+ 
+								 JOptionPane.showMessageDialog(null, "La carga de docentes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaDocentes.size()+ 
 										 							" \n Registros con errores: " + listaErroresDocentes.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 									request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 							 }
 						 }
 						 else
 						 {
-							 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó correctamente con "+listaDocentes.size()+" cargados", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							 JOptionPane.showMessageDialog(null, "La carga de docentes se generó correctamente con "+listaDocentes.size()+" cargados", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 						 }
 						 
