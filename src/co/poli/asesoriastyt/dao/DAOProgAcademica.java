@@ -223,4 +223,35 @@ public class DAOProgAcademica {
 		}
 		return progAcademica;
 	}
+	
+	public List<ProgAcademica> listarProgAcademicaDocente(Connection c, String idDocente) {
+		List<ProgAcademica> progAcademica = new ArrayList<ProgAcademica>();
+		try {
+			String sql = "SELECT Id_ProgAcademica, Docente_ProgAcademica, Asignatura, Grupo_Asignatura, Nro_Estudiantes_Asignatura, Dias_Asignatura, HoraInicio_Asignatura, HoraFin_Asignatura, Aula_Clase FROM programaciones_academicas WHERE Docente_ProgAcademica = " +idDocente+"";
+			PreparedStatement ps = c.prepareStatement(sql);
+			ResultSet r = ps.executeQuery();
+			while (r.next()) {
+				ProgAcademica ProgAcademica = new ProgAcademica();
+				ProgAcademica.setIdProgAcademica(r.getString(1));
+				ProgAcademica.setDocenteProgAcademica(r.getString(2));
+				ProgAcademica.setAsignaturaProgAcademica(r.getString(3));
+				ProgAcademica.setGrupoAsigProgAcademica(r.getString(4));
+				ProgAcademica.setNroEstAsigProgAcademica(r.getString(5));
+				ProgAcademica.setDiasAsigProgAcademica(r.getString(6));
+				ProgAcademica.setHoraIniAsigProgAcademica(r.getString(7));
+				ProgAcademica.setHoraFinAsigProgAcademica(r.getString(8));
+				ProgAcademica.setAulaClaseProgAcademica(r.getString(9));
+				progAcademica.add(ProgAcademica);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return progAcademica;
+	}
 }
