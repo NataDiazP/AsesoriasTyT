@@ -12,9 +12,19 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import co.poli.asesoriastyt.model.Persona;
 
 
+/**
+ *  Class EscribirErrores.
+ * @author pavargas
+ */
 public class EscribirErrores 
 {
 
+	/**
+	 * Escribir excel docentes.
+	 *
+	 * @param listaErrores  lista errores
+	 * @return true, if successful
+	 */
 	public boolean escribirExcelDocentes (ArrayList<Persona> listaErrores) 
 	{
 		boolean bandera=true;
@@ -89,9 +99,9 @@ public class EscribirErrores
 		}
 		try 
 		{
-			//Write the workbook in file system
+			//Write  workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Paola\\ErrorCargaDocentes.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaDocentes.xlsx"));
 				 workbook.write(out);
 				 
 				 out.close();
@@ -110,6 +120,12 @@ public class EscribirErrores
 		return bandera;
 	}
 	
+	/**
+	 * Escribir excel estudiantes.
+	 *
+	 * @param listaErrores  lista errores
+	 * @return true, if successful
+	 */
 	public boolean escribirExcelEstudiantes (ArrayList<Persona> listaErrores) 
 	{
 		boolean bandera=true;
@@ -189,9 +205,9 @@ public class EscribirErrores
 		}
 		try 
 		{
-			//Write the workbook in file system
+			//Write  workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Nati\\ErrorCargaEstudiantes.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaEstudiantes.xlsx"));
 				 workbook.write(out);
 				 out.close();
 		
