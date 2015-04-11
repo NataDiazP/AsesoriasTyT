@@ -18,12 +18,21 @@ import co.poli.asesoriastyt.model.ReporteAsistencia;
 import co.poli.asesoriastyt.model.ReporteMaterialAsesoria;
 import co.poli.asesoriastyt.model.ReporteNumAsistencia;
 
+
 /**
- * @author pavargas
+ * The Class DAOAsesorias.
  *
+ * @author pavargas
  */
 public class DAOAsesorias {
 
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param Asesorias the asesorias
+	 * @return the int
+	 */
 	public int Crear(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Crear();
 		int resultadoCrear = 0;
@@ -56,6 +65,14 @@ public class DAOAsesorias {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Asistir.
+	 *
+	 * @param c the c
+	 * @param idUser the id user
+	 * @param idAsesoria the id asesoria
+	 * @return the int
+	 */
 	public int Asistir(Connection c, String idUser, String idAsesoria) {
 		EstudianteAsesoria EstudianteAsesoria = new EstudianteAsesoria();
 		String sql = EstudiantesAsesoriasSQL.Crear();
@@ -78,6 +95,15 @@ public class DAOAsesorias {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Guardar asistencia.
+	 *
+	 * @param c the c
+	 * @param idAsesoria the id asesoria
+	 * @param idEstudiante the id estudiante
+	 * @param asistio the asistio
+	 * @return the int
+	 */
 	public int GuardarAsistencia(Connection c, String idAsesoria, String idEstudiante, String asistio) {
 		String sql = AsesoriasSQL.AsistirAsesoria();
 		int resultadoModificar = 0;
@@ -100,6 +126,13 @@ public class DAOAsesorias {
 		return resultadoModificar;
 	}
 	
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param Asesorias the asesorias
+	 * @return the int
+	 */
 	public int Modificar(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Modificar();
 		int resultadoModificar = 0;
@@ -132,6 +165,13 @@ public class DAOAsesorias {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdAsesoria the id asesoria
+	 * @return the asesoria
+	 */
 	public Asesoria Buscar(Connection con, String IdAsesoria) {
 		Asesoria c = new Asesoria();
 		try {
@@ -164,6 +204,13 @@ public class DAOAsesorias {
 		return c;
 	}
 
+	/**
+	 * Listar asistentes.
+	 *
+	 * @param c the c
+	 * @param idAsesoria the id asesoria
+	 * @return the list
+	 */
 	public List<EstudianteAsesoria> listarAsistentes(Connection c, String idAsesoria) {
 		List<EstudianteAsesoria> EstudianteAsesorias = new ArrayList<EstudianteAsesoria>();
 		try {
@@ -190,6 +237,12 @@ public class DAOAsesorias {
 		return EstudianteAsesorias;
 	}
 
+	/**
+	 * Listar asesorias.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Asesoria> listarAsesorias(Connection c) {
 		List<Asesoria> Asesorias = new ArrayList<Asesoria>();
 		try {
@@ -225,6 +278,12 @@ public class DAOAsesorias {
 		return Asesorias;
 	}
 
+	/**
+	 * Material asesorias.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesorias(Connection c) {
 
 		List<ReporteMaterialAsesoria> reportes = new ArrayList<ReporteMaterialAsesoria>();
@@ -257,6 +316,14 @@ public class DAOAsesorias {
 		return reportes;
 	}
 
+	/**
+	 * Material asesorias fechas.
+	 *
+	 * @param c the c
+	 * @param fechaI the fecha i
+	 * @param fechaF the fecha f
+	 * @return the list
+	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasFechas(Connection c, String fechaI, String fechaF) {
 
 		List<ReporteMaterialAsesoria> reportes = new ArrayList<ReporteMaterialAsesoria>();
@@ -291,6 +358,13 @@ public class DAOAsesorias {
 		return reportes;
 	}
 
+	/**
+	 * Material asesorias asesoria.
+	 *
+	 * @param c the c
+	 * @param asesoria the asesoria
+	 * @return the list
+	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasAsesoria(Connection c, String asesoria) {
 
 		List<ReporteMaterialAsesoria> reportes = new ArrayList<ReporteMaterialAsesoria>();
@@ -327,8 +401,10 @@ public class DAOAsesorias {
 	}
 
 	/**
-	 * @param c
-	 * @return
+	 * Asitencia asesoria.
+	 *
+	 * @param c the c
+	 * @return the list
 	 */
 	public List<ReporteAsistencia> AsitenciaAsesoria(Connection c)
 	{
@@ -364,6 +440,13 @@ public class DAOAsesorias {
 
 	}
 
+	/**
+	 * Asitencia asesoria asesoria.
+	 *
+	 * @param c the c
+	 * @param asesoria the asesoria
+	 * @return the list
+	 */
 	public List<ReporteAsistencia> AsitenciaAsesoriaAsesoria(Connection c, String asesoria)
 	{
 		List<ReporteAsistencia> reportes = new ArrayList<ReporteAsistencia>();
@@ -398,6 +481,14 @@ public class DAOAsesorias {
 
 	}
 
+	/**
+	 * Asitencia asesoria fecha.
+	 *
+	 * @param c the c
+	 * @param fechaI the fecha i
+	 * @param fechaF the fecha f
+	 * @return the list
+	 */
 	public List<ReporteAsistencia> AsitenciaAsesoriaFecha(Connection c, String fechaI, String fechaF)
 	{
 		List<ReporteAsistencia> reportes = new ArrayList<ReporteAsistencia>();
@@ -433,6 +524,13 @@ public class DAOAsesorias {
 
 	}
 
+	/**
+	 * Cantidad asitencia asesoria asesoria.
+	 *
+	 * @param c the c
+	 * @param asesoria the asesoria
+	 * @return the list
+	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaAsesoria(Connection c, String asesoria)
 	{
 		List<ReporteNumAsistencia> reportes = new ArrayList<ReporteNumAsistencia>();
@@ -463,6 +561,12 @@ public class DAOAsesorias {
 
 	}
 
+	/**
+	 * Cantidad asitencia asesoria.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoria(Connection c)
 	{
 		List<ReporteNumAsistencia> reportes = new ArrayList<ReporteNumAsistencia>();
@@ -494,10 +598,12 @@ public class DAOAsesorias {
 	}
 
 	/**
-	 * @param c
-	 * @param fechaInicio
-	 * @param fechaFin
-	 * @return
+	 * Cantidad asitencia asesoria fecha.
+	 *
+	 * @param c the c
+	 * @param fechaInicio the fecha inicio
+	 * @param fechaFin the fecha fin
+	 * @return the list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaFecha(Connection c, String fechaInicio, String fechaFin)
 	{
@@ -532,9 +638,11 @@ public class DAOAsesorias {
 	}
 
 	/**
-	 * @param c
-	 * @param profesor
-	 * @return
+	 * Listar asesorias profesor.
+	 *
+	 * @param c the c
+	 * @param profesor the profesor
+	 * @return the list
 	 */
 	public List<Asesoria> listarAsesoriasProfesor(Connection c, String profesor) {
 		
@@ -574,6 +682,12 @@ public class DAOAsesorias {
 		return Asesorias;
 	}
 
+	/**
+	 * Generar id asesoria.
+	 *
+	 * @param con the con
+	 * @return the asesoria
+	 */
 	public Asesoria generarIdAsesoria(Connection con) {
 		Asesoria x = new Asesoria();
 	

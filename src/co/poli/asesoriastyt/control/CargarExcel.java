@@ -33,17 +33,28 @@ import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.EscribirErrores;
 import co.poli.asesoriastyt.util.LeerExcel;
 
+
 /**
- * Servlet implementation class SubirArchivo
+ * Servlet implementation class SubirArchivo.
  */
 @WebServlet("/CargarExcel")
 public class CargarExcel extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
+	/** The excel. */
 	LeerExcel excel= new LeerExcel();
+	
+	/** The write. */
 	EscribirErrores write= new EscribirErrores();
+	
+	/** The npersona. */
 	NPersona npersona= new NPersona();
+    
     /**
+     * Instantiates a new cargar excel.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public CargarExcel() {
@@ -52,6 +63,12 @@ public class CargarExcel extends HttpServlet {
     }
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,6 +76,12 @@ public class CargarExcel extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -149,7 +172,7 @@ public class CargarExcel extends HttpServlet {
 						 if (listaErroresDocentes.size()>0)
 						 {
 							
-							 errores=write.escribirExcelEstudiantes(listaErroresDocentes);
+							 errores=write.escribirExcelDocentes(listaErroresDocentes);
 							 
 							 
 							 if(errores==true)

@@ -10,14 +10,23 @@ import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.util.Conexion;
 
 
+
+/**
+ * The Class NPersona.
+ */
 public class NPersona {
 
-	/**
-	 * 
-	 */
+	/** The dao personas. */
 	DAOPersonas daoPersonas;
+	
+	/** The c. */
 	Connection c;
 
+	/**
+	 * Crear docentes.
+	 *
+	 * @param listaDocentes the lista docentes
+	 */
 	public void CrearDocentes(ArrayList<Persona> listaDocentes) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
@@ -25,6 +34,12 @@ public class NPersona {
 		
 	}
 	
+	/**
+	 * Crear.
+	 *
+	 * @param Personas the personas
+	 * @return the int
+	 */
 	public int Crear(Persona Personas) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
@@ -32,6 +47,12 @@ public class NPersona {
 		return resultadoCrear;
 	}
 	
+	/**
+	 * Validar existencia persona.
+	 *
+	 * @param documento the documento
+	 * @return true, if successful
+	 */
 	public boolean validarExistenciaPersona(String documento)
 	{
 		daoPersonas = new DAOPersonas();
@@ -42,6 +63,12 @@ public class NPersona {
 		
 	}
 	
+	/**
+	 * Validar existencia correo.
+	 *
+	 * @param correo the correo
+	 * @return true, if successful
+	 */
 	public boolean validarExistenciaCorreo(String correo)
 	{
 		daoPersonas = new DAOPersonas();
@@ -52,6 +79,12 @@ public class NPersona {
 		
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param Personas the personas
+	 * @return the int
+	 */
 	public int Modificar(Persona Personas) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
@@ -59,6 +92,12 @@ public class NPersona {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param Personas the personas
+	 * @return the persona
+	 */
 	public Persona Buscar(String Personas) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
@@ -66,6 +105,12 @@ public class NPersona {
 		return resultadoBuscar;
 	}
 	
+	/**
+	 * Buscar docente.
+	 *
+	 * @param Email the email
+	 * @return the string
+	 */
 	public String BuscarDocente(String Email) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
@@ -73,6 +118,12 @@ public class NPersona {
 		return resultadoBuscarDoc;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param Personas the personas
+	 * @return the int
+	 */
 	public int Eliminar(Persona Personas) {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
@@ -80,18 +131,33 @@ public class NPersona {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listado personas.
+	 *
+	 * @return the list
+	 */
 	public List<Persona> ListadoPersonas() {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
 		return daoPersonas.listarPersonas(c);
 	}
 	
+	/**
+	 * Listado personas estudiantes.
+	 *
+	 * @return the list
+	 */
 	public List<Persona> ListadoPersonasEstudiantes() {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();
 		return daoPersonas.listarPersonasEstudiantes(c);
 	}
 	
+	/**
+	 * Listado personas docentes.
+	 *
+	 * @return the list
+	 */
 	public List<Persona> ListadoPersonasDocentes() {
 		daoPersonas = new DAOPersonas();
 		c = new Conexion().getConnection();

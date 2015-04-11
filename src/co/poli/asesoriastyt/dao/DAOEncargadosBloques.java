@@ -14,12 +14,21 @@ import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.EncargadoBloque;
 
+
 /**
- * @author natad_000
+ * The Class DAOEncargadosBloques.
  *
+ * @author natad_000
  */
 public class DAOEncargadosBloques {
 
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param EncBloque the enc bloque
+	 * @return the int
+	 */
 	public int Crear(Connection c, EncargadoBloque EncBloque) {
 		String sql = EncargadosBloquesSQL.Crear();
 		int resultadoCrear = 0;
@@ -42,6 +51,13 @@ public class DAOEncargadosBloques {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param EncBloque the enc bloque
+	 * @return the int
+	 */
 	public int Modificar(Connection c, EncargadoBloque EncBloque) {
 		String sql = EncargadosBloquesSQL.Modificar();
 		int resultadoModificar = 0;
@@ -64,6 +80,13 @@ public class DAOEncargadosBloques {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdEncargado the id encargado
+	 * @return the encargado bloque
+	 */
 	public EncargadoBloque Buscar(Connection con, String IdEncargado) {
 		EncargadoBloque c = new EncargadoBloque();
 		try {
@@ -86,6 +109,13 @@ public class DAOEncargadosBloques {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param EncBloque the enc bloque
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, EncargadoBloque EncBloque) {
 		String sql = EncargadosBloquesSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -109,6 +139,12 @@ public class DAOEncargadosBloques {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listar encargados bloques.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<EncargadoBloque> listarEncargadosBloques(Connection c) {
 		List<EncargadoBloque> EncargadosBloques = new ArrayList<EncargadoBloque>();
 		try {

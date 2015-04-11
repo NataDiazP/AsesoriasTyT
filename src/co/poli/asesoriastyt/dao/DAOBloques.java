@@ -15,14 +15,24 @@ import java.util.logging.Logger;
 import co.poli.asesoriastyt.model.Bloque;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * @author natad_000
+ * The Class DAOBloques.
  *
+ * @author natad_000
  */
 public class DAOBloques {
 
+	/** The Connection. */
 	Conexion Connection = new Conexion();
 
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param Bloques the bloques
+	 * @return the int
+	 */
 	public int Crear(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Crear();
 		int resultadoCrear = 0;
@@ -52,6 +62,13 @@ public class DAOBloques {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param Bloques the bloques
+	 * @return the int
+	 */
 	public int Modificar(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Modificar();
 		int resultadoModificar = 0;
@@ -80,6 +97,13 @@ public class DAOBloques {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdBloque the id bloque
+	 * @return the bloque
+	 */
 	public Bloque Buscar(Connection con, String IdBloque) {
 		Bloque c = new Bloque();
 		try {
@@ -103,6 +127,13 @@ public class DAOBloques {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param Bloques the bloques
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -127,6 +158,12 @@ public class DAOBloques {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listar bloques.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Bloque> listarBloques(Connection c) {
 		List<Bloque> Bloques = new ArrayList<Bloque>();
 		try {

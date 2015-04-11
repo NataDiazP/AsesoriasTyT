@@ -14,12 +14,21 @@ import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Aula;
 
+
 /**
- * @author pavargas
+ * The Class DAOAulas.
  *
+ * @author pavargas
  */
 public class DAOAulas {
 
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param Aula the aula
+	 * @return the int
+	 */
 	public int Crear(Connection c, Aula Aula) {
 		String sql = AulasSQL.Crear();
 		int resultadoCrear = 0;
@@ -42,6 +51,13 @@ public class DAOAulas {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param Aula the aula
+	 * @return the int
+	 */
 	public int Modificar(Connection c, Aula Aula) {
 		String sql = AulasSQL.Modificar();
 		int resultadoModificar = 0;
@@ -64,6 +80,13 @@ public class DAOAulas {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdAula the id aula
+	 * @return the aula
+	 */
 	public Aula Buscar(Connection con, String IdAula) {
 		Aula c = new Aula();
 		try {
@@ -87,6 +110,13 @@ public class DAOAulas {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param Aula the aula
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, Aula Aula) {
 		String sql = AulasSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -112,6 +142,12 @@ public class DAOAulas {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listar aula.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Aula> listarAula(Connection c) {
 		List<Aula> Aula = new ArrayList<Aula>();
 		try {

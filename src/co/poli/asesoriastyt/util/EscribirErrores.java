@@ -214,7 +214,7 @@ public class EscribirErrores
 		   
 		    
 		    
-		    System.out.println("ErrorCargaDocentes.xlsx se generó correctamente.");
+		    System.out.println("ErrorCargaEstudiantes.xlsx se generó correctamente.");
 		     
 		} 
 		catch (Exception e) 

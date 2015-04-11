@@ -17,16 +17,32 @@ import co.poli.asesoriastyt.control.Docentes;
 import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.negocio.NPersona;
 
+
+/**
+ * The Class LeerExcel.
+ */
 public class LeerExcel 
 {
+	
+	/** The lista errores docentes. */
 	ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
+	
+	/** The lista errores estudiantes. */
 	ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) 
 	{
 	}
 	
 	
 	/**
+	 * Gets the lista errores estudiantes.
+	 *
 	 * @return the listaErroresEstudiantes
 	 */
 	public ArrayList<Persona> getListaErroresEstudiantes() {
@@ -35,6 +51,8 @@ public class LeerExcel
 
 
 	/**
+	 * Sets the lista errores estudiantes.
+	 *
 	 * @param listaErroresEstudiantes the listaErroresEstudiantes to set
 	 */
 	public void setListaErroresEstudiantes(
@@ -44,6 +62,8 @@ public class LeerExcel
 
 
 	/**
+	 * Gets the lista errores docentes.
+	 *
 	 * @return the listaErroresDocentes
 	 */
 	public ArrayList<Persona> getListaErroresDocentes() {
@@ -51,12 +71,20 @@ public class LeerExcel
 	}
 
 	/**
-	 * @param listaErrores the listaErrores to set
+	 * Sets the lista errores docentes.
+	 *
+	 * @param listaErroresDocentes the new lista errores docentes
 	 */
 	public void setListaErroresDocentes(ArrayList<Persona> listaErroresDocentes) {
 		this.listaErroresDocentes = listaErroresDocentes;
 	}
 
+	/**
+	 * Leer archivo docentes.
+	 *
+	 * @param filecontent the filecontent
+	 * @return the array list
+	 */
 	public ArrayList<Persona> leerArchivoDocentes(InputStream filecontent)
 	{
 		NPersona npersona= new NPersona();
@@ -339,6 +367,12 @@ public class LeerExcel
 
 	}
 	
+	/**
+	 * Validar correo.
+	 *
+	 * @param correo the correo
+	 * @return true, if successful
+	 */
 	public boolean validarCorreo(String correo)
 	{
 		boolean bandera= true;
@@ -352,7 +386,10 @@ public class LeerExcel
 	}
 
 	/**
-	 * @return
+	 * Leer archivo estudiantes.
+	 *
+	 * @param filecontent the filecontent
+	 * @return the array list
 	 */
 	public ArrayList<Persona> leerArchivoEstudiantes(InputStream filecontent) {
 		

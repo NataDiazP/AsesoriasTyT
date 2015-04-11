@@ -3,6 +3,7 @@
  */
 package co.poli.asesoriastyt.model;
 
+
 /**
  *  Class ReporteNumAsistencia.
  *

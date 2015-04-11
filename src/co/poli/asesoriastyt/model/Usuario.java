@@ -4,24 +4,50 @@
  */
 package co.poli.asesoriastyt.model;
 
+
 /**
+ * The Class Usuario.
  *
  * @author Santi Monsalve
  */
 public class Usuario {
 
+    /** The tipo identificacion. */
     private String tipoIdentificacion;
+    
+    /** The numero identificacion. */
     private String numeroIdentificacion;
+    
+    /** The nombre completo. */
     private String nombreCompleto;
+    
+    /** The apellido completo. */
     private String apellidoCompleto;
+    
+    /** The direccion. */
     private String direccion;
+    
+    /** The telefono. */
     private String telefono;
+    
+    /** The celular. */
     private String celular;
+    
+    /** The correo electronico. */
     private String correoElectronico;
+    
+    /** The usuario. */
     private String usuario;
+    
+    /** The clave. */
     private String clave;
+    
+    /** The tipo. */
     private String tipo;
 
+    /**
+     * Instantiates a new usuario.
+     */
     public Usuario() 
     {
         
@@ -39,6 +65,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the tipo identificacion.
+     *
      * @return the tipoIdentificacion
      */
     public String getTipoIdentificacion() {
@@ -46,6 +74,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the tipo identificacion.
+     *
      * @param tipoIdentificacion the tipoIdentificacion to set
      */
     public void setTipoIdentificacion(String tipoIdentificacion) {
@@ -53,6 +83,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the numero identificacion.
+     *
      * @return the numeroIdentificacion
      */
     public String getNumeroIdentificacion() {
@@ -60,6 +92,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the numero identificacion.
+     *
      * @param numeroIdentificacion the numeroIdentificacion to set
      */
     public void setNumeroIdentificacion(String numeroIdentificacion) {
@@ -67,6 +101,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the nombre completo.
+     *
      * @return the nombreCompleto
      */
     public String getNombreCompleto() {
@@ -74,19 +110,26 @@ public class Usuario {
     }
 
     /**
+     * Sets the nombre completo.
+     *
      * @param nombreCompleto the nombreCompleto to set
      */
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
+       
        /**
-     * @return the nombreCompleto
-     */
+        * Gets the apellido completo.
+        *
+        * @return the nombreCompleto
+        */
     public String getApellidoCompleto() {
         return apellidoCompleto;
     }
 
     /**
+     * Sets the apellido completo.
+     *
      * @param nombreCompleto the nombreCompleto to set
      */
     public void setApellidoCompleto(String nombreCompleto) {
@@ -95,6 +138,8 @@ public class Usuario {
 
 
     /**
+     * Gets the direccion.
+     *
      * @return the direccion
      */
     public String getDireccion() {
@@ -102,6 +147,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the direccion.
+     *
      * @param direccion the direccion to set
      */
     public void setDireccion(String direccion) {
@@ -109,6 +156,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the telefono.
+     *
      * @return the telefono
      */
     public String getTelefono() {
@@ -116,6 +165,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the telefono.
+     *
      * @param telefono the telefono to set
      */
     public void setTelefono(String telefono) {
@@ -123,6 +174,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the celular.
+     *
      * @return the celular
      */
     public String getCelular() {
@@ -130,6 +183,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the celular.
+     *
      * @param celular the celular to set
      */
     public void setCelular(String celular) {
@@ -137,6 +192,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the correo electronico.
+     *
      * @return the correoElectronico
      */
     public String getCorreoElectronico() {
@@ -144,6 +201,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the correo electronico.
+     *
      * @param correoElectronico the correoElectronico to set
      */
     public void setCorreoElectronico(String correoElectronico) {
@@ -151,6 +210,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the usuario.
+     *
      * @return the usuario
      */
     public String getUsuario() {
@@ -158,6 +219,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the usuario.
+     *
      * @param usuario the usuario to set
      */
     public void setUsuario(String usuario) {
@@ -165,6 +228,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the clave.
+     *
      * @return the clave
      */
     public String getClave() {
@@ -172,6 +237,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the clave.
+     *
      * @param clave the clave to set
      */
     public void setClave(String clave) {
@@ -179,6 +246,8 @@ public class Usuario {
     }
 
     /**
+     * Gets the tipo.
+     *
      * @return the tipo
      */
     public String getTipo() {
@@ -186,6 +255,8 @@ public class Usuario {
     }
 
     /**
+     * Sets the tipo.
+     *
      * @param tipo the tipo to set
      */
     public void setTipo(String tipo) {

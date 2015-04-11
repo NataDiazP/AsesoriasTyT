@@ -37,6 +37,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 
+
 /**
  * The Class ServletReporte.
  */
@@ -289,6 +290,9 @@ public class ServletReporte extends HttpServlet
     }
 
     /* 
+     * @see javax.servlet.GenericServlet#getServletInfo()
+     */
+    /* (non-Javadoc)
      * @see javax.servlet.GenericServlet#getServletInfo()
      */
     @Override

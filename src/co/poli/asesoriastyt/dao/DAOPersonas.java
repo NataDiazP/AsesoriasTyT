@@ -17,14 +17,24 @@ import javax.swing.JOptionPane;
 import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * @author pavargas
+ * The Class DAOPersonas.
  *
+ * @author pavargas
  */
 public class DAOPersonas {
 
+	/** The Connection. */
 	Conexion Connection = new Conexion();
 
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param Personas the personas
+	 * @return the int
+	 */
 	public int Crear(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Crear();
 		int resultadoCrear = 0;
@@ -68,6 +78,12 @@ public class DAOPersonas {
 		return resultadoCrear;
 	}
 	
+	/**
+	 * Crear docentes.
+	 *
+	 * @param c the c
+	 * @param listaDocentes the lista docentes
+	 */
 	public void CrearDocentes(Connection c, ArrayList<Persona> listaDocentes) {
 		String sql = PersonasSQL.Crear();
 
@@ -108,6 +124,13 @@ public class DAOPersonas {
 		}
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param Personas the personas
+	 * @return the int
+	 */
 	public int Modificar(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Modificar();
 		int resultadoModificar = 0;
@@ -151,6 +174,13 @@ public class DAOPersonas {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar docente.
+	 *
+	 * @param con the con
+	 * @param Email the email
+	 * @return the string
+	 */
 	public String BuscarDocente(Connection con, String Email) {
 		String idDocente = null;
 		try {
@@ -172,6 +202,13 @@ public class DAOPersonas {
 		return idDocente;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdPersona the id persona
+	 * @return the persona
+	 */
 	public Persona Buscar(Connection con, String IdPersona) {
 		Persona c = new Persona();
 		try {
@@ -209,6 +246,13 @@ public class DAOPersonas {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param Personas the personas
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -233,6 +277,12 @@ public class DAOPersonas {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listar personas.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Persona> listarPersonas(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
@@ -270,6 +320,12 @@ public class DAOPersonas {
 		return Personas;
 	}
 
+	/**
+	 * Listar personas docentes.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Persona> listarPersonasDocentes(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
@@ -307,6 +363,12 @@ public class DAOPersonas {
 		return Personas;
 	}
 
+	/**
+	 * Listar personas estudiantes.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Persona> listarPersonasEstudiantes(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
@@ -345,8 +407,11 @@ public class DAOPersonas {
 	}
 
 	/**
-	 * @param documento
-	 * @return
+	 * Validar existencia persona.
+	 *
+	 * @param c the c
+	 * @param documento the documento
+	 * @return true, if successful
 	 */
 	public boolean validarExistenciaPersona(Connection c,String documento) {
 		
@@ -371,9 +436,11 @@ public class DAOPersonas {
 	}
 
 	/**
-	 * @param c
-	 * @param correo
-	 * @return
+	 * Validar existencia correo.
+	 *
+	 * @param c the c
+	 * @param correo the correo
+	 * @return true, if successful
 	 */
 	public boolean validarExistenciaCorreo(Connection c, String correo) {
 		boolean validar= false;

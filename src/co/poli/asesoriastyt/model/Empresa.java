@@ -4,21 +4,44 @@
  */
 package co.poli.asesoriastyt.model;
 
+
 /**
+ * The Class Empresa.
  *
  * @author nvelez
  */
 public class Empresa {
+    
+    /** The nit. */
     private String nit;
+    
+    /** The razon social. */
     private String razonSocial;
+    
+    /** The direccion. */
     private String direccion;
+    
+    /** The telefono. */
     private String telefono;
+    
+    /** The correo electronico. */
     private String correoElectronico;
+    
+    /** The contacto. */
     private String contacto;
+    
+    /** The usuario. */
     private String usuario;
+    
+    /** The clave. */
     private String clave;
+    
+    /** The tipo. */
     private String tipo;
     
+    /**
+     * Instantiates a new empresa.
+     */
     public Empresa(){
         nit=null;
         razonSocial=null;
@@ -30,6 +53,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the nit.
+     *
      * @return the nit
      */
     public String getNit() {
@@ -37,6 +62,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the nit.
+     *
      * @param nit the nit to set
      */
     public void setNit(String nit) {
@@ -44,6 +71,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the razon social.
+     *
      * @return the razonSocial
      */
     public String getRazonSocial() {
@@ -51,6 +80,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the razon social.
+     *
      * @param razonSocial the razonSocial to set
      */
     public void setRazonSocial(String razonSocial) {
@@ -58,6 +89,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the direccion.
+     *
      * @return the direccion
      */
     public String getDireccion() {
@@ -65,6 +98,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the direccion.
+     *
      * @param direccion the direccion to set
      */
     public void setDireccion(String direccion) {
@@ -72,6 +107,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the telefono.
+     *
      * @return the telefono
      */
     public String getTelefono() {
@@ -79,6 +116,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the telefono.
+     *
      * @param telefono the telefono to set
      */
     public void setTelefono(String telefono) {
@@ -86,6 +125,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the correo electronico.
+     *
      * @return the correoElectronico
      */
     public String getCorreoElectronico() {
@@ -93,6 +134,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the correo electronico.
+     *
      * @param correoElectronico the correoElectronico to set
      */
     public void setCorreoElectronico(String correoElectronico) {
@@ -100,6 +143,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the contacto.
+     *
      * @return the contacto
      */
     public String getContacto() {
@@ -107,6 +152,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the contacto.
+     *
      * @param contacto the contacto to set
      */
     public void setContacto(String contacto) {
@@ -114,6 +161,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the usuario.
+     *
      * @return the usuario
      */
     public String getUsuario() {
@@ -121,6 +170,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the usuario.
+     *
      * @param usuario the usuario to set
      */
     public void setUsuario(String usuario) {
@@ -128,6 +179,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the clave.
+     *
      * @return the clave
      */
     public String getClave() {
@@ -135,6 +188,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the clave.
+     *
      * @param clave the clave to set
      */
     public void setClave(String clave) {
@@ -142,6 +197,8 @@ public class Empresa {
     }
 
     /**
+     * Gets the tipo.
+     *
      * @return the tipo
      */
     public String getTipo() {
@@ -149,6 +206,8 @@ public class Empresa {
     }
 
     /**
+     * Sets the tipo.
+     *
      * @param tipo the tipo to set
      */
     public void setTipo(String tipo) {

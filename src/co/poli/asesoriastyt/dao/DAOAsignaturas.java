@@ -14,8 +14,19 @@ import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Asignatura;
 
+
+/**
+ * The Class DAOAsignaturas.
+ */
 public class DAOAsignaturas {
 	
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param Asignaturas the asignaturas
+	 * @return the int
+	 */
 	public int Crear(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Crear();
 		int resultadoCrear = 0;
@@ -38,6 +49,13 @@ public class DAOAsignaturas {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param Asignaturas the asignaturas
+	 * @return the int
+	 */
 	public int Modificar(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Modificar();
 		int resultadoModificar = 0;
@@ -60,6 +78,13 @@ public class DAOAsignaturas {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdAsignatura the id asignatura
+	 * @return the asignatura
+	 */
 	public Asignatura Buscar(Connection con, String IdAsignatura) {
 		Asignatura c = new Asignatura();
 		try {
@@ -83,6 +108,13 @@ public class DAOAsignaturas {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param Asignaturas the asignaturas
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -107,6 +139,12 @@ public class DAOAsignaturas {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listar asignaturas.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Asignatura> listarAsignaturas(Connection c) {
 		List<Asignatura> Asignaturas = new ArrayList<Asignatura>();
 		try {

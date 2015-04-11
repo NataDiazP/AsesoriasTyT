@@ -11,19 +11,20 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 /**
+ * The Class SMTPConfig.
+ *
  * @author Natalia Díaz
- * 
  */
 public class SMTPConfig {
 
 	/**
-	 * @param titulo
-	 *            : titulo del mensaje
-	 * @param mensaje
-	 *            : Cuerpo del Mensaje
-	 * @param paraEmail
-	 *            : Email receptor del mensaje
+	 * Send mail.
+	 *
+	 * @param titulo            : titulo del mensaje
+	 * @param mensaje            : Cuerpo del Mensaje
+	 * @param paraEmail            : Email receptor del mensaje
 	 * @return true si el envío es conforme y false si no es así.
 	 */
 

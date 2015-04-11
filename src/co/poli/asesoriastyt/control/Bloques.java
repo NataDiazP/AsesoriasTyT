@@ -17,21 +17,38 @@ import co.poli.asesoriastyt.model.Bloque;
 import co.poli.asesoriastyt.negocio.NBloque;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * Servlet implementation class Bloques
+ * Servlet implementation class Bloques.
  */
 @WebServlet("/Bloques")
 public class Bloques extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

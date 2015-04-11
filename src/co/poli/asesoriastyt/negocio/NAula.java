@@ -8,15 +8,26 @@ import co.poli.asesoriastyt.dao.DAOAulas;
 import co.poli.asesoriastyt.model.Aula;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * @author pavargas
+ * The Class NAula.
  *
+ * @author pavargas
  */
 public class NAula {
 
+	/** The dao aulas. */
 	DAOAulas daoAulas;
+	
+	/** The c. */
 	Connection c;
 
+	/**
+	 * Crear.
+	 *
+	 * @param Aulas the aulas
+	 * @return the int
+	 */
 	public int Crear(Aula Aulas) {
 		daoAulas = new DAOAulas();
 		c = new Conexion().getConnection();
@@ -24,6 +35,12 @@ public class NAula {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param Aulas the aulas
+	 * @return the int
+	 */
 	public int Modificar(Aula Aulas) {
 		daoAulas = new DAOAulas();
 		c = new Conexion().getConnection();
@@ -31,6 +48,12 @@ public class NAula {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param Aulas the aulas
+	 * @return the aula
+	 */
 	public Aula Buscar(String Aulas) {
 		daoAulas = new DAOAulas();
 		c = new Conexion().getConnection();
@@ -38,6 +61,12 @@ public class NAula {
 		return resultadoBuscar;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param Aulas the aulas
+	 * @return the int
+	 */
 	public int Eliminar(Aula Aulas) {
 		daoAulas = new DAOAulas();
 		c = new Conexion().getConnection();
@@ -45,6 +74,11 @@ public class NAula {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listado aulas.
+	 *
+	 * @return the list
+	 */
 	public List<Aula> ListadoAulas() {
 		daoAulas = new DAOAulas();
 		c = new Conexion().getConnection();

@@ -1,6 +1,7 @@
 package co.poli.asesoriastyt.model;
 
 
+
 /**
  * The Class Perfil.
  */

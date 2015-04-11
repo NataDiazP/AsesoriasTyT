@@ -34,11 +34,28 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * The Class CallbackServlet.
+ */
 public class CallbackServlet extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The dao. */
 	private DAOPerfiles dao;
+	
+	/** The c. */
 	Connection c;
 
+	/**
+	 * Gets the web content from ur l_ post.
+	 *
+	 * @param httpURL the http url
+	 * @param nvps the nvps
+	 * @return the web content from ur l_ post
+	 */
 	public static JSONObject getWebContentFromURL_Post(String httpURL, List<NameValuePair> nvps) {
 
 		HttpPost httpPost = null;
@@ -76,6 +93,12 @@ public class CallbackServlet extends HttpServlet {
 		return json;
 	}
 
+	/**
+	 * Gets the web content from ur l_ get.
+	 *
+	 * @param httpURL the http url
+	 * @return the web content from ur l_ get
+	 */
 	private static JSONObject getWebContentFromURL_Get(String httpURL) {
 
 		HttpGet httpGet = null;
@@ -111,6 +134,9 @@ public class CallbackServlet extends HttpServlet {
 		return json;
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = null;
 		String googlePlusClientId = getServletContext().getInitParameter("googlePlusClientId");

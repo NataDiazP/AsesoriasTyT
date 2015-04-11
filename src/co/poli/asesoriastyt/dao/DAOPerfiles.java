@@ -14,12 +14,21 @@ import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Perfil;
 
+
 /**
- * @author natad_000
+ * The Class DAOPerfiles.
  *
+ * @author natad_000
  */
 public class DAOPerfiles {
 	
+	/**
+	 * Consultar usuario.
+	 *
+	 * @param c the c
+	 * @param correo the correo
+	 * @return the int
+	 */
 	public int consultarUsuario(Connection c,String correo)
 	{
 		int bandera=0;
@@ -41,6 +50,13 @@ public class DAOPerfiles {
 		
 	}
 	
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param Perfiles the perfiles
+	 * @return the int
+	 */
 	public int Crear(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Crear();
 		int resultadoCrear = 0;
@@ -63,6 +79,13 @@ public class DAOPerfiles {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param Perfiles the perfiles
+	 * @return the int
+	 */
 	public int Modificar(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Modificar();
 		int resultadoModificar = 0;
@@ -85,6 +108,13 @@ public class DAOPerfiles {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdPerfil the id perfil
+	 * @return the perfil
+	 */
 	public Perfil Buscar(Connection con, int IdPerfil) {
 		Perfil c = new Perfil();
 		try {
@@ -108,6 +138,13 @@ public class DAOPerfiles {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param Perfiles the perfiles
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -132,6 +169,12 @@ public class DAOPerfiles {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listar perfiles.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<Perfil> listarPerfiles(Connection c) {
 		List<Perfil> Perfiles = new ArrayList<Perfil>();
 		try {

@@ -10,18 +10,26 @@ import co.poli.asesoriastyt.dao.DAOPerfiles;
 import co.poli.asesoriastyt.model.Perfil;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * @author natad_000
+ * The Class NPerfiles.
  *
+ * @author natad_000
  */
 public class NPerfiles {
 
-	/**
-	 * 
-	 */
+	/** The dao perfiles. */
 	DAOPerfiles daoPerfiles;
+	
+	/** The c. */
 	Connection c;
 
+	/**
+	 * Crear.
+	 *
+	 * @param Perfiles the perfiles
+	 * @return the int
+	 */
 	public int Crear(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
 		c = new Conexion().getConnection();
@@ -29,6 +37,12 @@ public class NPerfiles {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param Perfiles the perfiles
+	 * @return the int
+	 */
 	public int Modificar(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
 		c = new Conexion().getConnection();
@@ -36,6 +50,12 @@ public class NPerfiles {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param Perfiles the perfiles
+	 * @return the perfil
+	 */
 	public Perfil Buscar(int Perfiles) {
 		daoPerfiles = new DAOPerfiles();
 		c = new Conexion().getConnection();
@@ -43,6 +63,12 @@ public class NPerfiles {
 		return resultadoBuscar;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param Perfiles the perfiles
+	 * @return the int
+	 */
 	public int Eliminar(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
 		c = new Conexion().getConnection();
@@ -50,6 +76,11 @@ public class NPerfiles {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listado perfiles.
+	 *
+	 * @return the list
+	 */
 	public List<Perfil> ListadoPerfiles() {
 		daoPerfiles = new DAOPerfiles();
 		c = new Conexion().getConnection();

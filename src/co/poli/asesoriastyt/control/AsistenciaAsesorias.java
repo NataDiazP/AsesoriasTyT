@@ -16,15 +16,22 @@ import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * Servlet implementation class AsistenciaAsesorias
+ * Servlet implementation class AsistenciaAsesorias.
  */
 @WebServlet("/AsistenciaAsesorias")
 public class AsistenciaAsesorias extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
+	 * Instantiates a new asistencia asesorias.
+	 *
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AsistenciaAsesorias() {
@@ -33,6 +40,12 @@ public class AsistenciaAsesorias extends HttpServlet {
 	}
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,6 +53,12 @@ public class AsistenciaAsesorias extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -123,7 +142,7 @@ public class AsistenciaAsesorias extends HttpServlet {
 		}
 
 		if ("GuardarAsesoria".equals(action)) {
-			int resultadoModificar = new NAsesoria().GuardarAsistencia("2", "1214719040", "Si");
+			int resultadoModificar = new NAsesoria().GuardarAsistencia("1", "1214719040", "Si");
 			JOptionPane.showMessageDialog(null, "Se ha guardado correctamente la lista de asistencia.", "AsesoriasTyT",
 					JOptionPane.INFORMATION_MESSAGE);
 			request.setAttribute("cli", resultadoModificar);

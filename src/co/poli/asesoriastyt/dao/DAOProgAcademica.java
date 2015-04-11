@@ -15,12 +15,21 @@ import java.util.logging.Logger;
 import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.ProgAcademica;
 
+
 /**
- * @author nata_000
+ * The Class DAOProgAcademica.
  *
+ * @author nata_000
  */
 public class DAOProgAcademica {
 
+	/**
+	 * Crear.
+	 *
+	 * @param c the c
+	 * @param ProgAcademica the prog academica
+	 * @return the int
+	 */
 	public int Crear(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Crear();
 		int resultadoCrear = 0;
@@ -50,6 +59,13 @@ public class DAOProgAcademica {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param c the c
+	 * @param ProgAcademica the prog academica
+	 * @return the int
+	 */
 	public int Modificar(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Modificar();
 		int resultadoModificar = 0;
@@ -79,6 +95,13 @@ public class DAOProgAcademica {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param con the con
+	 * @param IdProgAcademica the id prog academica
+	 * @return the prog academica
+	 */
 	public ProgAcademica Buscar(Connection con, String IdProgAcademica) {
 		ProgAcademica c = new ProgAcademica();
 		try {
@@ -110,6 +133,13 @@ public class DAOProgAcademica {
 		return c;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param c the c
+	 * @param ProgAcademica the prog academica
+	 * @return the int
+	 */
 	public int Eliminar(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Eliminar();
 		int resultadoEliminar = 0;
@@ -128,6 +158,13 @@ public class DAOProgAcademica {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Asignaturas docente.
+	 *
+	 * @param c the c
+	 * @param idDocente the id docente
+	 * @return the list
+	 */
 	public List<Asignatura> asignaturasDocente(Connection c, String idDocente) {
 		List<Asignatura> asigDocente = new ArrayList<Asignatura>();
 		try {
@@ -150,6 +187,12 @@ public class DAOProgAcademica {
 		return asigDocente;
 	}
 
+	/**
+	 * Listar prog academica.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	public List<ProgAcademica> listarProgAcademica(Connection c) {
 		List<ProgAcademica> progAcademica = new ArrayList<ProgAcademica>();
 		try {

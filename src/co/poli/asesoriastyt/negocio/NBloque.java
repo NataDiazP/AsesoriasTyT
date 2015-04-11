@@ -10,15 +10,26 @@ import co.poli.asesoriastyt.dao.DAOBloques;
 import co.poli.asesoriastyt.model.Bloque;
 import co.poli.asesoriastyt.util.Conexion;
 
+
 /**
- * @author natad_000
+ * The Class NBloque.
  *
+ * @author natad_000
  */
 public class NBloque {
 
+	/** The dao bloques. */
 	DAOBloques daoBloques;
+	
+	/** The c. */
 	Connection c;
 
+	/**
+	 * Crear.
+	 *
+	 * @param Bloques the bloques
+	 * @return the int
+	 */
 	public int Crear(Bloque Bloques) {
 		daoBloques = new DAOBloques();
 		c = new Conexion().getConnection();
@@ -26,6 +37,12 @@ public class NBloque {
 		return resultadoCrear;
 	}
 
+	/**
+	 * Modificar.
+	 *
+	 * @param Bloques the bloques
+	 * @return the int
+	 */
 	public int Modificar(Bloque Bloques) {
 		daoBloques = new DAOBloques();
 		c = new Conexion().getConnection();
@@ -33,6 +50,12 @@ public class NBloque {
 		return resultadoModificar;
 	}
 
+	/**
+	 * Buscar.
+	 *
+	 * @param Bloques the bloques
+	 * @return the bloque
+	 */
 	public Bloque Buscar(String Bloques) {
 		daoBloques = new DAOBloques();
 		c = new Conexion().getConnection();
@@ -40,6 +63,12 @@ public class NBloque {
 		return resultadoBuscar;
 	}
 
+	/**
+	 * Eliminar.
+	 *
+	 * @param Bloques the bloques
+	 * @return the int
+	 */
 	public int Eliminar(Bloque Bloques) {
 		daoBloques = new DAOBloques();
 		c = new Conexion().getConnection();
@@ -47,6 +76,11 @@ public class NBloque {
 		return resultadoEliminar;
 	}
 
+	/**
+	 * Listado bloques.
+	 *
+	 * @return the list
+	 */
 	public List<Bloque> ListadoBloques() {
 		daoBloques = new DAOBloques();
 		c = new Conexion().getConnection();
