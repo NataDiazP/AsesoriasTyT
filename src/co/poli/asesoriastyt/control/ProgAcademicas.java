@@ -54,15 +54,15 @@ public class ProgAcademicas extends HttpServlet {
 
 		if ("Aceptar".equals(request.getParameter("action"))) {
 			String liDocente = request.getParameter("liDocenteProgAcademica");
-			String[] arraDoc = liDocente.split("-"); 
+			String[] arrayDoc = liDocente.split("-"); 
 			String idDocente = arrayDoc[0];
 			NProgAcademica nProgacademica =  new NProgAcademica();
 			try {
 				List<ProgAcademica> ListaProgAcademica = nProgacademica.ListadoProgAcademicaDocente(idDocente);
-				request.setAttribute("ListaAsistencia", ListaAsistencia);
-				request.getRequestDispatcher("./AsistenciaAsesorias.jsp").forward(request, response);
+				request.setAttribute("ListaProgAcademica", ListaProgAcademica);
+				request.getRequestDispatcher("./ProgAcademicaReporte.jsp").forward(request, response);
 			} catch (Exception ex) {
-				Logger.getLogger(Asesorias.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(ProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
 				request.setAttribute("mensaje", ex.getMessage());
 			}
 		} else if (id.equals("")) {
