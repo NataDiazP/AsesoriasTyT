@@ -71,7 +71,7 @@ public class ProgAcademicas extends HttpServlet {
 
 		if ("Aceptar".equals(request.getParameter("action"))) {
 			String liDocente = request.getParameter("liDocenteProgAcademica");
-			String[] arraDoc = liDocente.split("-"); 
+			String[] arrayDoc = liDocente.split("-"); 
 			String idDocente = arrayDoc[0];
 			NProgAcademica nProgacademica =  new NProgAcademica();
 			try {
