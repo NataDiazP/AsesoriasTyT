@@ -19,6 +19,6 @@ public class AulasSQL {
 	}
 
 	public static String Eliminar() {
-		return "DELETE FROM aulas WHERE Id_Aula=?";
+		return "DELETE FROM aulas WHERE Id_Aula=? and Id_Bloque_Aula=?";
 	}
 }

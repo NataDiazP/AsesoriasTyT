@@ -150,7 +150,7 @@ public class Docentes extends HttpServlet {
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas").executeQuery();
 					while (r1.next() && sw == 0) {
-						if (!documento.equals(Integer.toString(r1.getInt(1))) && (!documento.equals(""))) {
+						if (!documento.equals(r1.getString(1)) && (!documento.equals(""))) {
 							registroExiste = false;
 						} else {
 							registroExiste = true;

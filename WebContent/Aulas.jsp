@@ -56,7 +56,7 @@
 								<td class="label">C&oacute;digo de Aula(*):</td>
 								<td><input type="text" name="IdAula" size="20"
 									maxlength="5" onkeypress="return validar(event)"
-									placeholder="Código" value="<%=IdAula != null ? IdAula : ""%>"></td>
+									placeholder="Número de Aula" value="<%=IdAula != null ? IdAula : ""%>"></td>
 								<td class="label">Bloque de Aula(*):</td>
 								<td><select name="IdBloque" class="campo02" id="genero">
 										<option><%=IdBloque != null ? IdBloque : "Seleccione"%></option>
@@ -86,10 +86,10 @@
 			</table>
 			<br>
 
-			<div style="margin: 0 auto; width: 25%">
+			<div style="margin: 0 auto; width: 16%">
 				<button name="action" value="Crear" class="boton">Crear</button>
-				<button name="action" value="Consultar" class="boton">Consultar</button>
-				<button name="action" value="Modificar" class="boton">Modificar</button>
+<!-- 				<button name="action" value="Consultar" class="boton">Consultar</button> -->
+<!-- 				<button name="action" value="Modificar" class="boton">Modificar</button> -->
 				<button name="action" value="Eliminar" class="boton">Eliminar</button>
 			</div>
 

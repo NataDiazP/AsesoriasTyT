@@ -94,6 +94,7 @@ public class DAOAulas {
 			PreparedStatement st = c.prepareStatement(sql);
 
 			st.setString(1, Aula.getIdAula());
+			st.setString(2, Aula.getIdBloque());
 
 			resultadoEliminar = st.executeUpdate();
 

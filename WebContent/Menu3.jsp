@@ -86,7 +86,7 @@
 				Acad&eacute;micas</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="http://groups.google.com/forum/" target="_blank">Foro</a>
+			<a href="http://asesoriastyt.foroweb.org/" target="_blank">Foro</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="Acerca.jsp" target="datos">Acerca de</a>

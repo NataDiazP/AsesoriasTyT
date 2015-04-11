@@ -92,7 +92,7 @@
 			<a href="Asesorias.jsp" target="datos">Asesor&iacute;as</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="http://groups.google.com/forum/" target="_blank">Foro</a>
+			<a href="http://asesoriastyt.foroweb.org/" target="_blank">Foro</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="ReportesProfesor.jsp"  target="datos">Reportes</a>
