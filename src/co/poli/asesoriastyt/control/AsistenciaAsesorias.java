@@ -123,7 +123,7 @@ public class AsistenciaAsesorias extends HttpServlet {
 		}
 
 		if ("GuardarAsesoria".equals(action)) {
-			int resultadoModificar = new NAsesoria().GuardarAsistencia("2", "97091800296", "Si");
+			int resultadoModificar = new NAsesoria().GuardarAsistencia("2", "1214719040", "Si");
 			JOptionPane.showMessageDialog(null, "Se ha guardado correctamente la lista de asistencia.", "AsesoriasTyT",
 					JOptionPane.INFORMATION_MESSAGE);
 			request.setAttribute("cli", resultadoModificar);

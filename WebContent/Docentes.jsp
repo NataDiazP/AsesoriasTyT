@@ -101,9 +101,9 @@
 									value="<%=apellido2 != null ? apellido2 : ""%>"></td>
 								<td class="label">Genero(*):</td>
 								<td><select name="genero" class="campo02" id="genero">
-										<option><%=genero != null ? genero : "Seleccione"%></option>
-										<option>Femenino</option>
-										<option>Masculino</option>
+										<option>Seleccione...</option>
+										<option <%if ("Femenino".equals(genero)) {%> selected <%}%>>Femenino</option>
+										<option <%if ("Masculino".equals(genero)) {%> selected <%}%>>Masculino</option>
 								</select></td>
 							</tr>
 							<tr>
@@ -123,7 +123,7 @@
 							<tr>
 								<td class="label">Celular :</td>
 								<td><input type="text" name="celular" size="20"
-									maxlength="5" onkeypress="return validar(event)"
+									maxlength="18" onkeypress="return validar(event)"
 									placeholder="Celular"
 									value="<%=celular != null ? celular : ""%>"></td>
 								<td class="label">Correo(*):</td>
@@ -144,7 +144,8 @@
 										<%
 											for (Perfil perf : listaPerf) {
 										%>
-										<option <%if ((perf.getNombrePerfil()).equals(perfil)) {%>
+										<option
+											<%if ((Integer.toString(perf.getIdPerfil())).equals(perfil)) {%>
 											selected <%}%>><%=perf.getNombrePerfil()%></option>
 										<%
 											}

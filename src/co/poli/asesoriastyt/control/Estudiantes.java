@@ -53,7 +53,7 @@ public class Estudiantes extends HttpServlet {
 		String perfil = request.getParameter("perfil");
 		
 		if (documento.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la documentoentificaci�n de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la persona.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Estudiantes.jsp");
 		} else {
 			Personas.setNumeroIdentificacion(documento);
@@ -81,7 +81,7 @@ public class Estudiantes extends HttpServlet {
 						while (r.next()) {
 							if (documento.equals(r.getInt(1))) {
 								registroExiste = true;
-								JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la documentoentificaci�n de la persona", "Advertencia - AsesoriasTyT",
+								JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación de la persona", "Advertencia - AsesoriasTyT",
 										JOptionPane.WARNING_MESSAGE);
 								request.getRequestDispatcher("./Estudiantes.jsp").forward(request, response);
 							}
@@ -129,7 +129,7 @@ public class Estudiantes extends HttpServlet {
 							JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 							response.sendRedirect("Estudiantes.jsp");
 						} else {
-							int confirma = JOptionPane.showConfirmDialog(null, "�Desea actualizar la informaci�n de esta persona?");
+							int confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta persona?");
 							if (confirma == JOptionPane.YES_OPTION) {
 								int resultadoModificar = new NPersona().Modificar(Personas);
 								request.setAttribute("cli", resultadoModificar);
@@ -145,7 +145,7 @@ public class Estudiantes extends HttpServlet {
 						}
 					} else if (!registroExiste) {
 						request.getRequestDispatcher("./Estudiantes.jsp").forward(request, response);
-						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificación de la persona", "Advertencia - AsesoriasTyT",
+						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la persona", "Advertencia - AsesoriasTyT",
 								JOptionPane.WARNING_MESSAGE);
 					}
 				}
@@ -156,7 +156,7 @@ public class Estudiantes extends HttpServlet {
 					try {
 						ResultSet r1 = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas").executeQuery();
 						while (r1.next() && sw == 0) {
-							if (!documento.equals(Integer.toString(r1.getInt(1))) && (!documento.equals(""))) {
+							if (!documento.equals(r1.getString(1)) && (!documento.equals(""))) {
 								registroExiste = false;
 							} else {
 								registroExiste = true;
@@ -180,7 +180,7 @@ public class Estudiantes extends HttpServlet {
 						}
 					} else if (!registroExiste) {
 						response.sendRedirect("Estudiantes.jsp");
-						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificación de la persona", "Advertencia - AsesoriasTyT",
+						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la persona", "Advertencia - AsesoriasTyT",
 								JOptionPane.WARNING_MESSAGE);
 					}
 				}
@@ -216,7 +216,7 @@ public class Estudiantes extends HttpServlet {
 							request.getRequestDispatcher("./Estudiantes.jsp").forward(request, response);
 						}
 					} else if (!registroExiste) {
-						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la documentoentificaci�n de la persona", "Advertencia - AsesoriasTyT",
+						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la persona", "Advertencia - AsesoriasTyT",
 								JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Estudiantes.jsp").forward(request, response);
 					}

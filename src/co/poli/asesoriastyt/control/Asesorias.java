@@ -58,14 +58,29 @@ public class Asesorias extends HttpServlet {
 		String observacion = request.getParameter("observacion");
 		String estado = request.getParameter("estado");
 		Date fechaActual = null;
+		Date fechaAsesoria = null;
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		int horaIni = 0, minutIni = 0, horaFin = 0, minutFin = 0;
 
-//		String[] horaIArray = horaI.split(":");
-//		String[] horaFArray = horaF.split(":");
-//		int horaIni = Integer.parseInt(horaIArray[0]);
-//		int minutIni = Integer.parseInt(horaIArray[1]);
-//		int horaFin = Integer.parseInt(horaFArray[0]);
-//		int minutFin = Integer.parseInt(horaFArray[1]);
+		if (fecha != "") {
+			Calendar c1 = Calendar.getInstance();
+			fechaActual = c1.getTime();
+
+			try {
+				fechaAsesoria = formato.parse(fecha);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+		if (horaI != "" && horaF != "") {
+			String[] horaIArray = horaI.split("\\:");
+			String[] horaFArray = horaF.split("\\:");
+			horaIni = Integer.parseInt(horaIArray[0]);
+			minutIni = Integer.parseInt(horaIArray[1]);
+			horaFin = Integer.parseInt(horaFArray[0]);
+			minutFin = Integer.parseInt(horaFArray[1]);
+		}
 
 		String[] arrayLugar = lugar.split(" - ");
 		String bloque = "";
@@ -120,26 +135,16 @@ public class Asesorias extends HttpServlet {
 				}
 
 				if (!registroExiste) {
-					Calendar c1 = Calendar.getInstance();
-					fechaActual = c1.getTime();
-
-					Date fechaAsesoria = null;
-					try {
-						fechaAsesoria = formato.parse(fecha);
-					} catch (ParseException e1) {
-						e1.printStackTrace();
-					}
-
-					if (fechaActual.after(fechaAsesoria))
-					{
+					if (fechaActual.after(fechaAsesoria)) {
 						JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} 
-//					else if (horaFin < horaIni) {
-//						JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-//						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-//					} 
-					else if (docente.equals("")) {
+					} else if (horaFin < horaIni || (horaFin == horaIni && minutFin < minutIni)) {
+						JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (horaFin == horaIni && minutFin == minutIni) {
+						JOptionPane.showMessageDialog(null, "Las horas de inicio y de fin de la asesoría no deben ser iguales.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (docente.equals("")) {
 						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 					} else {
@@ -147,7 +152,7 @@ public class Asesorias extends HttpServlet {
 						try {
 							response.sendRedirect("Asesorias.jsp");
 							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							if (!("Biblioteca").equals(Asesorias.getLugar()) && !("Otro").equals(Asesorias.getLugar()) && !("Palmeras").equals(Asesorias.getLugar())  && 
+							if (!("Biblioteca").equals(Asesorias.getLugar()) && !("Otro").equals(Asesorias.getLugar()) && !("Palmeras").equals(Asesorias.getLugar()) &&
 									!("Almendros").equals(Asesorias.getLugar()) && !("Seleccione...").equals(Asesorias.getLugar())) {
 								String emailEncargado = "";
 								try {
@@ -209,7 +214,16 @@ public class Asesorias extends HttpServlet {
 				}
 
 				if (registroExiste) {
-					if (docente.equals("")) {
+					if (fechaActual.after(fechaAsesoria)) {
+						JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (horaFin < horaIni || (horaFin == horaIni && minutFin < minutIni)) {
+						JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (horaFin == horaIni && minutFin == minutIni) {
+						JOptionPane.showMessageDialog(null, "Las horas de inicio y de fin de la asesoría no deben ser iguales.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+					} else if (docente.equals("")) {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Asesorias.jsp");
 					} else {
@@ -313,8 +327,7 @@ public class Asesorias extends HttpServlet {
 					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
-		
+
 		}
 	}
 }
-

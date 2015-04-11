@@ -107,9 +107,9 @@
 									value="<%=apellido2 != null ? apellido2 : ""%>"></td>
 								<td class="label">Genero(*):</td>
 								<td><select name="genero" class="campo02" id="genero">
-										<option><%=genero != null ? genero : "Seleccione"%></option>
-										<option>Femenino</option>
-										<option>Masculino</option>
+										<option>Seleccione...</option>
+										<option <%if ("Femenino".equals(genero)) {%> selected <%}%>>Femenino</option>
+										<option <%if ("Masculino".equals(genero)) {%> selected <%}%>>Masculino</option>
 								</select></td>
 							</tr>
 							<tr>
@@ -156,9 +156,9 @@
 									value="<%=semestre != null ? semestre : ""%>"></td>
 								<td class="label">Estado (*):</td>
 								<td><select name="estado" class="campo02">
-										<option><%=estado != null ? estado : "Seleccione..."%></option>
-										<option>Activo</option>
-										<option>Inactivo</option>
+										<option>Seleccione...</option>
+										<option <%if ("Activo".equals(estado)) {%> selected <%}%>>Activo</option>
+										<option <%if ("Inactivo".equals(estado)) {%> selected <%}%>>Inactivo</option>
 								</select></td>
 								<td class="label">Perfil(*):</td>
 								<td><select type="text" class="campo02" name="perfil">
@@ -166,7 +166,8 @@
 										<%
 											for (Perfil perf : listaPerf) {
 										%>
-										<option <%if ((perf.getNombrePerfil()).equals(perfil)) {%>
+										<option
+											<%if ((Integer.toString(perf.getIdPerfil())).equals(perfil)) {%>
 											selected <%}%>><%=perf.getNombrePerfil()%></option>
 										<%
 											}
@@ -187,10 +188,10 @@
 			<br>
 
 			<div style="margin: 0 auto; width: 10%">
-<!-- 				<button name="action" value="Crear" class="boton">Crear</button> -->
+				<!-- 				<button name="action" value="Crear" class="boton">Crear</button> -->
 				<button name="action" value="Consultar" class="boton">Consultar</button>
-<!-- 				<button name="action" value="Modificar" class="boton">Modificar</button> -->
-<!-- 				<button name="action" value="Eliminar" class="boton">Eliminar</button> -->
+				<!-- 				<button name="action" value="Modificar" class="boton">Modificar</button> -->
+				<!-- 				<button name="action" value="Eliminar" class="boton">Eliminar</button> -->
 			</div>
 
 		</form>
@@ -245,7 +246,6 @@
 									<td><%=per.getFechaNacimiento()%></td>
 									<td><%=per.getDireccion()%></td>
 									<td><%=per.getTelefono()%></td>
-									<td><%=per.getCelular()%></td>
 									<%
 										if (per.getCelular() == null) {
 									%>
