@@ -3,6 +3,7 @@ package co.poli.asesoriastyt.control;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.ProgAcademica;
+import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.negocio.NProgAcademica;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -49,7 +52,20 @@ public class ProgAcademicas extends HttpServlet {
 		String semestreProgAcademica = request.getParameter("semestreProgAcademica");
 		String anoProgAcademica = request.getParameter("anoProgAcademica");
 
-		if (id.equals("")) {
+		if ("Aceptar".equals(request.getParameter("action"))) {
+			String liDocente = request.getParameter("liDocenteProgAcademica");
+			String[] arraDoc = liDocente.split("-"); 
+			String idDocente = arrayDoc[0];
+			NProgAcademica nProgacademica =  new NProgAcademica();
+			try {
+				List<ProgAcademica> ListaProgAcademica = nProgacademica.ListadoProgAcademicaDocente(idDocente);
+				request.setAttribute("ListaAsistencia", ListaAsistencia);
+				request.getRequestDispatcher("./AsistenciaAsesorias.jsp").forward(request, response);
+			} catch (Exception ex) {
+				Logger.getLogger(Asesorias.class.getName()).log(Level.SEVERE, null, ex);
+				request.setAttribute("mensaje", ex.getMessage());
+			}
+		} else if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la programación académica.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("ProgAcademicas.jsp");
 		} else {

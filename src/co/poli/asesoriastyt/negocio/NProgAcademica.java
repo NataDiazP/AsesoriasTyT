@@ -59,4 +59,10 @@ public class NProgAcademica {
 		c = new Conexion().getConnection();
 		return daoProgAcademica.listarProgAcademica(c);
 	}
+	
+	public List<ProgAcademica> ListadoProgAcademicaDocente(String idDocente) {
+		daoProgAcademica = new DAOProgAcademica();
+		c = new Conexion().getConnection();
+		return daoProgAcademica.listarProgAcademicaDocente(c, idDocente);
+	}
 }
