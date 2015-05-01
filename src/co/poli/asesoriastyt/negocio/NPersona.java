@@ -2,12 +2,16 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import co.poli.asesoriastyt.dao.DAOPersonas;
 import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.JRDataSource;
 
 
 
@@ -20,18 +24,25 @@ public class NPersona {
 	DAOPersonas daoPersonas;
 	
 	/** The c. */
+	Conexion conexion= new Conexion();
 	Connection c;
-
+	DataSource ds = JRDataSource.getMySQLDataSource();
 	/**
 	 * Crear docentes.
 	 *
 	 * @param listaDocentes the lista docentes
+	 * @throws SQLException 
 	 */
-	public void CrearDocentes(ArrayList<Persona> listaDocentes) {
+	public int CrearDocentes(Persona Personas) {
 		daoPersonas = new DAOPersonas();
-		c = new Conexion().getConnection();
-		daoPersonas.CrearDocentes(c, listaDocentes);
-		
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int resultadoCrear = daoPersonas.CrearDocente(c, Personas);
+		return resultadoCrear;
 	}
 	
 	/**
@@ -55,8 +66,13 @@ public class NPersona {
 	 */
 	public boolean validarExistenciaPersona(String documento)
 	{
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		daoPersonas = new DAOPersonas();
-		c = new Conexion().getConnection();
 		boolean existe= daoPersonas.validarExistenciaPersona(c,documento);
 		
 		return existe;
@@ -71,8 +87,13 @@ public class NPersona {
 	 */
 	public boolean validarExistenciaCorreo(String correo)
 	{
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		daoPersonas = new DAOPersonas();
-		c = new Conexion().getConnection();
 		boolean existe= daoPersonas.validarExistenciaCorreo(c,correo);
 		
 		return existe;

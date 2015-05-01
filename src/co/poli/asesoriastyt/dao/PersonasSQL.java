@@ -17,7 +17,7 @@ public class PersonasSQL {
      * @return the string
      */
     public static String Crear() {
-        return "INSERT INTO personas ( NumDoc_Persona, Tipo_Identificacion, Nombres_Persona, PApellido_Persona, SApellido_Persona, Genero_Persona, FechaNac_Persona, Direccion_Persona, Telefono_Persona, Celular_Persona, Correo_Persona, PlanEstudios_Persona, Semestre_Persona, Estado_Persona, Perfil_Persona) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT INTO personas (NumDoc_Persona, Tipo_Identificacion, Nombres_Persona, PApellido_Persona, SApellido_Persona, Genero_Persona, FechaNac_Persona, Direccion_Persona, Telefono_Persona, Celular_Persona, Correo_Persona, PlanEstudios_Persona, Semestre_Persona, Estado_Persona, Perfil_Persona) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     }
 
     /**

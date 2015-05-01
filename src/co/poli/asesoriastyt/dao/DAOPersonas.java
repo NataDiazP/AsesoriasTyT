@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,62 +69,65 @@ public class DAOPersonas {
 
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
-		} finally {
-			try {
+		} finally 
+		{
+			try 
+			{
 				c.close();
-			} catch (SQLException ex) {
+			} 
+			catch (SQLException ex) 
+			{
 				Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 		return resultadoCrear;
 	}
 	
-	/**
-	 * Crear docentes.
-	 *
-	 * @param c the c
-	 * @param listaDocentes the lista docentes
-	 */
-	public void CrearDocentes(Connection c, ArrayList<Persona> listaDocentes) {
+	
+	public int CrearDocente(Connection c, Persona Personas) {
 		String sql = PersonasSQL.Crear();
+		int resultadoCrear = 0;
+		PreparedStatement st=null;
 
 		try {
-			for(int i=0; i<listaDocentes.size();i++)
-			{
-				Persona persona= listaDocentes.get(i);
-				
-				PreparedStatement st = c.prepareStatement(sql);
-	
-				st.setString(1, persona.getNumeroIdentificacion());
-				st.setString(2, persona.getTipoIdentificacion());
-				st.setString(3, persona.getNombreCompleto());
-				st.setString(4, persona.getPrimerApellido());
-				st.setString(5, persona.getSegundoApellido());
-				st.setString(6, persona.getGenero());
-				st.setString(7, persona.getFechaNacimiento());
-				st.setString(8, persona.getDireccion());
-				st.setString(9, persona.getTelefono());
-				st.setString(10, persona.getCelular());
-				st.setString(11, persona.getCorreoElectronico());
-				st.setString(12, persona.getPlanEstudios_Estudiante());
-				st.setString(13, persona.getSemestre_Estudiante());
-				st.setString(14, persona.getEstado());
-				st.setString(15, persona.getPerfil());
-				st.executeUpdate();
-			}
-				
+			
+			st = c.prepareStatement(sql);
+
+			st.setString(1, Personas.getNumeroIdentificacion());
+			st.setString(2, Personas.getTipoIdentificacion());
+			st.setString(3, Personas.getNombreCompleto());
+			st.setString(4, Personas.getPrimerApellido());
+			st.setString(5, Personas.getSegundoApellido());
+			st.setString(6, Personas.getGenero());
+			st.setString(7, Personas.getFechaNacimiento());
+			st.setString(8, Personas.getDireccion());
+			st.setString(9, Personas.getTelefono());
+			st.setString(10, Personas.getCelular());
+			st.setString(11, Personas.getCorreoElectronico());
+			st.setString(12, Personas.getPlanEstudios_Estudiante());
+			st.setString(13, Personas.getSemestre_Estudiante());
+			st.setString(14, Personas.getEstado());
+			st.setString(15, Personas.getNumeroIdentificacion());
+
+			resultadoCrear = st.executeUpdate();
+			
+			
 
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
-		} finally {
+		} finally 
+		{
 			try {
-				c.close();
-			} catch (SQLException ex) {
-				Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
-			}
+                if(st != null) st.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 		}
+		return resultadoCrear;
 	}
-
+	
+	
 	/**
 	 * Modificar.
 	 *
@@ -416,21 +420,37 @@ public class DAOPersonas {
 	public boolean validarExistenciaPersona(Connection c,String documento) {
 		
 		boolean validar= false;
+		Statement stmt = null;
+        ResultSet r = null;
+		
 		try {
-			ResultSet r = Connection.getConnection().prepareStatement("Select NumDoc_Persona from personas where NumDoc_Persona='"+documento+"'").executeQuery();
+			stmt = c.createStatement();
+	        r = stmt.executeQuery("Select NumDoc_Persona from personas where NumDoc_Persona='"+documento+"'");
+			
 			while (r.next()) {
 				validar=true;
 				break;
 			}
+			try
+			{
+				r.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		finally {
 			try {
-				c.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
+                if(r != null) r.close();
+                if(stmt != null) stmt.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 		}
 		return validar;
 	}
@@ -444,21 +464,29 @@ public class DAOPersonas {
 	 */
 	public boolean validarExistenciaCorreo(Connection c, String correo) {
 		boolean validar= false;
+		Statement stmt = null;
+        ResultSet r = null;
 		try {
-			ResultSet r = Connection.getConnection().prepareStatement("Select Correo_Persona from personas where Correo_Persona='"+correo+"'").executeQuery();
+			stmt = c.createStatement();
+	        r = stmt.executeQuery("Select Correo_Persona from personas where Correo_Persona='"+correo+"'");
+			
 			while (r.next()) {
 				validar=true;
 				break;
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		finally {
 			try {
-				c.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
+                if(r != null) r.close();
+                if(stmt != null) stmt.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 		}
 		return validar;
 	}

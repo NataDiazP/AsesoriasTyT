@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +25,15 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
-
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 
 
@@ -29,7 +41,10 @@ import org.apache.commons.io.FilenameUtils;
 
 
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.negocio.NPerfiles;
 import co.poli.asesoriastyt.negocio.NPersona;
+import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.DataSourceTest;
 import co.poli.asesoriastyt.util.EscribirErrores;
 import co.poli.asesoriastyt.util.LeerExcel;
 
@@ -51,6 +66,7 @@ public class CargarExcel extends HttpServlet {
 	
 	/** The npersona. */
 	NPersona npersona= new NPersona();
+	Connection c=new Conexion().getConnection();
     
     /**
      * Instantiates a new cargar excel.
@@ -89,8 +105,8 @@ public class CargarExcel extends HttpServlet {
 		List<FileItem> items;
 		String tipo="";
 		boolean continuar= true;
-		
 		InputStream fileContent=null;
+	
 		try {
 			items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 
@@ -189,7 +205,7 @@ public class CargarExcel extends HttpServlet {
 						 }
 						 
 						 
-							npersona.CrearDocentes(listaDocentes);
+					//		npersona.CrearDocentes(listaDocentes);
 						  
 					 }
 					 
@@ -220,9 +236,15 @@ public class CargarExcel extends HttpServlet {
 				 }
 				 else
 				 {
-					 
+					
+					 for(int i=0; i<listaEstudiantes.size();i++)
+						{
+							System.out.println(listaEstudiantes.get(i).getNumeroIdentificacion().toString());
+							int resultado = new NPersona().CrearDocentes(listaEstudiantes.get(i));
+						}
+					 //int resultado=new NPersona().CrearDocentes(listaEstudiantes);
 					 int suma= listaEstudiantes.size() + listaErroresEstudiantes.size();
-					 
+					
 					 if (listaErroresEstudiantes.size()>0)
 					 {
 						
@@ -241,10 +263,7 @@ public class CargarExcel extends HttpServlet {
 						 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó correctamente con "+listaEstudiantes.size()+" cargados", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 					 }
-					 
-					 
-						npersona.CrearDocentes(listaEstudiantes);
-					  
+	  
 				 }
 				 
 			 }

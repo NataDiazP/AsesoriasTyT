@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.sql.Connection;
 import sun.util.calendar.BaseCalendar.Date;
 import co.poli.asesoriastyt.control.Docentes;
 import co.poli.asesoriastyt.model.Persona;
@@ -29,6 +30,7 @@ public class LeerExcel
 	
 	/** The lista errores estudiantes. */
 	ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
+
 	
 	/**
 	 * The main method.
@@ -396,6 +398,7 @@ public class LeerExcel
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
 		ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
+		
 		try
 		{
 			
