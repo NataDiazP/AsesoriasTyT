@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -167,5 +168,47 @@ public class DAOAsignaturas {
 			}
 		}
 		return Asignaturas;
+	}
+
+	/**
+	 * @param c
+	 * @param string
+	 * @return
+	 */
+	public boolean validarExistenciaAsignatura(Connection c, String string) {
+		boolean validar= false;
+		Statement stmt = null;
+        ResultSet r = null;
+		
+		try {
+			stmt = c.createStatement();
+	        r = stmt.executeQuery("Select Codigo_Asignatura from asignaturas where Codigo_Asignatura='"+string+"'");
+			
+			while (r.next()) {
+				validar=true;
+				break;
+			}
+			try
+			{
+				r.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+                if(r != null) r.close();
+                if(stmt != null) stmt.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+		}
+		return validar;
 	}
 }

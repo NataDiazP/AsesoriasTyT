@@ -59,6 +59,7 @@
 									<option>Seleccione...</option>
 									<option>Cargar Docentes</option>
 									<option>Cargar Estudiantes</option>
+									<option>Cargar Asignaturas</option>
 									<option>Cargar Programación Académica</option>
 							</select></td>
 							<td></td>

@@ -40,7 +40,11 @@ import javax.sql.DataSource;
 
 
 
+
+
+import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.negocio.NAsignatura;
 import co.poli.asesoriastyt.negocio.NPerfiles;
 import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.Conexion;
@@ -66,7 +70,7 @@ public class CargarExcel extends HttpServlet {
 	
 	/** The npersona. */
 	NPersona npersona= new NPersona();
-	Connection c=new Conexion().getConnection();
+
     
     /**
      * Instantiates a new cargar excel.
@@ -274,6 +278,62 @@ public class CargarExcel extends HttpServlet {
 			    
 			 }
 	
+		}
+		if((tipo.equals("Cargar Asignaturas"))&&(continuar==true))
+		{
+			
+			ArrayList<Asignatura> listaAsignaturas;
+			ArrayList<Asignatura> listaErroresAsignaturas;
+			boolean errores= true;
+			 try 
+			 {
+				 listaAsignaturas=excel.leerArchivoAsignaturas(fileContent);
+				 listaErroresAsignaturas=excel.getListaErroresAsignaturas();
+				 if((listaAsignaturas.size()==0)&&(listaErroresAsignaturas.size()==0))
+				 {
+					 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+				 }
+				 else
+				 {
+					
+					 for(int i=0; i<listaAsignaturas.size();i++)
+						{
+							System.out.println(listaAsignaturas.get(i).getIdAsignatura().toString());
+							int resultado = new NAsignatura().Crear(listaAsignaturas.get(i));
+						}
+					 //int resultado=new NPersona().CrearDocentes(listaEstudiantes);
+					 int suma= listaAsignaturas.size() + listaErroresAsignaturas.size();
+					
+					 if (listaErroresAsignaturas.size()>0)
+					 {
+						
+						 errores=write.escribirExcelAsignaturas(listaErroresAsignaturas);
+						 
+						 
+						 if(errores==true)
+						 {
+							 JOptionPane.showMessageDialog(null, "La carga de Asignaturas se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaAsignaturas.xlsx \n Asignaturas insertados: " +listaAsignaturas.size()+ 
+									 							" \n Registros con errores: " + listaErroresAsignaturas.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+						 }
+					 }
+					 else
+					 {
+						 JOptionPane.showMessageDialog(null, "La carga de Asignaturas se generó correctamente con "+listaAsignaturas.size()+" cargadas", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+					 }
+	  
+				 }
+				 
+			 }
+			  catch (Exception e) 
+			 {
+			        
+				  throw new ServletException("Cannot parse multipart request.", e);
+			    
+			 }
+			
 		}
 	}
 	

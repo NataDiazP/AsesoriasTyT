@@ -9,6 +9,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.Persona;
 
 
@@ -215,6 +216,65 @@ public class EscribirErrores
 		    
 		    
 		    System.out.println("ErrorCargaEstudiantes.xlsx se generó correctamente.");
+		     
+		} 
+		catch (Exception e) 
+		{
+			bandera=false;
+		    e.printStackTrace();
+		}
+		
+		return bandera;
+	}
+
+	/**
+	 * @param listaErroresAsignaturas
+	 * @return
+	 */
+	public boolean escribirExcelAsignaturas(
+			ArrayList<Asignatura> listaErroresAsignaturas) {
+		boolean bandera=true;
+		//Blank workbook
+		XSSFWorkbook workbook = new XSSFWorkbook(); 
+		
+		//Create a blank sheet
+		XSSFSheet sheet = workbook.createSheet("Errores");
+		 
+		
+		int rownum = 0;
+		int cellnum = 0;
+		Row row = sheet.createRow(rownum++);
+		Cell cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Código Asignatura");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Nombre");
+	    cell = row.createCell(cellnum++);
+	    
+
+		for (int i=0; i< listaErroresAsignaturas.size();i++ )
+		{
+		    row = sheet.createRow(rownum++);
+		    Asignatura asignatura = listaErroresAsignaturas.get(i);
+		    cellnum = 0;
+		    
+		    	cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)asignatura.getIdAsignatura());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)asignatura.getNombreAsignatura());
+			  
+		}
+		try 
+		{
+			//Write  workbook in file system
+			
+				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaAsignaturas.xlsx"));
+				 workbook.write(out);
+				 out.close();
+		
+		   
+		    
+		    
+		    System.out.println("ErrorCargaAsignaturas.xlsx se generó correctamente.");
 		     
 		} 
 		catch (Exception e) 

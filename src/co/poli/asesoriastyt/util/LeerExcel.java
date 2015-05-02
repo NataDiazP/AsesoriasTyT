@@ -13,9 +13,12 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.sql.Connection;
+
 import sun.util.calendar.BaseCalendar.Date;
 import co.poli.asesoriastyt.control.Docentes;
+import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.negocio.NAsignatura;
 import co.poli.asesoriastyt.negocio.NPersona;
 
 
@@ -31,6 +34,8 @@ public class LeerExcel
 	/** The lista errores estudiantes. */
 	ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
 
+	ArrayList<Asignatura> listaErroresAsignaturas= new ArrayList<Asignatura>();
+
 	
 	/**
 	 * The main method.
@@ -42,6 +47,23 @@ public class LeerExcel
 	}
 	
 	
+	/**
+	 * @return the listaErroresAsignaturas
+	 */
+	public ArrayList<Asignatura> getListaErroresAsignaturas() {
+		return listaErroresAsignaturas;
+	}
+
+
+	/**
+	 * @param listaErroresAsignaturas the listaErroresAsignaturas to set
+	 */
+	public void setListaErroresAsignaturas(
+			ArrayList<Asignatura> listaErroresAsignaturas) {
+		this.listaErroresAsignaturas = listaErroresAsignaturas;
+	}
+
+
 	/**
 	 * Gets the lista errores estudiantes.
 	 *
@@ -696,4 +718,128 @@ public class LeerExcel
 		this.listaErroresEstudiantes=listaErroresEstudiantes;
 		return lista;
 	}
+
+
+	
+	
+	/**
+	 * Leer archivo Asignaturas.
+	 *
+	 * @param filecontent the filecontent
+	 * @return the array list
+	 */
+	
+public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
+		
+		NAsignatura nasignatura= new NAsignatura();
+		ArrayList<Asignatura> lista= new ArrayList<Asignatura>();
+		ArrayList<Asignatura> listaErroresAsignaturas= new ArrayList<Asignatura>();
+		
+		try
+		{
+			
+
+			//Create Workbook instance holding reference to .xlsx file
+			XSSFWorkbook workbook = new XSSFWorkbook(fileContent);
+
+			//Get first/desired sheet from the workbook
+			XSSFSheet sheet = workbook.getSheetAt(0);
+
+			//Iterate through each rows one by one
+			Iterator<Row> rowIterator = sheet.iterator();
+			int contadorColumnas =0;
+			int contadorFilas=0;
+			boolean error= false;
+			while (rowIterator.hasNext()) 
+			{
+				Row row = rowIterator.next();
+				//For each row, iterate through all the columns
+				Iterator<Cell> cellIterator = row.cellIterator();
+				if((contadorColumnas!=2)&&(contadorFilas==1))
+				{
+					return lista;
+				}
+					
+				contadorColumnas =0;
+				error=false;
+				Asignatura asignatura = new Asignatura();
+				while ((cellIterator.hasNext())&& (contadorColumnas<2))
+				{
+					
+					Cell cell = cellIterator.next();
+					
+					if(contadorFilas>0)//Check the cell type and format accordingly
+					{
+						switch (contadorColumnas) 
+						{
+							case 0:
+								try
+								{
+									String cod= cell.getStringCellValue();
+									boolean validar= nasignatura.validarExistenciaAsignatura(""+cod);
+									if(validar)
+									{
+										error=true;
+										asignatura.setIdAsignatura("ID "+cod+" existente");
+									}
+									else
+									{
+										asignatura.setIdAsignatura(cod);
+										System.out.print(cell.getStringCellValue() + "\t");
+									}
+									
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									asignatura.setIdAsignatura("Error");
+								}
+								break;
+								
+							case 1:
+								try
+								{
+									asignatura.setNombreAsignatura(cell.getStringCellValue());
+									System.out.print(cell.getStringCellValue() + "\t");
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									asignatura.setNombreAsignatura("Error");
+								}
+								break;
+							
+		
+						}
+					}
+					contadorColumnas=contadorColumnas+1;
+				}
+				if(asignatura.getIdAsignatura()!=null)
+				{
+					if(error==true)
+					{
+						listaErroresAsignaturas.add(asignatura);
+						
+					}
+					else
+					{
+						lista.add(asignatura);
+					}
+				}
+				
+				System.out.println("");
+				contadorFilas=contadorFilas+1;
+			}
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		this.listaErroresAsignaturas=listaErroresAsignaturas;
+		return lista;
+	}
+	
 }
