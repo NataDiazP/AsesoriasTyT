@@ -56,7 +56,7 @@ public class Conexion {
 	 */
 	public void ConexionDB() {
 		try {
-			setCon(DriverManager.getConnection("jdbc:mysql://localhost:3306/dbasesoriastyt2", "root", ""));
+			setCon(DriverManager.getConnection("jdbc:mysql://localhost:3306/dbasesoriastyt", "root", ""));
 		} catch (SQLException e4) {
 			System.out.print("SQLException" + e4.getMessage());
 		} catch (Exception e5) {

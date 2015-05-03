@@ -79,6 +79,21 @@ public class NPersona {
 		
 	}
 	
+	public boolean validarExistenciaDocente(String documento)
+	{
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		daoPersonas = new DAOPersonas();
+		boolean existe= daoPersonas.validarExistenciaDocente(c,documento);
+		
+		return existe;
+		
+	}
+	
 	/**
 	 * Validar existencia correo.
 	 *

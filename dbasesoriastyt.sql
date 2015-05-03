@@ -154,7 +154,6 @@ CREATE TABLE IF NOT EXISTS `programaciones_academicas` (
   `Ano_ProgAcademica` varchar(4) NOT NULL,
   PRIMARY KEY (`Id_ProgAcademica`),
   KEY `AsignaturaPA_FK` (`Asignatura`),
-  KEY `Aula_Clase_FK` (`Aula_Clase`),
   KEY `Programaciones_Aca_Pers_FK` (`Docente_ProgAcademica`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -197,7 +196,7 @@ ALTER TABLE `personas`
 ALTER TABLE `programaciones_academicas`
   ADD CONSTRAINT `Programaciones_Aca_Pers_FK` FOREIGN KEY (`Docente_ProgAcademica`) REFERENCES `personas` (`NumDoc_Persona`),
   ADD CONSTRAINT `AsignaturaPA_FK` FOREIGN KEY (`Asignatura`) REFERENCES `asignaturas` (`Codigo_Asignatura`),
-  ADD CONSTRAINT `Aula_Clase_FK` FOREIGN KEY (`Aula_Clase`) REFERENCES `aulas` (`Id_Aula`);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -490,4 +490,48 @@ public class DAOPersonas {
 		}
 		return validar;
 	}
+
+
+	/**
+	 * @param c
+	 * @param documento
+	 * @return
+	 */
+	public boolean validarExistenciaDocente(Connection c, String documento) {
+		
+		boolean validar= false;
+		Statement stmt = null;
+        ResultSet r = null;
+		
+		try {
+			stmt = c.createStatement();
+	        r = stmt.executeQuery("Select NumDoc_Persona from personas where NumDoc_Persona='"+documento+"' and Perfil_Persona='2'");
+			
+			while (r.next()) {
+				validar=true;
+				break;
+			}
+			try
+			{
+				r.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+                if(r != null) r.close();
+                if(stmt != null) stmt.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+		}
+		return validar;
+	}
 }
