@@ -137,6 +137,8 @@ INSERT INTO `personas` (`NumDoc_Persona`, `Tipo_Identificacion`, `Nombres_Person
 ('1214719040', 'CC', 'Nathalia', 'Velez', 'Gaviria', 'Femenino', '1993-07-17', 'Cll 77 #45-85', '20456776', NULL, 'nathalia_gaviria24111@elpoli.edu.co', 'Tecnología en Sistematización de Datos', '7', 'Activa', 3),
 ('123456', 'CC', 'Julian', 'Gomez', 'Restrepo', 'M', '1980-09-18', 'Cll 1', '2333323', NULL, 'juliangomez@elpoli.edu.co', NULL, NULL, 'Activo', 2),
 ('1234567', 'CC', 'Mateo', 'Lopez', 'Velez', 'Masculino', '1980-12-30', 'Cll 1', '123454', '', 'mateo@elpoli.edu.co', NULL, NULL, 'Activo', 2),
+('123', 'CC', 'Maryem', 'Ruiz', 'Velez', 'Femenino', '1980-12-30', 'Cll 1', '123454', '', 'mruiz@elpoli.edu.co', NULL, NULL, 'Activo', 1),
+('1234', 'CC', 'Paola', 'Vargas', 'López', 'Femenino', '1980-12-30', 'Cll 1', '123454', '', 'paola_vargas24111@elpoli.edu.co', NULL, NULL, 'Activo', 1),
 ('123456789', 'CC', 'Pablo', 'Montes', 'Gaviria', 'Masculion', '1983-2-1', 'Cll 77 #45-85', '20456776', NULL, 'pablo_montes24111@elpoli.edu.co', 'Tecnología en Sistematización de Datos', '7', 'Activa', 3),
 ('97091800296', 'TI', 'Natalia Juliette', 'Díaz', 'Padilla', 'Femenino', '1997-08-7', 'Cll 49 AC #93-47', '2000009', NULL, 'natalia_diaz24131@elpoli.edu.co', 'Tecnología en Sistematización de Datos', '6', 'Activa', 2);
 
@@ -195,7 +197,7 @@ ALTER TABLE `personas`
 
 ALTER TABLE `programaciones_academicas`
   ADD CONSTRAINT `Programaciones_Aca_Pers_FK` FOREIGN KEY (`Docente_ProgAcademica`) REFERENCES `personas` (`NumDoc_Persona`),
-  ADD CONSTRAINT `AsignaturaPA_FK` FOREIGN KEY (`Asignatura`) REFERENCES `asignaturas` (`Codigo_Asignatura`),
+  ADD CONSTRAINT `AsignaturaPA_FK` FOREIGN KEY (`Asignatura`) REFERENCES `asignaturas` (`Codigo_Asignatura`);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

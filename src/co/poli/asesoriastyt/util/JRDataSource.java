@@ -11,7 +11,7 @@ package co.poli.asesoriastyt.util;
 		private static final MysqlDataSource mysqlDS = new MysqlDataSource();
 		
 		static {
-			mysqlDS.setURL("jdbc:mysql://localhost:3306/dbasesoriastyt2");
+			mysqlDS.setURL("jdbc:mysql://localhost:3306/dbasesoriastyt");
 			mysqlDS.setUser("root");
 			mysqlDS.setPassword("");
 		}
