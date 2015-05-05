@@ -39,14 +39,6 @@
 				</textElement>
 				<text><![CDATA[Asistencia Estudiantes por Asesoría]]></text>
 			</staticText>
-			<image>
-				<reportElement x="1" y="0" width="159" height="141" uuid="f9aafcc9-9d3c-4f20-b887-400fde5d2ec9"/>
-				<imageExpression><![CDATA["C:\\Users\\Paola\\Documents\\GitHub\\AsesoriasTyT\\WebContent\\WEB-INF\\Reportes\\coffee.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="671" y="0" width="218" height="109" uuid="78e9ac48-c72d-4b9b-a83f-08810bb64f02"/>
-				<imageExpression><![CDATA["C:\\Users\\Paola\\Documents\\GitHub\\AsesoriasTyT\\WebContent\\WEB-INF\\Reportes\\api2.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
