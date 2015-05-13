@@ -42,13 +42,16 @@ import javax.sql.DataSource;
 
 
 
+
+
 import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.model.ProgAcademica;
 import co.poli.asesoriastyt.negocio.NAsignatura;
 import co.poli.asesoriastyt.negocio.NPerfiles;
 import co.poli.asesoriastyt.negocio.NPersona;
+import co.poli.asesoriastyt.negocio.NProgAcademica;
 import co.poli.asesoriastyt.util.Conexion;
-
 import co.poli.asesoriastyt.util.EscribirErrores;
 import co.poli.asesoriastyt.util.LeerExcel;
 
@@ -110,11 +113,13 @@ public class CargarExcel extends HttpServlet {
 		String tipo="";
 		boolean continuar= true;
 		InputStream fileContent=null;
-	
+		
+		
 		try {
 			items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 
-			for (FileItem item : items) {
+			for (FileItem item : items) 
+			{
 		           
 				if(item.getFieldName().equals("tipo"))
             	{
@@ -161,6 +166,7 @@ public class CargarExcel extends HttpServlet {
 	                
 	               
             	}
+
             	            	
 
             }
@@ -335,6 +341,63 @@ public class CargarExcel extends HttpServlet {
 			 }
 			
 		}
+		if((tipo.equals("Cargar Programación Académica"))&&(continuar==true))
+		{
+			
+			ArrayList<ProgAcademica> listaProgAcademicas;
+			ArrayList<ProgAcademica> listaErroresProgAcademicas;
+			boolean errores= true;
+			 try 
+			 {
+				 listaProgAcademicas=excel.leerArchivoProgramacion(fileContent);
+				 listaErroresProgAcademicas=excel.getListaErroresProgramacion();
+				 if((listaProgAcademicas.size()==0)&&(listaErroresProgAcademicas.size()==0))
+				 {
+					 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+				 }
+				 else
+				 {
+					
+					 for(int i=0; i<listaProgAcademicas.size();i++)
+						{
+							System.out.println(listaProgAcademicas.get(i).getAsignaturaProgAcademica().toString());
+							int resultado = new NProgAcademica().Crear(listaProgAcademicas.get(i));
+						}
+					 //int resultado=new NPersona().CrearDocentes(listaEstudiantes);
+					 int suma= listaProgAcademicas.size() + listaErroresProgAcademicas.size();
+					
+					 if (listaErroresProgAcademicas.size()>0)
+					 {
+						
+						 errores=write.escribirExcelProgAcademicas(listaErroresProgAcademicas);
+						 
+						 
+						 if(errores==true)
+						 {
+							 JOptionPane.showMessageDialog(null, "La carga de Programación Académica se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaProgAcademicas.xlsx \n ProgAcademicas insertados: " +listaProgAcademicas.size()+ 
+									 							" \n Registros con errores: " + listaErroresProgAcademicas.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+						 }
+					 }
+					 else
+					 {
+						 JOptionPane.showMessageDialog(null, "La carga de Programación Académica se generó correctamente con "+listaProgAcademicas.size()+" cargadas", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+					 }
+	  
+				 }
+				 
+			 }
+			  catch (Exception e) 
+			 {
+			        
+				  throw new ServletException("Cannot parse multipart request.", e);
+			    
+			 }
+			
+		}
+
 	}
 	
 	

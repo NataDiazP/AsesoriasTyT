@@ -18,8 +18,10 @@ import sun.util.calendar.BaseCalendar.Date;
 import co.poli.asesoriastyt.control.Docentes;
 import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.model.ProgAcademica;
 import co.poli.asesoriastyt.negocio.NAsignatura;
 import co.poli.asesoriastyt.negocio.NPersona;
+import co.poli.asesoriastyt.negocio.NProgAcademica;
 
 
 /**
@@ -36,6 +38,8 @@ public class LeerExcel
 
 	ArrayList<Asignatura> listaErroresAsignaturas= new ArrayList<Asignatura>();
 
+	private ArrayList<ProgAcademica> listaErroresProgramacion= new ArrayList<ProgAcademica>();
+
 	
 	/**
 	 * The main method.
@@ -47,6 +51,23 @@ public class LeerExcel
 	}
 	
 	
+	/**
+	 * @return the listaErroresProgramacion
+	 */
+	public ArrayList<ProgAcademica> getListaErroresProgramacion() {
+		return listaErroresProgramacion;
+	}
+
+
+	/**
+	 * @param listaErroresProgramacion the listaErroresProgramacion to set
+	 */
+	public void setListaErroresProgramacion(
+			ArrayList<ProgAcademica> listaErroresProgramacion) {
+		this.listaErroresProgramacion = listaErroresProgramacion;
+	}
+
+
 	/**
 	 * @return the listaErroresAsignaturas
 	 */
@@ -841,5 +862,235 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 		this.listaErroresAsignaturas=listaErroresAsignaturas;
 		return lista;
 	}
+	
+	public ArrayList<ProgAcademica> leerArchivoProgramacion(InputStream filecontent)
+	{
+		NPersona npersonas= new NPersona();
+		NAsignatura nasignatura= new NAsignatura();
+		ArrayList<ProgAcademica> lista= new ArrayList<ProgAcademica>();
+		ArrayList<ProgAcademica> listaErroresProgramacion= new ArrayList<ProgAcademica>();
+		try
+		{
+		
+	
+			//Create Workbook instance holding reference to .xlsx file
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
+	
+			//Get first/desired sheet from the workbook
+			XSSFSheet sheet = workbook.getSheetAt(0);
+	
+			//Iterate through each rows one by one
+			Iterator<Row> rowIterator = sheet.iterator();
+			int contadorColumnas =0;
+			int contadorFilas=0;
+			boolean error= false;
+			while (rowIterator.hasNext()) 
+			{
+				Row row = rowIterator.next();
+				//For each row, iterate through all the columns
+				Iterator<Cell> cellIterator = row.cellIterator();
+				if((contadorColumnas!=9)&&(contadorFilas==1))
+				{
+					return lista;
+				}
+				contadorColumnas =0;
+				error=false;
+				ProgAcademica programacion = new ProgAcademica();
+				while ((cellIterator.hasNext())&& (contadorColumnas<10))
+				{
+					
+					Cell cell = cellIterator.next();
+					
+					if(contadorFilas>0)//Check the cell type and format accordingly
+					{
+						switch (contadorColumnas) 
+						{
+							case 0:
+								try
+								{
+									int doc= (int)cell.getNumericCellValue();
+									boolean validar= npersonas.validarExistenciaDocente(""+doc);
+									if(!validar)
+									{
+										error=true;
+										programacion.setDocenteProgAcademica("ID "+doc+"  no existe");
+									}
+									else
+									{
+										programacion.setDocenteProgAcademica(Integer.toString(doc));
+										System.out.print(cell.getNumericCellValue() + "\t");
+									}
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setDocenteProgAcademica("Error");
+								}
+								break;
+							case 1:
+								try
+								{
+									String asignatura= cell.getStringCellValue();
+									boolean validar= nasignatura.validarExistenciaAsignatura(asignatura);
+									if(!validar)
+									{
+										error=true;
+										programacion.setAsignaturaProgAcademica("ID "+asignatura+" no existe");
+									}
+									else
+									{
+										programacion.setAsignaturaProgAcademica(asignatura);
+										System.out.print(cell.getStringCellValue() + "\t");
+									}
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setAsignaturaProgAcademica("Error");
+								}
+								break;
+							case 2:
+								try
+								{
+									int grupo= (int) cell.getNumericCellValue(); 
+									programacion.setGrupoAsigProgAcademica(""+grupo);
+									System.out.print(cell.getNumericCellValue() + "\t");
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setGrupoAsigProgAcademica("Error");
+								}
+								break;
+							case 3:
+								try
+								{
+									int numero=(int) cell.getNumericCellValue();
+									programacion.setNroEstAsigProgAcademica(""+numero);
+									System.out.print(cell.getNumericCellValue() + "\t");
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setNroEstAsigProgAcademica("Error");
+								}
+								break;
+							case 4:
+								try
+								{
+									int dias=(int) cell.getNumericCellValue();
+									programacion.setDiasAsigProgAcademica(""+dias);
+									System.out.print(cell.getNumericCellValue() + "\t");
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setDiasAsigProgAcademica("Error");
+								}
+								break;
+							case 5:
+								try
+								{
+									programacion.setHoraIniAsigProgAcademica(cell.getStringCellValue());
+									System.out.print(cell.getStringCellValue() + "\t");
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setHoraIniAsigProgAcademica("Error");
+								}
+								
+								break;
+							case 6:
+								try
+								{
+									programacion.setHoraFinAsigProgAcademica(cell.getStringCellValue());
+									System.out.print(cell.getStringCellValue() + "\t");
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setHoraFinAsigProgAcademica("Error");
+								}
+								break;
+							case 7:
+								try
+								{
+									int aula=(int) cell.getNumericCellValue();
+									programacion.setAulaClaseProgAcademica(""+aula);
+									System.out.print(cell.getNumericCellValue() + "\t");
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setAulaClaseProgAcademica("Error");
+								}
+								break;
+							case 8:
+								try
+								{
+									int semestre= (int) cell.getNumericCellValue();
+									programacion.setSemestreProgAcademica(""+semestre);
+									System.out.print(cell.getNumericCellValue() + "\t");
+									
+								}
+								catch(Exception e) 
+								{
+									error=true;
+									programacion.setSemestreProgAcademica("Error");
+								}
+							break;case 9:
+								try
+								{
+									int anio=(int) cell.getNumericCellValue();
+									programacion.setAnoProgAcademica(""+anio);
+									System.out.print(cell.getNumericCellValue() + "\t");
+										
+								}
+									catch(Exception e) 
+									{
+										error=true;
+										programacion.setAnoProgAcademica("Error");
+									}
+									break;
+		
+						}
+					}
+					contadorColumnas=contadorColumnas+1;
+				}
+				if(programacion.getDocenteProgAcademica()!=null)
+				{
+					if(error==true)
+					{
+					
+						listaErroresProgramacion.add(programacion);
+						
+					}
+					else
+					{
+				
+						lista.add(programacion);
+					}
+				}
+				System.out.println("");
+				contadorFilas=contadorFilas+1;
+			}
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		this.listaErroresProgramacion=listaErroresProgramacion;
+		return lista;
+	
+	}
+
 	
 }

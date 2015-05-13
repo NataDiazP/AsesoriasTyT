@@ -73,18 +73,28 @@
 							<input type="file" id="uploadFile" name="uploadFile" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
 							</td>
+	
 						</tr>
+						
+						<tr><td><a class="label" href="<% out.println("http://localhost:8080/pdf/plantilla.pdf"); %>">Ver plantilla Estudiantes</a></td></tr>
+						<tr><td><a class="label" href="<% out.println("http://localhost:8080/pdf/plantilla.pdf"); %>">Ver plantilla Docentes</a></td></tr>
+						<tr><td><a class="label" href="<% out.println("http://localhost:8080/pdf/file01.pdf"); %>">Ver plantilla Asignaturas</a></td></tr>
+						<tr><td><a class="label" href="<% out.println("http://localhost:8080/pdf/plantilla.pdf"); %>">Ver plantilla Programación Académica</a></td></tr>
+						
+						
 						</table>
 						</td>
+						
 						</tr>
 						</table>
 						<br>
 						<div style="margin: 0 auto; width: 25%" align="center">
+						<button name="action" value="Preparar" class="boton">Preparar Carga</button>
 						<button name="action" value="Cargar" class="boton">Cargar Archivo</button>
 						</div>
 						</form>
 						
-
+						
  <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

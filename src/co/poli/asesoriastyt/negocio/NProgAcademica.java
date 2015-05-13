@@ -4,12 +4,16 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import co.poli.asesoriastyt.dao.DAOProgAcademica;
 import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.ProgAcademica;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
@@ -24,7 +28,7 @@ public class NProgAcademica {
 	
 	/** The c. */
 	Connection c;
-
+	DataSource ds = JRDataSource.getMySQLDataSource();
 	/**
 	 * Crear.
 	 *
@@ -33,7 +37,12 @@ public class NProgAcademica {
 	 */
 	public int Crear(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoProgAcademica.Crear(c, ProgAcademica);
 		return resultadoCrear;
 	}
@@ -46,7 +55,12 @@ public class NProgAcademica {
 	 */
 	public int Modificar(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoModificar = daoProgAcademica.Modificar(c, ProgAcademica);
 		return resultadoModificar;
 	}
@@ -59,7 +73,12 @@ public class NProgAcademica {
 	 */
 	public ProgAcademica Buscar(String ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ProgAcademica resultadoBuscar = daoProgAcademica.Buscar(c, ProgAcademica);
 		return resultadoBuscar;
 	}
@@ -72,7 +91,12 @@ public class NProgAcademica {
 	 */
 	public int Eliminar(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoEliminar = daoProgAcademica.Eliminar(c, ProgAcademica);
 		return resultadoEliminar;
 	}
@@ -85,7 +109,12 @@ public class NProgAcademica {
 	 */
 	public List<Asignatura> AsignaturasDocente(String idDocente) {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoProgAcademica.asignaturasDocente(c, idDocente);
 	}
 
@@ -96,13 +125,23 @@ public class NProgAcademica {
 	 */
 	public List<ProgAcademica> ListadoProgAcademica() {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoProgAcademica.listarProgAcademica(c);
 	}
 	
 	public List<ProgAcademica> ListadoProgAcademicaDocente(String idDocente) {
 		daoProgAcademica = new DAOProgAcademica();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoProgAcademica.listarProgAcademicaDocente(c, idDocente);
 	}
 }

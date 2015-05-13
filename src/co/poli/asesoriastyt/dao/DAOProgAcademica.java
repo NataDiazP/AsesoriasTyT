@@ -33,28 +33,29 @@ public class DAOProgAcademica {
 	public int Crear(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Crear();
 		int resultadoCrear = 0;
+		PreparedStatement st=null;
 		try {
-			PreparedStatement st = c.prepareStatement(sql);
-			st.setString(1, ProgAcademica.getIdProgAcademica());
-			st.setString(2, ProgAcademica.getDocenteProgAcademica());
-			st.setString(3, ProgAcademica.getAsignaturaProgAcademica());
-			st.setString(4, ProgAcademica.getGrupoAsigProgAcademica());
-			st.setString(5, ProgAcademica.getNroEstAsigProgAcademica());
-			st.setString(6, ProgAcademica.getDiasAsigProgAcademica());
-			st.setString(7, ProgAcademica.getHoraIniAsigProgAcademica());
-			st.setString(8, ProgAcademica.getHoraFinAsigProgAcademica());
-			st.setString(9, ProgAcademica.getAulaClaseProgAcademica());
-			st.setString(10, ProgAcademica.getSemestreProgAcademica());
-			st.setString(11, ProgAcademica.getAnoProgAcademica());
+			st = c.prepareStatement(sql);
+			st.setString(1, ProgAcademica.getDocenteProgAcademica());
+			st.setString(2, ProgAcademica.getAsignaturaProgAcademica());
+			st.setString(3, ProgAcademica.getGrupoAsigProgAcademica());
+			st.setString(4, ProgAcademica.getNroEstAsigProgAcademica());
+			st.setString(5, ProgAcademica.getDiasAsigProgAcademica());
+			st.setString(6, ProgAcademica.getHoraIniAsigProgAcademica());
+			st.setString(7, ProgAcademica.getHoraFinAsigProgAcademica());
+			st.setString(8, ProgAcademica.getAulaClaseProgAcademica());
+			st.setString(9, ProgAcademica.getSemestreProgAcademica());
+			st.setString(10, ProgAcademica.getAnoProgAcademica());
 			resultadoCrear = st.executeUpdate();
 		} catch (SQLException ex) {
 			Logger.getLogger(DAOProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
-				c.close();
-			} catch (SQLException ex) {
-				Logger.getLogger(DAOProgAcademica.class.getName()).log(Level.SEVERE, null, ex);
-			}
+                if(st != null) st.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 		}
 		return resultadoCrear;
 	}

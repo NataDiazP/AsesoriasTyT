@@ -31,8 +31,9 @@ public class DAOAsignaturas {
 	public int Crear(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Crear();
 		int resultadoCrear = 0;
+		PreparedStatement st=null;
 		try {
-			PreparedStatement st = c.prepareStatement(sql);
+			st = c.prepareStatement(sql);
 
 			st.setString(1, Asignaturas.getIdAsignatura());
 			st.setString(2, Asignaturas.getNombreAsignatura());
@@ -42,10 +43,11 @@ public class DAOAsignaturas {
 			Logger.getLogger(DAOAsignaturas.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			try {
-				c.close();
-			} catch (SQLException ex) {
-				Logger.getLogger(DAOAsignaturas.class.getName()).log(Level.SEVERE, null, ex);
-			}
+                if(st != null) st.close();
+                if(c != null) c.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 		}
 		return resultadoCrear;
 	}

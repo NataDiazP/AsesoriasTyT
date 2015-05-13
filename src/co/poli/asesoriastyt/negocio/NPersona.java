@@ -53,7 +53,12 @@ public class NPersona {
 	 */
 	public int Crear(Persona Personas) {
 		daoPersonas = new DAOPersonas();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoPersonas.Crear(c, Personas);
 		return resultadoCrear;
 	}

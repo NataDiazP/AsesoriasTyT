@@ -72,7 +72,7 @@ public class Aulas extends HttpServlet {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Aulas.jsp");
 		} else if (enc.equals("Seleccione") || enc.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese el encargado del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 		} else {
 			Aulas.setIdAula(request.getParameter("IdAula"));

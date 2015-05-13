@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.model.ProgAcademica;
 
 
 /**
@@ -285,6 +286,95 @@ public class EscribirErrores
 		
 		return bandera;
 	}
+
+	/**
+	 * @param listaErroresProgAcademicas
+	 * @return
+	 */
+	public boolean escribirExcelProgAcademicas (ArrayList<ProgAcademica> listaErrores) 
+	{
+		boolean bandera=true;
+		//Blank workbook
+		XSSFWorkbook workbook = new XSSFWorkbook(); 
+		
+		//Create a blank sheet
+		XSSFSheet sheet = workbook.createSheet("Errores");
+		 
+		
+		int rownum = 0;
+		int cellnum = 0;
+		Row row = sheet.createRow(rownum++);
+		Cell cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Docente");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Asignatura");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Grupo");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Nro Estudiantes");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Días Asignatura");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Hora Inicio");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Hora Fin");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Aula");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Semestre");
+	    cell = row.createCell(cellnum++);
+	    cell.setCellValue((String)"Anio");
+	    
+		for (int i=0; i< listaErrores.size();i++ )
+		{
+		    row = sheet.createRow(rownum++);
+		    ProgAcademica progAcademica = listaErrores.get(i);
+		    cellnum = 0;
+		    
+		    	cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getDocenteProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getAsignaturaProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getGrupoAsigProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getNroEstAsigProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getDiasAsigProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getHoraIniAsigProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getHoraFinAsigProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getAulaClaseProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getSemestreProgAcademica());
+			    cell = row.createCell(cellnum++);
+			    cell.setCellValue((String)progAcademica.getAnoProgAcademica());
+			     
+		}
+		try 
+		{
+			//Write  workbook in file system
+			
+				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaProgramacion.xlsx"));
+				 workbook.write(out);
+				 out.close();
+		
+		   
+		    
+		    
+		    System.out.println("ErrorCargaProgramacion.xlsx se generó correctamente.");
+		     
+		} 
+		catch (Exception e) 
+		{
+			bandera=false;
+		    e.printStackTrace();
+		}
+		
+		return bandera;
+	}	
 	
 	
 }
