@@ -120,20 +120,7 @@ public class CargarExcel extends HttpServlet {
 
 			for (FileItem item : items) 
 			{
-		           
-				if(item.getFieldName().equals("tipo"))
-            	{
 
-		               tipo = item.getString();
-		               if(tipo.equals("Seleccione..."))
-		               {
-		            	   continuar= false;
-		            	   JOptionPane.showMessageDialog(null, "Debe seleccionar el tipo de archivo que va a cargar", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-				 			request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-		            	   
-		               }
-
-            	}
             	if(item.getFieldName().equals("uploadFile"))
             	{
 	                String fieldName = item.getName();
@@ -162,9 +149,7 @@ public class CargarExcel extends HttpServlet {
 	                    }
 	                	
 	                }
-	                
-	                
-	               
+
             	}
 
             	            	
@@ -173,232 +158,185 @@ public class CargarExcel extends HttpServlet {
 		} catch (FileUploadException e1) {
 			e1.printStackTrace();
 		}
-
 		
-		if((tipo.equals("Cargar Docentes"))&&(continuar==true))
+		if(continuar==true)
 		{
-			ArrayList<Persona> listaDocentes;
-			ArrayList<Persona> listaErroresDocentes;
-			boolean errores= true;
-			 try 
-			 { 
-				 
-				 listaDocentes=excel.leerArchivoDocentes(fileContent);
-				 listaErroresDocentes=excel.getListaErroresDocentes();
-					 if((listaDocentes.size()==0)&&(listaErroresDocentes.size()==0))
-					 {
-						 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-					 }
-					 else
-					 {
+			boolean resultadoperparar=npersona.prepararCarga();
+			if(resultadoperparar==true)
+			{
+				 	excel.leerArchivo(fileContent);
+				 	ArrayList<Persona> listaEstudiantes;
+					ArrayList<Persona> listaErroresEstudiantes;
+				
+					ArrayList<Persona> listaDocentes;
+					ArrayList<Persona> listaErroresDocentes;
+					
+					ArrayList<Asignatura> listaAsignaturas;
+					ArrayList<Asignatura> listaErroresAsignaturas;
+					
+					ArrayList<ProgAcademica> listaProgAcademicas;
+					ArrayList<ProgAcademica> listaErroresProgAcademicas;
+					boolean errores= true;
+					 try 
+					 { 
 						 
-						 int suma= listaDocentes.size() + listaErroresDocentes.size();
+						 listaDocentes=excel.getListaDocentes();
+						 listaErroresDocentes=excel.getListaErroresDocentes();
 						 
-						 if (listaErroresDocentes.size()>0)
+						 listaEstudiantes=excel.getListaEstudiantes();
+						 listaErroresEstudiantes=excel.getListaErroresEstudiantes();
+						 
+						 listaAsignaturas=excel.getListaAsignaturas();
+						 listaErroresAsignaturas=excel.getListaErroresAsignaturas();
+						 
+						 if(((listaDocentes.size()==0)&&(listaErroresDocentes.size()==0))||((listaEstudiantes.size()==0)&&(listaErroresEstudiantes.size()==0))||((listaAsignaturas.size()==0)&&(listaErroresAsignaturas.size()==0)))
 						 {
-							
-							 errores=write.escribirExcelDocentes(listaErroresDocentes);
-							 
-							 
-							 if(errores==true)
-							 {
-								 JOptionPane.showMessageDialog(null, "La carga de docentes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaDocentes.size()+ 
-										 							" \n Registros con errores: " + listaErroresDocentes.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-									request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-							 }
+							 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 						 }
 						 else
 						 {
-							 JOptionPane.showMessageDialog(null, "La carga de docentes se generó correctamente con "+listaDocentes.size()+" cargados", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+							 for(int i=0; i<listaEstudiantes.size();i++)
+								{
+									System.out.println(listaEstudiantes.get(i).getNumeroIdentificacion().toString());
+									int resultado = new NPersona().CrearDocentes(listaEstudiantes.get(i));
+								}
+							 for(int i=0; i<listaDocentes.size();i++)
+								{
+									System.out.println(listaDocentes.get(i).getNumeroIdentificacion().toString());
+									int resultado = new NPersona().CrearDocentes(listaDocentes.get(i));
+								}
+							 for(int i=0; i<listaAsignaturas.size();i++)
+								{
+									System.out.println(listaAsignaturas.get(i).getIdAsignatura().toString());
+									int resultado = new NAsignatura().Crear(listaAsignaturas.get(i));
+								}
 						 }
 						 
+						 excel.leerArchivoProgramacion();
 						 
-					//		npersona.CrearDocentes(listaDocentes);
-						  
+						 listaProgAcademicas=excel.getListaProgramacion();
+						 listaErroresProgAcademicas=excel.getListaErroresProgramacion();
+						 
+					
+							 if((listaProgAcademicas.size()==0)&&(listaErroresProgAcademicas.size()==0))
+							 {
+								 JOptionPane.showMessageDialog(null, "Por favor valide la estructura de la pestaña de programación académica del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+									request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+							 }
+							 else
+							 {
+								 for(int i=0; i<listaProgAcademicas.size();i++)
+									{
+										System.out.println(listaProgAcademicas.get(i).getAsignaturaProgAcademica().toString());
+										int resultado = new NProgAcademica().Crear(listaProgAcademicas.get(i));
+									}
+								 String mensaje="";
+								 int sumadocentes= listaDocentes.size() + listaErroresDocentes.size();
+								 int sumaestudiantes= listaEstudiantes.size() + listaErroresEstudiantes.size();
+								 int sumaasignaturas= listaAsignaturas.size() + listaErroresAsignaturas.size();
+								 int sumaprogramacion= listaProgAcademicas.size() + listaErroresProgAcademicas.size();
+								 
+								 if (listaErroresDocentes.size()>0)
+								 {
+									
+									 errores=write.escribirExcelDocentes(listaErroresDocentes);
+									 
+									 
+									 if(errores==true)
+									 {
+										 mensaje= mensaje+" \n La carga de docentes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaDocentes.xlsx \n Docentes insertados: " +listaDocentes.size()+ 
+												 							" \n Registros con errores: " + listaErroresDocentes.size() + "\n Total Registros: "+ sumadocentes;
+											
+									 }
+								 }
+								 else
+								 {
+									 mensaje= mensaje + "\n La carga de docentes se generó correctamente con "+listaDocentes.size()+" cargados";
+										
+								 }
+								 if (listaErroresEstudiantes.size()>0)
+								 {
+									
+									 errores=write.escribirExcelEstudiantes(listaErroresEstudiantes);
+									 
+									 
+									 if(errores==true)
+									 {
+										 mensaje= mensaje + "\n La carga de Estudiantes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaEstudiantes.size()+ 
+												 							" \n Registros con errores: " + listaErroresEstudiantes.size() + "\n Total Registros: "+ sumaestudiantes;
+											
+									 }
+								 }
+								 else
+								 {
+									 mensaje= mensaje + "\n La carga de Estudiantes se generó correctamente con "+listaEstudiantes.size()+" cargados";
+										
+								 }
+								
+								 if (listaErroresAsignaturas.size()>0)
+								 {
+									
+									 errores=write.escribirExcelAsignaturas(listaErroresAsignaturas);
+									 
+									 
+									 if(errores==true)
+									 {
+										 mensaje= mensaje +"\n La carga de Asignaturas se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaAsignaturas.xlsx \n Asignaturas insertados: " +listaAsignaturas.size()+ 
+												 							" \n Registros con errores: " + listaErroresAsignaturas.size() + "\n Total Registros: "+ sumaasignaturas;
+									 }
+								 }
+								 else
+								 {
+									 mensaje= mensaje +"\n La carga de Asignaturas se generó correctamente con "+listaAsignaturas.size()+" cargadas";
+										
+								 }
+								 
+								 if (listaErroresProgAcademicas.size()>0)
+								 {
+									
+									 errores=write.escribirExcelProgAcademicas(listaErroresProgAcademicas);
+									 
+									 
+									 if(errores==true)
+									 {
+										 mensaje= mensaje + "\n La carga de Programación Académica se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaProgAcademicas.xlsx \n Programación Académica insertada: " +listaProgAcademicas.size()+ 
+												 							" \n Registros con errores: " + listaErroresProgAcademicas.size() + "\n Total Registros: "+ sumaprogramacion;
+											
+									 }
+								 }
+								 else
+								 {
+									 mensaje= mensaje + "\n La carga de Programación Académica se generó correctamente con "+listaProgAcademicas.size()+" cargadas";
+								 }
+								 
+								 JOptionPane.showMessageDialog(null, mensaje, "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+									request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+							
+								  
+							 }
+							 
+						 
+								 
+					}
+					  catch (Exception e) 
+					 {
+					        
+						  throw new ServletException("Cannot parse multipart request.", e);
+					    
 					 }
-					 
-				 
-						 
+				}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Ocurrió un error durante la preparación de la carga de archivos", "Error - AsesoriasTyT", JOptionPane.ERROR_MESSAGE);
+				request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+				
 			}
-			  catch (Exception e) 
-			 {
-			        
-				  throw new ServletException("Cannot parse multipart request.", e);
-			    
-			 }
+		}
 	
 		}
-		if((tipo.equals("Cargar Estudiantes"))&&(continuar==true))
-		{
-			ArrayList<Persona> listaEstudiantes;
-			ArrayList<Persona> listaErroresEstudiantes;
-			boolean errores= true;
-			 try 
-			 {
-				 listaEstudiantes=excel.leerArchivoEstudiantes(fileContent);
-				 listaErroresEstudiantes=excel.getListaErroresEstudiantes();
-				 if((listaEstudiantes.size()==0)&&(listaErroresEstudiantes.size()==0))
-				 {
-					 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-				 }
-				 else
-				 {
-					
-					 for(int i=0; i<listaEstudiantes.size();i++)
-						{
-							System.out.println(listaEstudiantes.get(i).getNumeroIdentificacion().toString());
-							int resultado = new NPersona().CrearDocentes(listaEstudiantes.get(i));
-						}
-					 //int resultado=new NPersona().CrearDocentes(listaEstudiantes);
-					 int suma= listaEstudiantes.size() + listaErroresEstudiantes.size();
-					
-					 if (listaErroresEstudiantes.size()>0)
-					 {
-						
-						 errores=write.escribirExcelEstudiantes(listaErroresEstudiantes);
-						 
-						 
-						 if(errores==true)
-						 {
-							 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaEstudiantes.size()+ 
-									 							" \n Registros con errores: " + listaErroresEstudiantes.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-						 }
-					 }
-					 else
-					 {
-						 JOptionPane.showMessageDialog(null, "La carga de Estudiantes se generó correctamente con "+listaEstudiantes.size()+" cargados", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-					 }
-	  
-				 }
-				 
-			 }
-			  catch (Exception e) 
-			 {
-			        
-				  throw new ServletException("Cannot parse multipart request.", e);
-			    
-			 }
+		
 	
-		}
-		if((tipo.equals("Cargar Asignaturas"))&&(continuar==true))
-		{
-			
-			ArrayList<Asignatura> listaAsignaturas;
-			ArrayList<Asignatura> listaErroresAsignaturas;
-			boolean errores= true;
-			 try 
-			 {
-				 listaAsignaturas=excel.leerArchivoAsignaturas(fileContent);
-				 listaErroresAsignaturas=excel.getListaErroresAsignaturas();
-				 if((listaAsignaturas.size()==0)&&(listaErroresAsignaturas.size()==0))
-				 {
-					 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-				 }
-				 else
-				 {
-					
-					 for(int i=0; i<listaAsignaturas.size();i++)
-						{
-							System.out.println(listaAsignaturas.get(i).getIdAsignatura().toString());
-							int resultado = new NAsignatura().Crear(listaAsignaturas.get(i));
-						}
-					 //int resultado=new NPersona().CrearDocentes(listaEstudiantes);
-					 int suma= listaAsignaturas.size() + listaErroresAsignaturas.size();
-					
-					 if (listaErroresAsignaturas.size()>0)
-					 {
-						
-						 errores=write.escribirExcelAsignaturas(listaErroresAsignaturas);
-						 
-						 
-						 if(errores==true)
-						 {
-							 JOptionPane.showMessageDialog(null, "La carga de Asignaturas se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaAsignaturas.xlsx \n Asignaturas insertados: " +listaAsignaturas.size()+ 
-									 							" \n Registros con errores: " + listaErroresAsignaturas.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-						 }
-					 }
-					 else
-					 {
-						 JOptionPane.showMessageDialog(null, "La carga de Asignaturas se generó correctamente con "+listaAsignaturas.size()+" cargadas", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-					 }
-	  
-				 }
-				 
-			 }
-			  catch (Exception e) 
-			 {
-			        
-				  throw new ServletException("Cannot parse multipart request.", e);
-			    
-			 }
-			
-		}
-		if((tipo.equals("Cargar Programación Académica"))&&(continuar==true))
-		{
-			
-			ArrayList<ProgAcademica> listaProgAcademicas;
-			ArrayList<ProgAcademica> listaErroresProgAcademicas;
-			boolean errores= true;
-			 try 
-			 {
-				 listaProgAcademicas=excel.leerArchivoProgramacion(fileContent);
-				 listaErroresProgAcademicas=excel.getListaErroresProgramacion();
-				 if((listaProgAcademicas.size()==0)&&(listaErroresProgAcademicas.size()==0))
-				 {
-					 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-						request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-				 }
-				 else
-				 {
-					
-					 for(int i=0; i<listaProgAcademicas.size();i++)
-						{
-							System.out.println(listaProgAcademicas.get(i).getAsignaturaProgAcademica().toString());
-							int resultado = new NProgAcademica().Crear(listaProgAcademicas.get(i));
-						}
-					 //int resultado=new NPersona().CrearDocentes(listaEstudiantes);
-					 int suma= listaProgAcademicas.size() + listaErroresProgAcademicas.size();
-					
-					 if (listaErroresProgAcademicas.size()>0)
-					 {
-						
-						 errores=write.escribirExcelProgAcademicas(listaErroresProgAcademicas);
-						 
-						 
-						 if(errores==true)
-						 {
-							 JOptionPane.showMessageDialog(null, "La carga de Programación Académica se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaProgAcademicas.xlsx \n ProgAcademicas insertados: " +listaProgAcademicas.size()+ 
-									 							" \n Registros con errores: " + listaErroresProgAcademicas.size() + "\n Total Registros: "+ suma, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-						 }
-					 }
-					 else
-					 {
-						 JOptionPane.showMessageDialog(null, "La carga de Programación Académica se generó correctamente con "+listaProgAcademicas.size()+" cargadas", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
-					 }
-	  
-				 }
-				 
-			 }
-			  catch (Exception e) 
-			 {
-			        
-				  throw new ServletException("Cannot parse multipart request.", e);
-			    
-			 }
-			
-		}
-
-	}
 	
 	
 }

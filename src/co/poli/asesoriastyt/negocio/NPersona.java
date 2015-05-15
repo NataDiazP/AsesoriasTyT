@@ -27,6 +27,20 @@ public class NPersona {
 	Conexion conexion= new Conexion();
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
+	
+	public boolean prepararCarga() {
+		daoPersonas = new DAOPersonas();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		boolean resultadoCrear = daoPersonas.prepararCarga(c);
+		return resultadoCrear;
+	}
+	
+	
 	/**
 	 * Crear docentes.
 	 *

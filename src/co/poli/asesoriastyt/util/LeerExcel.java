@@ -32,14 +32,17 @@ public class LeerExcel
 	
 	/** The lista errores docentes. */
 	ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
-	
+	ArrayList<Persona> listaDocentes= new ArrayList<Persona>();
+	XSSFSheet hojaProg =null;
 	/** The lista errores estudiantes. */
 	ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
+	ArrayList<Persona> listaEstudiantes= new ArrayList<Persona>();
 
 	ArrayList<Asignatura> listaErroresAsignaturas= new ArrayList<Asignatura>();
+	ArrayList<Asignatura> listaAsignaturas= new ArrayList<Asignatura>();
 
 	private ArrayList<ProgAcademica> listaErroresProgramacion= new ArrayList<ProgAcademica>();
-
+	ArrayList<ProgAcademica> listaProgramacion= new ArrayList<ProgAcademica>();
 	
 	/**
 	 * The main method.
@@ -51,6 +54,98 @@ public class LeerExcel
 	}
 	
 	
+	
+	
+
+
+	/**
+	 * @return the hojaProg
+	 */
+	public XSSFSheet getHojaProg() {
+		return hojaProg;
+	}
+
+
+
+
+
+
+	/**
+	 * @param hojaProg the hojaProg to set
+	 */
+	public void setHojaProg(XSSFSheet hojaProg) {
+		this.hojaProg = hojaProg;
+	}
+
+
+
+
+
+
+	/**
+	 * @return the listaDocentes
+	 */
+	public ArrayList<Persona> getListaDocentes() {
+		return listaDocentes;
+	}
+
+
+	/**
+	 * @param listaDocentes the listaDocentes to set
+	 */
+	public void setListaDocentes(ArrayList<Persona> listaDocentes) {
+		this.listaDocentes = listaDocentes;
+	}
+
+
+	/**
+	 * @return the listaEstudiantes
+	 */
+	public ArrayList<Persona> getListaEstudiantes() {
+		return listaEstudiantes;
+	}
+
+
+	/**
+	 * @param listaEstudiantes the listaEstudiantes to set
+	 */
+	public void setListaEstudiantes(ArrayList<Persona> listaEstudiantes) {
+		this.listaEstudiantes = listaEstudiantes;
+	}
+
+
+	/**
+	 * @return the listaAsignaturas
+	 */
+	public ArrayList<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
+	}
+
+
+	/**
+	 * @param listaAsignaturas the listaAsignaturas to set
+	 */
+	public void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
+		this.listaAsignaturas = listaAsignaturas;
+	}
+
+
+	/**
+	 * @return the listaProgramacion
+	 */
+	public ArrayList<ProgAcademica> getListaProgramacion() {
+		return listaProgramacion;
+	}
+
+
+	/**
+	 * @param listaProgramacion the listaProgramacion to set
+	 */
+	public void setListaProgramacion(ArrayList<ProgAcademica> listaProgramacion) {
+		this.listaProgramacion = listaProgramacion;
+	}
+
+
 	/**
 	 * @return the listaErroresProgramacion
 	 */
@@ -123,6 +218,47 @@ public class LeerExcel
 	public void setListaErroresDocentes(ArrayList<Persona> listaErroresDocentes) {
 		this.listaErroresDocentes = listaErroresDocentes;
 	}
+	
+	public void leerArchivo(InputStream filecontent)
+	{
+		int i=0;
+		try
+		{
+		
+
+			//Create Workbook instance holding reference to .xlsx file
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
+
+			for(i=0;i<4;i++)
+			{
+				XSSFSheet sheet = workbook.getSheetAt(i);
+				if (i==0)
+				{
+					setListaEstudiantes(leerArchivoEstudiantes(sheet));
+				}
+				if(i==1)
+				{
+					setListaDocentes(leerArchivoDocentes(sheet));
+					
+				}
+				if(i==2)
+				{
+					setListaAsignaturas(leerArchivoAsignaturas(sheet));
+				}
+				if(i==3)
+				{
+					setHojaProg(sheet);
+				}
+				
+			}
+			
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+	}
 
 	/**
 	 * Leer archivo docentes.
@@ -130,7 +266,7 @@ public class LeerExcel
 	 * @param filecontent the filecontent
 	 * @return the array list
 	 */
-	public ArrayList<Persona> leerArchivoDocentes(InputStream filecontent)
+	public ArrayList<Persona> leerArchivoDocentes(XSSFSheet sheet)
 	{
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
@@ -139,11 +275,7 @@ public class LeerExcel
 		{
 		
 
-			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
-
-			//Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
+			
 
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -407,6 +539,7 @@ public class LeerExcel
 		{
 			e.printStackTrace();
 		}
+		this.listaDocentes=lista;
 		this.listaErroresDocentes=listaErroresDocentes;
 		return lista;
 
@@ -436,7 +569,7 @@ public class LeerExcel
 	 * @param filecontent the filecontent
 	 * @return the array list
 	 */
-	public ArrayList<Persona> leerArchivoEstudiantes(InputStream filecontent) {
+	public ArrayList<Persona> leerArchivoEstudiantes(XSSFSheet sheet) {
 		
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
@@ -444,13 +577,7 @@ public class LeerExcel
 		
 		try
 		{
-			
 
-			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
-
-			//Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
 
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -736,6 +863,7 @@ public class LeerExcel
 		{
 			e.printStackTrace();
 		}
+		this.listaEstudiantes=lista;
 		this.listaErroresEstudiantes=listaErroresEstudiantes;
 		return lista;
 	}
@@ -750,7 +878,7 @@ public class LeerExcel
 	 * @return the array list
 	 */
 	
-public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
+public ArrayList<Asignatura> leerArchivoAsignaturas(XSSFSheet sheet) {
 		
 		NAsignatura nasignatura= new NAsignatura();
 		ArrayList<Asignatura> lista= new ArrayList<Asignatura>();
@@ -758,13 +886,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 		
 		try
 		{
-			
 
-			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(fileContent);
-
-			//Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
 
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -859,11 +981,12 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 		{
 			e.printStackTrace();
 		}
+		this.listaAsignaturas=lista;
 		this.listaErroresAsignaturas=listaErroresAsignaturas;
 		return lista;
 	}
 	
-	public ArrayList<ProgAcademica> leerArchivoProgramacion(InputStream filecontent)
+	public ArrayList<ProgAcademica> leerArchivoProgramacion()
 	{
 		NPersona npersonas= new NPersona();
 		NAsignatura nasignatura= new NAsignatura();
@@ -871,14 +994,8 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 		ArrayList<ProgAcademica> listaErroresProgramacion= new ArrayList<ProgAcademica>();
 		try
 		{
-		
-	
-			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
-	
-			//Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
-	
+			
+			XSSFSheet sheet = getHojaProg();
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
 			int contadorColumnas =0;
@@ -889,7 +1006,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 				Row row = rowIterator.next();
 				//For each row, iterate through all the columns
 				Iterator<Cell> cellIterator = row.cellIterator();
-				if((contadorColumnas!=9)&&(contadorFilas==1))
+				if((contadorColumnas!=10)&&(contadorFilas==1))
 				{
 					return lista;
 				}
@@ -1045,7 +1162,8 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 									error=true;
 									programacion.setSemestreProgAcademica("Error");
 								}
-							break;case 9:
+							break;
+							case 9:
 								try
 								{
 									int anio=(int) cell.getNumericCellValue();
@@ -1087,6 +1205,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream fileContent) {
 		{
 			e.printStackTrace();
 		}
+		this.listaProgramacion=lista;
 		this.listaErroresProgramacion=listaErroresProgramacion;
 		return lista;
 	

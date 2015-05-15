@@ -107,7 +107,7 @@ public class DAOPersonas {
 			st.setString(12, Personas.getPlanEstudios_Estudiante());
 			st.setString(13, Personas.getSemestre_Estudiante());
 			st.setString(14, Personas.getEstado());
-			st.setString(15, Personas.getNumeroIdentificacion());
+			st.setString(15, Personas.getPerfil());
 
 			resultadoCrear = st.executeUpdate();
 			
@@ -533,5 +533,55 @@ public class DAOPersonas {
             }
 		}
 		return validar;
+	}
+
+
+	/**
+	 * @param c
+	 * @return
+	 */
+	public boolean prepararCarga(Connection c) {
+		
+		PreparedStatement st=null;
+		String sqlasistencia = "DELETE  FROM estudiantes_asesoria";
+		String sqlasesorias = "DELETE  FROM asesorias";
+		String sqlasignaturas = "DELETE  FROM asignaturas";
+		String sqlprogramacion = "DELETE  FROM programaciones_academicas";
+		String sqlpersonas= "DELETE FROM personas WHERE Perfil_Persona IN ('2','3')";
+		int resultado;
+		boolean resultadoEliminar = true;
+		try {
+			st = c.prepareStatement(sqlasistencia);
+			resultado = st.executeUpdate();
+
+			st = c.prepareStatement(sqlasesorias);
+			resultado = st.executeUpdate();
+			
+			st = c.prepareStatement(sqlprogramacion);
+			resultado = st.executeUpdate();
+			
+			st = c.prepareStatement(sqlasignaturas);
+			resultado = st.executeUpdate();
+			
+			st = c.prepareStatement(sqlpersonas);
+			resultado = st.executeUpdate();
+			
+			
+			
+			
+		} catch (SQLException ex) {
+			
+			resultadoEliminar=false;
+			Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
+
+		} finally {
+			try {
+                if(st != null) st.close();
+                if(c != null) c.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOPersonas.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return resultadoEliminar;
 	}
 }
