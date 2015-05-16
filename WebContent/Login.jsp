@@ -34,7 +34,7 @@ b {
 	<div id="header_wrapper">
 		<br /> <IMG SRC="./images/logo.png" width='15%' height='70%'
 			style="margin: 5px 0px 5px 30px; float: left;"> <IMG
-			SRC="./images/api.jpg" width='15%' height='80%' align="right"
+			SRC="./images/api.png" width='15%' height='80%' align="right"
 			style="margin: 5px 30px 5px 5px; float: right;">
 	</div>
 
