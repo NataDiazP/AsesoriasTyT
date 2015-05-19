@@ -47,7 +47,8 @@
 						<table width="100%" border="0" cellspacing="4" cellpadding="4">
 							<tr>
 								<td class="label">C&oacute;digo Encargado (*):</td>
-								<td><input type="text" name="IdEncargado" size="20"
+								<td><input type="text" name="IdEncargado" size="20" pattern=".{5,}"
+									required title="Debe tener mínimo 5 caracteres"							
 									maxlength="15" onkeypress="return validar(event)"
 									placeholder="Cédula Encargado"
 									value="<%=IdEncargado != null ? IdEncargado : ""%>"></td>
