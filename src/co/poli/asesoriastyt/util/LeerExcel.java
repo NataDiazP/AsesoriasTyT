@@ -232,23 +232,7 @@ public class LeerExcel
 			for(i=0;i<4;i++)
 			{
 				XSSFSheet sheet = workbook.getSheetAt(i);
-				if (i==0)
-				{
-					setListaEstudiantes(leerArchivoEstudiantes(sheet));
-				}
-				if(i==1)
-				{
-					setListaDocentes(leerArchivoDocentes(sheet));
-					
-				}
-				if(i==2)
-				{
-					setListaAsignaturas(leerArchivoAsignaturas(sheet));
-				}
-				if(i==3)
-				{
-					setHojaProg(sheet);
-				}
+				
 				
 			}
 			
@@ -266,8 +250,10 @@ public class LeerExcel
 	 * @param filecontent the filecontent
 	 * @return the array list
 	 */
-	public ArrayList<Persona> leerArchivoDocentes(XSSFSheet sheet)
+	public ArrayList<Persona> leerArchivoDocentes(InputStream filecontent)
 	{
+		
+		
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
 		ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
@@ -276,7 +262,8 @@ public class LeerExcel
 		
 
 			
-
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
+			XSSFSheet sheet = workbook.getSheetAt(0);
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
 			int contadorColumnas =0;
@@ -569,7 +556,7 @@ public class LeerExcel
 	 * @param filecontent the filecontent
 	 * @return the array list
 	 */
-	public ArrayList<Persona> leerArchivoEstudiantes(XSSFSheet sheet) {
+	public ArrayList<Persona> leerArchivoEstudiantes(InputStream filecontent) {
 		
 		NPersona npersona= new NPersona();
 		ArrayList<Persona> lista= new ArrayList<Persona>();
@@ -578,7 +565,8 @@ public class LeerExcel
 		try
 		{
 
-
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
+			XSSFSheet sheet = workbook.getSheetAt(0);
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
 			int contadorColumnas =0;
@@ -878,7 +866,7 @@ public class LeerExcel
 	 * @return the array list
 	 */
 	
-public ArrayList<Asignatura> leerArchivoAsignaturas(XSSFSheet sheet) {
+public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
 		
 		NAsignatura nasignatura= new NAsignatura();
 		ArrayList<Asignatura> lista= new ArrayList<Asignatura>();
@@ -886,7 +874,8 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(XSSFSheet sheet) {
 		
 		try
 		{
-
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
+			XSSFSheet sheet = workbook.getSheetAt(0);
 
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -986,7 +975,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(XSSFSheet sheet) {
 		return lista;
 	}
 	
-	public ArrayList<ProgAcademica> leerArchivoProgramacion()
+	public ArrayList<ProgAcademica> leerArchivoProgramacion( InputStream filecontent)
 	{
 		NPersona npersonas= new NPersona();
 		NAsignatura nasignatura= new NAsignatura();
@@ -994,8 +983,8 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(XSSFSheet sheet) {
 		ArrayList<ProgAcademica> listaErroresProgramacion= new ArrayList<ProgAcademica>();
 		try
 		{
-			
-			XSSFSheet sheet = getHojaProg();
+			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
+			XSSFSheet sheet = workbook.getSheetAt(0);
 			//Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
 			int contadorColumnas =0;
