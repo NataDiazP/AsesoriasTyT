@@ -67,7 +67,7 @@
 						<input type="file" id="archivodocentes" name="archivodocentes" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
 						</td>
-						<td><a class="label" href="<% out.println("archivocarga.xlsx"); %>">Ver plantilla__   Docentes</a></td>
+						<td><a class="label" href="<% out.println("docentes.xlsx"); %>">Ver plantilla__   Docentes</a></td>
 						</tr>
 						<tr>
 					
@@ -77,7 +77,7 @@
 						<input type="file" id="archivoestudiantes" name="archivoestudiantes" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
 						</td>
-						<td><a class="label" href="<% out.println("archivocarga.xlsx"); %>">Ver plantilla Estudiantes</a></td>
+						<td><a class="label" href="<% out.println("estudiantes.xlsx"); %>">Ver plantilla Estudiantes</a></td>
 						</tr>
 						<tr>
 				
@@ -87,7 +87,7 @@
 						<input type="file" id="archivoasignaturas" name="archivoasignaturas" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
 						</td>
-						<td><a class="label" href="<% out.println("archivocarga.xlsx"); %>">Ver plantilla Asignaturas</a></td>
+						<td><a class="label" href="<% out.println("asignaturas.xlsx"); %>">Ver plantilla Asignaturas</a></td>
 						</tr>
 						<tr>
 					
@@ -97,7 +97,7 @@
 						<input type="file" id="archivoprogramacion" name="archivoprogramacion" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
 						</td>
-						<td><a class="label" href="<% out.println("archivocarga.xlsx"); %>">Ver plantilla Programación</a></td>
+						<td><a class="label" href="<% out.println("programacion.xlsx"); %>">Ver plantilla Programación</a></td>
 						</tr>	
 						
 						<tr></tr>
