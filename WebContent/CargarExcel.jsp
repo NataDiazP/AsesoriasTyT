@@ -44,7 +44,7 @@
 			cellspacing="0">
 			<tr>
 				<td class="caja_01_01">&nbsp;</td>
-				<td class="caja_01_top" align="center">Filtros de búsqueda</td>
+				<td class="caja_01_top" align="center">Archivos a Cargar</td>
 				<td class="caja_01_02">&nbsp;</td>
 			</tr>
 			<tr>
@@ -55,20 +55,50 @@
 							<td></td>
 							<td></td>
 							<td></td>
-							<td><a class="label" href="<% out.println("archivocarga.xlsx"); %>">Ver plantilla Cargas</a></td>
+							
 							<td></td>
 							<td></td>
 						</tr>
 						<tr>
-						<td class="caja_01_01">&nbsp;</td>
-						<td class="caja_01_01">&nbsp;</td>
-						<td class="caja_01_01">&nbsp;</td>
-							<td>
-							<input type="file" id="uploadFile" name="uploadFile" onchange="return checkfile(this);"
+						
+						
+						<td class="label" align="left">Archivo Docentes</td>
+						<td>
+						<input type="file" id="archivodocentes" name="archivodocentes" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
-							</td>
-	
+						</td>
+						<td><a class="label" href="<% out.println("docentes.xlsx"); %>">Ver plantilla__   Docentes</a></td>
 						</tr>
+						<tr>
+					
+						
+						<td class="label" align="left" >Archivo Estudiantes</td>
+						<td>
+						<input type="file" id="archivoestudiantes" name="archivoestudiantes" onchange="return checkfile(this);"
+							title="Permite seleccionar un archivo">
+						</td>
+						<td><a class="label" href="<% out.println("estudiantes.xlsx"); %>">Ver plantilla Estudiantes</a></td>
+						</tr>
+						<tr>
+				
+					
+						<td class="label" align="left">Archivo Asignaturas</td>
+						<td>
+						<input type="file" id="archivoasignaturas" name="archivoasignaturas" onchange="return checkfile(this);"
+							title="Permite seleccionar un archivo">
+						</td>
+						<td><a class="label" href="<% out.println("asignaturas.xlsx"); %>">Ver plantilla Asignaturas</a></td>
+						</tr>
+						<tr>
+					
+						
+						<td class="label" align="left">Archivo Programación Académica</td>
+						<td>
+						<input type="file" id="archivoprogramacion" name="archivoprogramacion" onchange="return checkfile(this);"
+							title="Permite seleccionar un archivo">
+						</td>
+						<td><a class="label" href="<% out.println("programacion.xlsx"); %>">Ver plantilla Programación</a></td>
+						</tr>	
 						
 						<tr></tr>
 						</table>

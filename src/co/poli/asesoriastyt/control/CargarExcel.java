@@ -112,39 +112,122 @@ public class CargarExcel extends HttpServlet {
 		List<FileItem> items;
 		String tipo="";
 		boolean continuar= true;
-		InputStream fileContent=null;
-		
-		
+		InputStream archivodocentes=null;
+		InputStream archivoestudiantes=null;
+		InputStream archivoasignaturas=null;
+		InputStream archivoprogramacion=null;
+		String mensajeI="";
+		String fieldName=null;
+		String fileName = null;
 		try {
 			items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 
 			for (FileItem item : items) 
 			{
 
-            	if(item.getFieldName().equals("uploadFile"))
+           	if(item.getFieldName().equals("archivodocentes"))
             	{
-	                String fieldName = item.getName();
-	                String fileName = FilenameUtils.getName(item.getName());
-	                if((fieldName.equals(""))&&(continuar==true))
+	                fieldName = item.getName();
+	                fileName = FilenameUtils.getName(item.getName());
+	                if(fieldName.equals(""))
 	                {
 	                	continuar=false;
-	                	 JOptionPane.showMessageDialog(null, "Debe seleccionar el archivo a cargar", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						 			request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+	                	 mensajeI=mensajeI+"\n Debe seleccionar el archivo de docentes a cargar";
 	                }
 	                else
 	                {
-	                	
 	                	int resultado = fieldName.indexOf("xlsx");
 	           		 
 	            		if((resultado == -1) &&(continuar==true))
 	            		{
 	            			continuar=false;
-	                    	JOptionPane.showMessageDialog(null, "Debe seleccionar una extensión válida (xlsx)", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-				 			request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+	            			mensajeI=mensajeI+ "\n Debe seleccionar una extensión válida para el archivo de docentes(xlsx)";
+				 			
 	            		}
 	                    else
 	                    {
-	                    	fileContent = item.getInputStream();
+	                    	archivodocentes = item.getInputStream();
+	                    	
+	                    }
+	                	
+	                }
+
+            	}
+            	if(item.getFieldName().equals("archivoestudiantes"))
+            	{
+	                fieldName = item.getName();
+	                fileName = FilenameUtils.getName(item.getName());
+	                if(fieldName.equals(""))
+	                {
+	                	continuar=false;
+	                	mensajeI=mensajeI+"\n Debe seleccionar el archivo de estudiantes a cargar";
+	                }
+	                else
+	                {
+	                	int resultado = fieldName.indexOf("xlsx");
+	           		 
+	            		if((resultado == -1) &&(continuar==true))
+	            		{
+	            			continuar=false;
+	            			mensajeI=mensajeI+ "\n Debe seleccionar una extensión válida para el archvo de estudiantes(xlsx)";
+	            		}
+	                    else
+	                    {
+	                    	archivoestudiantes = item.getInputStream();
+	                    	
+	                    }
+	                	
+	                }
+
+            	}
+            	if(item.getFieldName().equals("archivoasignaturas"))
+            	{
+	                fieldName = item.getName();
+	                fileName = FilenameUtils.getName(item.getName());
+	                if(fieldName.equals(""))
+	                {
+	                	continuar=false;
+	                	mensajeI=mensajeI+"\n Debe seleccionar el archivo de asignaturas a cargar";
+	                }
+	                else
+	                {
+	                	int resultado = fieldName.indexOf("xlsx");
+	           		 
+	            		if((resultado == -1) &&(continuar==true))
+	            		{
+	            			continuar=false;
+	            			mensajeI=mensajeI+ "\n Debe seleccionar una extensión válida para el archvo de asignaturas(xlsx)";
+	            		}
+	                    else
+	                    {
+	                    	archivoasignaturas = item.getInputStream();
+	                    	
+	                    }
+	                	
+	                }
+
+            	}
+            	if(item.getFieldName().equals("archivoprogramacion"))
+            	{
+	                fieldName = item.getName();
+	                fileName = FilenameUtils.getName(item.getName());
+	                if(fieldName.equals(""))
+	                {
+	                	continuar=false;
+	                	mensajeI=mensajeI+"\n Debe seleccionar el archivo de programación a cargar";
+	                }
+	                else
+	                {
+	                	int resultado = fieldName.indexOf("xlsx");
+	           		 
+	            		if((resultado == -1) &&(continuar==true))
+	            		{
+	            			continuar=false;
+	            			mensajeI=mensajeI+ "\n Debe seleccionar una extensión válida para el archvo de programación académica(xlsx)";
+	            		}
+	                    else
+	                    {
+	                    	archivoprogramacion = item.getInputStream();
 	                    	
 	                    }
 	                	
@@ -152,9 +235,12 @@ public class CargarExcel extends HttpServlet {
 
             	}
 
-            	            	
-
             }
+			if(continuar==false)
+			{
+				JOptionPane.showMessageDialog(null, mensajeI, "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+	 			request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
+			}
 		} catch (FileUploadException e1) {
 			e1.printStackTrace();
 		}
@@ -164,7 +250,7 @@ public class CargarExcel extends HttpServlet {
 			boolean resultadoperparar=npersona.prepararCarga();
 			if(resultadoperparar==true)
 			{
-				 	excel.leerArchivo(fileContent);
+				 
 				 	ArrayList<Persona> listaEstudiantes;
 					ArrayList<Persona> listaErroresEstudiantes;
 				
@@ -180,13 +266,13 @@ public class CargarExcel extends HttpServlet {
 					 try 
 					 { 
 						 
-						 listaDocentes=excel.getListaDocentes();
+						 listaDocentes=excel.leerArchivoDocentes(archivodocentes);
 						 listaErroresDocentes=excel.getListaErroresDocentes();
 						 
-						 listaEstudiantes=excel.getListaEstudiantes();
+						 listaEstudiantes=excel.leerArchivoEstudiantes(archivoestudiantes);
 						 listaErroresEstudiantes=excel.getListaErroresEstudiantes();
 						 
-						 listaAsignaturas=excel.getListaAsignaturas();
+						 listaAsignaturas=excel.leerArchivoAsignaturas(archivoasignaturas);
 						 listaErroresAsignaturas=excel.getListaErroresAsignaturas();
 						 
 						 if(((listaDocentes.size()==0)&&(listaErroresDocentes.size()==0))||((listaEstudiantes.size()==0)&&(listaErroresEstudiantes.size()==0))||((listaAsignaturas.size()==0)&&(listaErroresAsignaturas.size()==0)))
@@ -213,7 +299,7 @@ public class CargarExcel extends HttpServlet {
 								}
 						 }
 						 
-						 excel.leerArchivoProgramacion();
+						 excel.leerArchivoProgramacion(archivoprogramacion);
 						 
 						 listaProgAcademicas=excel.getListaProgramacion();
 						 listaErroresProgAcademicas=excel.getListaErroresProgramacion();
@@ -322,7 +408,8 @@ public class CargarExcel extends HttpServlet {
 					  catch (Exception e) 
 					 {
 					        
-						  throw new ServletException("Cannot parse multipart request.", e);
+						  JOptionPane.showMessageDialog(null, "Ocurrió un error durante la preparación de la carga de archivos", "Error - AsesoriasTyT", JOptionPane.ERROR_MESSAGE);
+							request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 					    
 					 }
 				}
