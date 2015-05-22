@@ -106,7 +106,8 @@ public class ServletReporte extends HttpServlet
 	        
 	        if(((fechaInicio=="")&&(fechaFin!="")))
 	        {
-	        	JOptionPane.showMessageDialog(null, "Debe seleccionar un rango de fechas v�lido", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+	        	JOptionPane.showMessageDialog(null, "Debe seleccionar un rango de fechas válido", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+	        	request.getRequestDispatcher("./Reportes.jsp").forward(request, response);
 	        	respuesta=false;
 	        }
 	        

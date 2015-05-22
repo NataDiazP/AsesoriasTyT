@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.ProgAcademica;
-import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.negocio.NProgAcademica;
 import co.poli.asesoriastyt.util.Conexion;
 
@@ -203,7 +201,7 @@ public class ProgAcademicas extends HttpServlet {
 					}
 				} else if (!registroExiste) {
 					response.sendRedirect("ProgAcademicas.jsp");
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la progrmación académica", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la programación académica", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 

@@ -127,7 +127,7 @@
 									placeholder="Celular"
 									value="<%=celular != null ? celular : ""%>"></td>
 								<td class="label">Correo(*):</td>
-								<td><input type="email" name="correo" size="30"
+								<td><input name="correo" size="30"
 									placeholder="Correo electrónico"
 									value="<%=correo != null ? correo : ""%>"></td>
 								<td class="label">Estado (*):</td>
