@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 20px 0 0px 13px;
+}
+
+h3 { margin: 0; padding: 0; }
+
+.arrowlistmenu{
+	width: 188px; /*width of accordion menu*/
+	margin: 0;
+	padding-top:40px;
+	position: absolute;
+}
+
+.arrowlistmenu .menuheader { /*Item padre)*/
+	font: 11px Trebuchet MS;
+	color: #000;
+	margin-bottom: 1px; /*bottom spacing between header and rest of content*/
+	text-transform: uppercase;
+	padding: 9px 4px 8px 17px; /*header text is indented 10px*/
+	cursor: pointer;
+	background-color: #87BD8E;
+	background-repeat: no-repeat;
+	background-position: 3px center;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+
+.arrowlistmenu .menuheader:hover {
+	background-color: #ABE2B2;
+}
+
+.arrowlistmenu ul{ /*CSS for UL of each sub menu*/
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 2px;
+	margin-bottom: 1px; /*bottom spacing between each UL and rest of content*/
+}
+
+.arrowlistmenu ul li{
+	padding: 5px 3px 5px 0; /*bottom spacing between menu items*/
+	margin: 0;
+}
+
+/*2nd level*/
+/***********************************/
+.arrowlistmenu ul li .opensubheader{ /*Open state CSS for sub menu header*/
+	background: #EEE ;
+	color: #666 !important;
+	padding: 5px 3px 5px 15px;
+
+}
+
+.arrowlistmenu ul li .closedsubheader{ /*Closed state CSS for sub menu header*/
+	background: #FFF ;
+	color: #666 !important;
+	padding: 5px 3px 5px 15px;
+
+}
+
+ul.subcategoryitems { margin-left: 5px; }
+/***********************************/
+
+/*3rd level*/
+/***********************************/
+.arrowlistmenu ul li .open2subheader{ /*Open state CSS for sub menu header*/ background: #EEE url(../images/bullet_01.png) no-repeat 2% 50%                                !important; color: #666 !important; }
+
+.arrowlistmenu ul li .closed2subheader{ /*Closed state CSS for sub menu header*/ background: #FFF url(../images/bullet_02.png) no-repeat 2% 50%                                !important; color: #666 !important; }
+
+ul.sub2categoryitems {
+ margin-left: 5px; }
+/***********************************/
+ 
+.arrowlistmenu ul li a{
+	color: #666;
+	display: block;
+	padding-left: 15px; /*link text is indented 19px*/
+	text-decoration: none;
+	font: 11px Verdana;
+	background-color: #FFF;
+}
+
+.arrowlistmenu ul li a:visited{ color: #666; }
+
+.arrowlistmenu ul li a:hover{ /*hover state CSS*/
+	color: #666;
+	background-color: #ccc;
+}
+
+.arrowlistmenu ul li a.subexpandable:hover{ /*hover state CSS for sub menu header*/ background: lightblue; }
+
+.Noexpandable{ 
+	font: 11px Trebuchet MS;
+	color: #04467A;
+	margin-bottom: 1px; 
+	text-transform: uppercase;
+	padding: 4px 4px 4px 18px; 
+	cursor: hand;
+	cursor: pointer;
+	background-color: #B3C4D9;
+	background-repeat: no-repeat;
+	background-position: 4px center;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+
+.Noexpandable a{ 
+	color: #000;
+	text-decoration:none;
+}
+.Noexpandable a:hover{ 
+	text-decoration:underline;
+}
