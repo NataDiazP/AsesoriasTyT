@@ -67,7 +67,7 @@
 						<input type="file" id="archivodocentes" name="archivodocentes" onchange="return checkfile(this);"
 							title="Permite seleccionar un archivo">
 						</td>
-						<td><a class="label" href="<% out.println("docentes.xlsx"); %>">Ver plantilla__   Docentes</a></td>
+						<td><a class="label" href="<% out.println("docentes.xlsx"); %>">Ver plantilla Docentes</a></td>
 						</tr>
 						<tr>
 					
