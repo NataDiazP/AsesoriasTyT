@@ -115,30 +115,6 @@ public class Asesorias extends HttpServlet {
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Asesorias.jsp");
-		} else if (nombreAsesoria.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese el nombre de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (docente.equals("Seleccione...")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (asignatura.equals("Seleccione...")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione la asignatura de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (fecha.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione la fecha de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (horaI.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de inicio de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (horaF.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de fin de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (lugar.equals("Seleccione...")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione el lugar o aula de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-		} else if (estado.equals("Seleccione...")) {
-			JOptionPane.showMessageDialog(null, "Por favor, seleccione el estado de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 		} else {
 			Asesorias.setIdAsesoria(id);
 			Asesorias.setNombreAsesoria(nombreAsesoria);
@@ -167,178 +143,231 @@ public class Asesorias extends HttpServlet {
 			}
 
 			if ("Crear".equals(request.getParameter("action"))) {
-				boolean registroExiste = false;
-				try {
-					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Asesoria from asesorias").executeQuery();
-					while (r.next()) {
-						if (id.equals(Integer.toString(r.getInt(1)))) {
-							registroExiste = true;
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT",
-									JOptionPane.WARNING_MESSAGE);
-							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-						}
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-				if (!registroExiste) {
-					if (fechaActual.after(fechaAsesoria)) {
-						JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (horaFin < horaIni || (horaFin == horaIni && minutFin < minutIni)) {
-						JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (horaFin == horaIni && minutFin == minutIni) {
-						JOptionPane.showMessageDialog(null, "Las horas de inicio y de fin de la asesoría no deben ser iguales.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (docente.equals("")) {
-						JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else {
-						int resultado = new NAsesoria().Crear(Asesorias);
-						try {
-							response.sendRedirect("Asesorias.jsp");
-							JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-							if (!("Biblioteca").equals(Asesorias.getLugar()) && !("Otro").equals(Asesorias.getLugar()) && !("Palmeras").equals(Asesorias.getLugar()) &&
-									!("Almendros").equals(Asesorias.getLugar()) && !("Seleccione...").equals(Asesorias.getLugar())) {
-								String emailEncargado = "";
-								try {
-									ResultSet r = Connection
-											.getConnection()
-											.prepareStatement(
-													"Select eb.Correo_Encargado_Bloque from encargados_bloques eb, bloques b WHERE b.Id_Bloque = '" + bloque
-															+ "' AND eb.Id_Encargado_Bloque = b.Encargado_Bloque").executeQuery();
-									while (r.next()) {
-										emailEncargado = r.getString(1);
-									}
-								} catch (SQLException e) {
-									e.printStackTrace();
-								}
-
-								NPersona negocioP = new NPersona();
-								Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
-								StringBuilder stringBuilder = new StringBuilder();
-								String mensaje = "";
-
-								stringBuilder.append("Cordial saludo, <br/> <br/>");
-								stringBuilder.append("El docente ");
-								stringBuilder.append(nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido() + " ");
-								stringBuilder.append("con documento de identidad número " + nombreDocente.getNumeroIdentificacion());
-								stringBuilder.append(" solicita el aula " + Asesorias.getLugar());
-								stringBuilder.append(" para el día " + Asesorias.getFecha() + " a las " + Asesorias.getHoraI());
-								stringBuilder.append(" con el fin de dictar una asesoría académica a sus estudiantes.");
-								stringBuilder.append(" Por favor confirmar la reserva al correo del docente: ");
-								stringBuilder.append(nombreDocente.getCorreoElectronico());
-								stringBuilder
-										.append("<br/> <br/> <i>Este correo fue enviado automáticamente desde un sistema programado. Para información en general comuníquese con el docente que solicita la reserva.<i/>");
-								mensaje = stringBuilder.toString();
-
-								SMTPConfig.sendMail("Solicitud reserva de aula", mensaje, emailEncargado);
+				if (nombreAsesoria.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, ingrese el nombre de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (docente.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (asignatura.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la asignatura de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (fecha.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la fecha de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (horaI.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de inicio de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (horaF.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de fin de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (lugar.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione el lugar o aula de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (estado.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione el estado de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else {
+					boolean registroExiste = false;
+					try {
+						ResultSet r = Connection.getConnection().prepareStatement("Select Id_Asesoria from asesorias").executeQuery();
+						while (r.next()) {
+							if (id.equals(Integer.toString(r.getInt(1)))) {
+								registroExiste = true;
+								JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación de la asesoría", "Advertencia - AsesoriasTyT",
+										JOptionPane.WARNING_MESSAGE);
+								request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 							}
-							request.setAttribute("cli", resultado);
-						} catch (Exception e) {
-							e.printStackTrace();
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+					if (!registroExiste) {
+						if (fechaActual.after(fechaAsesoria)) {
+							JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else if (horaFin < horaIni || (horaFin == horaIni && minutFin < minutIni)) {
+							JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else if (horaFin == horaIni && minutFin == minutIni) {
+							JOptionPane.showMessageDialog(null, "Las horas de inicio y de fin de la asesoría no deben ser iguales.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else if (docente.equals("")) {
+							JOptionPane.showMessageDialog(null, "Por favor, ingrese el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else {
+							int resultado = new NAsesoria().Crear(Asesorias);
+							try {
+								response.sendRedirect("Asesorias.jsp");
+								JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+								if (!("Biblioteca").equals(Asesorias.getLugar()) && !("Otro").equals(Asesorias.getLugar()) && !("Palmeras").equals(Asesorias.getLugar()) &&
+										!("Almendros").equals(Asesorias.getLugar()) && !("Seleccione...").equals(Asesorias.getLugar())) {
+									String emailEncargado = "";
+									try {
+										ResultSet r = Connection
+												.getConnection()
+												.prepareStatement(
+														"Select eb.Correo_Encargado_Bloque from encargados_bloques eb, bloques b WHERE b.Id_Bloque = '" + bloque
+																+ "' AND eb.Id_Encargado_Bloque = b.Encargado_Bloque").executeQuery();
+										while (r.next()) {
+											emailEncargado = r.getString(1);
+										}
+									} catch (SQLException e) {
+										e.printStackTrace();
+									}
+
+									NPersona negocioP = new NPersona();
+									Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
+									StringBuilder stringBuilder = new StringBuilder();
+									String mensaje = "";
+
+									stringBuilder.append("Cordial saludo, <br/> <br/>");
+									stringBuilder.append("El docente ");
+									stringBuilder.append(nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido() + " ");
+									stringBuilder.append("con documento de identidad número " + nombreDocente.getNumeroIdentificacion());
+									stringBuilder.append(" solicita el aula " + Asesorias.getLugar());
+									stringBuilder.append(" para el día " + Asesorias.getFecha() + " a las " + Asesorias.getHoraI());
+									stringBuilder.append(" con el fin de dictar una asesoría académica a sus estudiantes.");
+									stringBuilder.append(" Por favor confirmar la reserva al correo del docente: ");
+									stringBuilder.append(nombreDocente.getCorreoElectronico());
+									stringBuilder
+											.append("<br/> <br/> <i>Este correo fue enviado automáticamente desde un sistema programado. Para información en general comuníquese con el docente que solicita la reserva.<i/>");
+									mensaje = stringBuilder.toString();
+
+									SMTPConfig.sendMail("Solicitud reserva de aula", mensaje, emailEncargado);
+								}
+								request.setAttribute("cli", resultado);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
 					}
 				}
 			}
 
 			if ("Modificar".equals(request.getParameter("action"))) {
-				boolean registroExiste = false;
-				int sw = 0;
-				try {
-					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Asesoria from asesorias").executeQuery();
-					while (r1.next() && sw == 0) {
-						if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
-							registroExiste = false;
-						} else {
-							registroExiste = true;
-							sw = 1;
-						}
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-				if (registroExiste) {
-					if (fechaActual.after(fechaAsesoria)) {
-						JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (horaFin < horaIni || (horaFin == horaIni && minutFin < minutIni)) {
-						JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (horaFin == horaIni && minutFin == minutIni) {
-						JOptionPane.showMessageDialog(null, "Las horas de inicio y de fin de la asesoría no deben ser iguales.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					} else if (docente.equals("")) {
-						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						response.sendRedirect("Asesorias.jsp");
-					} else {
-						int confirma = 0;
-						if (estado.equals("Confirmada") || estado.equals("Ejecutada")) {
-							confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría?");
-						} else if (estado.equals("Pendiente")) {
-							confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría y pasarla a estado Pendiente?");
-						} else if (estado.equals("Cancelada")) {
-							confirma = JOptionPane.showConfirmDialog(null, "¿Desea cancelar esta asesoría?");
-						}
-						if (confirma == JOptionPane.YES_OPTION) {
-							int resultadoModificar = new NAsesoria().Modificar(Asesorias);
-							request.setAttribute("cli", resultadoModificar);
-							JOptionPane.showMessageDialog(null, "Se modificó correctamente la asesoría.\nSe notificará a los estudiantes inscritos.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-
-							NPersona negocioP = new NPersona();
-							Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
-							List<EstudianteAsesoria> ListaAsistencia = new NAsesoria().ListadoAsistentes(id);
-							String destinatarios = "";
-							StringBuilder stringBuilder = new StringBuilder();
-							String mensaje = "", asunto = "";
-
-							if (ListaAsistencia.size() > 0 && !estado.equals("Ejecutada")) {
-								if (estado.equals("Confirmada") || estado.equals("Pendiente")) {
-									asunto = "Actualización en asesoría";
-									stringBuilder.append("Hola <br/> <br/>");
-									stringBuilder.append("Se han realizado actualizaciones en la asesoría a la que se encuentra"
-											+ " inscrito con el docente " + nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido() + ":");
-									stringBuilder.append("<br/> <br/> Asignatura: ");
-									stringBuilder.append(Asesorias.getAsignatura());
-									stringBuilder.append("<br/> Fecha: ");
-									stringBuilder.append(Asesorias.getFecha());
-									stringBuilder.append("<br/> Hora: ");
-									stringBuilder.append(Asesorias.getHoraI());
-									stringBuilder.append("<br/> Lugar: ");
-									stringBuilder.append(Asesorias.getLugar());
-									stringBuilder.append("<br/> Observaciones: ");
-									stringBuilder.append(Asesorias.getObservaciones());
-									stringBuilder.append("<br/> Estado: ");
-									stringBuilder.append(Asesorias.getEstado());
-									stringBuilder.append("<br/> <br/> <i>En caso de alguna eventualidad se le informará oportunamente por este mismo medio. <i/>");
-								} else if (estado.equals("Cancelada")) {
-									asunto = "Cancelación asesoría";
-									stringBuilder.append("Hola <br/> <br/> Se ha cancelado la asesoría con el docente " + nombreDocente.getNombreCompleto()
-											+ " " + nombreDocente.getPrimerApellido() + " a la que usted estaba inscrito.");
-								}
-
-								mensaje = stringBuilder.toString();
-								for (EstudianteAsesoria estudianteAsesoria : ListaAsistencia) {
-									destinatarios = destinatarios + estudianteAsesoria.getEmailEstudiante() + ",";
-								}
-
-								SMTPConfig.sendMail(asunto, mensaje, destinatarios);
-							}
-							response.sendRedirect("Asesorias.jsp");
-						} else if (confirma == JOptionPane.NO_OPTION) {
-							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-						} else if (confirma == JOptionPane.CLOSED_OPTION) {
-							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-						} else if (confirma == JOptionPane.CANCEL_OPTION) {
-							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-						}
-					}
-				} else if (!registroExiste) {
+				if (nombreAsesoria.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, ingrese el nombre de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
-					JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+				} else if (docente.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (asignatura.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la asignatura de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (fecha.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la fecha de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (horaI.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de inicio de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (horaF.equals("")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de fin de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (lugar.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione el lugar o aula de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else if (estado.equals("Seleccione...")) {
+					JOptionPane.showMessageDialog(null, "Por favor, seleccione el estado de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+				} else {
+					boolean registroExiste = false;
+					int sw = 0;
+					try {
+						ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Asesoria from asesorias").executeQuery();
+						while (r1.next() && sw == 0) {
+							if (!id.equals(r1.getString(1)) && (!id.equals(""))) {
+								registroExiste = false;
+							} else {
+								registroExiste = true;
+								sw = 1;
+							}
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+					if (registroExiste) {
+						if (fechaActual.after(fechaAsesoria)) {
+							JOptionPane.showMessageDialog(null, "La fecha de la asesoría no debe ser menor a la fecha actual.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else if (horaFin < horaIni || (horaFin == horaIni && minutFin < minutIni)) {
+							JOptionPane.showMessageDialog(null, "La hora de fin de la asesoría no debe ser menor a la hora inicial.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else if (horaFin == horaIni && minutFin == minutIni) {
+							JOptionPane.showMessageDialog(null, "Las horas de inicio y de fin de la asesoría no deben ser iguales.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						} else if (docente.equals("")) {
+							JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+							response.sendRedirect("Asesorias.jsp");
+						} else {
+							int confirma = 0;
+							if (estado.equals("Confirmada") || estado.equals("Ejecutada")) {
+								confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría?");
+							} else if (estado.equals("Pendiente")) {
+								confirma = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información de esta asesoría y pasarla a estado Pendiente?");
+							} else if (estado.equals("Cancelada")) {
+								confirma = JOptionPane.showConfirmDialog(null, "¿Desea cancelar esta asesoría?");
+							}
+							if (confirma == JOptionPane.YES_OPTION) {
+								int resultadoModificar = new NAsesoria().Modificar(Asesorias);
+								request.setAttribute("cli", resultadoModificar);
+								JOptionPane.showMessageDialog(null, "Se modificó correctamente la asesoría.\nSe notificará a los estudiantes inscritos.", "AsesoriasTyT",
+										JOptionPane.INFORMATION_MESSAGE);
+
+								NPersona negocioP = new NPersona();
+								Persona nombreDocente = negocioP.Buscar(Asesorias.getDocente());
+								List<EstudianteAsesoria> ListaAsistencia = new NAsesoria().ListadoAsistentes(id);
+								String destinatarios = "";
+								StringBuilder stringBuilder = new StringBuilder();
+								String mensaje = "", asunto = "";
+
+								if (ListaAsistencia.size() > 0 && !estado.equals("Ejecutada")) {
+									if (estado.equals("Confirmada") || estado.equals("Pendiente")) {
+										asunto = "Actualización en asesoría";
+										stringBuilder.append("Hola <br/> <br/>");
+										stringBuilder.append("Se han realizado actualizaciones en la asesoría a la que se encuentra"
+												+ " inscrito con el docente " + nombreDocente.getNombreCompleto() + " " + nombreDocente.getPrimerApellido() + ":");
+										stringBuilder.append("<br/> <br/> Asignatura: ");
+										stringBuilder.append(Asesorias.getAsignatura());
+										stringBuilder.append("<br/> Fecha: ");
+										stringBuilder.append(Asesorias.getFecha());
+										stringBuilder.append("<br/> Hora: ");
+										stringBuilder.append(Asesorias.getHoraI());
+										stringBuilder.append("<br/> Lugar: ");
+										stringBuilder.append(Asesorias.getLugar());
+										stringBuilder.append("<br/> Observaciones: ");
+										stringBuilder.append(Asesorias.getObservaciones());
+										stringBuilder.append("<br/> Estado: ");
+										stringBuilder.append(Asesorias.getEstado());
+										stringBuilder.append("<br/> <br/> <i>En caso de alguna eventualidad se le informará oportunamente por este mismo medio. <i/>");
+									} else if (estado.equals("Cancelada")) {
+										asunto = "Cancelación asesoría";
+										stringBuilder.append("Hola <br/> <br/> Se ha cancelado la asesoría con el docente " + nombreDocente.getNombreCompleto()
+												+ " " + nombreDocente.getPrimerApellido() + " a la que usted estaba inscrito.");
+									}
+
+									mensaje = stringBuilder.toString();
+									for (EstudianteAsesoria estudianteAsesoria : ListaAsistencia) {
+										destinatarios = destinatarios + estudianteAsesoria.getEmailEstudiante() + ",";
+									}
+
+									SMTPConfig.sendMail(asunto, mensaje, destinatarios);
+								}
+								response.sendRedirect("Asesorias.jsp");
+							} else if (confirma == JOptionPane.NO_OPTION) {
+								request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+							} else if (confirma == JOptionPane.CLOSED_OPTION) {
+								request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+							} else if (confirma == JOptionPane.CANCEL_OPTION) {
+								request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+							}
+						}
+					} else if (!registroExiste) {
+						request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+						JOptionPane.showMessageDialog(null, "Registro inexistente, por favor verifique la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			}
 

@@ -100,7 +100,7 @@
 								</td>
 								<td><input type="text" name="id" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Código"
-									value="<%=id == null ? 1 : generarIdAsesoria.getIdAsesoria()%>"></td>
+									value="<%=id != null ? id : generarIdAsesoria.getIdAsesoria()%>"></td>
 								<td class="label">Nombre (*):</td>
 								<td><input type="text" name="nombreAsesoria" size="20"
 									maxlength="50" placeholder="Nombre Asesoría"
@@ -201,7 +201,7 @@
 								<td class="label">Cupos Disponibles:</td>
 								<td><input type="text" name="cuposD" size="20"
 									placeholder="Cupos Disponibles"
-									onkeypress="return validar(event)"
+									onkeypress="return validar(event)" disabled
 									value="<%=cuposD != null ? cuposD : ""%>"></td>
 								<td class="label">Recursos de Apoyo:</td>
 								<td><textarea name="recursosApoyo" size="30"
