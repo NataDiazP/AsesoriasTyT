@@ -119,12 +119,31 @@ public class CargarExcel extends HttpServlet {
 		String mensajeI="";
 		String fieldName=null;
 		String fileName = null;
+		String ruta="";
+		
 		try {
 			items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 
 			for (FileItem item : items) 
 			{
 
+			if(item.getFieldName().equals("ruta"))
+            	{
+	                fieldName = item.getString();
+	                fileName = FilenameUtils.getName(item.getName());
+	                if(fieldName.equals(""))
+	                {
+	                	continuar=false;
+	                	 mensajeI=mensajeI+"\n Debe ingresar una ruta válida donde se puedan almacenar los archivos con los posibles errores de la carga";
+	                }
+	                else
+	                {
+	                	
+	                    ruta = fieldName;
+
+	                }
+
+            	}
            	if(item.getFieldName().equals("archivodocentes"))
             	{
 	                fieldName = item.getName();
@@ -317,6 +336,7 @@ public class CargarExcel extends HttpServlet {
 										System.out.println(listaProgAcademicas.get(i).getAsignaturaProgAcademica().toString());
 										int resultado = new NProgAcademica().Crear(listaProgAcademicas.get(i));
 									}
+								 String ruta2= ruta.replace("/","\\");
 								 String mensaje="";
 								 int sumadocentes= listaDocentes.size() + listaErroresDocentes.size();
 								 int sumaestudiantes= listaEstudiantes.size() + listaErroresEstudiantes.size();
@@ -326,7 +346,7 @@ public class CargarExcel extends HttpServlet {
 								 if (listaErroresDocentes.size()>0)
 								 {
 									
-									 errores=write.escribirExcelDocentes(listaErroresDocentes);
+									 errores=write.escribirExcelDocentes(listaErroresDocentes,ruta2);
 									 
 									 
 									 if(errores==true)
@@ -334,6 +354,11 @@ public class CargarExcel extends HttpServlet {
 										 mensaje= mensaje+" \n La carga de docentes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaDocentes.xlsx \n Docentes insertados: " +listaDocentes.size()+ 
 												 							" \n Registros con errores: " + listaErroresDocentes.size() + "\n Total Registros: "+ sumadocentes;
 											
+									 }
+									 else
+									 {
+										 mensaje= mensaje+" \n La carga de docentes se generó con excepciones \n No se pudo generar el archivo ErrorCargaDocentes.xlsx la ruta no es válida \n Docentes insertados: " +listaDocentes.size()+ 
+						 							" \n Registros con errores: " + listaErroresDocentes.size() + "\n Total Registros: "+ sumadocentes;
 									 }
 								 }
 								 else
@@ -344,7 +369,7 @@ public class CargarExcel extends HttpServlet {
 								 if (listaErroresEstudiantes.size()>0)
 								 {
 									
-									 errores=write.escribirExcelEstudiantes(listaErroresEstudiantes);
+									 errores=write.escribirExcelEstudiantes(listaErroresEstudiantes,ruta2);
 									 
 									 
 									 if(errores==true)
@@ -352,6 +377,12 @@ public class CargarExcel extends HttpServlet {
 										 mensaje= mensaje + "\n La carga de Estudiantes se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaEstudiantes.xlsx \n Estudiantes insertados: " +listaEstudiantes.size()+ 
 												 							" \n Registros con errores: " + listaErroresEstudiantes.size() + "\n Total Registros: "+ sumaestudiantes;
 											
+									 }
+									 else
+									 {
+										 mensaje= mensaje + "\n La carga de Estudiantes se generó con excepciones \n No se pudo generar el archivo ErrorCargaEstudiantes.xlsx la ruta no es válida \n Estudiantes insertados: " +listaEstudiantes.size()+ 
+						 							" \n Registros con errores: " + listaErroresEstudiantes.size() + "\n Total Registros: "+ sumaestudiantes;
+										 
 									 }
 								 }
 								 else
@@ -363,13 +394,18 @@ public class CargarExcel extends HttpServlet {
 								 if (listaErroresAsignaturas.size()>0)
 								 {
 									
-									 errores=write.escribirExcelAsignaturas(listaErroresAsignaturas);
+									 errores=write.escribirExcelAsignaturas(listaErroresAsignaturas,ruta2);
 									 
 									 
 									 if(errores==true)
 									 {
 										 mensaje= mensaje +"\n La carga de Asignaturas se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaAsignaturas.xlsx \n Asignaturas insertados: " +listaAsignaturas.size()+ 
 												 							" \n Registros con errores: " + listaErroresAsignaturas.size() + "\n Total Registros: "+ sumaasignaturas;
+									 }
+									 else
+									 {
+										 mensaje= mensaje +"\n La carga de Asignaturas se generó con excepciones \n No se pudo generar el archivo ErrorCargaAsignaturas.xlsx la ruta no es válida \n Asignaturas insertados: " +listaAsignaturas.size()+ 
+						 							" \n Registros con errores: " + listaErroresAsignaturas.size() + "\n Total Registros: "+ sumaasignaturas; 
 									 }
 								 }
 								 else
@@ -381,7 +417,7 @@ public class CargarExcel extends HttpServlet {
 								 if (listaErroresProgAcademicas.size()>0)
 								 {
 									
-									 errores=write.escribirExcelProgAcademicas(listaErroresProgAcademicas);
+									 errores=write.escribirExcelProgAcademicas(listaErroresProgAcademicas,ruta2);
 									 
 									 
 									 if(errores==true)
@@ -389,6 +425,12 @@ public class CargarExcel extends HttpServlet {
 										 mensaje= mensaje + "\n La carga de Programación Académica se generó con excepciones \n Puede validar los errores en el archivo ErrorCargaProgAcademicas.xlsx \n Programación Académica insertada: " +listaProgAcademicas.size()+ 
 												 							" \n Registros con errores: " + listaErroresProgAcademicas.size() + "\n Total Registros: "+ sumaprogramacion;
 											
+									 }
+									 else
+									 {
+										 mensaje= mensaje + "\n La carga de Programación Académica se generó con excepciones \n No se pudo generar el archivo ErrorCargaProgAcademicas.xlsx la ruta no es válida \n Programación Académica insertada: " +listaProgAcademicas.size()+ 
+						 							" \n Registros con errores: " + listaErroresProgAcademicas.size() + "\n Total Registros: "+ sumaprogramacion;
+										 
 									 }
 								 }
 								 else

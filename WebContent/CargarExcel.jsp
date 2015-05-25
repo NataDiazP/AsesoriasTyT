@@ -40,6 +40,22 @@
 </div>
 		
 	<form name="inicio" action="./CargarExcel" method="post" enctype="multipart/form-data">
+		<table width="100%" border="0" cellspacing="4" cellpadding="4">
+				<tr>
+				<td></td>
+				<td></td>
+						<td class="label">Ruta Archivos de Errores:</td>
+								<td><input type="text" name="ruta" size="60"
+									placeholder="Ingrese una ruta válida. Ejemplo: C:\Users"
+									value=""></td>
+						<td><input type="reset" class="boton"  value="Limpiar">
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						</tr>
+				</table>
 		<table width="85%" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<tr>
@@ -50,6 +66,7 @@
 			<tr>
 				<td class="caja_01_bottom">&nbsp;</td>
 				<td valign="top" class="caja_01_bottom">
+				
 					<table width="100%" border="0" cellspacing="4" cellpadding="4">
 						<tr>
 							<td></td>
@@ -60,7 +77,6 @@
 							<td></td>
 						</tr>
 						<tr>
-						
 						
 						<td class="label" align="left">Archivo Docentes</td>
 						<td>
