@@ -296,7 +296,7 @@ public class CargarExcel extends HttpServlet {
 						 
 						 if(((listaDocentes.size()==0)&&(listaErroresDocentes.size()==0))||((listaEstudiantes.size()==0)&&(listaErroresEstudiantes.size()==0))||((listaAsignaturas.size()==0)&&(listaErroresAsignaturas.size()==0)))
 						 {
-							 JOptionPane.showMessageDialog(null, "Por favor valide la estructura del archivo que seleccionó, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+							 JOptionPane.showMessageDialog(null, "Por favor valide la estructura de los archivos que seleccionados, ya que no es la adecuada", "Información - AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
 								request.getRequestDispatcher("./CargarExcel.jsp").forward(request, response);
 						 }
 						 else
@@ -316,7 +316,7 @@ public class CargarExcel extends HttpServlet {
 									System.out.println(listaAsignaturas.get(i).getIdAsignatura().toString());
 									int resultado = new NAsignatura().Crear(listaAsignaturas.get(i));
 								}
-						 }
+						 
 						 
 						 excel.leerArchivoProgramacion(archivoprogramacion);
 						 
@@ -443,6 +443,7 @@ public class CargarExcel extends HttpServlet {
 							
 								  
 							 }
+						 }
 							 
 						 
 								 
