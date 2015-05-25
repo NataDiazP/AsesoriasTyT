@@ -99,7 +99,7 @@
 								<td><input type="text" name="apellido2" size="30"
 									placeholder="Segundo Apellido"
 									value="<%=apellido2 != null ? apellido2 : ""%>"></td>
-								<td class="label">Genero(*):</td>
+								<td class="label">Género(*):</td>
 								<td><select name="genero" class="campo02" id="genero">
 										<option>Seleccione...</option>
 										<option <%if ("Femenino".equals(genero)) {%> selected <%}%>>Femenino</option>
@@ -108,7 +108,7 @@
 							</tr>
 							<tr>
 								<td class="label">Fecha de Nacimiento(*):</td>
-								<td><input type="date" name="fechaN" size="20"
+								<td><input name="fechaN" size="20"
 									placeholder="Fecha Nacimiento"
 									value="<%=fechaN != null ? fechaN : ""%>"></td>
 								<td class="label">Dirección(*):</td>

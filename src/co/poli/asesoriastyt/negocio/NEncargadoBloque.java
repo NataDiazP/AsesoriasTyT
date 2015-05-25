@@ -64,6 +64,19 @@ public class NEncargadoBloque {
 	}
 
 	/**
+	 * Buscar.
+	 *
+	 * @param EncBloque the enc bloque
+	 * @return the encargado bloque
+	 */
+	public EncargadoBloque BuscarIdEncargado(String EncBloque) {
+		daoEncBloques = new DAOEncargadosBloques();
+		c = new Conexion().getConnection();
+		EncargadoBloque resultadoBuscar = daoEncBloques.BuscarIdEncargado(c, EncBloque);
+		return resultadoBuscar;
+	}
+	
+	/**
 	 * Eliminar.
 	 *
 	 * @param EncBloque the enc bloque

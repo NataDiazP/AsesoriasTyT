@@ -100,7 +100,7 @@
 								</td>
 								<td><input type="text" name="id" size="20" maxlength="5"
 									onkeypress="return validar(event)" placeholder="Código"
-									value="<%=id != null ? id : generarIdAsesoria.getIdAsesoria()%>"></td>
+									value="<%=id == null ? 1 : generarIdAsesoria.getIdAsesoria()%>"></td>
 								<td class="label">Nombre (*):</td>
 								<td><input type="text" name="nombreAsesoria" size="20"
 									maxlength="50" placeholder="Nombre Asesoría"

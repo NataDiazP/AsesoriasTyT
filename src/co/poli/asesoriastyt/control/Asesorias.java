@@ -25,26 +25,29 @@ import co.poli.asesoriastyt.negocio.NAsesoria;
 import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.Conexion;
 
-
 /**
  * Servlet implementation class Asesorias.
  */
 @WebServlet(description = "Controlador de maestro asesorias", urlPatterns = { "/Asesorias" })
 public class Asesorias extends HttpServlet {
-	
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
 	 * Do get.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param request
+	 *            the request
+	 * @param response
+	 *            the response
+	 * @throws ServletException
+	 *             the servlet exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,10 +56,14 @@ public class Asesorias extends HttpServlet {
 	/**
 	 * Do post.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param request
+	 *            the request
+	 * @param response
+	 *            the response
+	 * @throws ServletException
+	 *             the servlet exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -108,6 +115,30 @@ public class Asesorias extends HttpServlet {
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Asesorias.jsp");
+		} else if (nombreAsesoria.equals("")) {
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese el nombre de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (docente.equals("Seleccione...")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione el docente de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (asignatura.equals("Seleccione...")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione la asignatura de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (fecha.equals("")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione la fecha de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (horaI.equals("")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de inicio de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (horaF.equals("")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione la hora de fin de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (lugar.equals("Seleccione...")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione el lugar o aula de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
+		} else if (estado.equals("Seleccione...")) {
+			JOptionPane.showMessageDialog(null, "Por favor, seleccione el estado de la asesoría.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			request.getRequestDispatcher("./Asesorias.jsp").forward(request, response);
 		} else {
 			Asesorias.setIdAsesoria(id);
 			Asesorias.setNombreAsesoria(nombreAsesoria);

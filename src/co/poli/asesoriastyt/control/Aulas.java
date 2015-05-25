@@ -17,16 +17,15 @@ import co.poli.asesoriastyt.model.Aula;
 import co.poli.asesoriastyt.negocio.NAula;
 import co.poli.asesoriastyt.util.Conexion;
 
-
 /**
  * Servlet implementation class Aulas.
  */
 @WebServlet("/Aulas")
 public class Aulas extends HttpServlet {
-	
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The Connection. */
 	Conexion Connection = new Conexion();
 
@@ -43,10 +42,14 @@ public class Aulas extends HttpServlet {
 	/**
 	 * Do get.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param request
+	 *            the request
+	 * @param response
+	 *            the response
+	 * @throws ServletException
+	 *             the servlet exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,10 +59,14 @@ public class Aulas extends HttpServlet {
 	/**
 	 * Do post.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param request
+	 *            the request
+	 * @param response
+	 *            the response
+	 * @throws ServletException
+	 *             the servlet exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,18 +79,20 @@ public class Aulas extends HttpServlet {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Aulas.jsp");
 		} else if (enc.equals("Seleccione") || enc.equals("")) {
-			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Por favor, ingrese el bloque del aula.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 		} else {
 			Aulas.setIdAula(request.getParameter("IdAula"));
 			Aulas.setIdBloque(request.getParameter("IdBloque"));
 
 			if ("Crear".equals(request.getParameter("action"))) {
+				boolean registroExiste = false;
 				try {
 					ResultSet r = Connection.getConnection().prepareStatement("Select Id_Aula, Id_Bloque_Aula from aulas").executeQuery();
 					while (r.next()) {
 						if (id.equals(r.getString(1)) && enc.equals(r.getString(2))) {
-							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique la identificación del bloque", "Advertencia - AsesoriasTyT",
+							registroExiste = true;
+							JOptionPane.showMessageDialog(null, "Este registro ya existe, por favor verifique los datos.", "Advertencia - AsesoriasTyT",
 									JOptionPane.WARNING_MESSAGE);
 							request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 						}
@@ -91,14 +100,15 @@ public class Aulas extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-
-				int resultado = new NAula().Crear(Aulas);
-				try {
-					response.sendRedirect("Aulas.jsp");
-					JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-					request.setAttribute("cli", resultado);
-				} catch (Exception e) {
-					e.printStackTrace();
+				if (!registroExiste) {
+					int resultado = new NAula().Crear(Aulas);
+					try {
+						response.sendRedirect("Aulas.jsp");
+						JOptionPane.showMessageDialog(null, "Se guardó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+						request.setAttribute("cli", resultado);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 

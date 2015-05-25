@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.EncargadoBloque;
 
-
 /**
  * The Class DAOEncargadosBloques.
  *
@@ -25,8 +24,10 @@ public class DAOEncargadosBloques {
 	/**
 	 * Crear.
 	 *
-	 * @param c the c
-	 * @param EncBloque the enc bloque
+	 * @param c
+	 *            the c
+	 * @param EncBloque
+	 *            the enc bloque
 	 * @return the int
 	 */
 	public int Crear(Connection c, EncargadoBloque EncBloque) {
@@ -54,8 +55,10 @@ public class DAOEncargadosBloques {
 	/**
 	 * Modificar.
 	 *
-	 * @param c the c
-	 * @param EncBloque the enc bloque
+	 * @param c
+	 *            the c
+	 * @param EncBloque
+	 *            the enc bloque
 	 * @return the int
 	 */
 	public int Modificar(Connection c, EncargadoBloque EncBloque) {
@@ -83,8 +86,10 @@ public class DAOEncargadosBloques {
 	/**
 	 * Buscar.
 	 *
-	 * @param con the con
-	 * @param IdEncargado the id encargado
+	 * @param con
+	 *            the con
+	 * @param IdEncargado
+	 *            the id encargado
 	 * @return the encargado bloque
 	 */
 	public EncargadoBloque Buscar(Connection con, String IdEncargado) {
@@ -110,10 +115,43 @@ public class DAOEncargadosBloques {
 	}
 
 	/**
+	 * BuscarxCorreo.
+	 *
+	 * @param con
+	 *            the con
+	 * @param IdEncargado
+	 *            the id encargado
+	 * @return the encargado bloque
+	 */
+	public EncargadoBloque BuscarIdEncargado(Connection con, String emailEncargado) {
+		EncargadoBloque c = new EncargadoBloque();
+		try {
+			PreparedStatement cl = con.prepareStatement("SELECT * FROM encargados_bloques WHERE Correo_Encargado_Bloque = '" + emailEncargado + "'");
+			ResultSet r = cl.executeQuery();
+			while (r.next()) {
+				c.setIdEncargado(r.getString(1));
+				c.setCorreoEncargado(r.getString(2));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return c;
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException ex) {
+				Logger.getLogger(DAOEncargadosBloques.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		return c;
+	}
+
+	/**
 	 * Eliminar.
 	 *
-	 * @param c the c
-	 * @param EncBloque the enc bloque
+	 * @param c
+	 *            the c
+	 * @param EncBloque
+	 *            the enc bloque
 	 * @return the int
 	 */
 	public int Eliminar(Connection c, EncargadoBloque EncBloque) {
@@ -142,7 +180,8 @@ public class DAOEncargadosBloques {
 	/**
 	 * Listar encargados bloques.
 	 *
-	 * @param c the c
+	 * @param c
+	 *            the c
 	 * @return the list
 	 */
 	public List<EncargadoBloque> listarEncargadosBloques(Connection c) {

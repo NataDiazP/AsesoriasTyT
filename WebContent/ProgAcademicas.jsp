@@ -118,9 +118,9 @@
 								<td><input type="text" name="nroEstAsignatura" size="20"
 									placeholder="Estudiantes Asignatura"
 									value="<%=nroEstAsignatura != null ? nroEstAsignatura : ""%>"></td>
-								<td class="label">Dias (*):</td>
+								<td class="label">Días (*):</td>
 								<td><input type="text" name="diasAsignatura" size="20"
-									maxlength="5" placeholder="Dias Asignatura"
+									maxlength="5" placeholder="Días Asignatura"
 									value="<%=diasAsignatura != null ? diasAsignatura : ""%>"></td>
 							</tr>
 							<tr>
@@ -164,11 +164,11 @@
 			</table>
 			<br>
 
-			<div style="margin: 0 auto; width: 25%">
-				<button name="action" value="Crear" class="boton">Crear</button>
+			<div style="margin: 0 auto; width: 10%">
+				<!-- 				<button name="action" value="Crear" class="boton">Crear</button> -->
 				<button name="action" value="Consultar" class="boton">Consultar</button>
-				<button name="action" value="Modificar" class="boton">Modificar</button>
-				<button name="action" value="Eliminar" class="boton">Eliminar</button>
+				<!-- 				<button name="action" value="Modificar" class="boton">Modificar</button> -->
+				<!-- 				<button name="action" value="Eliminar" class="boton">Eliminar</button> -->
 			</div>
 
 		</form>

@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import co.poli.asesoriastyt.model.Bloque;
+import co.poli.asesoriastyt.model.EncargadoBloque;
 import co.poli.asesoriastyt.negocio.NBloque;
+import co.poli.asesoriastyt.negocio.NEncargadoBloque;
 import co.poli.asesoriastyt.util.Conexion;
 
 
@@ -56,8 +58,9 @@ public class Bloques extends HttpServlet {
 		String id = request.getParameter("IdBloque");
 		
 		String enc1 = request.getParameter("EncargadoBloque");
-		String[] split = enc1.split("-");
-		String enc = split[0];		
+		NEncargadoBloque nEncBloq = new NEncargadoBloque();
+		EncargadoBloque en = nEncBloq.BuscarIdEncargado(enc1);
+		String enc = en.getCorreoEncargado();		
 		
 		if (id.equals("")) {
 			JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
@@ -83,9 +86,9 @@ public class Bloques extends HttpServlet {
 				}
 
 				if (!registroExiste) {
-					if (enc.equals("")) {
+					if (enc1.equals("Seleccione...")) {
 						JOptionPane.showMessageDialog(null, "Por favor, ingrese el encargado del bloque.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
-						request.getRequestDispatcher("./Bloques.jsp").forward(request, response);
+						response.sendRedirect("Bloques.jsp");
 					} else {
 						int resultado = new NBloque().Crear(Bloques);
 						try {
@@ -116,7 +119,7 @@ public class Bloques extends HttpServlet {
 					e.printStackTrace();
 				}
 				if (registroExiste) {
-					if (enc.equals("Seleccione...")) {
+					if (enc1.equals("Seleccione...")) {
 						JOptionPane.showMessageDialog(null, "Campos vacios, por favor llenarlos.", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 						response.sendRedirect("Bloques.jsp");
 					} else {
