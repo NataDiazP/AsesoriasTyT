@@ -219,30 +219,7 @@ public class LeerExcel
 		this.listaErroresDocentes = listaErroresDocentes;
 	}
 	
-	public void leerArchivo(InputStream filecontent)
-	{
-		int i=0;
-		try
-		{
-		
-
-			//Create Workbook instance holding reference to .xlsx file
-			XSSFWorkbook workbook = new XSSFWorkbook(filecontent);
-
-			for(i=0;i<4;i++)
-			{
-				XSSFSheet sheet = workbook.getSheetAt(i);
-				
-				
-			}
-			
-		}
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		
-	}
+	
 
 	/**
 	 * Leer archivo docentes.
@@ -382,7 +359,7 @@ public class LeerExcel
 								try
 								{
 									String fecha="";
-									SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+									SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 									try
 									{  
 										   fecha = formato.format(cell.getDateCellValue());  
@@ -687,7 +664,7 @@ public class LeerExcel
 								try
 								{
 									String fecha="";
-									SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+									SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 									try
 									{  
 										   fecha = formato.format(cell.getDateCellValue());  

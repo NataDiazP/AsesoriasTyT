@@ -27,7 +27,7 @@ public class EscribirErrores
 	 * @param listaErrores  lista errores
 	 * @return true, if successful
 	 */
-	public boolean escribirExcelDocentes (ArrayList<Persona> listaErrores) 
+	public boolean escribirExcelDocentes (ArrayList<Persona> listaErrores,String ruta) 
 	{
 		boolean bandera=true;
 		//Blank workbook
@@ -103,7 +103,7 @@ public class EscribirErrores
 		{
 			//Write  workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaDocentes.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File(ruta+"\\ErrorCargaDocentes.xlsx"));
 				 workbook.write(out);
 				 
 				 out.close();
@@ -128,7 +128,7 @@ public class EscribirErrores
 	 * @param listaErrores  lista errores
 	 * @return true, if successful
 	 */
-	public boolean escribirExcelEstudiantes (ArrayList<Persona> listaErrores) 
+	public boolean escribirExcelEstudiantes (ArrayList<Persona> listaErrores,String ruta) 
 	{
 		boolean bandera=true;
 		//Blank workbook
@@ -209,7 +209,7 @@ public class EscribirErrores
 		{
 			//Write  workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaEstudiantes.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File(ruta+"\\ErrorCargaEstudiantes.xlsx"));
 				 workbook.write(out);
 				 out.close();
 		
@@ -232,8 +232,7 @@ public class EscribirErrores
 	 * @param listaErroresAsignaturas
 	 * @return
 	 */
-	public boolean escribirExcelAsignaturas(
-			ArrayList<Asignatura> listaErroresAsignaturas) {
+	public boolean escribirExcelAsignaturas(ArrayList<Asignatura> listaErroresAsignaturas,String ruta) {
 		boolean bandera=true;
 		//Blank workbook
 		XSSFWorkbook workbook = new XSSFWorkbook(); 
@@ -268,7 +267,7 @@ public class EscribirErrores
 		{
 			//Write  workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaAsignaturas.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File(ruta+"\\ErrorCargaAsignaturas.xlsx"));
 				 workbook.write(out);
 				 out.close();
 		
@@ -291,7 +290,7 @@ public class EscribirErrores
 	 * @param listaErroresProgAcademicas
 	 * @return
 	 */
-	public boolean escribirExcelProgAcademicas (ArrayList<ProgAcademica> listaErrores) 
+	public boolean escribirExcelProgAcademicas (ArrayList<ProgAcademica> listaErrores,String ruta) 
 	{
 		boolean bandera=true;
 		//Blank workbook
@@ -357,7 +356,7 @@ public class EscribirErrores
 		{
 			//Write  workbook in file system
 			
-				 FileOutputStream out = new FileOutputStream(new File("C:\\Users\\Paola\\Desktop\\ErrorCargaProgramacion.xlsx"));
+				 FileOutputStream out = new FileOutputStream(new File(ruta+"\\ErrorCargaProgramacion.xlsx"));
 				 workbook.write(out);
 				 out.close();
 		

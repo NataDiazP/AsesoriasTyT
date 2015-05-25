@@ -7,7 +7,7 @@
 
 <script type="text/javascript" src="./js/validacion.js"></script>
 
-<title>Gesti&oacute;n de Encargados de Bloque</title>
+<title>Gestión de Encargados de Bloque</title>
 <style type="text/css">
 .auto-style1 {
 	color: #000;
@@ -15,7 +15,16 @@
 	font-size: 13px;
 }
 .auto-style2 {
-	font-weight: normal;
+	font-size: small;
+}
+.auto-style4 {
+	font-size: medium;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+	text-decoration: underline;
+	color: #808080;
+}
+.auto-style5 {
+	color: #808080;
 }
 </style>
 </head>
@@ -29,13 +38,15 @@
     <td height="450" valign="top" class="bgcont">
 	<table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
       <tr>
-        <td id="ruta" width="100%" colspan="2" style="height: 57px"><h1>Gestión de Docentes&nbsp;&nbsp;</h1></td>
+        <td id="ruta" width="100%" colspan="2" style="height: 57px"><h1>Ver 
+		Plantilla Estudiantes</h1></td>
       </tr>
       <tr>
         <td class="txGris" width="100%" colspan="2" style="height: 18px">
-		<p align="justify"><font color="#000000"><span lang="ES">Esta op</span>ción 
-		permite consultar los docentes que se encuentran registrados en la 
-		aplicación.</font></td>
+		<p align="justify"><font color="#000000">
+		<span lang="ES" class="auto-style2">Esta op</span><span class="auto-style2">ción 
+		permite descargar un archivo en excel que contiene un ejemplo de la 
+		forma correcta como debe estar la información.</span></font></td>
       </tr>
 		<tr>
         <td width="100%" colspan="2"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -43,7 +54,7 @@
             <td class="caja04"></td>
             <td class="bgcaja">
 			<p align="left">
-			<img alt="" src="images/img35.jpg" height="408" width="691"></td>
+			<img alt="" height="39" src="images/img42.gif" width="782"></td>
             <td class="caja05"></td>
           </tr>
           <tr>
@@ -56,114 +67,115 @@
       <tr>
         <td class="tl03" width="100%" colspan="2">Campos</td>
       </tr>
+      <tr>
+        <td class="txNegrita" width="100%" colspan="2"><strong>&nbsp;</strong></td>
+      </tr>
         <tr>
 			<td class="txNegrita" style="width: 219px">Documento</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde al documento del docente</p></td>
+			<p align="justify">Corresponde al documento del estudiante debe ser 
+			un campo numérico</p></td>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Tipo de Documento</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde al tipo de documento del docente</p>
+			<p align="justify">Corresponde al tipo de documento del 
+			estudiantedebe ser alguno de los siguientes:</p>
+			<p align="justify">CC : Cédula de Ciudadanía</p>
+			<p align="justify">CE: Cédula de Extrangería</p>
+			<p align="justify">TI: Tarjeta de Identidad</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Nombres</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde al nombre completo del docente</p>
+			<p align="justify">Corresponde al nombre completo del estudiante, 
+			debe ser campo alfanumérico</p>
 		  </tr>
 		  </tr>
 		<tr>
-			<td class="txNegrita" style="width: 219px; height: 18px">Primer Apellido</td>
+			<td class="txNegrita" style="width: 219px; height: 18px">Primer 
+			Apellido</td>
 			<td class="auto-style1" width="869" align="justify" style="height: 18px">
-			<p align="justify">Corresponde al primer apellido del docente</p>
+			<p align="justify">Corresponde al primer apellido del estudiante, 
+			debe ser campo alfanumérico</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Segundo Apellido</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al segundo apellido del docente</p>
+			<p align="justify">Corresponde&nbsp; al segundo apellido del 
+			estudiante, debe ser campo alfanumérico</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Género</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al genero del docente</p>
+			<p align="justify">Corresponde&nbsp; al genero del estudiante, debe 
+			ser campo alfanumérico,&nbsp; Femenino o Mastulino</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Fecha Nacimiento</td>
 			<td class="auto-style1" width="869" align="justify">
 			<p align="justify">Corresponde&nbsp; a la fecha de nacimiento del 
-			docente</p>
+			estudiante, debe ser un campo de tipo fecha</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px; height: 21px">Dirección</td>
 			<td class="auto-style1" width="869" align="justify" style="height: 21px">
-			<p align="justify">Corresponde&nbsp; a la dirección del docente</p>
+			<p align="justify">Corresponde&nbsp; a la dirección del estudiante, 
+			debe ser campo alfanumérico</p>
 		  </tr>
 		  </tr>
 		<tr>
-			<td class="txNegrita" style="width: 219px">Teléfono</td>
-			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al teléfono del docente</p>
+			<td class="txNegrita" style="width: 219px; height: 18px;">Teléfono</td>
+			<td class="auto-style1" width="869" align="justify" style="height: 18px">
+			<p align="justify">Corresponde&nbsp; al teléfono del estudiante, 
+			debe ser un campo numérico</p>
 		  </tr>
 		  </tr>
 		<tr>
-			<td class="txNegrita" style="width: 219px">Celular</td>
-			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al celular del docente</p>
+			<td class="txNegrita" style="width: 219px; height: 18px;">Celular</td>
+			<td class="auto-style1" width="869" align="justify" style="height: 18px">
+			<p align="justify">Corresponde&nbsp; al celular del estudiante, debe 
+			ser campo numérico</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Correo</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al&nbsp; correo del docente</p>
+			<p align="justify">Corresponde&nbsp; al&nbsp; correo del estudiante, 
+			debe ser campo numérico</p>
 		  </tr>
 		  </tr>
 		<tr>
 			<td class="txNegrita" style="width: 219px">Estado</td>
 			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al estado del docente</p>
+			<p align="justify">Corresponde&nbsp; al estado del estudiante,&nbsp; 
+			debe ser campo alfanumérico</p>
 		  </tr>
 		  </tr>
 		<tr>
-			<td class="txNegrita" style="width: 219px">Perfil</td>
-			<td class="auto-style1" width="869" align="justify">
-			<p align="justify">Corresponde&nbsp; al perfil del docente en este 
-			caso 2.</p>
-		  </tr>
-		  </tr>
+        <td class="txNegrita" style="width: 162px">&nbsp;</td>
+        <td class="txNegrita" width="869" align="justify">
+		&nbsp;</td>
+        </tr>
       <tr>
         <td class="txNegrita" style="width: 162px">&nbsp;</td>
         <td class="txNegrita" width="869" align="justify">
 		&nbsp;</td>
       </tr>
-        <tr>
-        <td class="tl03" width="100%" colspan="2" style="height: 34px">Botones</td>
-        </tr>
-		<tr>
-        <td style="height: 36px; width: 219px;">
-		<img alt="" src="images/img37.jpg"></td>
-        <td class="txNegrita" width="869" style="height: 36px">
-		<p class="MsoNormal" align="justify">
-		<span lang="ES" class="auto-style2">Permite </span>
-		<span class="auto-style2">consultar un docente por medio del número de cédula</span></p>
-      	</td>
-		</tr>
-		<tr>
-        <td class="txNegrita" style="width: 162px; height: 19px"></td>
-        <td class="txNegrita" width="869" align="justify" style="height: 19px"></td>
-        </tr>
       <tr>
-        <td style="width: 162px">
-		<p align="center">&nbsp;</td>
+        <td width="100%" colspan="2">
+		<p align="center" class="auto-style4"><a href="CargarExcel.html">
+		<span class="auto-style5">Volver</span></a></td>
       </tr>
       <tr>
         <td width="100%" colspan="2">&nbsp;</td>
       </tr>
-      </table></td>
+    </table></td>
     <td class="cont05">&nbsp;</td>
   </tr>
   <tr>
