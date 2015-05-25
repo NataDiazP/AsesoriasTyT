@@ -11,6 +11,7 @@
 .container {
 	font-family: tahoma;
 	width: 100%;
+	height: 100%;
 	background-color: white;
 	text-align: center;
 }
@@ -31,15 +32,14 @@ b {
 </head>
 <body>
 
-	<div id="header_wrapper">
-		<br /> <IMG SRC="./images/logo.png" width='15%' height='70%'
-			style="margin: 5px 0px 5px 30px; float: left;"> <IMG
-			SRC="./images/api.png" width='15%' height='80%' align="right"
-			style="margin: 5px 30px 5px 5px; float: right;">
+	<div id="header_wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+		<IMG SRC="./images/logo.png" width='15%' height='70%' style="margin: 5px 0px 5px 30px; float: left;"/>
+		<h1 style="font-size: 50px">Asesorias TyT</h1> 
+		<IMG SRC="./images/api.png" width='130px' height='80%' align="right" style="margin: 5px 30px 5px 5px"/>
 	</div>
 
 	<div class="container"
-		STYLE="position: absolute; top: 150px; left: 0px; width: 1367px; height: 500px; background-image: url(./images/bg.jpg)">
+		STYLE="position: absolute; top: 150px; left: 0px; background-image: url(./images/bg.jpg)">
 
 		<br>
 		<h1>Bienvenidos</h1>

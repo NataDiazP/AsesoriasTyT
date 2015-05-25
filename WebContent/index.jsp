@@ -9,7 +9,6 @@
 	
 	<link rel="shortcut icon" type="image/x-icon"
 		href="../images/favicon.ico" />
-	<link rel="icon" type="image/png" href="../images/favicon.png" />
 	<link href="./css/contenedor.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="./js/Javascript.js"></script>
 	

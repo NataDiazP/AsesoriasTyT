@@ -58,7 +58,8 @@
 							<tr>
 								<td class="label">C&oacute;digo de Bloque (*):</td>
 								<td><input type="text" name="IdBloque" size="20"
-									maxlength="5" placeholder="Código"
+									maxlength="5" placeholder="Código" pattern=".{2,}"
+									required title="Debe tener mínimo 2 caracteres"
 									value="<%=IdBloque != null ? IdBloque : ""%>"></td>
 								<td class="label">Encargado de Bloque (*):</td>
 								<td><select class="campo02"

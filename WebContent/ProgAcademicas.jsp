@@ -91,8 +91,7 @@
 									onkeypress="return validar(event)"
 									value="<%=IdProgAcademica != null ? IdProgAcademica : ""%>"></td>
 								<td class="label">Docente(*):</td>
-								<td><select class="campo02"
-									name="docenteProgAcademica">
+								<td><select class="campo02" name="docenteProgAcademica">
 										<option>Seleccione...</option>
 										<%
 											for (Persona pers : listaDocente) {
@@ -105,19 +104,9 @@
 										%>
 								</select></td>
 								<td class="label">Asignatura(*):</td>
-								<td><select class="campo02"
-									name="asignaturaProgAcademica">
-										<option>Seleccione...</option>
-										<%
-											for (Asignatura asig : listaAsignatura) {
-										%>
-										<option
-											<%if ((asig.getIdAsignatura()).equals(asignaturaProgAcademica)) {%>
-											selected <%}%>><%=asig.getIdAsignatura()%></option>
-										<%
-											}
-										%>
-								</select></td>
+								<td><input type="text" name="asignaturaProgAcademica"
+									size="20" placeholder="Código Asignatura"
+									value="<%=asignaturaProgAcademica != null ? asignaturaProgAcademica : ""%>"></td>
 							</tr>
 							<tr>
 								<td class="label">Grupo(*):</td>
@@ -136,27 +125,19 @@
 							</tr>
 							<tr>
 								<td class="label">Hora Inicio(*):</td>
-								<td><input type="time" name="horaInicialAsig" size="20"
+								<td><input name="horaInicialAsig" size="20"
 									placeholder="Hora Inicio Asignatura"
 									value="<%=horaInicialAsig != null ? horaInicialAsig : ""%>"></td>
 								<td class="label">Hora Fin(*):</td>
-								<td><input type="time" name="horaFinAsig" size=20"
+								<td><input name="horaFinAsig" size=20
+									"
 									maxlength="5" placeholder="Hora Fin Asignatura"
 									value="<%=horaFinAsig != null ? horaFinAsig : ""%>"></td>
 								<td class="label">Aula (*):</td>
-								<td><select class="campo02"
-									name="aulaClaseProg">
-										<option>Seleccione...</option>
-										<%
-											for (Aula aula : listaAula) {
-										%>
-										<option
-											<%if ((aula.getIdBloque() + " - " + aula.getIdAula()).equals(aulaClaseProg)) {%>
-											selected <%}%>><%=aula.getIdBloque() + " - " + aula.getIdAula()%></option>
-										<%
-											}
-										%>
-								</select></td>
+								<td><input type="text" name="aulaClaseProg" size="20"
+									placeholder="Aula Clase"
+									value="<%=aulaClaseProg != null ? aulaClaseProg : ""%>"></td>
+								</td>
 							</tr>
 							<tr>
 								<td class="label">Semestre (*):</td>
@@ -165,8 +146,8 @@
 									placeholder="Semestre Programación Académica"
 									value="<%=semestreProgAcademica != null ? semestreProgAcademica : ""%>"></td>
 								<td class="label">Año (*):</td>
-								<td><input type="text" name="anoProgAcademica"
-									size="20" maxlength="4" onkeypress="return validar(event)"
+								<td><input type="text" name="anoProgAcademica" size="20"
+									maxlength="4" onkeypress="return validar(event)"
 									placeholder="Año Programación Académica"
 									value="<%=anoProgAcademica != null ? anoProgAcademica : ""%>"></td>
 							</tr>
@@ -217,7 +198,8 @@
 									<th class="rounded" scope="col">Docente</th>
 									<th class="rounded" scope="col">Asignatura</th>
 									<th class="rounded" scope="col">Grupo</th>
-									<th class="rounded" scope="col">N&uacute;mero<br>Estudiantes</th>
+									<th class="rounded" scope="col">N&uacute;mero<br>Estudiantes
+									</th>
 									<th class="rounded" scope="col">Dias</th>
 									<th class="rounded" scope="col">Hora Inicio</th>
 									<th class="rounded" scope="col">Hora Fin</th>
