@@ -4,7 +4,10 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import co.poli.asesoriastyt.dao.DAOAsesorias;
 import co.poli.asesoriastyt.model.Asesoria;
@@ -13,6 +16,7 @@ import co.poli.asesoriastyt.model.ReporteAsistencia;
 import co.poli.asesoriastyt.model.ReporteMaterialAsesoria;
 import co.poli.asesoriastyt.model.ReporteNumAsistencia;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
@@ -24,7 +28,7 @@ public class NAsesoria {
 
 	/** The dao asesorias. */
 	DAOAsesorias daoAsesorias;
-	
+	DataSource ds = JRDataSource.getMySQLDataSource();
 	/** The c. */
 	Connection c;
 
@@ -36,7 +40,12 @@ public class NAsesoria {
 	 */
 	public int Crear(Asesoria Asesorias) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoAsesorias.Crear(c, Asesorias);
 		return resultadoCrear;
 	}
@@ -50,7 +59,12 @@ public class NAsesoria {
 	 */
 	public int Asistir(String idUser, String idAsesoria) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoAsesorias.Asistir(c, idUser, idAsesoria);
 		return resultadoCrear;
 	}
@@ -63,7 +77,12 @@ public class NAsesoria {
 	 */
 	public int Modificar(Asesoria Asesorias) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoModificar = daoAsesorias.Modificar(c, Asesorias);
 		return resultadoModificar;
 	}
@@ -78,7 +97,12 @@ public class NAsesoria {
 	 */
 	public int GuardarAsistencia(String idAsesoria, String idEstudiante, String asistio) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoModificar = daoAsesorias.GuardarAsistencia(c, idAsesoria, idEstudiante, asistio);
 		return resultadoModificar;
 	}
@@ -91,7 +115,12 @@ public class NAsesoria {
 	 */
 	public Asesoria Buscar(String Asesorias) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Asesoria resultadoBuscar = daoAsesorias.Buscar(c, Asesorias);
 		return resultadoBuscar;
 	}
@@ -103,7 +132,12 @@ public class NAsesoria {
 	 */
 	public Asesoria generarIdAsesoria() {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Asesoria resultadoGenerar = daoAsesorias.generarIdAsesoria(c);
 		return resultadoGenerar;
 	}
@@ -115,7 +149,12 @@ public class NAsesoria {
 	 */
 	public List<Asesoria> ListadoAsesorias() {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.listarAsesorias(c);
 	}
 
@@ -127,7 +166,12 @@ public class NAsesoria {
 	 */
 	public List<Asesoria> ListadoAsesoriasProfesor(String profesor) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.listarAsesoriasProfesor(c, profesor);
 	}
 
@@ -139,7 +183,12 @@ public class NAsesoria {
 	 */
 	public List<EstudianteAsesoria> ListadoAsistentes(String idAsesoria) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.listarAsistentes(c, idAsesoria);
 	}
 
@@ -150,7 +199,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesorias() {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.MaterialAsesorias(c);
 	}
 
@@ -163,7 +217,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasFechas(String fechaInicio, String fechaFin) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.MaterialAsesoriasFechas(c, fechaInicio, fechaFin);
 	}
 
@@ -175,7 +234,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasAsesoria(String asesoria) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.MaterialAsesoriasAsesoria(c, asesoria);
 	}
 
@@ -186,7 +250,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteAsistencia> AsistenciaAsesoria() {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.AsitenciaAsesoria(c);
 	}
 
@@ -198,7 +267,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteAsistencia> AsistenciaAsesoriaAsesoria(String asesoria) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.AsitenciaAsesoriaAsesoria(c, asesoria);
 	}
 
@@ -211,7 +285,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteAsistencia> AsistenciaAsesoriaFecha(String fechaI, String fechaF) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.AsitenciaAsesoriaFecha(c, fechaI, fechaF);
 	}
 
@@ -223,7 +302,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaAsesoria(String asesoria) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.CantidadAsitenciaAsesoriaAsesoria(c, asesoria);
 	}
 
@@ -247,7 +331,12 @@ public class NAsesoria {
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaFecha(String fechaInicio, String fechaFin) {
 		daoAsesorias = new DAOAsesorias();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoAsesorias.CantidadAsitenciaAsesoriaFecha(c, fechaInicio, fechaFin);
 	}
 }

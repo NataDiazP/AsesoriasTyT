@@ -4,11 +4,15 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import co.poli.asesoriastyt.dao.DAOBloques;
 import co.poli.asesoriastyt.model.Bloque;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
@@ -23,6 +27,7 @@ public class NBloque {
 	
 	/** The c. */
 	Connection c;
+	DataSource ds = JRDataSource.getMySQLDataSource();
 
 	/**
 	 * Crear.
@@ -32,7 +37,12 @@ public class NBloque {
 	 */
 	public int Crear(Bloque Bloques) {
 		daoBloques = new DAOBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoBloques.Crear(c, Bloques);
 		return resultadoCrear;
 	}
@@ -45,7 +55,12 @@ public class NBloque {
 	 */
 	public int Modificar(Bloque Bloques) {
 		daoBloques = new DAOBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoModificar = daoBloques.Modificar(c, Bloques);
 		return resultadoModificar;
 	}
@@ -58,7 +73,12 @@ public class NBloque {
 	 */
 	public Bloque Buscar(String Bloques) {
 		daoBloques = new DAOBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Bloque resultadoBuscar = daoBloques.Buscar(c, Bloques);
 		return resultadoBuscar;
 	}
@@ -71,7 +91,12 @@ public class NBloque {
 	 */
 	public int Eliminar(Bloque Bloques) {
 		daoBloques = new DAOBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoEliminar = daoBloques.Eliminar(c, Bloques);
 		return resultadoEliminar;
 	}
@@ -83,7 +108,12 @@ public class NBloque {
 	 */
 	public List<Bloque> ListadoBloques() {
 		daoBloques = new DAOBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoBloques.listarBloques(c);
 	}
 }

@@ -4,11 +4,15 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import co.poli.asesoriastyt.dao.DAOPerfiles;
 import co.poli.asesoriastyt.model.Perfil;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
@@ -20,7 +24,7 @@ public class NPerfiles {
 
 	/** The dao perfiles. */
 	DAOPerfiles daoPerfiles;
-	
+	DataSource ds = JRDataSource.getMySQLDataSource();
 	/** The c. */
 	Connection c;
 
@@ -32,7 +36,12 @@ public class NPerfiles {
 	 */
 	public int Crear(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoPerfiles.Crear(c, Perfiles);
 		return resultadoCrear;
 	}
@@ -45,7 +54,12 @@ public class NPerfiles {
 	 */
 	public int Modificar(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoModificar = daoPerfiles.Modificar(c, Perfiles);
 		return resultadoModificar;
 	}
@@ -58,9 +72,25 @@ public class NPerfiles {
 	 */
 	public Perfil Buscar(int Perfiles) {
 		daoPerfiles = new DAOPerfiles();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Perfil resultadoBuscar = daoPerfiles.Buscar(c, Perfiles);
 		return resultadoBuscar;
+	}
+	
+	public int consultarUsuario(String correo) {
+		daoPerfiles = new DAOPerfiles();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return daoPerfiles.consultarUsuario(c, correo);
 	}
 
 	/**
@@ -71,7 +101,12 @@ public class NPerfiles {
 	 */
 	public int Eliminar(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoEliminar = daoPerfiles.Eliminar(c, Perfiles);
 		return resultadoEliminar;
 	}
@@ -83,7 +118,12 @@ public class NPerfiles {
 	 */
 	public List<Perfil> ListadoPerfiles() {
 		daoPerfiles = new DAOPerfiles();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoPerfiles.listarPerfiles(c);
 	}
 }

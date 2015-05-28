@@ -20,8 +20,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import co.poli.asesoriastyt.dao.DAOPerfiles;
+import co.poli.asesoriastyt.dao.DAOPersonas;
 import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.GooglePlusUser;
+import co.poli.asesoriastyt.model.Persona;
+import co.poli.asesoriastyt.negocio.NPerfiles;
+import co.poli.asesoriastyt.negocio.NPersona;
 import co.poli.asesoriastyt.util.Conexion;
 
 import java.io.BufferedReader;
@@ -44,7 +48,8 @@ public class CallbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	/** The dao. */
-	private DAOPerfiles dao;
+	private NPerfiles dao;
+	private NPersona daop;
 	
 	/** The c. */
 	Connection c;
@@ -185,23 +190,29 @@ public class CallbackServlet extends HttpServlet {
 				GooglePlusUser googlePlusUser = new GooglePlusUser(userJson.get("id").toString(), userJson.get("email").toString());
 				request.getSession().setAttribute("googlePlusUser", googlePlusUser);
 				request.getSession().setAttribute("emailUser", userJson.get("email"));
-				dao = new DAOPerfiles();
-				c = new Conexion().getConnection();
+				
+				daop= new NPersona();
+				dao = new NPerfiles();
+				
 				String email = userJson.get("email").toString();
 				int existe = 0;
 
 				HttpSession session = request.getSession();
 				session.setAttribute("emailUsuario", new String(email));
-
-				existe = dao.consultarUsuario(c, email);
+				String documento=daop.BuscarDocente(email);
+				Persona persona=daop.Buscar(documento);
+				existe = dao.consultarUsuario(email);
+				
 				if (existe > 0) {
 					if (existe == 1) {
 						response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage"));
 						request.getSession().setAttribute("Perfil", "1");
 					}
 					if (existe == 2) {
+						request.getSession().setAttribute("cli",persona);
 						response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage2"));
 						request.getSession().setAttribute("Perfil", "2");
+						
 					}
 					if (existe == 3) {
 						response.sendRedirect(request.getContextPath() + getServletContext().getInitParameter("loginSuccessPage3"));
