@@ -4,11 +4,15 @@
 package co.poli.asesoriastyt.negocio;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import co.poli.asesoriastyt.dao.DAOEncargadosBloques;
 import co.poli.asesoriastyt.model.EncargadoBloque;
 import co.poli.asesoriastyt.util.Conexion;
+import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
@@ -23,6 +27,7 @@ public class NEncargadoBloque {
 	
 	/** The c. */
 	Connection c;
+	DataSource ds = JRDataSource.getMySQLDataSource();
 
 	/**
 	 * Crear.
@@ -32,7 +37,12 @@ public class NEncargadoBloque {
 	 */
 	public int Crear(EncargadoBloque EncBloques) {
 		daoEncBloques = new DAOEncargadosBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoCrear = daoEncBloques.Crear(c, EncBloques);
 		return resultadoCrear;
 	}
@@ -45,7 +55,12 @@ public class NEncargadoBloque {
 	 */
 	public int Modificar(EncargadoBloque EncBloques) {
 		daoEncBloques = new DAOEncargadosBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoModificar = daoEncBloques.Modificar(c, EncBloques);
 		return resultadoModificar;
 	}
@@ -58,7 +73,12 @@ public class NEncargadoBloque {
 	 */
 	public EncargadoBloque Buscar(String EncBloque) {
 		daoEncBloques = new DAOEncargadosBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		EncargadoBloque resultadoBuscar = daoEncBloques.Buscar(c, EncBloque);
 		return resultadoBuscar;
 	}
@@ -71,7 +91,12 @@ public class NEncargadoBloque {
 	 */
 	public EncargadoBloque BuscarIdEncargado(String EncBloque) {
 		daoEncBloques = new DAOEncargadosBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		EncargadoBloque resultadoBuscar = daoEncBloques.BuscarIdEncargado(c, EncBloque);
 		return resultadoBuscar;
 	}
@@ -84,7 +109,12 @@ public class NEncargadoBloque {
 	 */
 	public int Eliminar(EncargadoBloque EncBloque) {
 		daoEncBloques = new DAOEncargadosBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int resultadoEliminar = daoEncBloques.Eliminar(c, EncBloque);
 		return resultadoEliminar;
 	}
@@ -96,7 +126,12 @@ public class NEncargadoBloque {
 	 */
 	public List<EncargadoBloque> ListadoEncargadosBloques() {
 		daoEncBloques = new DAOEncargadosBloques();
-		c = new Conexion().getConnection();
+		try {
+			c = ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return daoEncBloques.listarEncargadosBloques(c);
 	}
 }

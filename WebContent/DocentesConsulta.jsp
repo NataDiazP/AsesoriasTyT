@@ -32,8 +32,11 @@
 
 	NPerfiles nperfil = new NPerfiles();
 	DAOPerfiles daop = new DAOPerfiles();
-
-	Persona x = request.getAttribute("cli") != null ? (Persona) request.getAttribute("cli") : null;
+	
+	NPersona nper= new NPersona();
+	
+	Persona x = request.getSession().getAttribute("cli") != null ? (Persona) request.getSession().getAttribute("cli") : null;
+	
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
 		documento = x.getNumeroIdentificacion();
@@ -60,7 +63,11 @@
 	<br>
 	<br>
 	<div id="ruta">
-		<h1>Gesti&oacute;n de Docentes</h1>
+		<h1>Mi información</h1>
+		<br>
+		</div>
+		<br>
+	
 		<br>
 		<form name="inicio" action="./Docentes" method="post">
 			<table width="85%" border="0" align="center" cellpadding="0"
