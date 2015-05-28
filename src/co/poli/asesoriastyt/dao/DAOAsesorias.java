@@ -47,7 +47,7 @@ public class DAOAsesorias {
 			st.setString(6, Asesorias.getHoraF());
 			st.setString(7, Asesorias.getLugar());
 			st.setString(8, Asesorias.getCupos());
-			st.setString(9, Asesorias.getCuposD());
+			st.setString(9, Asesorias.getCupos());
 			st.setString(10, Asesorias.getRecursosApoyo());
 			st.setString(11, Asesorias.getObservaciones());
 			st.setString(12, Asesorias.getEstado());
