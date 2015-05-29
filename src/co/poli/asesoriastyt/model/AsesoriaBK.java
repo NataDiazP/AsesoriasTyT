@@ -76,11 +76,7 @@ public class AsesoriaBK
 		this.idAsesoria = idAsesoria;
 	}
 	
-	/**
-	 * Gets the docente.
-	 *
-	 * @return the docente
-	 */
+
 	public String getDocente() {
 		return docente;
 	}
