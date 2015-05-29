@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.poli.asesoriastyt.model.Asesoria;
+import co.poli.asesoriastyt.model.AsesoriaBK;
 import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.model.ReporteAsistencia;
 import co.poli.asesoriastyt.model.ReporteMaterialAsesoria;
@@ -47,7 +48,7 @@ public class DAOAsesorias {
 			st.setString(6, Asesorias.getHoraF());
 			st.setString(7, Asesorias.getLugar());
 			st.setString(8, Asesorias.getCupos());
-			st.setString(9, Asesorias.getCuposD());
+			st.setString(9, Asesorias.getCupos());
 			st.setString(10, Asesorias.getRecursosApoyo());
 			st.setString(11, Asesorias.getObservaciones());
 			st.setString(12, Asesorias.getEstado());
@@ -65,7 +66,7 @@ public class DAOAsesorias {
 		return resultadoCrear;
 	}
 
-	/**
+		/**
 	 * Asistir.
 	 *
 	 * @param c the c
@@ -276,6 +277,23 @@ public class DAOAsesorias {
 			}
 		}
 		return Asesorias;
+	}
+	
+	public int guardarAsesoriasBK(Connection c) {
+		int resultadoCrear=0;
+		try {
+			String sql = "insert into BackupAsesorias select a.id_Asesoria, a.Nombre_Asesoria, b.NumDoc_Persona, b.Nombres_Persona, b.PApellido_Persona || b.SApellido_Persona, a.Asignatura_Asesoria, c.Nombre_Asignatura,"+
+					"a.Fecha_Asesoria, a.HoraInicio_Asesoria, a. HoraFin_Asesoria, a.Lugar_Asesoria, a.Cupos_Asesoria,a.CuposDisp_Asesoria, a.RecursosApoyo_Asesoria, a.Observaciones_Asesoria, a.Estado_Asesoria from asesorias as a inner join personas as b on a.Docente_Asesoria = b.NumDoc_Persona "
+					+ "inner join asignaturas as c on a.Asignatura_Asesoria = c.Codigo_Asignatura ORDER BY a.id_Asesoria";
+			System.out.print(sql);
+			PreparedStatement ps = c.prepareStatement(sql);
+			resultadoCrear = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return resultadoCrear;
 	}
 
 	/**

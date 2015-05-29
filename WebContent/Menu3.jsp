@@ -92,6 +92,9 @@
 			<a href="Acerca.jsp" target="datos">Acerca de</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
+			<a href="Manual AsesoriasTyT/indexManual3.html" target="_blank">Manual de Usuario</a>
+		</h3>
+		<h3 class="menuheader Noexpandable">
 			<a href="logout">Salida Segura</a>
 		</h3>
 	</div>

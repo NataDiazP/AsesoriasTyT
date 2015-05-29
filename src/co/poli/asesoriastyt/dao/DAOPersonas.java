@@ -542,7 +542,9 @@ public class DAOPersonas {
 	 */
 	public boolean prepararCarga(Connection c) {
 		
+		DAOAsesorias dasesorias= new DAOAsesorias();
 		PreparedStatement st=null;
+		String sqlBackUP = "DELETE  FROM BackupAsesorias";
 		String sqlasistencia = "DELETE  FROM estudiantes_asesoria";
 		String sqlasesorias = "DELETE  FROM asesorias";
 		String sqlasignaturas = "DELETE  FROM asignaturas";
@@ -551,6 +553,11 @@ public class DAOPersonas {
 		int resultado;
 		boolean resultadoEliminar = true;
 		try {
+			st = c.prepareStatement(sqlBackUP);
+			resultado = st.executeUpdate();
+			 
+			resultado=dasesorias.guardarAsesoriasBK(c);
+
 			st = c.prepareStatement(sqlasistencia);
 			resultado = st.executeUpdate();
 
@@ -565,9 +572,7 @@ public class DAOPersonas {
 			
 			st = c.prepareStatement(sqlpersonas);
 			resultado = st.executeUpdate();
-			
-			
-			
+
 			
 		} catch (SQLException ex) {
 			
