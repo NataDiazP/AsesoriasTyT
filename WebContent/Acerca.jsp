@@ -21,8 +21,6 @@
 		<h1>Natalia Diaz: natalia_diaz24131@elpoli.edu.co</h1>
 		<h1>Paola Andrea Vargas López: paola_vargas24111@elpoli.edu.co</h1>
 		<h1>Versión 1.0 2014</h1>
-		<br> <A HREF="MANUAL DE USUARIO.docx" class="button">Ver
-			Manual</A> <br>
 	</div>
 </body>
 </html>

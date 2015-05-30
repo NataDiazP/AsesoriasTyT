@@ -34,6 +34,7 @@
 						<thead>
 							<tr>
 								<th class="rounded" scope="col">Modulo</th>
+								<th class="rounded" scope="col">Nombre Asesor&iacute;a</th>
 								<th class="rounded" scope="col">Docente</th>
 								<th class="rounded" scope="col">Fecha</th>
 								<th class="rounded" scope="col">Hora</th>
@@ -48,6 +49,7 @@
 							%>
 							<tr align="center">
 								<td><%=as.getAsignatura()%></td>
+								<td><%=as.getNombreAsesoria()%></td>
 								<td><%=as.getDocente()%></td>
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>

@@ -98,7 +98,7 @@
 			<a href="ReportesProfesor.jsp"  target="datos">Reportes</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
-			<a href="AcercaDe.jsp" target="datos">Acerca de</a>
+			<a href="Acerca.jsp" target="datos">Acerca de</a>
 		</h3>
 		<h3 class="menuheader Noexpandable">
 			<a href="Manual AsesoriasTyT/indexManual2.html" target="_blank">Manual de Usuario</a>
