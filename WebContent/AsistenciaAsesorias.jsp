@@ -15,7 +15,7 @@
 %>
 </head>
 <body>
-	<form name="asistencia" action="./AsistenciaAsesorias" method="post">
+	<form name="asistencia" action="./Asistencia" method="post" enctype="multipart/form-data">
 		<table width="85%" border="0" align="center" cellpadding="0"
 			cellspacing="0">
 			<thead>
@@ -44,12 +44,13 @@
 								</tr>
 								<%
 									} else {
+										request.getSession().setAttribute("asistencias", LU);
 										for (EstudianteAsesoria asis : LU) {
 								%>
 								<tr align="center">
 									<td><%=asis.getNumDocEstudiante()%></td>
-									<td><select name="asistencia" class="campo02"
-										id="asistencia">
+									<td><select name="<%=asis.getNumDocEstudiante()%>" class="campo02"
+										id="<%=asis.getNumDocEstudiante()%>">
 											<option <%if ("".equals(asis.getAsistenciaAsesoria())) {%>
 												selected <%}%>>Seleccione...</option>
 											<option <%if ("No".equals(asis.getAsistenciaAsesoria())) {%>
@@ -67,9 +68,9 @@
 					</td>
 				</tr>
 		</table>
-	</form>
-	<form name="confirmAsistencia" action="./AsistenciaAsesorias"
-		method="post">
+
+	
+	
 		<div
 			style="margin-top: 8px; margin-right: 100px; width: auto; float: right">
 			<button name="action" value="GuardarAsesoria" class="botonGuardar">Guardar</button>
