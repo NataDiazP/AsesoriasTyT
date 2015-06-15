@@ -74,7 +74,6 @@ public class Asistencia extends HttpServlet {
 				if(!item.getString().equals("GuardarAsesoria"))
 				{
 					resultadoModificar = new NAsesoria().GuardarAsistencia(asesoria, item.getFieldName(), item.getString());
-					System.out.println(item.getFieldName()+" "+item.getString()+" "+resultadoModificar);
 				}
 				
 			}

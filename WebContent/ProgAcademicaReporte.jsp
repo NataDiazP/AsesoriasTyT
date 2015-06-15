@@ -88,7 +88,7 @@
 										<th class="rounded" scope="col">Dias</th>
 										<th class="rounded" scope="col">Hora Inicio</th>
 										<th class="rounded" scope="col">Hora Fin</th>
-										<th class="rounded" scope="col">Aula</th>
+										<th class="rounded" scope="col">Aula</th>	
 									</tr>
 								</thead>
 								<tbody>

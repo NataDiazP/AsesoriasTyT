@@ -1104,9 +1104,9 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
 							case 7:
 								try
 								{
-									int aula=(int) cell.getNumericCellValue();
-									programacion.setAulaClaseProgAcademica(""+aula);
-									System.out.print(cell.getNumericCellValue() + "\t");
+									String aula=cell.getStringCellValue();
+									programacion.setAulaClaseProgAcademica(aula);
+									System.out.print(cell.getStringCellValue() + "\t");
 									
 								}
 								catch(Exception e) 
