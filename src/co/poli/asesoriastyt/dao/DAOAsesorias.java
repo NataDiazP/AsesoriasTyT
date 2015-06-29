@@ -215,7 +215,7 @@ public class DAOAsesorias {
 	public List<EstudianteAsesoria> listarAsistentes(Connection c, String idAsesoria) {
 		List<EstudianteAsesoria> EstudianteAsesorias = new ArrayList<EstudianteAsesoria>();
 		try {
-			String sql = "SELECT es.Id_Asesoria, es.Id_Estudiante, es.Asistencia_Asesoria, p.Correo_Persona FROM estudiantes_asesoria es, personas p WHERE Id_Asesoria=" + idAsesoria + " AND es.Id_Estudiante = p.NumDoc_Persona";
+			String sql = "SELECT es.Id_Asesoria, es.Id_Estudiante, es.Asistencia_Asesoria, p.Correo_Persona, p.Nombres_Persona, p.PApellido_Persona, p.SApellido_Persona FROM estudiantes_asesoria es, personas p WHERE Id_Asesoria=" + idAsesoria + " AND es.Id_Estudiante = p.NumDoc_Persona";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -224,6 +224,8 @@ public class DAOAsesorias {
 				EstudianteAsesoria.setNumDocEstudiante(r.getString(2));
 				EstudianteAsesoria.setAsistenciaAsesoria(r.getString(3));
 				EstudianteAsesoria.setEmailEstudiante(r.getString(4));
+				String nombrecompleto= r.getString(5) +" " + r.getString(6)+" "+r.getString(7);
+				EstudianteAsesoria.setNombreCompleto(nombrecompleto);
 				EstudianteAsesorias.add(EstudianteAsesoria);
 			}
 		} catch (SQLException e) {

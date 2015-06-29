@@ -13,6 +13,8 @@ public class EstudianteAsesoria {
 
 	 /** The num doc estudiante. */
  	private String numDocEstudiante;
+ 	
+ 	private String nombreCompleto;
 	 
  	/** The id asesoria. */
  	private String idAsesoria;
@@ -94,4 +96,20 @@ public class EstudianteAsesoria {
 	public void setEmailEstudiante(String emailEstudiante) {
 		this.emailEstudiante = emailEstudiante;
 	}
+
+	/**
+	 * @return the nombreCompleto
+	 */
+	public String getNombreCompleto() {
+		return nombreCompleto;
+	}
+
+	/**
+	 * @param nombreCompleto the nombreCompleto to set
+	 */
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+	
+	
 }

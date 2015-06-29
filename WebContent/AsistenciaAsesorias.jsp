@@ -31,6 +31,7 @@
 							<thead>
 								<tr>
 									<th class="rounded" scope="col">Documento Estudiante</th>
+									<th class="rounded" scope="col">Nombre Estudiante</th>
 									<th class="rounded" scope="col">Asistencia</th>
 								</tr>
 							</thead>
@@ -49,6 +50,7 @@
 								%>
 								<tr align="center">
 									<td><%=asis.getNumDocEstudiante()%></td>
+									<td><%=asis.getNombreCompleto() %></td>
 									<td><select name="<%=asis.getNumDocEstudiante()%>" class="campo02"
 										id="<%=asis.getNumDocEstudiante()%>">
 											<option <%if ("".equals(asis.getAsistenciaAsesoria())) {%>
