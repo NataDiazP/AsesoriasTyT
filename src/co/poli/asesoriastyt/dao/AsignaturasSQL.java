@@ -6,14 +6,15 @@ package co.poli.asesoriastyt.dao;
 
 
 /**
- * The Class AsignaturasSQL.
+ *  Class AsignaturasSQL.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class AsignaturasSQL {
 
     /**
      * Crear.
      *
-     * @return the string
+     * @return  string
      */
     public static String Crear() {
         return "INSERT INTO asignaturas (Codigo_Asignatura,Nombre_Asignatura) VALUES (?, ?)";
@@ -22,7 +23,7 @@ public class AsignaturasSQL {
     /**
      * Modificar.
      *
-     * @return the string
+     * @return  string
      */
     public static String Modificar() {
         return "UPDATE asignaturas SET Nombre_Asignatura=? WHERE Codigo_Asignatura=?";
@@ -31,8 +32,8 @@ public class AsignaturasSQL {
     /**
      * Consultar.
      *
-     * @param Codigo_Asignatura the codigo_ asignatura
-     * @return the string
+     * @param Codigo_Asignatura  codigo_ asignatura
+     * @return  string
      */
     public static String Consultar(String Codigo_Asignatura) {
         return "SELECT * FROM asignaturas WHERE Codigo_Asignatura = '" + Codigo_Asignatura + "'";
@@ -41,7 +42,7 @@ public class AsignaturasSQL {
     /**
      * Eliminar.
      *
-     * @return the string
+     * @return  string
      */
     public static String Eliminar() {
         return "DELETE FROM asignaturas WHERE Codigo_Asignatura=?";

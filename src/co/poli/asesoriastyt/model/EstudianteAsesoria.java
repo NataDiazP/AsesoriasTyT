@@ -5,107 +5,107 @@ package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class EstudianteAsesoria.
+ *  Class EstudianteAsesoria.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class EstudianteAsesoria {
 
-	 /** The num doc estudiante. */
+	 /**  num doc estudiante. */
  	private String numDocEstudiante;
  	
  	private String nombreCompleto;
 	 
- 	/** The id asesoria. */
+ 	/**  id asesoria. */
  	private String idAsesoria;
 	 
- 	/** The asistencia asesoria. */
+ 	/**  asistencia asesoria. */
  	private String asistenciaAsesoria;
 	 
- 	/** The email estudiante. */
+ 	/**  email estudiante. */
  	private String emailEstudiante;
 	 
 	/**
-	 * Gets the id asesoria.
+	 * Gets  id asesoria.
 	 *
-	 * @return the idAsesoria
+	 * @return  idAsesoria
 	 */
 	public String getIdAsesoria() {
 		return idAsesoria;
 	}
 	
 	/**
-	 * Sets the id asesoria.
+	 * Sets  id asesoria.
 	 *
-	 * @param idAsesoria the idAsesoria to set
+	 * @param idAsesoria  idAsesoria to set
 	 */
 	public void setIdAsesoria(String idAsesoria) {
 		this.idAsesoria = idAsesoria;
 	}
 	
 	/**
-	 * Gets the num doc estudiante.
+	 * Gets  num doc estudiante.
 	 *
-	 * @return the numDocEstudiante
+	 * @return  numDocEstudiante
 	 */
 	public String getNumDocEstudiante() {
 		return numDocEstudiante;
 	}
 	
 	/**
-	 * Sets the num doc estudiante.
+	 * Sets  num doc estudiante.
 	 *
-	 * @param numDocEstudiante the numDocEstudiante to set
+	 * @param numDocEstudiante  numDocEstudiante to set
 	 */
 	public void setNumDocEstudiante(String numDocEstudiante) {
 		this.numDocEstudiante = numDocEstudiante;
 	}
 	
 	/**
-	 * Gets the asistencia asesoria.
+	 * Gets  asistencia asesoria.
 	 *
-	 * @return the asistenciaAsesoria
+	 * @return  asistenciaAsesoria
 	 */
 	public String getAsistenciaAsesoria() {
 		return asistenciaAsesoria;
 	}
 	
 	/**
-	 * Sets the asistencia asesoria.
+	 * Sets  asistencia asesoria.
 	 *
-	 * @param asistenciaAsesoria the asistenciaAsesoria to set
+	 * @param asistenciaAsesoria  asistenciaAsesoria to set
 	 */
 	public void setAsistenciaAsesoria(String asistenciaAsesoria) {
 		this.asistenciaAsesoria = asistenciaAsesoria;
 	}
 	
 	/**
-	 * Gets the email estudiante.
+	 * Gets  email estudiante.
 	 *
-	 * @return the emailEstudiante
+	 * @return  emailEstudiante
 	 */
 	public String getEmailEstudiante() {
 		return emailEstudiante;
 	}
 	
 	/**
-	 * Sets the email estudiante.
+	 * Sets  email estudiante.
 	 *
-	 * @param emailEstudiante the emailEstudiante to set
+	 * @param emailEstudiante  emailEstudiante to set
 	 */
 	public void setEmailEstudiante(String emailEstudiante) {
 		this.emailEstudiante = emailEstudiante;
 	}
 
 	/**
-	 * @return the nombreCompleto
+	 * @return  nombreCompleto
 	 */
 	public String getNombreCompleto() {
 		return nombreCompleto;
 	}
 
 	/**
-	 * @param nombreCompleto the nombreCompleto to set
+	 * @param nombreCompleto  nombreCompleto to set
 	 */
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;

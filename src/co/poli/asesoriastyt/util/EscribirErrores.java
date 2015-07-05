@@ -16,7 +16,7 @@ import co.poli.asesoriastyt.model.ProgAcademica;
 
 /**
  *  Class EscribirErrores.
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class EscribirErrores 
 {

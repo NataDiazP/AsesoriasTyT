@@ -22,22 +22,23 @@ import co.poli.asesoriastyt.util.Conexion;
 
 /**
  * Servlet implementation class Bloques.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 @WebServlet("/Bloques")
 public class Bloques extends HttpServlet {
 	
-	/** The Constant serialVersionUID. */
+	/**  Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
-	/** The Connection. */
+	/**  Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
 	 * Do get.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
+	 * @param request  request
+	 * @param response  response
+	 * @throws ServletException  servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -47,9 +48,9 @@ public class Bloques extends HttpServlet {
 	/**
 	 * Do post.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
+	 * @param request  request
+	 * @param response  response
+	 * @throws ServletException  servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

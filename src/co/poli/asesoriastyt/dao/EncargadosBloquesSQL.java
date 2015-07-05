@@ -5,16 +5,16 @@ package co.poli.asesoriastyt.dao;
 
 
 /**
- * The Class EncargadosBloquesSQL.
+ *  Class EncargadosBloquesSQL.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class EncargadosBloquesSQL {
 
 	/**
 	 * Crear.
 	 *
-	 * @return the string
+	 * @return  string
 	 */
 	public static String Crear() {
 		return "INSERT INTO encargados_bloques (Id_Encargado_Bloque,Correo_Encargado_Bloque) VALUES (?, ?)";
@@ -23,7 +23,7 @@ public class EncargadosBloquesSQL {
 	/**
 	 * Modificar.
 	 *
-	 * @return the string
+	 * @return  string
 	 */
 	public static String Modificar() {
 		return "UPDATE encargados_bloques SET Correo_Encargado_Bloque=? WHERE Id_Encargado_Bloque=?";
@@ -32,8 +32,8 @@ public class EncargadosBloquesSQL {
 	/**
 	 * Consultar.
 	 *
-	 * @param Id_Encargado_Bloque the id_ encargado_ bloque
-	 * @return the string
+	 * @param Id_Encargado_Bloque  id_ encargado_ bloque
+	 * @return  string
 	 */
 	public static String Consultar(String Id_Encargado_Bloque) {
 		return "SELECT * FROM encargados_bloques WHERE Id_Encargado_Bloque = " + Id_Encargado_Bloque + "";
@@ -42,7 +42,7 @@ public class EncargadosBloquesSQL {
 	/**
 	 * Eliminar.
 	 *
-	 * @return the string
+	 * @return  string
 	 */
 	public static String Eliminar() {
 		return "DELETE FROM encargados_bloques WHERE Id_Encargado_Bloque=?";

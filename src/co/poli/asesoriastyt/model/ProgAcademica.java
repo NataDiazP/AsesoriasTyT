@@ -5,238 +5,238 @@ package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class ProgAcademica.
+ *  Class ProgAcademica.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class ProgAcademica {
 
-	/** The Id prog academica. */
+	/**  Id prog academica. */
 	private String IdProgAcademica;
 	
-	/** The Docente prog academica. */
+	/**  Docente prog academica. */
 	private String DocenteProgAcademica;
 	
-	/** The Asignatura prog academica. */
+	/**  Asignatura prog academica. */
 	private String AsignaturaProgAcademica;
 	
-	/** The Grupo asig prog academica. */
+	/**  Grupo asig prog academica. */
 	private String GrupoAsigProgAcademica;
 	
-	/** The Nro est asig prog academica. */
+	/**  Nro est asig prog academica. */
 	private String NroEstAsigProgAcademica;
 	
-	/** The Dias asig prog academica. */
+	/**  Dias asig prog academica. */
 	private String DiasAsigProgAcademica;
 	
-	/** The Hora ini asig prog academica. */
+	/**  Hora ini asig prog academica. */
 	private String HoraIniAsigProgAcademica;
 	
-	/** The Hora fin asig prog academica. */
+	/**  Hora fin asig prog academica. */
 	private String HoraFinAsigProgAcademica;
 	
-	/** The Aula clase prog academica. */
+	/**  Aula clase prog academica. */
 	private String AulaClaseProgAcademica;
 	
-	/** The Semestre prog academica. */
+	/**  Semestre prog academica. */
 	private String SemestreProgAcademica;
 	
-	/** The Ano prog academica. */
+	/**  Ano prog academica. */
 	private String AnoProgAcademica;
 
 	/**
-	 * Gets the id prog academica.
+	 * Gets  id prog academica.
 	 *
-	 * @return the idProgAcademica
+	 * @return  idProgAcademica
 	 */
 	public String getIdProgAcademica() {
 		return IdProgAcademica;
 	}
 
 	/**
-	 * Sets the id prog academica.
+	 * Sets  id prog academica.
 	 *
-	 * @param idProgAcademica            the idProgAcademica to set
+	 * @param idProgAcademica             idProgAcademica to set
 	 */
 	public void setIdProgAcademica(String idProgAcademica) {
 		IdProgAcademica = idProgAcademica;
 	}
 
 	/**
-	 * Gets the docente prog academica.
+	 * Gets  docente prog academica.
 	 *
-	 * @return the docenteProgAcademica
+	 * @return  docenteProgAcademica
 	 */
 	public String getDocenteProgAcademica() {
 		return DocenteProgAcademica;
 	}
 
 	/**
-	 * Sets the docente prog academica.
+	 * Sets  docente prog academica.
 	 *
-	 * @param docenteProgAcademica            the docenteProgAcademica to set
+	 * @param docenteProgAcademica             docenteProgAcademica to set
 	 */
 	public void setDocenteProgAcademica(String docenteProgAcademica) {
 		DocenteProgAcademica = docenteProgAcademica;
 	}
 
 	/**
-	 * Gets the asignatura prog academica.
+	 * Gets  asignatura prog academica.
 	 *
-	 * @return the asignaturaProgAcademica
+	 * @return  asignaturaProgAcademica
 	 */
 	public String getAsignaturaProgAcademica() {
 		return AsignaturaProgAcademica;
 	}
 
 	/**
-	 * Sets the asignatura prog academica.
+	 * Sets  asignatura prog academica.
 	 *
-	 * @param asignaturaProgAcademica            the asignaturaProgAcademica to set
+	 * @param asignaturaProgAcademica             asignaturaProgAcademica to set
 	 */
 	public void setAsignaturaProgAcademica(String asignaturaProgAcademica) {
 		AsignaturaProgAcademica = asignaturaProgAcademica;
 	}
 
 	/**
-	 * Gets the grupo asig prog academica.
+	 * Gets  grupo asig prog academica.
 	 *
-	 * @return the grupoAsigProgAcademica
+	 * @return  grupoAsigProgAcademica
 	 */
 	public String getGrupoAsigProgAcademica() {
 		return GrupoAsigProgAcademica;
 	}
 
 	/**
-	 * Sets the grupo asig prog academica.
+	 * Sets  grupo asig prog academica.
 	 *
-	 * @param grupoAsigProgAcademica            the grupoAsigProgAcademica to set
+	 * @param grupoAsigProgAcademica             grupoAsigProgAcademica to set
 	 */
 	public void setGrupoAsigProgAcademica(String grupoAsigProgAcademica) {
 		GrupoAsigProgAcademica = grupoAsigProgAcademica;
 	}
 
 	/**
-	 * Gets the nro est asig prog academica.
+	 * Gets  nro est asig prog academica.
 	 *
-	 * @return the nroEstAsigProgAcademica
+	 * @return  nroEstAsigProgAcademica
 	 */
 	public String getNroEstAsigProgAcademica() {
 		return NroEstAsigProgAcademica;
 	}
 
 	/**
-	 * Sets the nro est asig prog academica.
+	 * Sets  nro est asig prog academica.
 	 *
-	 * @param nroEstAsigProgAcademica            the nroEstAsigProgAcademica to set
+	 * @param nroEstAsigProgAcademica             nroEstAsigProgAcademica to set
 	 */
 	public void setNroEstAsigProgAcademica(String nroEstAsigProgAcademica) {
 		NroEstAsigProgAcademica = nroEstAsigProgAcademica;
 	}
 
 	/**
-	 * Gets the dias asig prog academica.
+	 * Gets  dias asig prog academica.
 	 *
-	 * @return the diasAsigProgAcademica
+	 * @return  diasAsigProgAcademica
 	 */
 	public String getDiasAsigProgAcademica() {
 		return DiasAsigProgAcademica;
 	}
 
 	/**
-	 * Sets the dias asig prog academica.
+	 * Sets  dias asig prog academica.
 	 *
-	 * @param diasAsigProgAcademica            the diasAsigProgAcademica to set
+	 * @param diasAsigProgAcademica             diasAsigProgAcademica to set
 	 */
 	public void setDiasAsigProgAcademica(String diasAsigProgAcademica) {
 		DiasAsigProgAcademica = diasAsigProgAcademica;
 	}
 
 	/**
-	 * Gets the hora ini asig prog academica.
+	 * Gets  hora ini asig prog academica.
 	 *
-	 * @return the horaIniAsigProgAcademica
+	 * @return  horaIniAsigProgAcademica
 	 */
 	public String getHoraIniAsigProgAcademica() {
 		return HoraIniAsigProgAcademica;
 	}
 
 	/**
-	 * Sets the hora ini asig prog academica.
+	 * Sets  hora ini asig prog academica.
 	 *
-	 * @param horaIniAsigProgAcademica            the horaIniAsigProgAcademica to set
+	 * @param horaIniAsigProgAcademica             horaIniAsigProgAcademica to set
 	 */
 	public void setHoraIniAsigProgAcademica(String horaIniAsigProgAcademica) {
 		HoraIniAsigProgAcademica = horaIniAsigProgAcademica;
 	}
 
 	/**
-	 * Gets the hora fin asig prog academica.
+	 * Gets  hora fin asig prog academica.
 	 *
-	 * @return the horaFinAsigProgAcademica
+	 * @return  horaFinAsigProgAcademica
 	 */
 	public String getHoraFinAsigProgAcademica() {
 		return HoraFinAsigProgAcademica;
 	}
 
 	/**
-	 * Sets the hora fin asig prog academica.
+	 * Sets  hora fin asig prog academica.
 	 *
-	 * @param horaFinAsigProgAcademica            the horaFinAsigProgAcademica to set
+	 * @param horaFinAsigProgAcademica             horaFinAsigProgAcademica to set
 	 */
 	public void setHoraFinAsigProgAcademica(String horaFinAsigProgAcademica) {
 		HoraFinAsigProgAcademica = horaFinAsigProgAcademica;
 	}
 
 	/**
-	 * Gets the aula clase prog academica.
+	 * Gets  aula clase prog academica.
 	 *
-	 * @return the aulaClaseProgAcademica
+	 * @return  aulaClaseProgAcademica
 	 */
 	public String getAulaClaseProgAcademica() {
 		return AulaClaseProgAcademica;
 	}
 
 	/**
-	 * Sets the aula clase prog academica.
+	 * Sets  aula clase prog academica.
 	 *
-	 * @param aulaClaseProgAcademica            the aulaClaseProgAcademica to set
+	 * @param aulaClaseProgAcademica             aulaClaseProgAcademica to set
 	 */
 	public void setAulaClaseProgAcademica(String aulaClaseProgAcademica) {
 		AulaClaseProgAcademica = aulaClaseProgAcademica;
 	}
 
 	/**
-	 * Gets the semestre prog academica.
+	 * Gets  semestre prog academica.
 	 *
-	 * @return the semestreProgAcademica
+	 * @return  semestreProgAcademica
 	 */
 	public String getSemestreProgAcademica() {
 		return SemestreProgAcademica;
 	}
 
 	/**
-	 * Sets the semestre prog academica.
+	 * Sets  semestre prog academica.
 	 *
-	 * @param semestreProgAcademica the semestreProgAcademica to set
+	 * @param semestreProgAcademica  semestreProgAcademica to set
 	 */
 	public void setSemestreProgAcademica(String semestreProgAcademica) {
 		SemestreProgAcademica = semestreProgAcademica;
 	}
 
 	/**
-	 * Gets the ano prog academica.
+	 * Gets  ano prog academica.
 	 *
-	 * @return the anoProgAcademica
+	 * @return  anoProgAcademica
 	 */
 	public String getAnoProgAcademica() {
 		return AnoProgAcademica;
 	}
 
 	/**
-	 * Sets the ano prog academica.
+	 * Sets  ano prog academica.
 	 *
-	 * @param anoProgAcademica the anoProgAcademica to set
+	 * @param anoProgAcademica  anoProgAcademica to set
 	 */
 	public void setAnoProgAcademica(String anoProgAcademica) {
 		AnoProgAcademica = anoProgAcademica;

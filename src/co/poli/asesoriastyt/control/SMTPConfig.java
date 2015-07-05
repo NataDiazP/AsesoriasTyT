@@ -13,9 +13,9 @@ import javax.mail.internet.MimeMessage;
 
 
 /**
- * The Class SMTPConfig.
+ * Class SMTPConfig.
  *
- * @author Natalia Díaz
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class SMTPConfig {
 

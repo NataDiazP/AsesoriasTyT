@@ -17,16 +17,17 @@ import co.poli.asesoriastyt.model.Asignatura;
 
 
 /**
- * The Class DAOAsignaturas.
+ *  Class DAOAsignaturas.
+ *  @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class DAOAsignaturas {
 	
 	/**
 	 * Crear.
 	 *
-	 * @param c the c
-	 * @param Asignaturas the asignaturas
-	 * @return the int
+	 * @param c  c
+	 * @param Asignaturas  asignaturas
+	 * @return  int
 	 */
 	public int Crear(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Crear();
@@ -55,9 +56,9 @@ public class DAOAsignaturas {
 	/**
 	 * Modificar.
 	 *
-	 * @param c the c
-	 * @param Asignaturas the asignaturas
-	 * @return the int
+	 * @param c  c
+	 * @param Asignaturas  asignaturas
+	 * @return  int
 	 */
 	public int Modificar(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Modificar();
@@ -84,9 +85,9 @@ public class DAOAsignaturas {
 	/**
 	 * Buscar.
 	 *
-	 * @param con the con
-	 * @param IdAsignatura the id asignatura
-	 * @return the asignatura
+	 * @param con  con
+	 * @param IdAsignatura  id asignatura
+	 * @return  asignatura
 	 */
 	public Asignatura Buscar(Connection con, String IdAsignatura) {
 		Asignatura c = new Asignatura();
@@ -114,9 +115,9 @@ public class DAOAsignaturas {
 	/**
 	 * Eliminar.
 	 *
-	 * @param c the c
-	 * @param Asignaturas the asignaturas
-	 * @return the int
+	 * @param c  c
+	 * @param Asignaturas  asignaturas
+	 * @return  int
 	 */
 	public int Eliminar(Connection c, Asignatura Asignaturas) {
 		String sql = AsignaturasSQL.Eliminar();
@@ -145,8 +146,8 @@ public class DAOAsignaturas {
 	/**
 	 * Listar asignaturas.
 	 *
-	 * @param c the c
-	 * @return the list
+	 * @param c  c
+	 * @return  list
 	 */
 	public List<Asignatura> listarAsignaturas(Connection c) {
 		List<Asignatura> Asignaturas = new ArrayList<Asignatura>();

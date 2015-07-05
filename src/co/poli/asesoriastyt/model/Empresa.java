@@ -1,42 +1,38 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Empresa.
+ *  Class Empresa.
  *
- * @author nvelez
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Empresa {
     
-    /** The nit. */
+    /**  nit. */
     private String nit;
     
-    /** The razon social. */
+    /**  razon social. */
     private String razonSocial;
     
-    /** The direccion. */
+    /**  direccion. */
     private String direccion;
     
-    /** The telefono. */
+    /**  telefono. */
     private String telefono;
     
-    /** The correo electronico. */
+    /**  correo electronico. */
     private String correoElectronico;
     
-    /** The contacto. */
+    /**  contacto. */
     private String contacto;
     
-    /** The usuario. */
+    /**  usuario. */
     private String usuario;
     
-    /** The clave. */
+    /**  clave. */
     private String clave;
     
-    /** The tipo. */
+    /**  tipo. */
     private String tipo;
     
     /**
@@ -53,162 +49,162 @@ public class Empresa {
     }
 
     /**
-     * Gets the nit.
+     * Gets  nit.
      *
-     * @return the nit
+     * @return  nit
      */
     public String getNit() {
         return nit;
     }
 
     /**
-     * Sets the nit.
+     * Sets  nit.
      *
-     * @param nit the nit to set
+     * @param nit  nit to set
      */
     public void setNit(String nit) {
         this.nit = nit;
     }
 
     /**
-     * Gets the razon social.
+     * Gets  razon social.
      *
-     * @return the razonSocial
+     * @return  razonSocial
      */
     public String getRazonSocial() {
         return razonSocial;
     }
 
     /**
-     * Sets the razon social.
+     * Sets  razon social.
      *
-     * @param razonSocial the razonSocial to set
+     * @param razonSocial  razonSocial to set
      */
     public void setRazonSocial(String razonSocial) {
         this.razonSocial = razonSocial;
     }
 
     /**
-     * Gets the direccion.
+     * Gets  direccion.
      *
-     * @return the direccion
+     * @return  direccion
      */
     public String getDireccion() {
         return direccion;
     }
 
     /**
-     * Sets the direccion.
+     * Sets  direccion.
      *
-     * @param direccion the direccion to set
+     * @param direccion  direccion to set
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
     /**
-     * Gets the telefono.
+     * Gets  telefono.
      *
-     * @return the telefono
+     * @return  telefono
      */
     public String getTelefono() {
         return telefono;
     }
 
     /**
-     * Sets the telefono.
+     * Sets  telefono.
      *
-     * @param telefono the telefono to set
+     * @param telefono  telefono to set
      */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
     /**
-     * Gets the correo electronico.
+     * Gets  correo electronico.
      *
-     * @return the correoElectronico
+     * @return  correoElectronico
      */
     public String getCorreoElectronico() {
         return correoElectronico;
     }
 
     /**
-     * Sets the correo electronico.
+     * Sets  correo electronico.
      *
-     * @param correoElectronico the correoElectronico to set
+     * @param correoElectronico  correoElectronico to set
      */
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
 
     /**
-     * Gets the contacto.
+     * Gets  contacto.
      *
-     * @return the contacto
+     * @return  contacto
      */
     public String getContacto() {
         return contacto;
     }
 
     /**
-     * Sets the contacto.
+     * Sets  contacto.
      *
-     * @param contacto the contacto to set
+     * @param contacto  contacto to set
      */
     public void setContacto(String contacto) {
         this.contacto = contacto;
     }
 
     /**
-     * Gets the usuario.
+     * Gets  usuario.
      *
-     * @return the usuario
+     * @return  usuario
      */
     public String getUsuario() {
         return usuario;
     }
 
     /**
-     * Sets the usuario.
+     * Sets  usuario.
      *
-     * @param usuario the usuario to set
+     * @param usuario  usuario to set
      */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
     /**
-     * Gets the clave.
+     * Gets  clave.
      *
-     * @return the clave
+     * @return  clave
      */
     public String getClave() {
         return clave;
     }
 
     /**
-     * Sets the clave.
+     * Sets  clave.
      *
-     * @param clave the clave to set
+     * @param clave  clave to set
      */
     public void setClave(String clave) {
         this.clave = clave;
     }
 
     /**
-     * Gets the tipo.
+     * Gets  tipo.
      *
-     * @return the tipo
+     * @return  tipo
      */
     public String getTipo() {
         return tipo;
     }
 
     /**
-     * Sets the tipo.
+     * Sets  tipo.
      *
-     * @param tipo the tipo to set
+     * @param tipo  tipo to set
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;

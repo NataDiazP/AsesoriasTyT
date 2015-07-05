@@ -58,20 +58,21 @@ import co.poli.asesoriastyt.util.LeerExcel;
 
 /**
  * Servlet implementation class SubirArchivo.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 @WebServlet("/CargarExcel")
 public class CargarExcel extends HttpServlet {
 	
-	/** The Constant serialVersionUID. */
+	/**  Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
-	/** The excel. */
+	/**  excel. */
 	LeerExcel excel= new LeerExcel();
 	
-	/** The write. */
+	/**  write. */
 	EscribirErrores write= new EscribirErrores();
 	
-	/** The npersona. */
+	/**  npersona. */
 	NPersona npersona= new NPersona();
 
     
@@ -88,9 +89,9 @@ public class CargarExcel extends HttpServlet {
 	/**
 	 * Do get.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
+	 * @param request  request
+	 * @param response  response
+	 * @throws ServletException  servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -101,9 +102,9 @@ public class CargarExcel extends HttpServlet {
 	/**
 	 * Do post.
 	 *
-	 * @param request the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
+	 * @param request  request
+	 * @param response  response
+	 * @throws ServletException  servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -1,48 +1,52 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Bloque.
+ *  Class Bloque.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Bloque {
 
-	/** The Id bloque. */
+	/**  Id bloque. */
 	private String IdBloque;
 	
-	/** The Encargado bloque. */
+	/**  Encargado bloque. */
 	private String EncargadoBloque;
 	
 	/**
-	 * Gets the id bloque.
+	 * Gets  id bloque.
 	 *
-	 * @return the idBloque
+	 * @return  idBloque
 	 */
 	public String getIdBloque() {
 		return IdBloque;
 	}
 	
 	/**
-	 * Sets the id bloque.
+	 * Sets  id bloque.
 	 *
-	 * @param idBloque the idBloque to set
+	 * @param idBloque  idBloque to set
 	 */
 	public void setIdBloque(String idBloque) {
 		IdBloque = idBloque;
 	}
 	
 	/**
-	 * Gets the encargado bloque.
+	 * Gets  encargado bloque.
 	 *
-	 * @return the encargadoBloque
+	 * @return  encargadoBloque
 	 */
 	public String getEncargadoBloque() {
 		return EncargadoBloque;
 	}
 	
 	/**
-	 * Sets the encargado bloque.
+	 * Sets  encargado bloque.
 	 *
-	 * @param encargadoBloque the encargadoBloque to set
+	 * @param encargadoBloque  encargadoBloque to set
 	 */
 	public void setEncargadoBloque(String encargadoBloque) {
 		EncargadoBloque = encargadoBloque;

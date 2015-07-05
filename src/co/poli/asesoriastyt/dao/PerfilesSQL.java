@@ -5,16 +5,16 @@ package co.poli.asesoriastyt.dao;
 
 
 /**
- * The Class PerfilesSQL.
+ *  Class PerfilesSQL.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class PerfilesSQL {
 
     /**
      * Crear.
      *
-     * @return the string
+     * @return  string
      */
     public static String Crear() {
         return "INSERT INTO perfiles (Nombre_Perfil) VALUES (?)";
@@ -23,7 +23,7 @@ public class PerfilesSQL {
     /**
      * Modificar.
      *
-     * @return the string
+     * @return  string
      */
     public static String Modificar() {
         return "UPDATE perfiles SET Nombre_Perfil=? WHERE Id_Perfil=?";
@@ -32,8 +32,8 @@ public class PerfilesSQL {
     /**
      * Consultar.
      *
-     * @param Id_Perfil the id_ perfil
-     * @return the string
+     * @param Id_Perfil  id_ perfil
+     * @return  string
      */
     public static String Consultar(int Id_Perfil) {
         return "SELECT * FROM perfiles WHERE Id_Perfil = " + Id_Perfil + "";
@@ -42,7 +42,7 @@ public class PerfilesSQL {
     /**
      * Eliminar.
      *
-     * @return the string
+     * @return  string
      */
     public static String Eliminar() {
         return "DELETE FROM perfiles WHERE Id_Perfil=?";

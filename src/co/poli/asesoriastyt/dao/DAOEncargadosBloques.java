@@ -15,9 +15,9 @@ import java.util.logging.Logger;
 import co.poli.asesoriastyt.model.EncargadoBloque;
 
 /**
- * The Class DAOEncargadosBloques.
+ *  Class DAOEncargadosBloques.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class DAOEncargadosBloques {
 
@@ -25,10 +25,10 @@ public class DAOEncargadosBloques {
 	 * Crear.
 	 *
 	 * @param c
-	 *            the c
+	 *             c
 	 * @param EncBloque
-	 *            the enc bloque
-	 * @return the int
+	 *             enc bloque
+	 * @return  int
 	 */
 	public int Crear(Connection c, EncargadoBloque EncBloque) {
 		String sql = EncargadosBloquesSQL.Crear();
@@ -56,10 +56,10 @@ public class DAOEncargadosBloques {
 	 * Modificar.
 	 *
 	 * @param c
-	 *            the c
+	 *             c
 	 * @param EncBloque
-	 *            the enc bloque
-	 * @return the int
+	 *             enc bloque
+	 * @return  int
 	 */
 	public int Modificar(Connection c, EncargadoBloque EncBloque) {
 		String sql = EncargadosBloquesSQL.Modificar();
@@ -87,10 +87,10 @@ public class DAOEncargadosBloques {
 	 * Buscar.
 	 *
 	 * @param con
-	 *            the con
+	 *             con
 	 * @param IdEncargado
-	 *            the id encargado
-	 * @return the encargado bloque
+	 *             id encargado
+	 * @return  encargado bloque
 	 */
 	public EncargadoBloque Buscar(Connection con, String IdEncargado) {
 		EncargadoBloque c = new EncargadoBloque();
@@ -118,10 +118,10 @@ public class DAOEncargadosBloques {
 	 * BuscarxCorreo.
 	 *
 	 * @param con
-	 *            the con
+	 *             con
 	 * @param IdEncargado
-	 *            the id encargado
-	 * @return the encargado bloque
+	 *             id encargado
+	 * @return  encargado bloque
 	 */
 	public EncargadoBloque BuscarIdEncargado(Connection con, String emailEncargado) {
 		EncargadoBloque c = new EncargadoBloque();
@@ -149,10 +149,10 @@ public class DAOEncargadosBloques {
 	 * Eliminar.
 	 *
 	 * @param c
-	 *            the c
+	 *             c
 	 * @param EncBloque
-	 *            the enc bloque
-	 * @return the int
+	 *             enc bloque
+	 * @return  int
 	 */
 	public int Eliminar(Connection c, EncargadoBloque EncBloque) {
 		String sql = EncargadosBloquesSQL.Eliminar();
@@ -181,8 +181,8 @@ public class DAOEncargadosBloques {
 	 * Listar encargados bloques.
 	 *
 	 * @param c
-	 *            the c
-	 * @return the list
+	 *             c
+	 * @return  list
 	 */
 	public List<EncargadoBloque> listarEncargadosBloques(Connection c) {
 		List<EncargadoBloque> EncargadosBloques = new ArrayList<EncargadoBloque>();

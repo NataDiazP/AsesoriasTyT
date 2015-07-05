@@ -17,23 +17,23 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NProgAcademica.
+ *  Class NProgAcademica.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NProgAcademica {
 
-	/** The dao prog academica. */
+	/**  dao prog academica. */
 	DAOProgAcademica daoProgAcademica;
 	
-	/** The c. */
+	/**  c. */
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
 	/**
 	 * Crear.
 	 *
-	 * @param ProgAcademica the prog academica
-	 * @return the int
+	 * @param ProgAcademica  prog academica
+	 * @return  int
 	 */
 	public int Crear(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
@@ -50,8 +50,8 @@ public class NProgAcademica {
 	/**
 	 * Modificar.
 	 *
-	 * @param ProgAcademica the prog academica
-	 * @return the int
+	 * @param ProgAcademica  prog academica
+	 * @return  int
 	 */
 	public int Modificar(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
@@ -68,8 +68,8 @@ public class NProgAcademica {
 	/**
 	 * Buscar.
 	 *
-	 * @param ProgAcademica the prog academica
-	 * @return the prog academica
+	 * @param ProgAcademica  prog academica
+	 * @return  prog academica
 	 */
 	public ProgAcademica Buscar(String ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
@@ -86,8 +86,8 @@ public class NProgAcademica {
 	/**
 	 * Eliminar.
 	 *
-	 * @param ProgAcademica the prog academica
-	 * @return the int
+	 * @param ProgAcademica  prog academica
+	 * @return  int
 	 */
 	public int Eliminar(ProgAcademica ProgAcademica) {
 		daoProgAcademica = new DAOProgAcademica();
@@ -104,8 +104,8 @@ public class NProgAcademica {
 	/**
 	 * Asignaturas docente.
 	 *
-	 * @param idDocente the id docente
-	 * @return the list
+	 * @param idDocente  id docente
+	 * @return  list
 	 */
 	public List<Asignatura> AsignaturasDocente(String idDocente) {
 		daoProgAcademica = new DAOProgAcademica();
@@ -121,7 +121,7 @@ public class NProgAcademica {
 	/**
 	 * Listado prog academica.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<ProgAcademica> ListadoProgAcademica() {
 		daoProgAcademica = new DAOProgAcademica();

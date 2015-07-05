@@ -17,21 +17,21 @@ import co.poli.asesoriastyt.util.Conexion;
 
 
 /**
- * The Class DAOBloques.
+ *  Class DAOBloques.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class DAOBloques {
 
-	/** The Connection. */
+	/**  Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
 	 * Crear.
 	 *
-	 * @param c the c
-	 * @param Bloques the bloques
-	 * @return the int
+	 * @param c  c
+	 * @param Bloques  bloques
+	 * @return  int
 	 */
 	public int Crear(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Crear();
@@ -65,9 +65,9 @@ public class DAOBloques {
 	/**
 	 * Modificar.
 	 *
-	 * @param c the c
-	 * @param Bloques the bloques
-	 * @return the int
+	 * @param c  c
+	 * @param Bloques  bloques
+	 * @return  int
 	 */
 	public int Modificar(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Modificar();
@@ -100,9 +100,9 @@ public class DAOBloques {
 	/**
 	 * Buscar.
 	 *
-	 * @param con the con
-	 * @param IdBloque the id bloque
-	 * @return the bloque
+	 * @param con  con
+	 * @param IdBloque  id bloque
+	 * @return  bloque
 	 */
 	public Bloque Buscar(Connection con, String IdBloque) {
 		Bloque c = new Bloque();
@@ -130,9 +130,9 @@ public class DAOBloques {
 	/**
 	 * Eliminar.
 	 *
-	 * @param c the c
-	 * @param Bloques the bloques
-	 * @return the int
+	 * @param c  c
+	 * @param Bloques  bloques
+	 * @return  int
 	 */
 	public int Eliminar(Connection c, Bloque Bloques) {
 		String sql = BloquesSQL.Eliminar();
@@ -161,8 +161,8 @@ public class DAOBloques {
 	/**
 	 * Listar bloques.
 	 *
-	 * @param c the c
-	 * @return the list
+	 * @param c  c
+	 * @return  list
 	 */
 	public List<Bloque> listarBloques(Connection c) {
 		List<Bloque> Bloques = new ArrayList<Bloque>();

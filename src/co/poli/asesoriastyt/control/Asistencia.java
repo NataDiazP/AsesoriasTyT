@@ -20,14 +20,20 @@ import co.poli.asesoriastyt.model.Asesoria;
 import co.poli.asesoriastyt.model.EstudianteAsesoria;
 import co.poli.asesoriastyt.negocio.NAsesoria;
 
+
 /**
- * Servlet implementation class Asistencia
+ * Servlet implementation class Asistencia.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 @WebServlet("/Asistencia")
 public class Asistencia extends HttpServlet {
+	
+	/**  Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
+     * Instantiates a new asistencia.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public Asistencia() {
@@ -36,6 +42,12 @@ public class Asistencia extends HttpServlet {
     }
 
 	/**
+	 * Do get.
+	 *
+	 * @param request  request
+	 * @param response  response
+	 * @throws ServletException  servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,6 +55,12 @@ public class Asistencia extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request  request
+	 * @param response  response
+	 * @throws ServletException  servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

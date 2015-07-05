@@ -16,18 +16,18 @@ import co.poli.asesoriastyt.model.Perfil;
 
 
 /**
- * The Class DAOPerfiles.
+ *  Class DAOPerfiles.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class DAOPerfiles {
 	
 	/**
 	 * Consultar usuario.
 	 *
-	 * @param c the c
-	 * @param correo the correo
-	 * @return the int
+	 * @param c  c
+	 * @param correo  correo
+	 * @return  int
 	 */
 	public int consultarUsuario(Connection c,String correo)
 	{
@@ -53,9 +53,9 @@ public class DAOPerfiles {
 	/**
 	 * Crear.
 	 *
-	 * @param c the c
-	 * @param Perfiles the perfiles
-	 * @return the int
+	 * @param c  c
+	 * @param Perfiles  perfiles
+	 * @return  int
 	 */
 	public int Crear(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Crear();
@@ -82,9 +82,9 @@ public class DAOPerfiles {
 	/**
 	 * Modificar.
 	 *
-	 * @param c the c
-	 * @param Perfiles the perfiles
-	 * @return the int
+	 * @param c  c
+	 * @param Perfiles  perfiles
+	 * @return  int
 	 */
 	public int Modificar(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Modificar();
@@ -111,9 +111,9 @@ public class DAOPerfiles {
 	/**
 	 * Buscar.
 	 *
-	 * @param con the con
-	 * @param IdPerfil the id perfil
-	 * @return the perfil
+	 * @param con  con
+	 * @param IdPerfil  id perfil
+	 * @return  perfil
 	 */
 	public Perfil Buscar(Connection con, int IdPerfil) {
 		Perfil c = new Perfil();
@@ -141,9 +141,9 @@ public class DAOPerfiles {
 	/**
 	 * Eliminar.
 	 *
-	 * @param c the c
-	 * @param Perfiles the perfiles
-	 * @return the int
+	 * @param c  c
+	 * @param Perfiles  perfiles
+	 * @return  int
 	 */
 	public int Eliminar(Connection c, Perfil Perfiles) {
 		String sql = PerfilesSQL.Eliminar();
@@ -172,8 +172,8 @@ public class DAOPerfiles {
 	/**
 	 * Listar perfiles.
 	 *
-	 * @param c the c
-	 * @return the list
+	 * @param c  c
+	 * @return  list
 	 */
 	public List<Perfil> listarPerfiles(Connection c) {
 		List<Perfil> Perfiles = new ArrayList<Perfil>();

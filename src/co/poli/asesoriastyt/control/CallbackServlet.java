@@ -40,26 +40,27 @@ import java.util.List;
 
 
 /**
- * The Class CallbackServlet.
+ *  Class CallbackServlet.
+ *  @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class CallbackServlet extends HttpServlet {
 	
-	/** The Constant serialVersionUID. */
+	/**  Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
-	/** The dao. */
+	/**  dao. */
 	private NPerfiles dao;
 	private NPersona daop;
 	
-	/** The c. */
+	/**  c. */
 	Connection c;
 
 	/**
-	 * Gets the web content from ur l_ post.
+	 * Gets  web content from ur l_ post.
 	 *
-	 * @param httpURL the http url
-	 * @param nvps the nvps
-	 * @return the web content from ur l_ post
+	 * @param httpURL  http url
+	 * @param nvps  nvps
+	 * @return  web content from ur l_ post
 	 */
 	public static JSONObject getWebContentFromURL_Post(String httpURL, List<NameValuePair> nvps) {
 
@@ -99,10 +100,10 @@ public class CallbackServlet extends HttpServlet {
 	}
 
 	/**
-	 * Gets the web content from ur l_ get.
+	 * Gets  web content from ur l_ get.
 	 *
-	 * @param httpURL the http url
-	 * @return the web content from ur l_ get
+	 * @param httpURL  http url
+	 * @return  web content from ur l_ get
 	 */
 	private static JSONObject getWebContentFromURL_Get(String httpURL) {
 

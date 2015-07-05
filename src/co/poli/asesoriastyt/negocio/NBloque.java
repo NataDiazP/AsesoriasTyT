@@ -16,24 +16,24 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NBloque.
+ *  Class NBloque.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NBloque {
 
-	/** The dao bloques. */
+	/**  dao bloques. */
 	DAOBloques daoBloques;
 	
-	/** The c. */
+	/**  c. */
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
 
 	/**
 	 * Crear.
 	 *
-	 * @param Bloques the bloques
-	 * @return the int
+	 * @param Bloques  bloques
+	 * @return  int
 	 */
 	public int Crear(Bloque Bloques) {
 		daoBloques = new DAOBloques();
@@ -50,8 +50,8 @@ public class NBloque {
 	/**
 	 * Modificar.
 	 *
-	 * @param Bloques the bloques
-	 * @return the int
+	 * @param Bloques  bloques
+	 * @return  int
 	 */
 	public int Modificar(Bloque Bloques) {
 		daoBloques = new DAOBloques();
@@ -68,8 +68,8 @@ public class NBloque {
 	/**
 	 * Buscar.
 	 *
-	 * @param Bloques the bloques
-	 * @return the bloque
+	 * @param Bloques  bloques
+	 * @return  bloque
 	 */
 	public Bloque Buscar(String Bloques) {
 		daoBloques = new DAOBloques();
@@ -86,8 +86,8 @@ public class NBloque {
 	/**
 	 * Eliminar.
 	 *
-	 * @param Bloques the bloques
-	 * @return the int
+	 * @param Bloques  bloques
+	 * @return  int
 	 */
 	public int Eliminar(Bloque Bloques) {
 		daoBloques = new DAOBloques();
@@ -104,7 +104,7 @@ public class NBloque {
 	/**
 	 * Listado bloques.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Bloque> ListadoBloques() {
 		daoBloques = new DAOBloques();

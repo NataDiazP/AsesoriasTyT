@@ -19,14 +19,15 @@ import co.poli.asesoriastyt.util.Conexion;
 
 /**
  * Servlet implementation class Aulas.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 @WebServlet("/Aulas")
 public class Aulas extends HttpServlet {
 
-	/** The Constant serialVersionUID. */
+	/**  Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The Connection. */
+	/**  Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
@@ -43,11 +44,11 @@ public class Aulas extends HttpServlet {
 	 * Do get.
 	 *
 	 * @param request
-	 *            the request
+	 *             request
 	 * @param response
-	 *            the response
+	 *             response
 	 * @throws ServletException
-	 *             the servlet exception
+	 *              servlet exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -60,11 +61,11 @@ public class Aulas extends HttpServlet {
 	 * Do post.
 	 *
 	 * @param request
-	 *            the request
+	 *             request
 	 * @param response
-	 *            the response
+	 *             response
 	 * @throws ServletException
-	 *             the servlet exception
+	 *              servlet exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

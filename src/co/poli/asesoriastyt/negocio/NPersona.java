@@ -16,14 +16,15 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NPersona.
+ *  Class NPersona.
+ *  @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NPersona {
 
-	/** The dao personas. */
+	/**  dao personas. */
 	DAOPersonas daoPersonas;
 	
-	/** The c. */
+	/**  c. */
 	Conexion conexion= new Conexion();
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
@@ -44,7 +45,7 @@ public class NPersona {
 	/**
 	 * Crear docentes.
 	 *
-	 * @param listaDocentes the lista docentes
+	 * @param listaDocentes  lista docentes
 	 * @throws SQLException 
 	 */
 	public int CrearDocentes(Persona Personas) {
@@ -62,8 +63,8 @@ public class NPersona {
 	/**
 	 * Crear.
 	 *
-	 * @param Personas the personas
-	 * @return the int
+	 * @param Personas  personas
+	 * @return  int
 	 */
 	public int Crear(Persona Personas) {
 		daoPersonas = new DAOPersonas();
@@ -80,7 +81,7 @@ public class NPersona {
 	/**
 	 * Validar existencia persona.
 	 *
-	 * @param documento the documento
+	 * @param documento  documento
 	 * @return true, if successful
 	 */
 	public boolean validarExistenciaPersona(String documento)
@@ -116,7 +117,7 @@ public class NPersona {
 	/**
 	 * Validar existencia correo.
 	 *
-	 * @param correo the correo
+	 * @param correo  correo
 	 * @return true, if successful
 	 */
 	public boolean validarExistenciaCorreo(String correo)
@@ -137,8 +138,8 @@ public class NPersona {
 	/**
 	 * Modificar.
 	 *
-	 * @param Personas the personas
-	 * @return the int
+	 * @param Personas  personas
+	 * @return  int
 	 */
 	public int Modificar(Persona Personas) {
 		daoPersonas = new DAOPersonas();
@@ -150,8 +151,8 @@ public class NPersona {
 	/**
 	 * Buscar.
 	 *
-	 * @param Personas the personas
-	 * @return the persona
+	 * @param Personas  personas
+	 * @return  persona
 	 */
 	public Persona Buscar(String Personas) {
 		daoPersonas = new DAOPersonas();
@@ -163,8 +164,8 @@ public class NPersona {
 	/**
 	 * Buscar docente.
 	 *
-	 * @param Email the email
-	 * @return the string
+	 * @param Email  email
+	 * @return  string
 	 */
 	public String BuscarDocente(String Email) {
 		daoPersonas = new DAOPersonas();
@@ -176,8 +177,8 @@ public class NPersona {
 	/**
 	 * Eliminar.
 	 *
-	 * @param Personas the personas
-	 * @return the int
+	 * @param Personas  personas
+	 * @return  int
 	 */
 	public int Eliminar(Persona Personas) {
 		daoPersonas = new DAOPersonas();
@@ -189,7 +190,7 @@ public class NPersona {
 	/**
 	 * Listado personas.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Persona> ListadoPersonas() {
 		daoPersonas = new DAOPersonas();
@@ -200,7 +201,7 @@ public class NPersona {
 	/**
 	 * Listado personas estudiantes.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Persona> ListadoPersonasEstudiantes() {
 		daoPersonas = new DAOPersonas();
@@ -211,7 +212,7 @@ public class NPersona {
 	/**
 	 * Listado personas docentes.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Persona> ListadoPersonasDocentes() {
 		daoPersonas = new DAOPersonas();

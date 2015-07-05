@@ -16,24 +16,24 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NEncargadoBloque.
+ *  Class NEncargadoBloque.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NEncargadoBloque {
 
-	/** The dao enc bloques. */
+	/**  dao enc bloques. */
 	DAOEncargadosBloques daoEncBloques;
 	
-	/** The c. */
+	/**  c. */
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
 
 	/**
 	 * Crear.
 	 *
-	 * @param EncBloques the enc bloques
-	 * @return the int
+	 * @param EncBloques  enc bloques
+	 * @return  int
 	 */
 	public int Crear(EncargadoBloque EncBloques) {
 		daoEncBloques = new DAOEncargadosBloques();
@@ -50,8 +50,8 @@ public class NEncargadoBloque {
 	/**
 	 * Modificar.
 	 *
-	 * @param EncBloques the enc bloques
-	 * @return the int
+	 * @param EncBloques  enc bloques
+	 * @return  int
 	 */
 	public int Modificar(EncargadoBloque EncBloques) {
 		daoEncBloques = new DAOEncargadosBloques();
@@ -68,8 +68,8 @@ public class NEncargadoBloque {
 	/**
 	 * Buscar.
 	 *
-	 * @param EncBloque the enc bloque
-	 * @return the encargado bloque
+	 * @param EncBloque  enc bloque
+	 * @return  encargado bloque
 	 */
 	public EncargadoBloque Buscar(String EncBloque) {
 		daoEncBloques = new DAOEncargadosBloques();
@@ -86,8 +86,8 @@ public class NEncargadoBloque {
 	/**
 	 * Buscar.
 	 *
-	 * @param EncBloque the enc bloque
-	 * @return the encargado bloque
+	 * @param EncBloque  enc bloque
+	 * @return  encargado bloque
 	 */
 	public EncargadoBloque BuscarIdEncargado(String EncBloque) {
 		daoEncBloques = new DAOEncargadosBloques();
@@ -104,8 +104,8 @@ public class NEncargadoBloque {
 	/**
 	 * Eliminar.
 	 *
-	 * @param EncBloque the enc bloque
-	 * @return the int
+	 * @param EncBloque  enc bloque
+	 * @return  int
 	 */
 	public int Eliminar(EncargadoBloque EncBloque) {
 		daoEncBloques = new DAOEncargadosBloques();
@@ -122,7 +122,7 @@ public class NEncargadoBloque {
 	/**
 	 * Listado encargados bloques.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<EncargadoBloque> ListadoEncargadosBloques() {
 		daoEncBloques = new DAOEncargadosBloques();

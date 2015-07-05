@@ -16,18 +16,18 @@ import co.poli.asesoriastyt.model.Aula;
 
 
 /**
- * The Class DAOAulas.
+ *  Class DAOAulas.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class DAOAulas {
 
 	/**
 	 * Crear.
 	 *
-	 * @param c the c
-	 * @param Aula the aula
-	 * @return the int
+	 * @param c  c
+	 * @param Aula  aula
+	 * @return  int
 	 */
 	public int Crear(Connection c, Aula Aula) {
 		String sql = AulasSQL.Crear();
@@ -54,9 +54,9 @@ public class DAOAulas {
 	/**
 	 * Modificar.
 	 *
-	 * @param c the c
-	 * @param Aula the aula
-	 * @return the int
+	 * @param c  c
+	 * @param Aula  aula
+	 * @return  int
 	 */
 	public int Modificar(Connection c, Aula Aula) {
 		String sql = AulasSQL.Modificar();
@@ -83,9 +83,9 @@ public class DAOAulas {
 	/**
 	 * Buscar.
 	 *
-	 * @param con the con
-	 * @param IdAula the id aula
-	 * @return the aula
+	 * @param con  con
+	 * @param IdAula  id aula
+	 * @return  aula
 	 */
 	public Aula Buscar(Connection con, String IdAula) {
 		Aula c = new Aula();
@@ -113,9 +113,9 @@ public class DAOAulas {
 	/**
 	 * Eliminar.
 	 *
-	 * @param c the c
-	 * @param Aula the aula
-	 * @return the int
+	 * @param c  c
+	 * @param Aula  aula
+	 * @return  int
 	 */
 	public int Eliminar(Connection c, Aula Aula) {
 		String sql = AulasSQL.Eliminar();
@@ -145,8 +145,8 @@ public class DAOAulas {
 	/**
 	 * Listar aula.
 	 *
-	 * @param c the c
-	 * @return the list
+	 * @param c  c
+	 * @return  list
 	 */
 	public List<Aula> listarAula(Connection c) {
 		List<Aula> Aula = new ArrayList<Aula>();

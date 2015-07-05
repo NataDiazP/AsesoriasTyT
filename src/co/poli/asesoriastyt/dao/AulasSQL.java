@@ -5,16 +5,16 @@ package co.poli.asesoriastyt.dao;
 
 
 /**
- * The Class AulasSQL.
+ *  Class AulasSQL.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class AulasSQL {
 	
 	/**
 	 * Crear.
 	 *
-	 * @return the string
+	 * @return  string
 	 */
 	public static String Crear() {
 		return "INSERT INTO aulas (Id_Aula,Id_Bloque_Aula) VALUES (?, ?)";
@@ -23,7 +23,7 @@ public class AulasSQL {
 	/**
 	 * Modificar.
 	 *
-	 * @return the string
+	 * @return  string
 	 */
 	public static String Modificar() {
 		return "UPDATE aulas SET Id_Bloque_Aula=? WHERE Id_Aula=?";
@@ -32,8 +32,8 @@ public class AulasSQL {
 	/**
 	 * Consultar.
 	 *
-	 * @param Id_Aula the id_ aula
-	 * @return the string
+	 * @param Id_Aula  id_ aula
+	 * @return  string
 	 */
 	public static String Consultar(String Id_Aula) {
 		return "SELECT * FROM aulas WHERE Id_Aula = " + Id_Aula + "";
@@ -42,7 +42,7 @@ public class AulasSQL {
 	/**
 	 * Eliminar.
 	 *
-	 * @return the string
+	 * @return  string
 	 */
 	public static String Eliminar() {
 		return "DELETE FROM aulas WHERE Id_Aula=? and Id_Bloque_Aula=?";

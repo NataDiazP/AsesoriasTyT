@@ -5,49 +5,49 @@ package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class PlanEstudio.
+ *  Class PlanEstudio.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class PlanEstudio {
 
-	/** The Cod plan estudio. */
+	/**  Cod plan estudio. */
 	private String CodPlanEstudio;
 	
-	/** The Nombre plan estudio. */
+	/**  Nombre plan estudio. */
 	private String NombrePlanEstudio;
 	
 	/**
-	 * Gets the cod plan estudio.
+	 * Gets  cod plan estudio.
 	 *
-	 * @return the codPlanEstudio
+	 * @return  codPlanEstudio
 	 */
 	public String getCodPlanEstudio() {
 		return CodPlanEstudio;
 	}
 	
 	/**
-	 * Sets the cod plan estudio.
+	 * Sets  cod plan estudio.
 	 *
-	 * @param codPlanEstudio the codPlanEstudio to set
+	 * @param codPlanEstudio  codPlanEstudio to set
 	 */
 	public void setCodPlanEstudio(String codPlanEstudio) {
 		CodPlanEstudio = codPlanEstudio;
 	}
 	
 	/**
-	 * Gets the nombre plan estudio.
+	 * Gets  nombre plan estudio.
 	 *
-	 * @return the nombrePlanEstudio
+	 * @return  nombrePlanEstudio
 	 */
 	public String getNombrePlanEstudio() {
 		return NombrePlanEstudio;
 	}
 	
 	/**
-	 * Sets the nombre plan estudio.
+	 * Sets  nombre plan estudio.
 	 *
-	 * @param nombrePlanEstudio the nombrePlanEstudio to set
+	 * @param nombrePlanEstudio  nombrePlanEstudio to set
 	 */
 	public void setNombrePlanEstudio(String nombrePlanEstudio) {
 		NombrePlanEstudio = nombrePlanEstudio;

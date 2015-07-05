@@ -1,47 +1,51 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class GooglePlusUser.
+ *  Class GooglePlusUser.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class GooglePlusUser {
 	
-	/** The id. */
+	/**  id. */
 	private String id;
 	
-	/** The email. */
+	/**  email. */
 	private String email;
 	
-	/** The firstname. */
+	/**  firstname. */
 	private String firstname;
 	
-	/** The lastname. */
+	/**  lastname. */
 	private String lastname;
 	
-	/** The fullname. */
+	/**  fullname. */
 	private String fullname; 
 	
-	/** The google plus link. */
+	/**  google plus link. */
 	private String googlePlusLink; 
 	
-	/** The profile pic link. */
+	/**  profile pic link. */
 	private String profilePicLink;
 	
-	/** The gender. */
+	/**  gender. */
 	private String gender;
 	
-	/** The birthday. */
+	/**  birthday. */
 	private String birthday;
 	
-	/** The language. */
+	/**  language. */
 	private String language;
 	
 
 	/**
 	 * Instantiates a new google plus user.
 	 *
-	 * @param id the id
-	 * @param email the email
+	 * @param id  id
+	 * @param email  email
 	 */
 	public GooglePlusUser(String id, String email) {
 		this.id = id;
@@ -50,180 +54,180 @@ public class GooglePlusUser {
 	}
 
 	/**
-	 * Gets the id.
+	 * Gets  id.
 	 *
-	 * @return the id
+	 * @return  id
 	 */
 	public String getId() {
 		return id;
 	}
 
 	/**
-	 * Sets the id.
+	 * Sets  id.
 	 *
-	 * @param id the new id
+	 * @param id  new id
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	/**
-	 * Gets the email.
+	 * Gets  email.
 	 *
-	 * @return the email
+	 * @return  email
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * Sets the email.
+	 * Sets  email.
 	 *
-	 * @param email the new email
+	 * @param email  new email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * Gets the firstname.
+	 * Gets  firstname.
 	 *
-	 * @return the firstname
+	 * @return  firstname
 	 */
 	public String getFirstname() {
 		return firstname;
 	}
 
 	/**
-	 * Sets the firstname.
+	 * Sets  firstname.
 	 *
-	 * @param firstname the new firstname
+	 * @param firstname  new firstname
 	 */
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
 	/**
-	 * Gets the lastname.
+	 * Gets  lastname.
 	 *
-	 * @return the lastname
+	 * @return  lastname
 	 */
 	public String getLastname() {
 		return lastname;
 	}
 
 	/**
-	 * Sets the lastname.
+	 * Sets  lastname.
 	 *
-	 * @param lastname the new lastname
+	 * @param lastname  new lastname
 	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
 	/**
-	 * Gets the fullname.
+	 * Gets  fullname.
 	 *
-	 * @return the fullname
+	 * @return  fullname
 	 */
 	public String getFullname() {
 		return fullname;
 	}
 
 	/**
-	 * Sets the fullname.
+	 * Sets  fullname.
 	 *
-	 * @param fullname the new fullname
+	 * @param fullname  new fullname
 	 */
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
 
 	/**
-	 * Gets the google plus link.
+	 * Gets  google plus link.
 	 *
-	 * @return the google plus link
+	 * @return  google plus link
 	 */
 	public String getGooglePlusLink() {
 		return googlePlusLink;
 	}
 
 	/**
-	 * Sets the google plus link.
+	 * Sets  google plus link.
 	 *
-	 * @param googlePlusLink the new google plus link
+	 * @param googlePlusLink  new google plus link
 	 */
 	public void setGooglePlusLink(String googlePlusLink) {
 		this.googlePlusLink = googlePlusLink;
 	}
 
 	/**
-	 * Gets the profile pic link.
+	 * Gets  profile pic link.
 	 *
-	 * @return the profile pic link
+	 * @return  profile pic link
 	 */
 	public String getProfilePicLink() {
 		return profilePicLink;
 	}
 
 	/**
-	 * Sets the profile pic link.
+	 * Sets  profile pic link.
 	 *
-	 * @param profilePicLink the new profile pic link
+	 * @param profilePicLink  new profile pic link
 	 */
 	public void setProfilePicLink(String profilePicLink) {
 		this.profilePicLink = profilePicLink;
 	}
 
 	/**
-	 * Gets the gender.
+	 * Gets  gender.
 	 *
-	 * @return the gender
+	 * @return  gender
 	 */
 	public String getGender() {
 		return gender;
 	}
 
 	/**
-	 * Sets the gender.
+	 * Sets  gender.
 	 *
-	 * @param gender the new gender
+	 * @param gender  new gender
 	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
 	/**
-	 * Gets the birthday.
+	 * Gets  birthday.
 	 *
-	 * @return the birthday
+	 * @return  birthday
 	 */
 	public String getBirthday() {
 		return birthday;
 	}
 
 	/**
-	 * Sets the birthday.
+	 * Sets  birthday.
 	 *
-	 * @param birthday the new birthday
+	 * @param birthday  new birthday
 	 */
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
 	/**
-	 * Gets the language.
+	 * Gets  language.
 	 *
-	 * @return the language
+	 * @return  language
 	 */
 	public String getLanguage() {
 		return language;
 	}
 
 	/**
-	 * Sets the language.
+	 * Sets  language.
 	 *
-	 * @param language the new language
+	 * @param language  new language
 	 */
 	public void setLanguage(String language) {
 		this.language = language;

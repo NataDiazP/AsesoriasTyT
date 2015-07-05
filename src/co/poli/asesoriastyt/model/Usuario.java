@@ -1,48 +1,48 @@
 /*
  * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * and open  template in  editor.
  */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Usuario.
+ *  Class Usuario.
  *
- * @author Santi Monsalve
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Usuario {
 
-    /** The tipo identificacion. */
+    /**  tipo identificacion. */
     private String tipoIdentificacion;
     
-    /** The numero identificacion. */
+    /**  numero identificacion. */
     private String numeroIdentificacion;
     
-    /** The nombre completo. */
+    /**  nombre completo. */
     private String nombreCompleto;
     
-    /** The apellido completo. */
+    /**  apellido completo. */
     private String apellidoCompleto;
     
-    /** The direccion. */
+    /**  direccion. */
     private String direccion;
     
-    /** The telefono. */
+    /**  telefono. */
     private String telefono;
     
-    /** The celular. */
+    /**  celular. */
     private String celular;
     
-    /** The correo electronico. */
+    /**  correo electronico. */
     private String correoElectronico;
     
-    /** The usuario. */
+    /**  usuario. */
     private String usuario;
     
-    /** The clave. */
+    /**  clave. */
     private String clave;
     
-    /** The tipo. */
+    /**  tipo. */
     private String tipo;
 
     /**
@@ -65,72 +65,72 @@ public class Usuario {
     }
 
     /**
-     * Gets the tipo identificacion.
+     * Gets  tipo identificacion.
      *
-     * @return the tipoIdentificacion
+     * @return  tipoIdentificacion
      */
     public String getTipoIdentificacion() {
         return tipoIdentificacion;
     }
 
     /**
-     * Sets the tipo identificacion.
+     * Sets  tipo identificacion.
      *
-     * @param tipoIdentificacion the tipoIdentificacion to set
+     * @param tipoIdentificacion  tipoIdentificacion to set
      */
     public void setTipoIdentificacion(String tipoIdentificacion) {
         this.tipoIdentificacion = tipoIdentificacion;
     }
 
     /**
-     * Gets the numero identificacion.
+     * Gets  numero identificacion.
      *
-     * @return the numeroIdentificacion
+     * @return  numeroIdentificacion
      */
     public String getNumeroIdentificacion() {
         return numeroIdentificacion;
     }
 
     /**
-     * Sets the numero identificacion.
+     * Sets  numero identificacion.
      *
-     * @param numeroIdentificacion the numeroIdentificacion to set
+     * @param numeroIdentificacion  numeroIdentificacion to set
      */
     public void setNumeroIdentificacion(String numeroIdentificacion) {
         this.numeroIdentificacion = numeroIdentificacion;
     }
 
     /**
-     * Gets the nombre completo.
+     * Gets  nombre completo.
      *
-     * @return the nombreCompleto
+     * @return  nombreCompleto
      */
     public String getNombreCompleto() {
         return nombreCompleto;
     }
 
     /**
-     * Sets the nombre completo.
+     * Sets  nombre completo.
      *
-     * @param nombreCompleto the nombreCompleto to set
+     * @param nombreCompleto  nombreCompleto to set
      */
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
        
        /**
-        * Gets the apellido completo.
+        * Gets  apellido completo.
         *
-        * @return the nombreCompleto
+        * @return  nombreCompleto
         */
     public String getApellidoCompleto() {
         return apellidoCompleto;
     }
 
     /**
-     * Sets the apellido completo.
+     * Sets  apellido completo.
      *
-     * @param nombreCompleto the nombreCompleto to set
+     * @param nombreCompleto  nombreCompleto to set
      */
     public void setApellidoCompleto(String nombreCompleto) {
         this.apellidoCompleto = nombreCompleto;
@@ -138,126 +138,126 @@ public class Usuario {
 
 
     /**
-     * Gets the direccion.
+     * Gets  direccion.
      *
-     * @return the direccion
+     * @return  direccion
      */
     public String getDireccion() {
         return direccion;
     }
 
     /**
-     * Sets the direccion.
+     * Sets  direccion.
      *
-     * @param direccion the direccion to set
+     * @param direccion  direccion to set
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
     /**
-     * Gets the telefono.
+     * Gets  telefono.
      *
-     * @return the telefono
+     * @return  telefono
      */
     public String getTelefono() {
         return telefono;
     }
 
     /**
-     * Sets the telefono.
+     * Sets  telefono.
      *
-     * @param telefono the telefono to set
+     * @param telefono  telefono to set
      */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
     /**
-     * Gets the celular.
+     * Gets  celular.
      *
-     * @return the celular
+     * @return  celular
      */
     public String getCelular() {
         return celular;
     }
 
     /**
-     * Sets the celular.
+     * Sets  celular.
      *
-     * @param celular the celular to set
+     * @param celular  celular to set
      */
     public void setCelular(String celular) {
         this.celular = celular;
     }
 
     /**
-     * Gets the correo electronico.
+     * Gets  correo electronico.
      *
-     * @return the correoElectronico
+     * @return  correoElectronico
      */
     public String getCorreoElectronico() {
         return correoElectronico;
     }
 
     /**
-     * Sets the correo electronico.
+     * Sets  correo electronico.
      *
-     * @param correoElectronico the correoElectronico to set
+     * @param correoElectronico  correoElectronico to set
      */
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
 
     /**
-     * Gets the usuario.
+     * Gets  usuario.
      *
-     * @return the usuario
+     * @return  usuario
      */
     public String getUsuario() {
         return usuario;
     }
 
     /**
-     * Sets the usuario.
+     * Sets  usuario.
      *
-     * @param usuario the usuario to set
+     * @param usuario  usuario to set
      */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
     /**
-     * Gets the clave.
+     * Gets  clave.
      *
-     * @return the clave
+     * @return  clave
      */
     public String getClave() {
         return clave;
     }
 
     /**
-     * Sets the clave.
+     * Sets  clave.
      *
-     * @param clave the clave to set
+     * @param clave  clave to set
      */
     public void setClave(String clave) {
         this.clave = clave;
     }
 
     /**
-     * Gets the tipo.
+     * Gets  tipo.
      *
-     * @return the tipo
+     * @return  tipo
      */
     public String getTipo() {
         return tipo;
     }
 
     /**
-     * Sets the tipo.
+     * Sets  tipo.
      *
-     * @param tipo the tipo to set
+     * @param tipo  tipo to set
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;

@@ -25,16 +25,17 @@ import co.poli.asesoriastyt.negocio.NProgAcademica;
 
 
 /**
- * The Class LeerExcel.
+ *  Class LeerExcel.
+ *  @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class LeerExcel 
 {
 	
-	/** The lista errores docentes. */
+	/**  lista errores docentes. */
 	ArrayList<Persona> listaErroresDocentes= new ArrayList<Persona>();
 	ArrayList<Persona> listaDocentes= new ArrayList<Persona>();
 	XSSFSheet hojaProg =null;
-	/** The lista errores estudiantes. */
+	/**  lista errores estudiantes. */
 	ArrayList<Persona> listaErroresEstudiantes= new ArrayList<Persona>();
 	ArrayList<Persona> listaEstudiantes= new ArrayList<Persona>();
 
@@ -45,9 +46,9 @@ public class LeerExcel
 	ArrayList<ProgAcademica> listaProgramacion= new ArrayList<ProgAcademica>();
 	
 	/**
-	 * The main method.
+	 *  main method.
 	 *
-	 * @param args the arguments
+	 * @param args  arguments
 	 */
 	public static void main(String[] args) 
 	{
@@ -59,7 +60,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the hojaProg
+	 * @return  hojaProg
 	 */
 	public XSSFSheet getHojaProg() {
 		return hojaProg;
@@ -71,7 +72,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param hojaProg the hojaProg to set
+	 * @param hojaProg  hojaProg to set
 	 */
 	public void setHojaProg(XSSFSheet hojaProg) {
 		this.hojaProg = hojaProg;
@@ -83,7 +84,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the listaDocentes
+	 * @return  listaDocentes
 	 */
 	public ArrayList<Persona> getListaDocentes() {
 		return listaDocentes;
@@ -91,7 +92,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param listaDocentes the listaDocentes to set
+	 * @param listaDocentes  listaDocentes to set
 	 */
 	public void setListaDocentes(ArrayList<Persona> listaDocentes) {
 		this.listaDocentes = listaDocentes;
@@ -99,7 +100,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the listaEstudiantes
+	 * @return  listaEstudiantes
 	 */
 	public ArrayList<Persona> getListaEstudiantes() {
 		return listaEstudiantes;
@@ -107,7 +108,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param listaEstudiantes the listaEstudiantes to set
+	 * @param listaEstudiantes  listaEstudiantes to set
 	 */
 	public void setListaEstudiantes(ArrayList<Persona> listaEstudiantes) {
 		this.listaEstudiantes = listaEstudiantes;
@@ -115,7 +116,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the listaAsignaturas
+	 * @return  listaAsignaturas
 	 */
 	public ArrayList<Asignatura> getListaAsignaturas() {
 		return listaAsignaturas;
@@ -123,7 +124,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param listaAsignaturas the listaAsignaturas to set
+	 * @param listaAsignaturas  listaAsignaturas to set
 	 */
 	public void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
 		this.listaAsignaturas = listaAsignaturas;
@@ -131,7 +132,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the listaProgramacion
+	 * @return  listaProgramacion
 	 */
 	public ArrayList<ProgAcademica> getListaProgramacion() {
 		return listaProgramacion;
@@ -139,7 +140,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param listaProgramacion the listaProgramacion to set
+	 * @param listaProgramacion  listaProgramacion to set
 	 */
 	public void setListaProgramacion(ArrayList<ProgAcademica> listaProgramacion) {
 		this.listaProgramacion = listaProgramacion;
@@ -147,7 +148,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the listaErroresProgramacion
+	 * @return  listaErroresProgramacion
 	 */
 	public ArrayList<ProgAcademica> getListaErroresProgramacion() {
 		return listaErroresProgramacion;
@@ -155,7 +156,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param listaErroresProgramacion the listaErroresProgramacion to set
+	 * @param listaErroresProgramacion  listaErroresProgramacion to set
 	 */
 	public void setListaErroresProgramacion(
 			ArrayList<ProgAcademica> listaErroresProgramacion) {
@@ -164,7 +165,7 @@ public class LeerExcel
 
 
 	/**
-	 * @return the listaErroresAsignaturas
+	 * @return  listaErroresAsignaturas
 	 */
 	public ArrayList<Asignatura> getListaErroresAsignaturas() {
 		return listaErroresAsignaturas;
@@ -172,7 +173,7 @@ public class LeerExcel
 
 
 	/**
-	 * @param listaErroresAsignaturas the listaErroresAsignaturas to set
+	 * @param listaErroresAsignaturas  listaErroresAsignaturas to set
 	 */
 	public void setListaErroresAsignaturas(
 			ArrayList<Asignatura> listaErroresAsignaturas) {
@@ -181,9 +182,9 @@ public class LeerExcel
 
 
 	/**
-	 * Gets the lista errores estudiantes.
+	 * Gets  lista errores estudiantes.
 	 *
-	 * @return the listaErroresEstudiantes
+	 * @return  listaErroresEstudiantes
 	 */
 	public ArrayList<Persona> getListaErroresEstudiantes() {
 		return listaErroresEstudiantes;
@@ -191,9 +192,9 @@ public class LeerExcel
 
 
 	/**
-	 * Sets the lista errores estudiantes.
+	 * Sets  lista errores estudiantes.
 	 *
-	 * @param listaErroresEstudiantes the listaErroresEstudiantes to set
+	 * @param listaErroresEstudiantes  listaErroresEstudiantes to set
 	 */
 	public void setListaErroresEstudiantes(
 			ArrayList<Persona> listaErroresEstudiantes) {
@@ -202,18 +203,18 @@ public class LeerExcel
 
 
 	/**
-	 * Gets the lista errores docentes.
+	 * Gets  lista errores docentes.
 	 *
-	 * @return the listaErroresDocentes
+	 * @return  listaErroresDocentes
 	 */
 	public ArrayList<Persona> getListaErroresDocentes() {
 		return listaErroresDocentes;
 	}
 
 	/**
-	 * Sets the lista errores docentes.
+	 * Sets  lista errores docentes.
 	 *
-	 * @param listaErroresDocentes the new lista errores docentes
+	 * @param listaErroresDocentes  new lista errores docentes
 	 */
 	public void setListaErroresDocentes(ArrayList<Persona> listaErroresDocentes) {
 		this.listaErroresDocentes = listaErroresDocentes;
@@ -224,8 +225,8 @@ public class LeerExcel
 	/**
 	 * Leer archivo docentes.
 	 *
-	 * @param filecontent the filecontent
-	 * @return the array list
+	 * @param filecontent  filecontent
+	 * @return  array list
 	 */
 	public ArrayList<Persona> leerArchivoDocentes(InputStream filecontent)
 	{
@@ -249,7 +250,7 @@ public class LeerExcel
 			while (rowIterator.hasNext()) 
 			{
 				Row row = rowIterator.next();
-				//For each row, iterate through all the columns
+				//For each row, iterate through all  columns
 				Iterator<Cell> cellIterator = row.cellIterator();
 				if((contadorColumnas!=12)&&(contadorFilas==1))
 				{
@@ -263,7 +264,7 @@ public class LeerExcel
 					
 					Cell cell = cellIterator.next();
 					
-					if(contadorFilas>0)//Check the cell type and format accordingly
+					if(contadorFilas>0)//Check  cell type and format accordingly
 					{
 						switch (contadorColumnas) 
 						{
@@ -512,7 +513,7 @@ public class LeerExcel
 	/**
 	 * Validar correo.
 	 *
-	 * @param correo the correo
+	 * @param correo  correo
 	 * @return true, if successful
 	 */
 	public boolean validarCorreo(String correo)
@@ -530,8 +531,8 @@ public class LeerExcel
 	/**
 	 * Leer archivo estudiantes.
 	 *
-	 * @param filecontent the filecontent
-	 * @return the array list
+	 * @param filecontent  filecontent
+	 * @return  array list
 	 */
 	public ArrayList<Persona> leerArchivoEstudiantes(InputStream filecontent) {
 		
@@ -552,7 +553,7 @@ public class LeerExcel
 			while (rowIterator.hasNext()) 
 			{
 				Row row = rowIterator.next();
-				//For each row, iterate through all the columns
+				//For each row, iterate through all  columns
 				Iterator<Cell> cellIterator = row.cellIterator();
 				if((contadorColumnas!=14)&&(contadorFilas==1))
 				{
@@ -567,7 +568,7 @@ public class LeerExcel
 					
 					Cell cell = cellIterator.next();
 					
-					if(contadorFilas>0)//Check the cell type and format accordingly
+					if(contadorFilas>0)//Check  cell type and format accordingly
 					{
 						switch (contadorColumnas) 
 						{
@@ -839,8 +840,8 @@ public class LeerExcel
 	/**
 	 * Leer archivo Asignaturas.
 	 *
-	 * @param filecontent the filecontent
-	 * @return the array list
+	 * @param filecontent  filecontent
+	 * @return  array list
 	 */
 	
 public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
@@ -862,7 +863,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
 			while (rowIterator.hasNext()) 
 			{
 				Row row = rowIterator.next();
-				//For each row, iterate through all the columns
+				//For each row, iterate through all  columns
 				Iterator<Cell> cellIterator = row.cellIterator();
 				if((contadorColumnas!=2)&&(contadorFilas==1))
 				{
@@ -877,7 +878,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
 					
 					Cell cell = cellIterator.next();
 					
-					if(contadorFilas>0)//Check the cell type and format accordingly
+					if(contadorFilas>0)//Check  cell type and format accordingly
 					{
 						switch (contadorColumnas) 
 						{
@@ -970,7 +971,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
 			while (rowIterator.hasNext()) 
 			{
 				Row row = rowIterator.next();
-				//For each row, iterate through all the columns
+				//For each row, iterate through all  columns
 				Iterator<Cell> cellIterator = row.cellIterator();
 				if((contadorColumnas!=10)&&(contadorFilas==1))
 				{
@@ -984,7 +985,7 @@ public ArrayList<Asignatura> leerArchivoAsignaturas(InputStream filecontent) {
 					
 					Cell cell = cellIterator.next();
 					
-					if(contadorFilas>0)//Check the cell type and format accordingly
+					if(contadorFilas>0)//Check  cell type and format accordingly
 					{
 						switch (contadorColumnas) 
 						{

@@ -15,22 +15,23 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NAsignatura.
+ *  Class NAsignatura.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NAsignatura {
 
-	/** The dao asignaturas. */
+	/**  dao asignaturas. */
 	DAOAsignaturas daoAsignaturas;
 	
-	/** The c. */
+	/**  c. */
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
 
 	/**
 	 * Crear.
 	 *
-	 * @param Asignaturas the asignaturas
-	 * @return the int
+	 * @param Asignaturas  asignaturas
+	 * @return  int
 	 */
 	public int Crear(Asignatura Asignaturas) {
 		daoAsignaturas = new DAOAsignaturas();
@@ -49,8 +50,8 @@ public class NAsignatura {
 	/**
 	 * Modificar.
 	 *
-	 * @param Asignaturas the asignaturas
-	 * @return the int
+	 * @param Asignaturas  asignaturas
+	 * @return  int
 	 */
 	public int Modificar(Asignatura Asignaturas) {
 		daoAsignaturas = new DAOAsignaturas();
@@ -67,8 +68,8 @@ public class NAsignatura {
 	/**
 	 * Buscar.
 	 *
-	 * @param Asignaturas the asignaturas
-	 * @return the asignatura
+	 * @param Asignaturas  asignaturas
+	 * @return  asignatura
 	 */
 	public Asignatura Buscar(String Asignaturas) {
 		daoAsignaturas = new DAOAsignaturas();
@@ -85,8 +86,8 @@ public class NAsignatura {
 	/**
 	 * Eliminar.
 	 *
-	 * @param Asignaturas the asignaturas
-	 * @return the int
+	 * @param Asignaturas  asignaturas
+	 * @return  int
 	 */
 	public int Eliminar(Asignatura Asignaturas) {
 		daoAsignaturas = new DAOAsignaturas();
@@ -103,7 +104,7 @@ public class NAsignatura {
 	/**
 	 * Listado asignaturas.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Asignatura> ListadoAsignaturas() {
 		daoAsignaturas = new DAOAsignaturas();

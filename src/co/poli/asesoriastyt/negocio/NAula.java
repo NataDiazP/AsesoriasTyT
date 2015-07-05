@@ -14,24 +14,24 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NAula.
+ *  Class NAula.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NAula {
 
-	/** The dao aulas. */
+	/**  dao aulas. */
 	DAOAulas daoAulas;
 	
-	/** The c. */
+	/**  c. */
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
 
 	/**
 	 * Crear.
 	 *
-	 * @param Aulas the aulas
-	 * @return the int
+	 * @param Aulas  aulas
+	 * @return  int
 	 */
 	public int Crear(Aula Aulas) {
 		daoAulas = new DAOAulas();
@@ -48,8 +48,8 @@ public class NAula {
 	/**
 	 * Modificar.
 	 *
-	 * @param Aulas the aulas
-	 * @return the int
+	 * @param Aulas  aulas
+	 * @return  int
 	 */
 	public int Modificar(Aula Aulas) {
 		daoAulas = new DAOAulas();
@@ -66,8 +66,8 @@ public class NAula {
 	/**
 	 * Buscar.
 	 *
-	 * @param Aulas the aulas
-	 * @return the aula
+	 * @param Aulas  aulas
+	 * @return  aula
 	 */
 	public Aula Buscar(String Aulas) {
 		daoAulas = new DAOAulas();
@@ -84,8 +84,8 @@ public class NAula {
 	/**
 	 * Eliminar.
 	 *
-	 * @param Aulas the aulas
-	 * @return the int
+	 * @param Aulas  aulas
+	 * @return  int
 	 */
 	public int Eliminar(Aula Aulas) {
 		daoAulas = new DAOAulas();
@@ -102,7 +102,7 @@ public class NAula {
 	/**
 	 * Listado aulas.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Aula> ListadoAulas() {
 		daoAulas = new DAOAulas();

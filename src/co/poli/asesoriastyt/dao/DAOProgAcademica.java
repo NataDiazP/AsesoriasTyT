@@ -17,18 +17,18 @@ import co.poli.asesoriastyt.model.ProgAcademica;
 
 
 /**
- * The Class DAOProgAcademica.
+ *  Class DAOProgAcademica.
  *
- * @author nata_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class DAOProgAcademica {
 
 	/**
 	 * Crear.
 	 *
-	 * @param c the c
-	 * @param ProgAcademica the prog academica
-	 * @return the int
+	 * @param c  c
+	 * @param ProgAcademica  prog academica
+	 * @return  int
 	 */
 	public int Crear(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Crear();
@@ -63,9 +63,9 @@ public class DAOProgAcademica {
 	/**
 	 * Modificar.
 	 *
-	 * @param c the c
-	 * @param ProgAcademica the prog academica
-	 * @return the int
+	 * @param c  c
+	 * @param ProgAcademica  prog academica
+	 * @return  int
 	 */
 	public int Modificar(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Modificar();
@@ -99,9 +99,9 @@ public class DAOProgAcademica {
 	/**
 	 * Buscar.
 	 *
-	 * @param con the con
-	 * @param IdProgAcademica the id prog academica
-	 * @return the prog academica
+	 * @param con  con
+	 * @param IdProgAcademica  id prog academica
+	 * @return  prog academica
 	 */
 	public ProgAcademica Buscar(Connection con, String IdProgAcademica) {
 		ProgAcademica c = new ProgAcademica();
@@ -137,9 +137,9 @@ public class DAOProgAcademica {
 	/**
 	 * Eliminar.
 	 *
-	 * @param c the c
-	 * @param ProgAcademica the prog academica
-	 * @return the int
+	 * @param c  c
+	 * @param ProgAcademica  prog academica
+	 * @return  int
 	 */
 	public int Eliminar(Connection c, ProgAcademica ProgAcademica) {
 		String sql = ProgAcademicaSQL.Eliminar();
@@ -162,9 +162,9 @@ public class DAOProgAcademica {
 	/**
 	 * Asignaturas docente.
 	 *
-	 * @param c the c
-	 * @param idDocente the id docente
-	 * @return the list
+	 * @param c  c
+	 * @param idDocente  id docente
+	 * @return  list
 	 */
 	public List<Asignatura> asignaturasDocente(Connection c, String idDocente) {
 		List<Asignatura> asigDocente = new ArrayList<Asignatura>();
@@ -191,8 +191,8 @@ public class DAOProgAcademica {
 	/**
 	 * Listar prog academica.
 	 *
-	 * @param c the c
-	 * @return the list
+	 * @param c  c
+	 * @return  list
 	 */
 	public List<ProgAcademica> listarProgAcademica(Connection c) {
 		List<ProgAcademica> progAcademica = new ArrayList<ProgAcademica>();

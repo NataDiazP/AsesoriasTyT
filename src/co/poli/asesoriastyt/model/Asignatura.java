@@ -1,48 +1,52 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Asignatura.
+ *  Class Asignatura.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Asignatura {
 	
-	/** The idasignatura. */
+	/**  idasignatura. */
 	private String idasignatura;
 	
-	/** The nombreasignatura. */
+	/**  nombreasignatura. */
 	private String nombreasignatura;
 	
 	/**
-	 * Gets the id asignatura.
+	 * Gets  id asignatura.
 	 *
-	 * @return the id asignatura
+	 * @return  id asignatura
 	 */
 	public String getIdAsignatura() {
 		return idasignatura;
 	}
 	
 	/**
-	 * Sets the id asignatura.
+	 * Sets  id asignatura.
 	 *
-	 * @param idasignatura the new id asignatura
+	 * @param idasignatura  new id asignatura
 	 */
 	public void setIdAsignatura(String idasignatura) {
 		this.idasignatura = idasignatura;
 	}
 	
 	/**
-	 * Gets the nombre asignatura.
+	 * Gets  nombre asignatura.
 	 *
-	 * @return the nombre asignatura
+	 * @return  nombre asignatura
 	 */
 	public String getNombreAsignatura() {
 		return nombreasignatura;
 	}
 	
 	/**
-	 * Sets the nombre asignatura.
+	 * Sets  nombre asignatura.
 	 *
-	 * @param nombreasignatura the new nombre asignatura
+	 * @param nombreasignatura  new nombre asignatura
 	 */
 	public void setNombreAsignatura(String nombreasignatura) {
 		this.nombreasignatura = nombreasignatura;

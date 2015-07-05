@@ -9,19 +9,19 @@ import java.sql.SQLException;
 
 
 /**
- * The Class Conexion.
+ *  Class Conexion.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Conexion {
 
-	/** The Con. */
+	/**  Con. */
 	public Connection Con;
 
 	/**
-	 * Gets the connection.
+	 * Gets  connection.
 	 *
-	 * @return the connection
+	 * @return  connection
 	 */
 	public Connection getConnection() {
 		ConexionDB();
@@ -29,9 +29,9 @@ public class Conexion {
 	}
 
 	/**
-	 * Sets the con.
+	 * Sets  con.
 	 *
-	 * @param Con the new con
+	 * @param Con  new con
 	 */
 	public void setCon(Connection Con) {
 		this.Con = Con;

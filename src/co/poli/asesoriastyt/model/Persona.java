@@ -5,323 +5,323 @@ package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Persona.
+ *  Class Persona.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Persona 
 {
 	
-	/** The tipo identificacion. */
+	/**  tipo identificacion. */
 	private String tipoIdentificacion;
     
-    /** The numero identificacion. */
+    /**  numero identificacion. */
     private String numeroIdentificacion;
     
-    /** The nombre completo. */
+    /**  nombre completo. */
     private String nombreCompleto;
     
-    /** The primer apellido. */
+    /**  primer apellido. */
     private String primerApellido;
     
-    /** The segundo apellido. */
+    /**  segundo apellido. */
     private String segundoApellido;
     
-    /** The genero. */
+    /**  genero. */
     private String genero;
     
-    /** The fecha nacimiento. */
+    /**  fecha nacimiento. */
     private String fechaNacimiento;
     
-    /** The direccion. */
+    /**  direccion. */
     private String direccion;
     
-    /** The telefono. */
+    /**  telefono. */
     private String telefono;
     
-    /** The celular. */
+    /**  celular. */
     private String celular;
     
-    /** The correo electronico. */
+    /**  correo electronico. */
     private String correoElectronico;
     
-    /** The Plan estudios_ estudiante. */
+    /**  Plan estudios_ estudiante. */
     private String PlanEstudios_Estudiante;
     
-    /** The Semestre_ estudiante. */
+    /**  Semestre_ estudiante. */
     private String Semestre_Estudiante;
     
-    /** The estado. */
+    /**  estado. */
     private String estado;
     
-    /** The perfil. */
+    /**  perfil. */
     private String perfil;
 	
 	/**
-	 * Gets the tipo identificacion.
+	 * Gets  tipo identificacion.
 	 *
-	 * @return the tipoIdentificacion
+	 * @return  tipoIdentificacion
 	 */
 	public String getTipoIdentificacion() {
 		return tipoIdentificacion;
 	}
 	
 	/**
-	 * Sets the tipo identificacion.
+	 * Sets  tipo identificacion.
 	 *
-	 * @param tipoIdentificacion the tipoIdentificacion to set
+	 * @param tipoIdentificacion  tipoIdentificacion to set
 	 */
 	public void setTipoIdentificacion(String tipoIdentificacion) {
 		this.tipoIdentificacion = tipoIdentificacion;
 	}
 	
 	/**
-	 * Gets the numero identificacion.
+	 * Gets  numero identificacion.
 	 *
-	 * @return the numeroIdentificacion
+	 * @return  numeroIdentificacion
 	 */
 	public String getNumeroIdentificacion() {
 		return numeroIdentificacion;
 	}
 	
 	/**
-	 * Sets the numero identificacion.
+	 * Sets  numero identificacion.
 	 *
-	 * @param numeroIdentificacion the numeroIdentificacion to set
+	 * @param numeroIdentificacion  numeroIdentificacion to set
 	 */
 	public void setNumeroIdentificacion(String numeroIdentificacion) {
 		this.numeroIdentificacion = numeroIdentificacion;
 	}
 	
 	/**
-	 * Gets the nombre completo.
+	 * Gets  nombre completo.
 	 *
-	 * @return the nombreCompleto
+	 * @return  nombreCompleto
 	 */
 	public String getNombreCompleto() {
 		return nombreCompleto;
 	}
 	
 	/**
-	 * Sets the nombre completo.
+	 * Sets  nombre completo.
 	 *
-	 * @param nombreCompleto the nombreCompleto to set
+	 * @param nombreCompleto  nombreCompleto to set
 	 */
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 	}
 	
 	/**
-	 * Gets the primer apellido.
+	 * Gets  primer apellido.
 	 *
-	 * @return the primerApellido
+	 * @return  primerApellido
 	 */
 	public String getPrimerApellido() {
 		return primerApellido;
 	}
 	
 	/**
-	 * Sets the primer apellido.
+	 * Sets  primer apellido.
 	 *
-	 * @param primerApellido the primerApellido to set
+	 * @param primerApellido  primerApellido to set
 	 */
 	public void setPrimerApellido(String primerApellido) {
 		this.primerApellido = primerApellido;
 	}
 	
 	/**
-	 * Gets the segundo apellido.
+	 * Gets  segundo apellido.
 	 *
-	 * @return the segundoApellido
+	 * @return  segundoApellido
 	 */
 	public String getSegundoApellido() {
 		return segundoApellido;
 	}
 	
 	/**
-	 * Sets the segundo apellido.
+	 * Sets  segundo apellido.
 	 *
-	 * @param segundoApellido the segundoApellido to set
+	 * @param segundoApellido  segundoApellido to set
 	 */
 	public void setSegundoApellido(String segundoApellido) {
 		this.segundoApellido = segundoApellido;
 	}
 	
 	/**
-	 * Gets the genero.
+	 * Gets  genero.
 	 *
-	 * @return the genero
+	 * @return  genero
 	 */
 	public String getGenero() {
 		return genero;
 	}
 	
 	/**
-	 * Sets the genero.
+	 * Sets  genero.
 	 *
-	 * @param genero the genero to set
+	 * @param genero  genero to set
 	 */
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	
 	/**
-	 * Gets the fecha nacimiento.
+	 * Gets  fecha nacimiento.
 	 *
-	 * @return the fechaNacimiento
+	 * @return  fechaNacimiento
 	 */
 	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	
 	/**
-	 * Sets the fecha nacimiento.
+	 * Sets  fecha nacimiento.
 	 *
-	 * @param fechaNacimiento the fechaNacimiento to set
+	 * @param fechaNacimiento  fechaNacimiento to set
 	 */
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
 	/**
-	 * Gets the direccion.
+	 * Gets  direccion.
 	 *
-	 * @return the direccion
+	 * @return  direccion
 	 */
 	public String getDireccion() {
 		return direccion;
 	}
 	
 	/**
-	 * Sets the direccion.
+	 * Sets  direccion.
 	 *
-	 * @param direccion the direccion to set
+	 * @param direccion  direccion to set
 	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 	
 	/**
-	 * Gets the telefono.
+	 * Gets  telefono.
 	 *
-	 * @return the telefono
+	 * @return  telefono
 	 */
 	public String getTelefono() {
 		return telefono;
 	}
 	
 	/**
-	 * Sets the telefono.
+	 * Sets  telefono.
 	 *
-	 * @param telefono the telefono to set
+	 * @param telefono  telefono to set
 	 */
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	
 	/**
-	 * Gets the celular.
+	 * Gets  celular.
 	 *
-	 * @return the celular
+	 * @return  celular
 	 */
 	public String getCelular() {
 		return celular;
 	}
 	
 	/**
-	 * Sets the celular.
+	 * Sets  celular.
 	 *
-	 * @param celular the celular to set
+	 * @param celular  celular to set
 	 */
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 	
 	/**
-	 * Gets the correo electronico.
+	 * Gets  correo electronico.
 	 *
-	 * @return the correoElectronico
+	 * @return  correoElectronico
 	 */
 	public String getCorreoElectronico() {
 		return correoElectronico;
 	}
 	
 	/**
-	 * Sets the correo electronico.
+	 * Sets  correo electronico.
 	 *
-	 * @param correoElectronico the correoElectronico to set
+	 * @param correoElectronico  correoElectronico to set
 	 */
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
 	}
 	
 	/**
-	 * Gets the plan estudios_ estudiante.
+	 * Gets  plan estudios_ estudiante.
 	 *
-	 * @return the planEstudios_Estudiante
+	 * @return  planEstudios_Estudiante
 	 */
 	public String getPlanEstudios_Estudiante() {
 		return PlanEstudios_Estudiante;
 	}
 	
 	/**
-	 * Sets the plan estudios_ estudiante.
+	 * Sets  plan estudios_ estudiante.
 	 *
-	 * @param planEstudios_Estudiante the planEstudios_Estudiante to set
+	 * @param planEstudios_Estudiante  planEstudios_Estudiante to set
 	 */
 	public void setPlanEstudios_Estudiante(String planEstudios_Estudiante) {
 		PlanEstudios_Estudiante = planEstudios_Estudiante;
 	}
 	
 	/**
-	 * Gets the semestre_ estudiante.
+	 * Gets  semestre_ estudiante.
 	 *
-	 * @return the semestre_Estudiante
+	 * @return  semestre_Estudiante
 	 */
 	public String getSemestre_Estudiante() {
 		return Semestre_Estudiante;
 	}
 	
 	/**
-	 * Sets the semestre_ estudiante.
+	 * Sets  semestre_ estudiante.
 	 *
-	 * @param semestre_Estudiante the semestre_Estudiante to set
+	 * @param semestre_Estudiante  semestre_Estudiante to set
 	 */
 	public void setSemestre_Estudiante(String semestre_Estudiante) {
 		Semestre_Estudiante = semestre_Estudiante;
 	}
 	
 	/**
-	 * Gets the estado.
+	 * Gets  estado.
 	 *
-	 * @return the estado
+	 * @return  estado
 	 */
 	public String getEstado() {
 		return estado;
 	}
 	
 	/**
-	 * Sets the estado.
+	 * Sets  estado.
 	 *
-	 * @param estado the estado to set
+	 * @param estado  estado to set
 	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	
 	/**
-	 * Gets the perfil.
+	 * Gets  perfil.
 	 *
-	 * @return the perfil
+	 * @return  perfil
 	 */
 	public String getPerfil() {
 		return perfil;
 	}
 	
 	/**
-	 * Sets the perfil.
+	 * Sets  perfil.
 	 *
-	 * @param perfil the perfil to set
+	 * @param perfil  perfil to set
 	 */
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;

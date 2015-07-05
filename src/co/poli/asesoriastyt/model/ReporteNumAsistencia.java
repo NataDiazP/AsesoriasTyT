@@ -7,7 +7,7 @@ package co.poli.asesoriastyt.model;
 /**
  *  Class ReporteNumAsistencia.
  *
- * @author Paola
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class ReporteNumAsistencia 
 {

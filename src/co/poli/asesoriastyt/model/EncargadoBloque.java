@@ -1,48 +1,52 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class EncargadoBloque.
+ *  Class EncargadoBloque.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class EncargadoBloque {
 
-	/** The Id encargado. */
+	/**  Id encargado. */
 	private String IdEncargado;
 	
-	/** The Correo encargado. */
+	/**  Correo encargado. */
 	private String CorreoEncargado;
 
 	/**
-	 * Gets the id encargado.
+	 * Gets  id encargado.
 	 *
-	 * @return the idEncargado
+	 * @return  idEncargado
 	 */
 	public String getIdEncargado() {
 		return IdEncargado;
 	}
 
 	/**
-	 * Sets the id encargado.
+	 * Sets  id encargado.
 	 *
-	 * @param idEncargado            the idEncargado to set
+	 * @param idEncargado             idEncargado to set
 	 */
 	public void setIdEncargado(String idEncargado) {
 		IdEncargado = idEncargado;
 	}
 
 	/**
-	 * Gets the correo encargado.
+	 * Gets  correo encargado.
 	 *
-	 * @return the correoEncargado
+	 * @return  correoEncargado
 	 */
 	public String getCorreoEncargado() {
 		return CorreoEncargado;
 	}
 
 	/**
-	 * Sets the correo encargado.
+	 * Sets  correo encargado.
 	 *
-	 * @param correoEncargado the correoEncargado to set
+	 * @param correoEncargado  correoEncargado to set
 	 */
 	public void setCorreoEncargado(String correoEncargado) {
 		CorreoEncargado = correoEncargado;

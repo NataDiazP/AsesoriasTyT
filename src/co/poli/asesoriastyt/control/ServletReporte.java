@@ -39,7 +39,8 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 
 /**
- * The Class ServletReporte.
+ *  Class ServletReporte.
+ *  @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 @WebServlet(description = "Controlador de Reportes", urlPatterns = { "/ServletReporte" })
 public class ServletReporte extends HttpServlet
@@ -48,9 +49,9 @@ public class ServletReporte extends HttpServlet
     /**
      * Process request.
      *
-     * @param request the request
-     * @param response the response
-     * @throws ServletException the servlet exception
+     * @param request  request
+     * @param response  response
+     * @throws ServletException  servlet exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

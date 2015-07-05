@@ -5,16 +5,16 @@ package co.poli.asesoriastyt.dao;
 
 
 /**
- * The Class AsesoriasSQL.
+ *  Class AsesoriasSQL.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class AsesoriasSQL {
 
     /**
      * Crear.
      *
-     * @return the string
+     * @return  string
      */
     public static String Crear() {
         return "INSERT INTO asesorias (Nombre_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, RecursosApoyo_Asesoria, Observaciones_Asesoria, Estado_Asesoria) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -23,7 +23,7 @@ public class AsesoriasSQL {
     /**
      * Modificar.
      *
-     * @return the string
+     * @return  string
      */
     public static String Modificar() {
         return "UPDATE asesorias SET Nombre_Asesoria=?,Docente_Asesoria=?,Asignatura_Asesoria=?,Fecha_Asesoria=?,HoraInicio_Asesoria=?,HoraFin_Asesoria=?,Lugar_Asesoria=?,Cupos_Asesoria=?,CuposDisp_Asesoria=?,RecursosApoyo_Asesoria=?,Observaciones_Asesoria=?,Estado_Asesoria=? WHERE Id_Asesoria=?";
@@ -32,8 +32,8 @@ public class AsesoriasSQL {
     /**
      * Consultar.
      *
-     * @param Id_Asesoria the id_ asesoria
-     * @return the string
+     * @param Id_Asesoria  id_ asesoria
+     * @return  string
      */
     public static String Consultar(String Id_Asesoria) {
         return "SELECT * FROM asesorias WHERE Id_Asesoria = " + Id_Asesoria + "";
@@ -42,7 +42,7 @@ public class AsesoriasSQL {
     /**
      * Asistir asesoria.
      *
-     * @return the string
+     * @return  string
      */
     public static String AsistirAsesoria () {
     	return "UPDATE estudiantes_asesoria SET Asistencia_Asesoria = ? WHERE Id_Estudiante = ? AND Id_Asesoria = ?";
@@ -51,7 +51,7 @@ public class AsesoriasSQL {
     /**
      * Consultar id.
      *
-     * @return the string
+     * @return  string
      */
     public static String ConsultarID () {
     	return " SELECT LAST_INSERT_ID(Id_Asesoria)+1 FROM asesorias ORDER BY Id_Asesoria DESC LIMIT 1";

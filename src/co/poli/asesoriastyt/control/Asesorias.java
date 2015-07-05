@@ -27,25 +27,26 @@ import co.poli.asesoriastyt.util.Conexion;
 
 /**
  * Servlet implementation class Asesorias.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 @WebServlet(description = "Controlador de maestro asesorias", urlPatterns = { "/Asesorias" })
 public class Asesorias extends HttpServlet {
 
-	/** The Constant serialVersionUID. */
+	/**  Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The Connection. */
+	/**  Connection. */
 	Conexion Connection = new Conexion();
 
 	/**
 	 * Do get.
 	 *
 	 * @param request
-	 *            the request
+	 *             request
 	 * @param response
-	 *            the response
+	 *             response
 	 * @throws ServletException
-	 *             the servlet exception
+	 *              servlet exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -59,11 +60,11 @@ public class Asesorias extends HttpServlet {
 	 * Do post.
 	 *
 	 * @param request
-	 *            the request
+	 *             request
 	 * @param response
-	 *            the response
+	 *             response
 	 * @throws ServletException
-	 *             the servlet exception
+	 *              servlet exception
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

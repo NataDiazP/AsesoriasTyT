@@ -5,72 +5,72 @@ package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Asesoria.
+ *  Class Asesoria.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class AsesoriaBK 
 {
 	
-	/** The id asesoria. */
+	/**  id asesoria. */
 	private String idAsesoria;
 	
-	/** The nombre asesoria. */
+	/**  nombre asesoria. */
 	private String nombreAsesoria;
 	
-	/** The docente. */
+	/**  docente. */
 	private String docente;
 	
-	/** The nombre completo. */
+	/**  nombre completo. */
     private String nombreCompleto;
     
-    /** The apellido completo. */
+    /**  apellido completo. */
     private String apellidoCompleto;
 	
-	/** The asignatura. */
+	/**  asignatura. */
 	private String asignatura;
 	
 	private String nombreasignatura;
-	/** The fecha. */
+	/**  fecha. */
 	private String fecha;
 	
-	/** The hora i. */
+	/**  hora i. */
 	private String horaI;
 	
-	/** The hora f. */
+	/**  hora f. */
 	private String horaF;
 	
-	/** The lugar. */
+	/**  lugar. */
 	private String lugar;
 	
-	/** The cupos. */
+	/**  cupos. */
 	private String cupos;
 	
-	/** The cupos d. */
+	/**  cupos d. */
 	private String cuposD;
 	
-	/** The recursos apoyo. */
+	/**  recursos apoyo. */
 	private String recursosApoyo;
 	
-	/** The Observaciones. */
+	/**  Observaciones. */
 	private String Observaciones;
 	
-	/** The estado. */
+	/**  estado. */
 	private String estado;
 	
 	/**
-	 * Gets the id asesoria.
+	 * Gets  id asesoria.
 	 *
-	 * @return the idAsesoria
+	 * @return  idAsesoria
 	 */
 	public String getIdAsesoria() {
 		return idAsesoria;
 	}
 	
 	/**
-	 * Sets the id asesoria.
+	 * Sets  id asesoria.
 	 *
-	 * @param idAsesoria the idAsesoria to set
+	 * @param idAsesoria  idAsesoria to set
 	 */
 	public void setIdAsesoria(String idAsesoria) {
 		this.idAsesoria = idAsesoria;
@@ -82,249 +82,249 @@ public class AsesoriaBK
 	}
 	
 	/**
-	 * Sets the docente.
+	 * Sets  docente.
 	 *
-	 * @param docente the docente to set
+	 * @param docente  docente to set
 	 */
 	public void setDocente(String docente) {
 		this.docente = docente;
 	}
 	
 	/**
-	 * Gets the asignatura.
+	 * Gets  asignatura.
 	 *
-	 * @return the asignatura
+	 * @return  asignatura
 	 */
 	public String getAsignatura() {
 		return asignatura;
 	}
 	
 	/**
-	 * Sets the asignatura.
+	 * Sets  asignatura.
 	 *
-	 * @param asignatura the asignatura to set
+	 * @param asignatura  asignatura to set
 	 */
 	public void setAsignatura(String asignatura) {
 		this.asignatura = asignatura;
 	}
 	
 	/**
-	 * Gets the fecha.
+	 * Gets  fecha.
 	 *
-	 * @return the fecha
+	 * @return  fecha
 	 */
 	public String getFecha() {
 		return fecha;
 	}
 	
 	/**
-	 * Sets the fecha.
+	 * Sets  fecha.
 	 *
-	 * @param fecha the fecha to set
+	 * @param fecha  fecha to set
 	 */
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	
 	/**
-	 * Gets the hora i.
+	 * Gets  hora i.
 	 *
-	 * @return the horaI
+	 * @return  horaI
 	 */
 	public String getHoraI() {
 		return horaI;
 	}
 	
 	/**
-	 * Sets the hora i.
+	 * Sets  hora i.
 	 *
-	 * @param horaI the horaI to set
+	 * @param horaI  horaI to set
 	 */
 	public void setHoraI(String horaI) {
 		this.horaI = horaI;
 	}
 	
 	/**
-	 * Gets the hora f.
+	 * Gets  hora f.
 	 *
-	 * @return the horaF
+	 * @return  horaF
 	 */
 	public String getHoraF() {
 		return horaF;
 	}
 	
 	/**
-	 * Sets the hora f.
+	 * Sets  hora f.
 	 *
-	 * @param horaF the horaF to set
+	 * @param horaF  horaF to set
 	 */
 	public void setHoraF(String horaF) {
 		this.horaF = horaF;
 	}
 	
 	/**
-	 * Gets the lugar.
+	 * Gets  lugar.
 	 *
-	 * @return the lugar
+	 * @return  lugar
 	 */
 	public String getLugar() {
 		return lugar;
 	}
 	
 	/**
-	 * Sets the lugar.
+	 * Sets  lugar.
 	 *
-	 * @param lugar the lugar to set
+	 * @param lugar  lugar to set
 	 */
 	public void setLugar(String lugar) {
 		this.lugar = lugar;
 	}
 	
 	/**
-	 * Gets the cupos.
+	 * Gets  cupos.
 	 *
-	 * @return the cupos
+	 * @return  cupos
 	 */
 	public String getCupos() {
 		return cupos;
 	}
 	
 	/**
-	 * Sets the cupos.
+	 * Sets  cupos.
 	 *
-	 * @param cupos the cupos to set
+	 * @param cupos  cupos to set
 	 */
 	public void setCupos(String cupos) {
 		this.cupos = cupos;
 	}
 	
 	/**
-	 * Gets the cupos d.
+	 * Gets  cupos d.
 	 *
-	 * @return the cuposD
+	 * @return  cuposD
 	 */
 	public String getCuposD() {
 		return cuposD;
 	}
 	
 	/**
-	 * Sets the cupos d.
+	 * Sets  cupos d.
 	 *
-	 * @param cuposD the cuposD to set
+	 * @param cuposD  cuposD to set
 	 */
 	public void setCuposD(String cuposD) {
 		this.cuposD = cuposD;
 	}
 	
 	/**
-	 * Gets the observaciones.
+	 * Gets  observaciones.
 	 *
-	 * @return the observaciones
+	 * @return  observaciones
 	 */
 	public String getObservaciones() {
 		return Observaciones;
 	}
 	
 	/**
-	 * Sets the observaciones.
+	 * Sets  observaciones.
 	 *
-	 * @param observaciones the observaciones to set
+	 * @param observaciones  observaciones to set
 	 */
 	public void setObservaciones(String observaciones) {
 		Observaciones = observaciones;
 	}
 	
 	/**
-	 * Gets the estado.
+	 * Gets  estado.
 	 *
-	 * @return the estado
+	 * @return  estado
 	 */
 	public String getEstado() {
 		return estado;
 	}
 	
 	/**
-	 * Sets the estado.
+	 * Sets  estado.
 	 *
-	 * @param estado the estado to set
+	 * @param estado  estado to set
 	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	
 	/**
-	 * Gets the recursos apoyo.
+	 * Gets  recursos apoyo.
 	 *
-	 * @return the recursosApoyo
+	 * @return  recursosApoyo
 	 */
 	public String getRecursosApoyo() {
 		return recursosApoyo;
 	}
 	
 	/**
-	 * Sets the recursos apoyo.
+	 * Sets  recursos apoyo.
 	 *
-	 * @param recursosApoyo the recursosApoyo to set
+	 * @param recursosApoyo  recursosApoyo to set
 	 */
 	public void setRecursosApoyo(String recursosApoyo) {
 		this.recursosApoyo = recursosApoyo;
 	}
 	
 	/**
-	 * Gets the nombre asesoria.
+	 * Gets  nombre asesoria.
 	 *
-	 * @return the nombreAsesoria
+	 * @return  nombreAsesoria
 	 */
 	public String getNombreAsesoria() {
 		return nombreAsesoria;
 	}
 	
 	/**
-	 * Sets the nombre asesoria.
+	 * Sets  nombre asesoria.
 	 *
-	 * @param nombreAsesoria the nombreAsesoria to set
+	 * @param nombreAsesoria  nombreAsesoria to set
 	 */
 	public void setNombreAsesoria(String nombreAsesoria) {
 		this.nombreAsesoria = nombreAsesoria;
 	}
 
 	/**
-	 * @return the nombreCompleto
+	 * @return  nombreCompleto
 	 */
 	public String getNombreCompleto() {
 		return nombreCompleto;
 	}
 
 	/**
-	 * @param nombreCompleto the nombreCompleto to set
+	 * @param nombreCompleto  nombreCompleto to set
 	 */
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 	}
 
 	/**
-	 * @return the apellidoCompleto
+	 * @return  apellidoCompleto
 	 */
 	public String getApellidoCompleto() {
 		return apellidoCompleto;
 	}
 
 	/**
-	 * @param apellidoCompleto the apellidoCompleto to set
+	 * @param apellidoCompleto  apellidoCompleto to set
 	 */
 	public void setApellidoCompleto(String apellidoCompleto) {
 		this.apellidoCompleto = apellidoCompleto;
 	}
 
 	/**
-	 * @return the nombreasignatura
+	 * @return  nombreasignatura
 	 */
 	public String getNombreasignatura() {
 		return nombreasignatura;
 	}
 
 	/**
-	 * @param nombreasignatura the nombreasignatura to set
+	 * @param nombreasignatura  nombreasignatura to set
 	 */
 	public void setNombreasignatura(String nombreasignatura) {
 		this.nombreasignatura = nombreasignatura;

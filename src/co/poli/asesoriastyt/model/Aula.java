@@ -1,49 +1,53 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Aula.
+ *  Class Aula.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Aula {
 	
 	
-	/** The id aula. */
+	/**  id aula. */
 	private String idAula;
 	
-	/** The id bloque. */
+	/**  id bloque. */
 	private String idBloque;
 	
 	/**
-	 * Gets the id aula.
+	 * Gets  id aula.
 	 *
-	 * @return the idAula
+	 * @return  idAula
 	 */
 	public String getIdAula() {
 		return idAula;
 	}
 	
 	/**
-	 * Sets the id aula.
+	 * Sets  id aula.
 	 *
-	 * @param idAula the idAula to set
+	 * @param idAula  idAula to set
 	 */
 	public void setIdAula(String idAula) {
 		this.idAula = idAula;
 	}
 	
 	/**
-	 * Gets the id bloque.
+	 * Gets  id bloque.
 	 *
-	 * @return the idBloque
+	 * @return  idBloque
 	 */
 	public String getIdBloque() {
 		return idBloque;
 	}
 	
 	/**
-	 * Sets the id bloque.
+	 * Sets  id bloque.
 	 *
-	 * @param idBloque the idBloque to set
+	 * @param idBloque  idBloque to set
 	 */
 	public void setIdBloque(String idBloque) {
 		this.idBloque = idBloque;

@@ -1,306 +1,306 @@
 /*
  * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * and open  template in  editor.
  */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class Estudiante.
+ *  Class Estudiante.
  *
- * @author 
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Estudiante {
 
-    /** The Num doc_ estudiante. */
+    /**  Num doc_ estudiante. */
     private String NumDoc_Estudiante;
     
-    /** The Tipo_ identificacion. */
+    /**  Tipo_ identificacion. */
     private String Tipo_Identificacion;
     
-    /** The Nombres_ estudiante. */
+    /**  Nombres_ estudiante. */
     private String Nombres_Estudiante;
     
-    /** The P apellido_ estudiante. */
+    /**  P apellido_ estudiante. */
     private String PApellido_Estudiante;
     
-    /** The S apellido_ estudiante. */
+    /**  S apellido_ estudiante. */
     private String SApellido_Estudiante;
     
-    /** The Genero_ estudiante. */
+    /**  Genero_ estudiante. */
     private String Genero_Estudiante;
     
-    /** The Fecha nac_ estudiante. */
+    /**  Fecha nac_ estudiante. */
     private String FechaNac_Estudiante;
     
-    /** The Direccion_ estudiante. */
+    /**  Direccion_ estudiante. */
     private String Direccion_Estudiante;
     
-    /** The Telefono_ estudiante. */
+    /**  Telefono_ estudiante. */
     private String Telefono_Estudiante;
     
-    /** The Celular_ estudiante. */
+    /**  Celular_ estudiante. */
     private String Celular_Estudiante;
     
-    /** The Correo_ estudiante. */
+    /**  Correo_ estudiante. */
     private String Correo_Estudiante;
     
-    /** The Plan estudios_ estudiante. */
+    /**  Plan estudios_ estudiante. */
     private String PlanEstudios_Estudiante;
     
-    /** The Semestre_ estudiante. */
+    /**  Semestre_ estudiante. */
     private String Semestre_Estudiante;
     
-    /** The Estado_ estudiantes. */
+    /**  Estado_ estudiantes. */
     private String Estado_Estudiantes;
     
 	/**
-	 * Gets the tipo identificacion.
+	 * Gets  tipo identificacion.
 	 *
-	 * @return the tipoIdentificacion
+	 * @return  tipoIdentificacion
 	 */
 	public String getTipoIdentificacion() {
 		return Tipo_Identificacion;
 	}
 	
 	/**
-	 * Sets the tipo identificacion.
+	 * Sets  tipo identificacion.
 	 *
-	 * @param tipoIdentificacion the tipoIdentificacion to set
+	 * @param tipoIdentificacion  tipoIdentificacion to set
 	 */
 	public void setTipoIdentificacion(String tipoIdentificacion) {
 		this.Tipo_Identificacion = tipoIdentificacion;
 	}
 	
 	/**
-	 * Gets the numero identificacion.
+	 * Gets  numero identificacion.
 	 *
-	 * @return the numeroIdentificacion
+	 * @return  numeroIdentificacion
 	 */
 	public String getNumeroIdentificacion() {
 		return NumDoc_Estudiante;
 	}
 	
 	/**
-	 * Sets the numero identificacion.
+	 * Sets  numero identificacion.
 	 *
-	 * @param numeroIdentificacion the numeroIdentificacion to set
+	 * @param numeroIdentificacion  numeroIdentificacion to set
 	 */
 	public void setNumeroIdentificacion(String numeroIdentificacion) {
 		this.NumDoc_Estudiante = numeroIdentificacion;
 	}
 	
 	/**
-	 * Gets the nombre completo.
+	 * Gets  nombre completo.
 	 *
-	 * @return the nombreCompleto
+	 * @return  nombreCompleto
 	 */
 	public String getNombreCompleto() {
 		return Nombres_Estudiante;
 	}
 	
 	/**
-	 * Sets the nombre completo.
+	 * Sets  nombre completo.
 	 *
-	 * @param nombreCompleto the nombreCompleto to set
+	 * @param nombreCompleto  nombreCompleto to set
 	 */
 	public void setNombreCompleto(String nombreCompleto) {
 		this.Nombres_Estudiante = nombreCompleto;
 	}
 	
 	/**
-	 * Gets the papellido completo.
+	 * Gets  papellido completo.
 	 *
-	 * @return the papellidoCompleto
+	 * @return  papellidoCompleto
 	 */
 	public String getPapellidoCompleto() {
 		return PApellido_Estudiante;
 	}
 	
 	/**
-	 * Sets the papellido completo.
+	 * Sets  papellido completo.
 	 *
-	 * @param papellidoCompleto the papellidoCompleto to set
+	 * @param papellidoCompleto  papellidoCompleto to set
 	 */
 	public void setPapellidoCompleto(String papellidoCompleto) {
 		PApellido_Estudiante = papellidoCompleto;
 	}
 	
 	/**
-	 * Gets the sapellido completo.
+	 * Gets  sapellido completo.
 	 *
-	 * @return the sapellidoCompleto
+	 * @return  sapellidoCompleto
 	 */
 	public String getSapellidoCompleto() {
 		return SApellido_Estudiante;
 	}
 	
 	/**
-	 * Sets the sapellido completo.
+	 * Sets  sapellido completo.
 	 *
-	 * @param sapellidoCompleto the sapellidoCompleto to set
+	 * @param sapellidoCompleto  sapellidoCompleto to set
 	 */
 	public void setSapellidoCompleto(String sapellidoCompleto) {
 		SApellido_Estudiante = sapellidoCompleto;
 	}
 	
 	/**
-	 * Gets the genero.
+	 * Gets  genero.
 	 *
-	 * @return the genero
+	 * @return  genero
 	 */
 	public String getGenero() {
 		return Genero_Estudiante;
 	}
 	
 	/**
-	 * Sets the genero.
+	 * Sets  genero.
 	 *
-	 * @param genero the genero to set
+	 * @param genero  genero to set
 	 */
 	public void setGenero(String genero) {
 		this.Genero_Estudiante = genero;
 	}
 	
 	/**
-	 * Gets the fecha nacimiento.
+	 * Gets  fecha nacimiento.
 	 *
-	 * @return the fechaNacimiento
+	 * @return  fechaNacimiento
 	 */
 	public String getFechaNacimiento() {
 		return FechaNac_Estudiante;
 	}
 	
 	/**
-	 * Sets the fecha nacimiento.
+	 * Sets  fecha nacimiento.
 	 *
-	 * @param fechaNacimiento the fechaNacimiento to set
+	 * @param fechaNacimiento  fechaNacimiento to set
 	 */
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.FechaNac_Estudiante = fechaNacimiento;
 	}
 	
 	/**
-	 * Gets the direccion.
+	 * Gets  direccion.
 	 *
-	 * @return the direccion
+	 * @return  direccion
 	 */
 	public String getDireccion() {
 		return Direccion_Estudiante;
 	}
 	
 	/**
-	 * Sets the direccion.
+	 * Sets  direccion.
 	 *
-	 * @param direccion the direccion to set
+	 * @param direccion  direccion to set
 	 */
 	public void setDireccion(String direccion) {
 		this.Direccion_Estudiante = direccion;
 	}
 	
 	/**
-	 * Gets the telefono.
+	 * Gets  telefono.
 	 *
-	 * @return the telefono
+	 * @return  telefono
 	 */
 	public String getTelefono() {
 		return Telefono_Estudiante;
 	}
 	
 	/**
-	 * Sets the telefono.
+	 * Sets  telefono.
 	 *
-	 * @param telefono the telefono to set
+	 * @param telefono  telefono to set
 	 */
 	public void setTelefono(String telefono) {
 		this.Telefono_Estudiante = telefono;
 	}
 	
 	/**
-	 * Gets the celular.
+	 * Gets  celular.
 	 *
-	 * @return the celular
+	 * @return  celular
 	 */
 	public String getCelular() {
 		return Celular_Estudiante;
 	}
 	
 	/**
-	 * Sets the celular.
+	 * Sets  celular.
 	 *
-	 * @param celular the celular to set
+	 * @param celular  celular to set
 	 */
 	public void setCelular(String celular) {
 		this.Celular_Estudiante = celular;
 	}
 	
 	/**
-	 * Gets the correo electronico.
+	 * Gets  correo electronico.
 	 *
-	 * @return the correoElectronico
+	 * @return  correoElectronico
 	 */
 	public String getCorreoElectronico() {
 		return Correo_Estudiante;
 	}
 	
 	/**
-	 * Sets the correo electronico.
+	 * Sets  correo electronico.
 	 *
-	 * @param correoElectronico the correoElectronico to set
+	 * @param correoElectronico  correoElectronico to set
 	 */
 	public void setCorreoElectronico(String correoElectronico) {
 		this.Correo_Estudiante = correoElectronico;
 	}
 	
 	/**
-	 * Gets the plan estudios.
+	 * Gets  plan estudios.
 	 *
-	 * @return the planEstudios
+	 * @return  planEstudios
 	 */
 	public String getPlanEstudios() {
 		return PlanEstudios_Estudiante;
 	}
 	
 	/**
-	 * Sets the plan estudios.
+	 * Sets  plan estudios.
 	 *
-	 * @param planEstudios the planEstudios to set
+	 * @param planEstudios  planEstudios to set
 	 */
 	public void setPlanEstudios(String planEstudios) {
 		this.PlanEstudios_Estudiante = planEstudios;
 	}
 	
 	/**
-	 * Gets the semestre actual.
+	 * Gets  semestre actual.
 	 *
-	 * @return the semestreActual
+	 * @return  semestreActual
 	 */
 	public String getSemestreActual() {
 		return Semestre_Estudiante;
 	}
 	
 	/**
-	 * Sets the semestre actual.
+	 * Sets  semestre actual.
 	 *
-	 * @param semestreActual the semestreActual to set
+	 * @param semestreActual  semestreActual to set
 	 */
 	public void setSemestreActual(String semestreActual) {
 		this.Semestre_Estudiante = semestreActual;
 	}
 	
 	/**
-	 * Gets the estado.
+	 * Gets  estado.
 	 *
-	 * @return the estado
+	 * @return  estado
 	 */
 	public String getEstado() {
 		return Estado_Estudiantes;
 	}
 	
 	/**
-	 * Sets the estado.
+	 * Sets  estado.
 	 *
-	 * @param estado the estado to set
+	 * @param estado  estado to set
 	 */
 	public void setEstado(String estado) {
 		this.Estado_Estudiantes = estado;

@@ -16,23 +16,23 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NPerfiles.
+ *  Class NPerfiles.
  *
- * @author natad_000
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NPerfiles {
 
-	/** The dao perfiles. */
+	/**  dao perfiles. */
 	DAOPerfiles daoPerfiles;
 	DataSource ds = JRDataSource.getMySQLDataSource();
-	/** The c. */
+	/**  c. */
 	Connection c;
 
 	/**
 	 * Crear.
 	 *
-	 * @param Perfiles the perfiles
-	 * @return the int
+	 * @param Perfiles  perfiles
+	 * @return  int
 	 */
 	public int Crear(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
@@ -49,8 +49,8 @@ public class NPerfiles {
 	/**
 	 * Modificar.
 	 *
-	 * @param Perfiles the perfiles
-	 * @return the int
+	 * @param Perfiles  perfiles
+	 * @return  int
 	 */
 	public int Modificar(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
@@ -67,8 +67,8 @@ public class NPerfiles {
 	/**
 	 * Buscar.
 	 *
-	 * @param Perfiles the perfiles
-	 * @return the perfil
+	 * @param Perfiles  perfiles
+	 * @return  perfil
 	 */
 	public Perfil Buscar(int Perfiles) {
 		daoPerfiles = new DAOPerfiles();
@@ -96,8 +96,8 @@ public class NPerfiles {
 	/**
 	 * Eliminar.
 	 *
-	 * @param Perfiles the perfiles
-	 * @return the int
+	 * @param Perfiles  perfiles
+	 * @return  int
 	 */
 	public int Eliminar(Perfil Perfiles) {
 		daoPerfiles = new DAOPerfiles();
@@ -114,7 +114,7 @@ public class NPerfiles {
 	/**
 	 * Listado perfiles.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Perfil> ListadoPerfiles() {
 		daoPerfiles = new DAOPerfiles();

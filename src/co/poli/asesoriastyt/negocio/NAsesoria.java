@@ -20,23 +20,23 @@ import co.poli.asesoriastyt.util.JRDataSource;
 
 
 /**
- * The Class NAsesoria.
+ *  Class NAsesoria.
  *
- * @author pavargas
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class NAsesoria {
 
-	/** The dao asesorias. */
+	/**  dao asesorias. */
 	DAOAsesorias daoAsesorias;
 	DataSource ds = JRDataSource.getMySQLDataSource();
-	/** The c. */
+	/**  c. */
 	Connection c;
 
 	/**
 	 * Crear.
 	 *
-	 * @param Asesorias the asesorias
-	 * @return the int
+	 * @param Asesorias  asesorias
+	 * @return  int
 	 */
 	public int Crear(Asesoria Asesorias) {
 		daoAsesorias = new DAOAsesorias();
@@ -53,9 +53,9 @@ public class NAsesoria {
 	/**
 	 * Asistir.
 	 *
-	 * @param idUser the id user
-	 * @param idAsesoria the id asesoria
-	 * @return the int
+	 * @param idUser  id user
+	 * @param idAsesoria  id asesoria
+	 * @return  int
 	 */
 	public int Asistir(String idUser, String idAsesoria) {
 		daoAsesorias = new DAOAsesorias();
@@ -72,8 +72,8 @@ public class NAsesoria {
 	/**
 	 * Modificar.
 	 *
-	 * @param Asesorias the asesorias
-	 * @return the int
+	 * @param Asesorias  asesorias
+	 * @return  int
 	 */
 	public int Modificar(Asesoria Asesorias) {
 		daoAsesorias = new DAOAsesorias();
@@ -90,10 +90,10 @@ public class NAsesoria {
 	/**
 	 * Guardar asistencia.
 	 *
-	 * @param idAsesoria the id asesoria
-	 * @param idEstudiante the id estudiante
-	 * @param asistio the asistio
-	 * @return the int
+	 * @param idAsesoria  id asesoria
+	 * @param idEstudiante  id estudiante
+	 * @param asistio  asistio
+	 * @return  int
 	 */
 	public int GuardarAsistencia(String idAsesoria, String idEstudiante, String asistio) {
 		daoAsesorias = new DAOAsesorias();
@@ -110,8 +110,8 @@ public class NAsesoria {
 	/**
 	 * Buscar.
 	 *
-	 * @param Asesorias the asesorias
-	 * @return the asesoria
+	 * @param Asesorias  asesorias
+	 * @return  asesoria
 	 */
 	public Asesoria Buscar(String Asesorias) {
 		daoAsesorias = new DAOAsesorias();
@@ -128,7 +128,7 @@ public class NAsesoria {
 	/**
 	 * Generar id asesoria.
 	 *
-	 * @return the asesoria
+	 * @return  asesoria
 	 */
 	public Asesoria generarIdAsesoria() {
 		daoAsesorias = new DAOAsesorias();
@@ -145,7 +145,7 @@ public class NAsesoria {
 	/**
 	 * Listado asesorias.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<Asesoria> ListadoAsesorias() {
 		daoAsesorias = new DAOAsesorias();
@@ -161,8 +161,8 @@ public class NAsesoria {
 	/**
 	 * Listado asesorias profesor.
 	 *
-	 * @param profesor the profesor
-	 * @return the list
+	 * @param profesor  profesor
+	 * @return  list
 	 */
 	public List<Asesoria> ListadoAsesoriasProfesor(String profesor) {
 		daoAsesorias = new DAOAsesorias();
@@ -178,8 +178,8 @@ public class NAsesoria {
 	/**
 	 * Listado asistentes.
 	 *
-	 * @param idAsesoria the id asesoria
-	 * @return the list
+	 * @param idAsesoria  id asesoria
+	 * @return  list
 	 */
 	public List<EstudianteAsesoria> ListadoAsistentes(String idAsesoria) {
 		daoAsesorias = new DAOAsesorias();
@@ -195,7 +195,7 @@ public class NAsesoria {
 	/**
 	 * Material asesorias.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesorias() {
 		daoAsesorias = new DAOAsesorias();
@@ -211,9 +211,9 @@ public class NAsesoria {
 	/**
 	 * Material asesorias fechas.
 	 *
-	 * @param fechaInicio the fecha inicio
-	 * @param fechaFin the fecha fin
-	 * @return the list
+	 * @param fechaInicio  fecha inicio
+	 * @param fechaFin  fecha fin
+	 * @return  list
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasFechas(String fechaInicio, String fechaFin) {
 		daoAsesorias = new DAOAsesorias();
@@ -229,8 +229,8 @@ public class NAsesoria {
 	/**
 	 * Material asesorias asesoria.
 	 *
-	 * @param asesoria the asesoria
-	 * @return the list
+	 * @param asesoria  asesoria
+	 * @return  list
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasAsesoria(String asesoria) {
 		daoAsesorias = new DAOAsesorias();
@@ -246,7 +246,7 @@ public class NAsesoria {
 	/**
 	 * Asistencia asesoria.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<ReporteAsistencia> AsistenciaAsesoria() {
 		daoAsesorias = new DAOAsesorias();
@@ -262,8 +262,8 @@ public class NAsesoria {
 	/**
 	 * Asistencia asesoria asesoria.
 	 *
-	 * @param asesoria the asesoria
-	 * @return the list
+	 * @param asesoria  asesoria
+	 * @return  list
 	 */
 	public List<ReporteAsistencia> AsistenciaAsesoriaAsesoria(String asesoria) {
 		daoAsesorias = new DAOAsesorias();
@@ -279,9 +279,9 @@ public class NAsesoria {
 	/**
 	 * Asistencia asesoria fecha.
 	 *
-	 * @param fechaI the fecha i
-	 * @param fechaF the fecha f
-	 * @return the list
+	 * @param fechaI  fecha i
+	 * @param fechaF  fecha f
+	 * @return  list
 	 */
 	public List<ReporteAsistencia> AsistenciaAsesoriaFecha(String fechaI, String fechaF) {
 		daoAsesorias = new DAOAsesorias();
@@ -297,8 +297,8 @@ public class NAsesoria {
 	/**
 	 * Cantidad asitencia asesoria asesoria.
 	 *
-	 * @param asesoria the asesoria
-	 * @return the list
+	 * @param asesoria  asesoria
+	 * @return  list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaAsesoria(String asesoria) {
 		daoAsesorias = new DAOAsesorias();
@@ -314,7 +314,7 @@ public class NAsesoria {
 	/**
 	 * Cantidad asitencia asesoria.
 	 *
-	 * @return the list
+	 * @return  list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoria() {
 		daoAsesorias = new DAOAsesorias();
@@ -325,9 +325,9 @@ public class NAsesoria {
 	/**
 	 * Cantidad asitencia asesoria fecha.
 	 *
-	 * @param fechaInicio the fecha inicio
-	 * @param fechaFin the fecha fin
-	 * @return the list
+	 * @param fechaInicio  fecha inicio
+	 * @param fechaFin  fecha fin
+	 * @return  list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaFecha(String fechaInicio, String fechaFin) {
 		daoAsesorias = new DAOAsesorias();

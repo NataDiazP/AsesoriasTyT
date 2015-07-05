@@ -1,50 +1,54 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 
 /**
- * The Class Perfil.
+ *  Class Perfil.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class Perfil {
 	
-	/** The idperfil. */
+	/**  idperfil. */
 	private int idperfil;
 	
-	/** The nombreperfil. */
+	/**  nombreperfil. */
 	private String nombreperfil;
 	
 	
 	/**
-	 * Gets the id perfil.
+	 * Gets  id perfil.
 	 *
-	 * @return the id perfil
+	 * @return  id perfil
 	 */
 	public int getIdPerfil() {
 		return idperfil;
 	}
 	
 	/**
-	 * Sets the id perfil.
+	 * Sets  id perfil.
 	 *
-	 * @param idperfil the new id perfil
+	 * @param idperfil  new id perfil
 	 */
 	public void setIdPerfil(int idperfil) {
 		this.idperfil = idperfil;
 	}
 	
 	/**
-	 * Gets the nombre perfil.
+	 * Gets  nombre perfil.
 	 *
-	 * @return the nombre perfil
+	 * @return  nombre perfil
 	 */
 	public String getNombrePerfil() {
 		return nombreperfil;
 	}
 	
 	/**
-	 * Sets the nombre perfil.
+	 * Sets  nombre perfil.
 	 *
-	 * @param nombreperfil the new nombre perfil
+	 * @param nombreperfil  new nombre perfil
 	 */
 	public void setNombrePerfil(String nombreperfil) {
 		this.nombreperfil = nombreperfil;

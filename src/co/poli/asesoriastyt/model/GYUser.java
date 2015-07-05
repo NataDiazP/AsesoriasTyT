@@ -1,42 +1,46 @@
+/*
+ * 
+ */
 package co.poli.asesoriastyt.model;
 
 
 /**
- * The Class GYUser.
+ *  Class GYUser.
+ * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class GYUser {
 	
-	/** The id. */
+	/**  id. */
 	private String id;
 	
-	/** The fullname. */
+	/**  fullname. */
 	private String fullname;
 	
-	/** The email. */
+	/**  email. */
 	private String email;
 	
-	/** The firstname. */
+	/**  firstname. */
 	private String firstname;
 	
-	/** The lastname. */
+	/**  lastname. */
 	private String lastname;
 	
-	/** The gender. */
+	/**  gender. */
 	private String gender;
 	
-	/** The lang. */
+	/**  lang. */
 	private String lang;
 	
 	/**
 	 * Instantiates a new GY user.
 	 *
-	 * @param id the id
-	 * @param fullname the fullname
-	 * @param email the email
-	 * @param firstname the firstname
-	 * @param lastname the lastname
-	 * @param gender the gender
-	 * @param lang the lang
+	 * @param id  id
+	 * @param fullname  fullname
+	 * @param email  email
+	 * @param firstname  firstname
+	 * @param lastname  lastname
+	 * @param gender  gender
+	 * @param lang  lang
 	 */
 	public GYUser(String id, String fullname, String email, String firstname, String lastname, String gender, String lang) {
 		this.id = id;
@@ -49,126 +53,126 @@ public class GYUser {
 	}
 
 	/**
-	 * Gets the id.
+	 * Gets  id.
 	 *
-	 * @return the id
+	 * @return  id
 	 */
 	public String getId() {
 		return id;
 	}
 
 	/**
-	 * Sets the id.
+	 * Sets  id.
 	 *
-	 * @param id the new id
+	 * @param id  new id
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	/**
-	 * Gets the fullname.
+	 * Gets  fullname.
 	 *
-	 * @return the fullname
+	 * @return  fullname
 	 */
 	public String getFullname() {
 		return fullname;
 	}
 
 	/**
-	 * Sets the fullname.
+	 * Sets  fullname.
 	 *
-	 * @param fullname the new fullname
+	 * @param fullname  new fullname
 	 */
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
 
 	/**
-	 * Gets the email.
+	 * Gets  email.
 	 *
-	 * @return the email
+	 * @return  email
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * Sets the email.
+	 * Sets  email.
 	 *
-	 * @param email the new email
+	 * @param email  new email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * Gets the firstname.
+	 * Gets  firstname.
 	 *
-	 * @return the firstname
+	 * @return  firstname
 	 */
 	public String getFirstname() {
 		return firstname;
 	}
 
 	/**
-	 * Sets the firstname.
+	 * Sets  firstname.
 	 *
-	 * @param firstname the new firstname
+	 * @param firstname  new firstname
 	 */
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
 	/**
-	 * Gets the lastname.
+	 * Gets  lastname.
 	 *
-	 * @return the lastname
+	 * @return  lastname
 	 */
 	public String getLastname() {
 		return lastname;
 	}
 
 	/**
-	 * Sets the lastname.
+	 * Sets  lastname.
 	 *
-	 * @param lastname the new lastname
+	 * @param lastname  new lastname
 	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
 	/**
-	 * Gets the gender.
+	 * Gets  gender.
 	 *
-	 * @return the gender
+	 * @return  gender
 	 */
 	public String getGender() {
 		return gender;
 	}
 
 	/**
-	 * Sets the gender.
+	 * Sets  gender.
 	 *
-	 * @param gender the new gender
+	 * @param gender  new gender
 	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
 	/**
-	 * Gets the lang.
+	 * Gets  lang.
 	 *
-	 * @return the lang
+	 * @return  lang
 	 */
 	public String getLang() {
 		return lang;
 	}
 
 	/**
-	 * Sets the lang.
+	 * Sets  lang.
 	 *
-	 * @param lang the new lang
+	 * @param lang  new lang
 	 */
 	public void setLang(String lang) {
 		this.lang = lang;

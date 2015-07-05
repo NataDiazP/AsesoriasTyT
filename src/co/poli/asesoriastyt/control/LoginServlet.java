@@ -9,11 +9,12 @@ import java.net.URLEncoder;
 
 
 /**
- * The Class LoginServlet.
+ *  Class LoginServlet.
+ *  @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
 public class LoginServlet extends HttpServlet {
     
-    /** The Constant serialVersionUID. */
+    /**  Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
     /* (non-Javadoc)
