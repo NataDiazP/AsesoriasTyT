@@ -3,31 +3,54 @@
  */
 package co.poli.asesoriastyt.util;
 
-	import javax.sql.DataSource;
-	import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-	 
 
-/**
-	 *  Class JRDataSource.
-	 * @author Natalia Díaz , Natalia Velez , Paola Vargas
-	 */
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+	 
 	public class JRDataSource {
 		
-		/**  Constant mysqlDS. */
 		private static final MysqlDataSource mysqlDS = new MysqlDataSource();
 		
 		static {
-			mysqlDS.setURL("jdbc:mysql://localhost:3306/dbasesoriastyt");
-			mysqlDS.setUser("root");
-			mysqlDS.setPassword("");
+			
+			Properties props = new Properties();
+			InputStream in = null;
+			try {
+				
+				in = JRDataSource.class.getResourceAsStream("conexion.properties");
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   try {
+				props.load(in);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   try {
+				in.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   
+			String url = props.getProperty("jdbc.url");
+			String username = props.getProperty("jdbc.username");
+			String password = props.getProperty("jdbc.password");
+
+			mysqlDS.setURL(url);
+			mysqlDS.setUser(username);
+			mysqlDS.setPassword(password);
 		}
-	    
-    	/**
-    	 * Gets  my sql data source.
-    	 *
-    	 * @return  my sql data source
-    	 */
-    	public static DataSource getMySQLDataSource() {
+	    public static DataSource getMySQLDataSource() {
 	        return mysqlDS;
 	    }
 }
+
