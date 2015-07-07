@@ -50,7 +50,7 @@
 							<tr align="center">
 								<td><%=as.getAsignatura()%></td>
 								<td><%=as.getNombreAsesoria()%></td>
-								<td><%=as.getDocente()%></td>
+								<td><%=as.getNombreDocente()%></td>
 								<td><%=as.getFecha()%></td>
 								<td><%=as.getHoraI()%></td>
 								<td><%=as.getLugar()%></td>

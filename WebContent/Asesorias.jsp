@@ -42,8 +42,8 @@
 		id = x.getIdAsesoria();
 		nombreAsesoria = x.getNombreAsesoria();
 		docente = x.getDocente();
-		asignatura = x.getAsignatura();
-		docente = x.getDocente();
+		asignatura = x.getAsignatura() + " - " + x.getNombreAsignatura();
+		docente = x.getDocente() + " - " + x.getNombreDocente();
 		fecha = x.getFecha();
 		horaI = x.getHoraI();
 		horaF = x.getHoraF();
@@ -120,8 +120,8 @@
 											for (Persona doc : listaPersonas) {
 										%>
 										<option
-											<%if ((doc.getNumeroIdentificacion()).equals(docente)) {%>
-											selected <%}%>><%=doc.getNumeroIdentificacion()%></option>
+											<%if ((doc.getNumeroIdentificacion()+ " - " + doc.getConcatNombre()).equals(docente)) {%>
+											selected <%}%>><%=doc.getNumeroIdentificacion() + " - " + doc.getConcatNombre()%></option>
 										<%
 											}
 										%>
@@ -140,8 +140,8 @@
 										<%
 											for (Asignatura asig : asigDocente) {
 										%>
-										<option <%if ((asig.getIdAsignatura()).equals(asignatura)) {%>
-											selected <%}%>><%=asig.getIdAsignatura()%></option>
+										<option <%if ((asig.getIdAsignatura() + " - " + asig.getNombreAsignatura()).equals(asignatura)) {%>
+											selected <%}%>><%=asig.getIdAsignatura() + " - " + asig.getNombreAsignatura()%></option>
 										<%
 											}
 										%>
@@ -154,8 +154,8 @@
 										<%
 											for (Asignatura asig : listaAsignaturas) {
 										%>
-										<option <%if ((asig.getIdAsignatura()).equals(asignatura)) {%>
-											selected <%}%>><%=asig.getIdAsignatura()%></option>
+										<option <%if ((asig.getIdAsignatura() + " - " + asig.getNombreAsignatura()).equals(asignatura)) {%>
+											selected <%}%>><%=asig.getIdAsignatura() + " - " + asig.getNombreAsignatura()%></option>
 										<%
 											}
 										%>
@@ -282,8 +282,8 @@
 								<tr align="center">
 									<td><%=as.getIdAsesoria()%></td>
 									<td><%=as.getNombreAsesoria()%></td>
-									<td><%=as.getDocente()%></td>
-									<td><%=as.getAsignatura()%></td>
+									<td><%=as.getNombreDocente()%></td>
+									<td><%=as.getNombreAsignatura()%></td>
 									<td><%=as.getFecha()%></td>
 									<td><%=as.getHoraI()%></td>
 									<td><%=as.getHoraF()%></td>

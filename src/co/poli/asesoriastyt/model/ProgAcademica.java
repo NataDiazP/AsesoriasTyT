@@ -17,8 +17,15 @@ public class ProgAcademica {
 	/**  Docente prog academica. */
 	private String DocenteProgAcademica;
 	
+	
+	/** Nombre Docente Prog Academica */
+	private String NombreDocenteProgAcademica;
+	
 	/**  Asignatura prog academica. */
 	private String AsignaturaProgAcademica;
+	
+	/** Nombre asignatura Prog academica*/
+	private String NombreAsigProg;
 	
 	/**  Grupo asig prog academica. */
 	private String GrupoAsigProgAcademica;
@@ -96,6 +103,24 @@ public class ProgAcademica {
 	 */
 	public void setAsignaturaProgAcademica(String asignaturaProgAcademica) {
 		AsignaturaProgAcademica = asignaturaProgAcademica;
+	}
+
+	/**
+	 * Gets nombre asignatura prog academica
+	 * 
+	 * @return the nombreAsigProg
+	 */
+	public String getNombreAsigProg() {
+		return NombreAsigProg;
+	}
+
+	/**
+	 * Sets nombre asignatura prog academica
+	 * 
+	 * @param nombreAsigProg the nombreAsigProg to set
+	 */
+	public void setNombreAsigProg(String nombreAsigProg) {
+		NombreAsigProg = nombreAsigProg;
 	}
 
 	/**
@@ -241,4 +266,24 @@ public class ProgAcademica {
 	public void setAnoProgAcademica(String anoProgAcademica) {
 		AnoProgAcademica = anoProgAcademica;
 	}
+
+	/**
+	 * Gets nombre docente prog academica
+	 * 
+	 * @return the nombreDocenteProgAcademica
+	 */
+	public String getNombreDocenteProgAcademica() {
+		return NombreDocenteProgAcademica;
+	}
+
+	/**
+	 * Sets nombre docente prog academica
+	 * 
+	 * @param nombreDocenteProgAcademica the nombreDocenteProgAcademica to set
+	 */
+	public void setNombreDocenteProgAcademica(String nombreDocenteProgAcademica) {
+		NombreDocenteProgAcademica = nombreDocenteProgAcademica;
+	}
+	
+	
 }

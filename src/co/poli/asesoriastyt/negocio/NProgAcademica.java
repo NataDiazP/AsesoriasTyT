@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 import co.poli.asesoriastyt.dao.DAOProgAcademica;
 import co.poli.asesoriastyt.model.Asignatura;
 import co.poli.asesoriastyt.model.ProgAcademica;
-import co.poli.asesoriastyt.util.Conexion;
 import co.poli.asesoriastyt.util.JRDataSource;
 
 
@@ -26,9 +25,10 @@ public class NProgAcademica {
 	/**  dao prog academica. */
 	DAOProgAcademica daoProgAcademica;
 	
-	/**  c. */
+	/**  Conexion Datasource */
 	Connection c;
 	DataSource ds = JRDataSource.getMySQLDataSource();
+	
 	/**
 	 * Crear.
 	 *

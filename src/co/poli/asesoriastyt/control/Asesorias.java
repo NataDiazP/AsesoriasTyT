@@ -123,6 +123,12 @@ public class Asesorias extends HttpServlet {
 					"Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("Asesorias.jsp");
 		} else {
+			String[] docenteArray = docente.split(" - ");
+			docente = docenteArray[0];
+			
+			String[] asignaturaArray = asignatura.split(" - ");
+			asignatura = asignaturaArray[0];
+			
 			Asesorias.setIdAsesoria(id);
 			Asesorias.setNombreAsesoria(nombreAsesoria);
 			Asesorias.setDocente(docente);

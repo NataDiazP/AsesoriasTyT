@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
 
 import co.poli.asesoriastyt.model.Persona;
 import co.poli.asesoriastyt.util.Conexion;
@@ -333,7 +332,10 @@ public class DAOPersonas {
 	public List<Persona> listarPersonasDocentes(Connection c) {
 		List<Persona> Personas = new ArrayList<Persona>();
 		try {
-			String sql = "SELECT * FROM personas  where Perfil_Persona ='2'";
+			String sql = "SELECT NumDoc_Persona, Tipo_Identificacion, Nombres_Persona, PApellido_Persona, SApellido_Persona, "
+					+ "Genero_Persona, FechaNac_Persona, Direccion_Persona, Telefono_Persona, Celular_Persona, Correo_Persona, "
+					+ "PlanEstudios_Persona, Semestre_Persona, Estado_Persona, Perfil_Persona, CONCAT_WS(  ' ', nombres_persona, "
+					+ "papellido_persona, sapellido_persona ) AS NombreDocente FROM personas where Perfil_Persona ='2'";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -353,6 +355,7 @@ public class DAOPersonas {
 				Per.setSemestre_Estudiante(r.getString(13));
 				Per.setEstado(r.getString(14));
 				Per.setPerfil(r.getString(15));
+				Per.setConcatNombre(r.getString(16));
 				Personas.add(Per);
 			}
 		} catch (SQLException e) {

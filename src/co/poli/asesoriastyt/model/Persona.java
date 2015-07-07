@@ -56,6 +56,9 @@ public class Persona
     
     /**  perfil. */
     private String perfil;
+    
+    /** nombre concatenado */
+    private String concatNombre;
 	
 	/**
 	 * Gets  tipo identificacion.
@@ -326,8 +329,22 @@ public class Persona
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
-	
-    
-    
 
+	/**
+	 * Gets nombre concatenado
+	 * 
+	 * @return the concatNombre
+	 */
+	public String getConcatNombre() {
+		return concatNombre;
+	}
+
+	/**
+	 * Sets nombre concatenado
+	 * 
+	 * @param concatNombre the concatNombre to set
+	 */
+	public void setConcatNombre(String concatNombre) {
+		this.concatNombre = concatNombre;
+	}
 }

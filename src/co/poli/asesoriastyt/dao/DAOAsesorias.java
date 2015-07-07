@@ -19,9 +19,8 @@ import co.poli.asesoriastyt.model.ReporteAsistencia;
 import co.poli.asesoriastyt.model.ReporteMaterialAsesoria;
 import co.poli.asesoriastyt.model.ReporteNumAsistencia;
 
-
 /**
- *  Class DAOAsesorias.
+ * Class DAOAsesorias.
  *
  * @author Natalia Díaz , Natalia Velez , Paola Vargas
  */
@@ -30,9 +29,11 @@ public class DAOAsesorias {
 	/**
 	 * Crear.
 	 *
-	 * @param c  c
-	 * @param Asesorias  asesorias
-	 * @return  int
+	 * @param c
+	 *            c
+	 * @param Asesorias
+	 *            asesorias
+	 * @return int
 	 */
 	public int Crear(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Crear();
@@ -66,13 +67,16 @@ public class DAOAsesorias {
 		return resultadoCrear;
 	}
 
-		/**
+	/**
 	 * Asistir.
 	 *
-	 * @param c  c
-	 * @param idUser  id user
-	 * @param idAsesoria  id asesoria
-	 * @return  int
+	 * @param c
+	 *            c
+	 * @param idUser
+	 *            id user
+	 * @param idAsesoria
+	 *            id asesoria
+	 * @return int
 	 */
 	public int Asistir(Connection c, String idUser, String idAsesoria) {
 		EstudianteAsesoria EstudianteAsesoria = new EstudianteAsesoria();
@@ -99,11 +103,15 @@ public class DAOAsesorias {
 	/**
 	 * Guardar asistencia.
 	 *
-	 * @param c  c
-	 * @param idAsesoria  id asesoria
-	 * @param idEstudiante  id estudiante
-	 * @param asistio  asistio
-	 * @return  int
+	 * @param c
+	 *            c
+	 * @param idAsesoria
+	 *            id asesoria
+	 * @param idEstudiante
+	 *            id estudiante
+	 * @param asistio
+	 *            asistio
+	 * @return int
 	 */
 	public int GuardarAsistencia(Connection c, String idAsesoria, String idEstudiante, String asistio) {
 		String sql = AsesoriasSQL.AsistirAsesoria();
@@ -126,13 +134,15 @@ public class DAOAsesorias {
 		}
 		return resultadoModificar;
 	}
-	
+
 	/**
 	 * Modificar.
 	 *
-	 * @param c  c
-	 * @param Asesorias  asesorias
-	 * @return  int
+	 * @param c
+	 *            c
+	 * @param Asesorias
+	 *            asesorias
+	 * @return int
 	 */
 	public int Modificar(Connection c, Asesoria Asesorias) {
 		String sql = AsesoriasSQL.Modificar();
@@ -169,9 +179,11 @@ public class DAOAsesorias {
 	/**
 	 * Buscar.
 	 *
-	 * @param con  con
-	 * @param IdAsesoria  id asesoria
-	 * @return  asesoria
+	 * @param con
+	 *            con
+	 * @param IdAsesoria
+	 *            id asesoria
+	 * @return asesoria
 	 */
 	public Asesoria Buscar(Connection con, String IdAsesoria) {
 		Asesoria c = new Asesoria();
@@ -192,6 +204,8 @@ public class DAOAsesorias {
 				c.setRecursosApoyo(r.getString(11));
 				c.setObservaciones(r.getString(12));
 				c.setEstado(r.getString(13));
+				c.setNombreAsignatura(r.getString(14));
+				c.setNombreDocente(r.getString(15));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -208,14 +222,17 @@ public class DAOAsesorias {
 	/**
 	 * Listar asistentes.
 	 *
-	 * @param c  c
-	 * @param idAsesoria  id asesoria
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param idAsesoria
+	 *            id asesoria
+	 * @return list
 	 */
 	public List<EstudianteAsesoria> listarAsistentes(Connection c, String idAsesoria) {
 		List<EstudianteAsesoria> EstudianteAsesorias = new ArrayList<EstudianteAsesoria>();
 		try {
-			String sql = "SELECT es.Id_Asesoria, es.Id_Estudiante, es.Asistencia_Asesoria, p.Correo_Persona, p.Nombres_Persona, p.PApellido_Persona, p.SApellido_Persona FROM estudiantes_asesoria es, personas p WHERE Id_Asesoria=" + idAsesoria + " AND es.Id_Estudiante = p.NumDoc_Persona";
+			String sql = "SELECT es.Id_Asesoria, es.Id_Estudiante, es.Asistencia_Asesoria, p.Correo_Persona, p.Nombres_Persona, p.PApellido_Persona, p.SApellido_Persona FROM estudiantes_asesoria es, personas p WHERE Id_Asesoria="
+					+ idAsesoria + " AND es.Id_Estudiante = p.NumDoc_Persona";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -224,7 +241,7 @@ public class DAOAsesorias {
 				EstudianteAsesoria.setNumDocEstudiante(r.getString(2));
 				EstudianteAsesoria.setAsistenciaAsesoria(r.getString(3));
 				EstudianteAsesoria.setEmailEstudiante(r.getString(4));
-				String nombrecompleto= r.getString(5) +" " + r.getString(6)+" "+r.getString(7);
+				String nombrecompleto = r.getString(5) + " " + r.getString(6) + " " + r.getString(7);
 				EstudianteAsesoria.setNombreCompleto(nombrecompleto);
 				EstudianteAsesorias.add(EstudianteAsesoria);
 			}
@@ -243,13 +260,19 @@ public class DAOAsesorias {
 	/**
 	 * Listar asesorias.
 	 *
-	 * @param c  c
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @return list
 	 */
 	public List<Asesoria> listarAsesorias(Connection c) {
 		List<Asesoria> Asesorias = new ArrayList<Asesoria>();
 		try {
-			String sql = "SELECT Id_Asesoria, Nombre_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, RecursosApoyo_Asesoria, Observaciones_Asesoria, Estado_Asesoria FROM asesorias";
+			String sql = "SELECT Id_Asesoria, Nombre_Asesoria, Docente_Asesoria, Asignatura_Asesoria, Fecha_Asesoria, "
+					+ "HoraInicio_Asesoria, HoraFin_Asesoria, Lugar_Asesoria, Cupos_Asesoria, CuposDisp_Asesoria, "
+					+ "RecursosApoyo_Asesoria, Observaciones_Asesoria, Estado_Asesoria, asig.nombre_asignatura,"
+					+ " CONCAT_WS(  ' ', nombres_persona, papellido_persona, sapellido_persona ) AS NombreDocente FROM asesorias,"
+					+ " asignaturas asig, personas doc WHERE Asignatura_Asesoria = asig.codigo_asignatura AND "
+					+ "doc.NumDoc_persona = Docente_asesoria ";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -267,6 +290,8 @@ public class DAOAsesorias {
 				Asesoria.setRecursosApoyo(r.getString(11));
 				Asesoria.setObservaciones(r.getString(12));
 				Asesoria.setEstado(r.getString(13));
+				Asesoria.setNombreAsignatura(r.getString(14));
+				Asesoria.setNombreDocente(r.getString(15));
 				Asesorias.add(Asesoria);
 			}
 		} catch (SQLException e) {
@@ -280,29 +305,31 @@ public class DAOAsesorias {
 		}
 		return Asesorias;
 	}
-	
+
 	public int guardarAsesoriasBK(Connection c) {
-		int resultadoCrear=0;
+		int resultadoCrear = 0;
 		try {
-			String sql = "insert into BackupAsesorias select a.id_Asesoria, a.Nombre_Asesoria, b.NumDoc_Persona, b.Nombres_Persona, b.PApellido_Persona || b.SApellido_Persona, a.Asignatura_Asesoria, c.Nombre_Asignatura,"+
+			String sql = "insert into BackupAsesorias select a.id_Asesoria, a.Nombre_Asesoria, b.NumDoc_Persona, b.Nombres_Persona, b.PApellido_Persona || b.SApellido_Persona, a.Asignatura_Asesoria, c.Nombre_Asignatura,"
+					+
 					"a.Fecha_Asesoria, a.HoraInicio_Asesoria, a. HoraFin_Asesoria, a.Lugar_Asesoria, a.Cupos_Asesoria,a.CuposDisp_Asesoria, a.RecursosApoyo_Asesoria, a.Observaciones_Asesoria, a.Estado_Asesoria from asesorias as a inner join personas as b on a.Docente_Asesoria = b.NumDoc_Persona "
 					+ "inner join asignaturas as c on a.Asignatura_Asesoria = c.Codigo_Asignatura ORDER BY a.id_Asesoria";
 			System.out.print(sql);
 			PreparedStatement ps = c.prepareStatement(sql);
 			resultadoCrear = ps.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
-		
+		}
+
 		return resultadoCrear;
 	}
 
 	/**
 	 * Material asesorias.
 	 *
-	 * @param c  c
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @return list
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesorias(Connection c) {
 
@@ -339,10 +366,13 @@ public class DAOAsesorias {
 	/**
 	 * Material asesorias fechas.
 	 *
-	 * @param c  c
-	 * @param fechaI  fecha i
-	 * @param fechaF  fecha f
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param fechaI
+	 *            fecha i
+	 * @param fechaF
+	 *            fecha f
+	 * @return list
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasFechas(Connection c, String fechaI, String fechaF) {
 
@@ -381,9 +411,11 @@ public class DAOAsesorias {
 	/**
 	 * Material asesorias asesoria.
 	 *
-	 * @param c  c
-	 * @param asesoria  asesoria
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param asesoria
+	 *            asesoria
+	 * @return list
 	 */
 	public List<ReporteMaterialAsesoria> MaterialAsesoriasAsesoria(Connection c, String asesoria) {
 
@@ -423,8 +455,9 @@ public class DAOAsesorias {
 	/**
 	 * Asitencia asesoria.
 	 *
-	 * @param c  c
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @return list
 	 */
 	public List<ReporteAsistencia> AsitenciaAsesoria(Connection c)
 	{
@@ -463,9 +496,11 @@ public class DAOAsesorias {
 	/**
 	 * Asitencia asesoria asesoria.
 	 *
-	 * @param c  c
-	 * @param asesoria  asesoria
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param asesoria
+	 *            asesoria
+	 * @return list
 	 */
 	public List<ReporteAsistencia> AsitenciaAsesoriaAsesoria(Connection c, String asesoria)
 	{
@@ -504,10 +539,13 @@ public class DAOAsesorias {
 	/**
 	 * Asitencia asesoria fecha.
 	 *
-	 * @param c  c
-	 * @param fechaI  fecha i
-	 * @param fechaF  fecha f
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param fechaI
+	 *            fecha i
+	 * @param fechaF
+	 *            fecha f
+	 * @return list
 	 */
 	public List<ReporteAsistencia> AsitenciaAsesoriaFecha(Connection c, String fechaI, String fechaF)
 	{
@@ -547,9 +585,11 @@ public class DAOAsesorias {
 	/**
 	 * Cantidad asitencia asesoria asesoria.
 	 *
-	 * @param c  c
-	 * @param asesoria  asesoria
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param asesoria
+	 *            asesoria
+	 * @return list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaAsesoria(Connection c, String asesoria)
 	{
@@ -584,8 +624,9 @@ public class DAOAsesorias {
 	/**
 	 * Cantidad asitencia asesoria.
 	 *
-	 * @param c  c
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @return list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoria(Connection c)
 	{
@@ -620,10 +661,13 @@ public class DAOAsesorias {
 	/**
 	 * Cantidad asitencia asesoria fecha.
 	 *
-	 * @param c  c
-	 * @param fechaInicio  fecha inicio
-	 * @param fechaFin  fecha fin
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param fechaInicio
+	 *            fecha inicio
+	 * @param fechaFin
+	 *            fecha fin
+	 * @return list
 	 */
 	public List<ReporteNumAsistencia> CantidadAsitenciaAsesoriaFecha(Connection c, String fechaInicio, String fechaFin)
 	{
@@ -660,17 +704,19 @@ public class DAOAsesorias {
 	/**
 	 * Listar asesorias profesor.
 	 *
-	 * @param c  c
-	 * @param profesor  profesor
-	 * @return  list
+	 * @param c
+	 *            c
+	 * @param profesor
+	 *            profesor
+	 * @return list
 	 */
 	public List<Asesoria> listarAsesoriasProfesor(Connection c, String profesor) {
-		
+
 		List<Asesoria> Asesorias = new ArrayList<Asesoria>();
 		try {
 			String sql = "SELECT a.Id_Asesoria, a.Docente_Asesoria, a.Asignatura_Asesoria, a.Fecha_Asesoria, a.HoraInicio_Asesoria, "
 					+ "a.HoraFin_Asesoria, a.Lugar_Asesoria, a.Cupos_Asesoria, a.CuposDisp_Asesoria, a.RecursosApoyo_Asesoria, a.Observaciones_Asesoria, "
-					+ "a.Estado_Asesoria FROM asesorias as a inner join personas as b on a.Docente_Asesoria = b.NumDoc_Persona where  b.Correo_Persona ='"+profesor+"'";
+					+ "a.Estado_Asesoria FROM asesorias as a inner join personas as b on a.Docente_Asesoria = b.NumDoc_Persona where  b.Correo_Persona ='" + profesor + "'";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -705,19 +751,19 @@ public class DAOAsesorias {
 	/**
 	 * Generar id asesoria.
 	 *
-	 * @param con  con
-	 * @return  asesoria
+	 * @param con
+	 *            con
+	 * @return asesoria
 	 */
 	public Asesoria generarIdAsesoria(Connection con) {
 		Asesoria x = new Asesoria();
-	
-		
+
 		try {
 			PreparedStatement cl = con.prepareStatement(AsesoriasSQL.ConsultarID());
 			ResultSet r = cl.executeQuery();
 			while (r.next()) {
 				x.setIdAsesoria(r.getString(1));
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -733,15 +779,4 @@ public class DAOAsesorias {
 		return x;
 	}
 
-
-
-	
-
-	
 }
-	
-	
-	
-	
-	
-

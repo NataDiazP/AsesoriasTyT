@@ -51,6 +51,12 @@ public class Asesoria
 	/**  estado. */
 	private String estado;
 	
+	/** Nombre asignatura */
+	private String nombreAsignatura;
+	
+	/**Nombre docente*/
+	private String nombreDocente;
+	
 	/**
 	 * Gets  id asesoria.
 	 *
@@ -284,8 +290,40 @@ public class Asesoria
 	public void setNombreAsesoria(String nombreAsesoria) {
 		this.nombreAsesoria = nombreAsesoria;
 	}
-	
-	
-	
 
+	/**
+	 * Gets nombre asignatura
+	 * 
+	 * @return the nombreAsignatura
+	 */
+	public String getNombreAsignatura() {
+		return nombreAsignatura;
+	}
+
+	/**
+	 * Sets nombre asignatura
+	 * 
+	 * @param nombreAsignatura the nombreAsignatura to set
+	 */
+	public void setNombreAsignatura(String nombreAsignatura) {
+		this.nombreAsignatura = nombreAsignatura;
+	}
+
+	/**
+	 * Gets nombre docente
+	 * 
+	 * @return the nombreDocente
+	 */
+	public String getNombreDocente() {
+		return nombreDocente;
+	}
+
+	/**
+	 * Sets nombre docente
+	 * 
+	 * @param nombreDocente the nombreDocente to set
+	 */
+	public void setNombreDocente(String nombreDocente) {
+		this.nombreDocente = nombreDocente;
+	}
 }

@@ -33,12 +33,12 @@
 	String aulaClaseProg = request.getParameter("aulaClaseProg");
 	String semestreProgAcademica = request.getParameter("semestreProgAcademica");
 	String anoProgAcademica = request.getParameter("anoProgAcademica");
-
+	String nombreAsigProg = request.getParameter("nombreAsigProg"); 
 	ProgAcademica x = request.getAttribute("cli") != null ? (ProgAcademica) request.getAttribute("cli") : null;
 	//nombre del atributo cuando lo subo  // operador ternario condicional
 	if (x != null) {
 		IdProgAcademica = x.getIdProgAcademica();
-		docenteProgAcademica = x.getDocenteProgAcademica();
+		docenteProgAcademica = x.getDocenteProgAcademica() + " - " + x.getNombreDocenteProgAcademica();
 		asignaturaProgAcademica = x.getAsignaturaProgAcademica();
 		grupoAsignatura = x.getGrupoAsigProgAcademica();
 		nroEstAsignatura = x.getNroEstAsigProgAcademica();
@@ -48,6 +48,7 @@
 		aulaClaseProg = x.getAulaClaseProgAcademica();
 		semestreProgAcademica = x.getSemestreProgAcademica();
 		anoProgAcademica = x.getAnoProgAcademica();
+		nombreAsigProg = x.getNombreAsigProg();
 	}
 
 	NAsignatura nAsig = new NAsignatura();
@@ -97,8 +98,8 @@
 											for (Persona pers : listaDocente) {
 										%>
 										<option
-											<%if ((pers.getNumeroIdentificacion()).equals(docenteProgAcademica)) {%>
-											selected <%}%>><%=pers.getNumeroIdentificacion()%></option>
+											<%if ((pers.getNumeroIdentificacion() + " - " + pers.getConcatNombre()).equals(docenteProgAcademica)) {%>
+											selected <%}%>><%=pers.getNumeroIdentificacion() +" - "+ pers.getConcatNombre()%></option>
 										<%
 											}
 										%>
@@ -106,7 +107,7 @@
 								<td class="label">Asignatura(*):</td>
 								<td><input type="text" name="asignaturaProgAcademica"
 									size="20" placeholder="Código Asignatura"
-									value="<%=asignaturaProgAcademica != null ? asignaturaProgAcademica : ""%>"></td>
+									value="<%=nombreAsigProg != null ? nombreAsigProg: ""%>"></td>
 							</tr>
 							<tr>
 								<td class="label">Grupo(*):</td>
@@ -212,8 +213,8 @@
 								%>
 								<tr align="center">
 									<td><%=prog.getIdProgAcademica()%></td>
-									<td><%=prog.getDocenteProgAcademica()%></td>
-									<td><%=prog.getAsignaturaProgAcademica()%></td>
+									<td><%=prog.getNombreDocenteProgAcademica()%></td>
+									<td><%=prog.getNombreAsigProg() %></td>
 									<td><%=prog.getGrupoAsigProgAcademica()%></td>
 									<td><%=prog.getNroEstAsigProgAcademica()%></td>
 									<td><%=prog.getDiasAsigProgAcademica()%></td>

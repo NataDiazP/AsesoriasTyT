@@ -120,6 +120,8 @@ public class DAOProgAcademica {
 				c.setAulaClaseProgAcademica(r.getString(9));
 				c.setSemestreProgAcademica(r.getString(10));
 				c.setAnoProgAcademica(r.getString(11));
+				c.setNombreAsigProg(r.getString(12));
+				c.setNombreDocenteProgAcademica(r.getString(13));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -169,11 +171,13 @@ public class DAOProgAcademica {
 	public List<Asignatura> asignaturasDocente(Connection c, String idDocente) {
 		List<Asignatura> asigDocente = new ArrayList<Asignatura>();
 		try {
-			PreparedStatement ps = c.prepareStatement("SELECT Asignatura FROM programaciones_academicas where Docente_ProgAcademica = '" + idDocente + "'");
+			PreparedStatement ps = c.prepareStatement("SELECT Asignatura, asig.nombre_asignatura FROM programaciones_academicas,"
+					+ " asignaturas asig where asignatura = asig.codigo_asignatura AND Docente_ProgAcademica = '" + idDocente + "'");
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
 				Asignatura asignatura = new Asignatura();
 				asignatura.setIdAsignatura(r.getString(1));
+				asignatura.setNombreAsignatura(r.getString(2));
 				asigDocente.add(asignatura);
 			}
 		} catch (SQLException e) {
@@ -197,7 +201,11 @@ public class DAOProgAcademica {
 	public List<ProgAcademica> listarProgAcademica(Connection c) {
 		List<ProgAcademica> progAcademica = new ArrayList<ProgAcademica>();
 		try {
-			String sql = "SELECT Id_ProgAcademica, Docente_ProgAcademica, Asignatura, Grupo_Asignatura, Nro_Estudiantes_Asignatura, Dias_Asignatura, HoraInicio_Asignatura, HoraFin_Asignatura, Aula_Clase FROM programaciones_academicas";
+			String sql = "SELECT Id_ProgAcademica, Docente_ProgAcademica, Asignatura, asig.nombre_asignatura, Grupo_Asignatura,"
+					+ " Nro_Estudiantes_Asignatura, Dias_Asignatura, HoraInicio_Asignatura, HoraFin_Asignatura, Aula_Clase,"
+					+ " CONCAT_WS(  ' ', nombres_persona, papellido_persona, sapellido_persona ) AS NombreDocente  "
+					+ "FROM programaciones_academicas, asignaturas asig, personas doc WHERE docente_progacademica = doc.numdoc_persona"
+					+ " AND asignatura = asig.codigo_asignatura";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet r = ps.executeQuery();
 			while (r.next()) {
@@ -205,12 +213,14 @@ public class DAOProgAcademica {
 				ProgAcademica.setIdProgAcademica(r.getString(1));
 				ProgAcademica.setDocenteProgAcademica(r.getString(2));
 				ProgAcademica.setAsignaturaProgAcademica(r.getString(3));
-				ProgAcademica.setGrupoAsigProgAcademica(r.getString(4));
-				ProgAcademica.setNroEstAsigProgAcademica(r.getString(5));
-				ProgAcademica.setDiasAsigProgAcademica(r.getString(6));
-				ProgAcademica.setHoraIniAsigProgAcademica(r.getString(7));
-				ProgAcademica.setHoraFinAsigProgAcademica(r.getString(8));
-				ProgAcademica.setAulaClaseProgAcademica(r.getString(9));
+				ProgAcademica.setNombreAsigProg(r.getString(4));
+				ProgAcademica.setGrupoAsigProgAcademica(r.getString(5));
+				ProgAcademica.setNroEstAsigProgAcademica(r.getString(6));
+				ProgAcademica.setDiasAsigProgAcademica(r.getString(7));
+				ProgAcademica.setHoraIniAsigProgAcademica(r.getString(8));
+				ProgAcademica.setHoraFinAsigProgAcademica(r.getString(9));
+				ProgAcademica.setAulaClaseProgAcademica(r.getString(10));
+				ProgAcademica.setNombreDocenteProgAcademica(r.getString(11));
 				progAcademica.add(ProgAcademica);
 			}
 		} catch (SQLException e) {
