@@ -187,6 +187,7 @@ public class Aulas extends HttpServlet {
 			if ("Eliminar".equals(request.getParameter("action"))) {
 				boolean registroExiste = false;
 				int sw = 0;
+				Aulas aula= new Aulas();
 				try {
 					ResultSet r1 = Connection.getConnection().prepareStatement("Select Id_Aula, Id_Bloque_Aula from aulas").executeQuery();
 					while (r1.next() && sw == 0) {
@@ -204,10 +205,27 @@ public class Aulas extends HttpServlet {
 				if (registroExiste) {
 					int confirma = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la información de esta aula?");
 					if (confirma == JOptionPane.YES_OPTION) {
-						int resultadoEliminar = new NAula().Eliminar(Aulas);
-						request.setAttribute("cli", resultadoEliminar);
-						JOptionPane.showMessageDialog(null, "Se eliminó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
-						response.sendRedirect("Aulas.jsp");
+						try {
+							ResultSet r1 = Connection.getConnection().prepareStatement("Select Lugar_Asesoria from asesorias where Lugar_Asesoria='"+enc+" - "+id+"'").executeQuery();
+							if (r1.next() )
+							{
+								JOptionPane.showMessageDialog(null, "No es posible eliminar el aula, se encuentra asociada a una asesoría", "Advertencia - AsesoriasTyT", JOptionPane.WARNING_MESSAGE);
+								request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
+								
+							}
+							else
+							{
+								int resultadoEliminar = new NAula().Eliminar(Aulas);
+								request.setAttribute("cli", resultadoEliminar);
+								JOptionPane.showMessageDialog(null, "Se eliminó correctamente.", "AsesoriasTyT", JOptionPane.INFORMATION_MESSAGE);
+								response.sendRedirect("Aulas.jsp");
+								
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+
+						
 					} else if (confirma == JOptionPane.NO_OPTION) {
 						request.getRequestDispatcher("./Aulas.jsp").forward(request, response);
 					} else if (confirma == JOptionPane.CLOSED_OPTION) {
